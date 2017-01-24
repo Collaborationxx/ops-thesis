@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Order</title>
+    <title>Reservation</title>
 	<!-- BOOTSTRAP STYLES-->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
      <!-- FONTAWESOME STYLES-->
@@ -69,61 +69,81 @@
 <br><br>
 	<div id="page-wrapper" >
     	<div id="page-inner">
-        	
+        	<div class="row">
+            	<div class="col-md-12">
+                    <h2><strong>Medical Supplies Reservation List</strong></h2>   
+                 </div>
+            </div>
+                <hr />
                 <div class="input-group custom-search-form">
-                			<button class="btn btn-info" style="float:right; margin-left:930px; margin-top:10px;">PRINT</button>
-                </div>
+                			<a href="reservation-report.php"><button class="btn btn-info" style="float:left; margin-left:15px;">PREVIEW OF RESERVATION</button></a>
+                            <input type="text" class="form-control" placeholder="Search..." style="width: 30%; margin-left: 440px;">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button" style="margin-right: 15px;">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
                 <div class="panel-body">
         <div class="table-responsive">
         	<table class="table table-striped table-bordered table-hover" id="dataTables-example" >
             	<thead>
                 	<tr>
-                    	<th width="20%"><center>Customer</center></th>
-                        <th width="20%"><center>
-                        Reservation
-                        </center></th>
-                        <th width="20%"><center>
-                            Expected Date
-                        </center></th>
-                        <th width="20%"><center>Shipping Destination</center></th>
+                    	<th width="20%"><center>ReservationID</center></th>
+                    	<th width="20%"><center>Date</center></th>
+                        <th width="20%"><center>Status</center></th>
                     </tr>
                 </thead>
                 <tbody>
                 		<tr>
-                    	<td>Rubie Francisco</td>
-						<td>2&nbsp;&nbsp;&nbsp;Wheelchair<br>1&nbsp;&nbsp;&nbsp;Walker Boots</td>
-                        <td>11/26/16</td>
-                        <td>San Miguel, Bulacan</td>
+                    	<td>OPS-320-43</td>
+						<td>11/30/16</td>
+                        <td>Pending</td>
                         </tr>
                     	<tr>
-                    	<td>Louie Cruz</td>
-						<td>1&nbsp;&nbsp;&nbsp;Nebulizer</td>
-                        <td>11/26/16</td>
-                        <td>Gapan, Nueva Eciija</td>
+                    	<td>OPS-390-93</td>
+						<td>11/30/16</td>
+                        <td>Paid</td>
                         </tr>
                         <tr>
-                    	<td>Louie Cruz</td>
-						<td>1&nbsp;&nbsp;&nbsp;Nebulizer</td>
-                        <td>11/26/16</td>
-                        <td>Gapan, Nueva Eciija</td>
+                    	<td>OPS-390-03</td>
+						<td>11/30/16</td>
+                        <td>Pending</td>
                         </tr>
                         <tr>
-                    	<td>Louie Cruz</td>
-						<td>1&nbsp;&nbsp;&nbsp;Nebulizer</td>
-                        <td>11/26/16</td>
-                        <td>Gapan, Nueva Eciija</td>
+                    	<td>OPS-870-53</td>
+						<td>11/30/16</td>
+                        <td>Paid</td>
                         </tr>
                         <tr>
-                    	<td>Louie Cruz</td>
-						<td>1&nbsp;&nbsp;&nbsp;Nebulizer</td>
-                        <td>11/26/16</td>
-                        <td>Gapan, Nueva Eciija</td>
+                    	<td>OPS-729-56</td>
+						<td>11/30/16</td>
+                        <td>Paid</td>
                         </tr>
                         <tr>
-                    	<td>Louie Cruz</td>
-						<td>1&nbsp;&nbsp;&nbsp;Nebulizer</td>
-                        <td>11/26/16</td>
-                        <td>Gapan, Nueva Eciija</td>
+                    	<td>OPS-320-43</td>
+						<td>11/30/16</td>
+                        <td>Pending</td>
+                        </tr>
+                    	<tr>
+                    	<td>OPS-390-93</td>
+						<td>11/30/16</td>
+                        <td>Paid</td>
+                        </tr>
+                        <tr>
+                    	<td>OPS-390-03</td>
+						<td>11/30/16</td>
+                        <td>Paid</td>
+                        </tr>
+                        <tr>
+                    	<td>OPS-870-53</td>
+						<td>11/30/16</td>
+                        <td>Paid</td>
+                        </tr>
+                        <tr>
+                    	<td>OPS-729-56</td>
+						<td>11/30/16</td>
+                        <td>Pending</td>
                         </tr>
               </tbody>
               </table>
