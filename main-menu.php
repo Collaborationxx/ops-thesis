@@ -1,22 +1,25 @@
 <!--NAV TOP-->
-<nav class="navbar navbar-default navbar-cls-top navbar-fixed-top">
+<nav class="navbar navbar-inverse navbar-cls-top navbar-fixed-top">
     <div class="navbar-header">
-        <a href="index.php">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-    </div>
+            <a href="index.php">MJ Jacobe Trading</a>
     <div class="login-box">
         <div class="dropdown">
-            <a class="dropdown-toggle admin-panel-user" data-toggle="dropdown" href="#">
-                Hello <?php echo $_SESSION['username']; ?>
-                <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
+            <ul class="nav navbar-right navbar-top-links">
+                <li>
+                    <a class="dropdown-toggle admin-panel-user" data-toggle="dropdown" href="#">
+                        <i class="fa fa-user">  Hello <?php echo $_SESSION['username']; ?></i>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="logout.php"><i class="fa fa-sign-out"></i> Logout</a></li>
+                    </ul>
+                </li>
             </ul>
         </div>
     </div>
