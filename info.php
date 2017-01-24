@@ -85,7 +85,7 @@
                 <div class="col-md-6"> 
                     <input name="name" type="text" size="37" style="margin-bottom:30px;" value="First Aid Kit" readonly/>
                    
-                    <input name="name" type="text" size="37" style="margin-bottom:35px;" value="Lorem ipsum dolor sit amet" readonly/>
+                    <textarea name="desc" type="text" rows="4"></textarea>
                     
                     <input name="name" type="text" size="37" style="margin-bottom:34px;" value="Php 5,000.00" readonly/>
                     
