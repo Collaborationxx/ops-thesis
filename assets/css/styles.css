@@ -541,3 +541,21 @@ p.add {
 
 
 }
+
+.navbar-default {
+  background-color: #FFFFFF !important;
+}
+
+.img1 {
+  
+  width:100px; 
+  height:auto !important; 
+  padding-top: 8px;
+}
+.img2 {
+  
+  width:200px; 
+  height:auto !important; 
+  padding-top: 8px;
+
+}

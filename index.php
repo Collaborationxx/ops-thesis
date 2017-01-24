@@ -39,7 +39,10 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-               <a href="index.php"><img src="assets/images/ops.png" style="position:absolute; left:80px; width:100px; height:54px; margin-left:7px;"><img src="assets/images/received_10210688875834340.jpeg" style="position:absolute; left:180px; width:200px; height:54px; margin-left:7px;"></a>
+               <a href="index.php">
+                <img src="assets/images/ops.png" class="img1">
+                <img src="assets/images/received_10210688875834340.png" class="img2">
+               </a>
 
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
