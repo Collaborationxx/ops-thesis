@@ -43,7 +43,7 @@
               <input name="password" type="password" placeholder="Password" required/>
             </div>
             <br>
-            <p class="forgot"><a href="forgotpassword.php">Forgot Password?</a></p>
+            <p class="forgot"><a href="forgot-password.php">Forgot Password?</a></p>
             <button class="button button-block"/>Log In</button>
             <a href="index.php"><button class="button2 button-cancel" />Cancel</button></a>
           </form>

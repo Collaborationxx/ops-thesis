@@ -70,7 +70,7 @@ header('location: index.php');
                         <a  href="catalog.php"><img src="assets/images/catalogue-icon.png" class="img"> Product Catalog</a>
                     </li>
                     <li>
-                        <a  href="ordertracking.php"><img src="assets/images/order-tracking.png" class="img"> Order Tracking</a>
+                        <a  href="order-tracking.php"><img src="assets/images/order-tracking.png" class="img"> Order Tracking</a>
                     </li>
 				    <li  >
                         <a   href="user.php"><img src="assets/images/user-512.png" class="img"> User Account</a>

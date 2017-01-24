@@ -50,7 +50,7 @@
                         <a  href="catalog.php"><img src="assets/images/catalogue-icon.png" class="img"> Product Catalog</a>
                     </li>
                     <li>
-                        <a  href="ordertracking.php"><img src="assets/images/order-tracking.png" class="img"> Order Tracking</a>
+                        <a  href="order-tracking.php"><img src="assets/images/order-tracking.png" class="img"> Order Tracking</a>
                     </li>
 				    <li  >
                         <a   href="user.php"><img src="assets/images/user-512.png" class="img"> User Account</a>
@@ -76,7 +76,7 @@
             </div>
                 <hr />
                 <div class="input-group custom-search-form">
-                			<a href="reservationlist.php"><button class="btn btn-info" style="float:left; margin-left:15px;">PREVIEW OF RESERVATION</button></a>
+                			<a href="reservation-list.php"><button class="btn btn-info" style="float:left; margin-left:15px;">PREVIEW OF RESERVATION</button></a>
                             <input type="text" class="form-control" placeholder="Search..." style="width: 30%; margin-left: 440px;">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="button" style="margin-right: 15px;">
