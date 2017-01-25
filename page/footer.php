@@ -13,15 +13,22 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                <div class="col-md-4 col-sm-8">
+                                <div class="col-md-2 col-sm-4">
                                     <h3 class="column-title">Our Services</h3>
                                     <ul class="column">
                                         <li><a href="#">About us</a></li>
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#">Custom Service</a></li>
+                                        <li><a href="#">Customer Service</a></li>
+                                        <li><a href="#">FAQs</a></li>
                                         <li><a href="#">Terms &amp; Condition</a></li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="col-md-2 col-sm-4">
+                                    <h3 class="column-title">Our Services</h3>
+                                    <ul class="column">
                                         <li><a href="#">Order History</a></li>
+                                        <li><a href="#">Reservation</a></li>
+                                        <li><a href="#">Payment</a></li>
                                         <li><a href="#">Returns</a></li>
                                     </ul>
                                     <div class="clear"></div>
