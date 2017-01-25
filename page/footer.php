@@ -97,6 +97,9 @@
 
     </div>
 
+    <!-- popup content -->
+
+    <!-- search box popup content -->
     <div class="search-box popup">
         <form>
             <div class="search-button">
@@ -124,8 +127,10 @@
             </div>
         </form>
     </div>
+    <!-- end search box -->
 
-     <div class="cart-box popup">
+    <!-- cart popup content -->
+    <div class="cart-box popup">
         <div class="popup-container">
             <div class="cart-entry">
                 <a class="image"><img src="img/wheel chair1.png" alt="" /></a>
@@ -162,6 +167,51 @@
             </div>
         </div>
     </div>
+    <!-- end cart popup -->
+
+    <!-- wish list popup content -->
+    <div class="cart-box popup">
+        <div class="popup-container">
+            <div class="wishlist-entry">
+                <a class="image"><img src="img/wheel chair1.png" alt="" /></a>
+                <div class="content">
+                    <a class="title" href="#">Wheel Chair</a>
+                    <div class="quantity">Quantity: 4</div>
+                    <div class="price">$990,00</div>
+                </div>
+                <div class="button-x"><i class="fa fa-close"></i></div>
+            </div>
+            <div class="wishlist-entry-entry">
+                <a class="image"><img src="img/bandage1.png" alt="" /></a>
+                <div class="content">
+                    <a class="title" href="#">Bandage</a>
+                    <div class="quantity">Quantity: 4</div>
+                    <div class="price">$990,00</div>
+                </div>
+                <div class="button-x"><i class="fa fa-close"></i></div>
+            </div>
+            <div class="summary">
+                <div class="subtotal">Subtotal: $990,00</div>
+                <div class="grandtotal">Grand Total <span>$1029,79</span></div>
+            </div>
+            <div class="cart-buttons">
+                <div class="column">
+                    <a class="button style-3">view cart</a>
+                    <div class="clear"></div>
+                </div>
+                <div class="column">
+                    <a class="button style-4">checkout</a>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+    </div>
+    <!-- wish list popup -->
+
+    <!-- end popup content -->
+
+
     <script src="js/jquery-2.1.3.min.js"></script>
     <script src="js/idangerous.swiper.min.js"></script>
     <script src="js/global.js"></script>
