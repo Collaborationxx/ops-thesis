@@ -3,7 +3,7 @@
                     <footer class="type-1">
                         <div class="footer-columns-entry">
                             <div class="row">
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <img class="footer-logo" src="img/ops1.png" alt="" />
                                     
                                     <div class="footer-address"><i class="fa fa-phone-square"></i> (+63)935-744-7362<br/>
@@ -13,33 +13,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                <div class="col-md-2 col-sm-4">
-                                    <h3 class="column-title">Our Services</h3>
-                                    <ul class="column">
-                                        <li><a href="#">About us</a></li>
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#">Custom Service</a></li>
-                                        <li><a href="#">Terms &amp; Condition</a></li>
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                    </ul>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="col-md-2 col-sm-4">
-                                    <h3 class="column-title">Our Services</h3>
-                                    <ul class="column">
-                                        <li><a href="#">About us</a></li>
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                        <li><a href="#">Custom Service</a></li>
-                                        <li><a href="#">Terms &amp; Condition</a></li>
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                    </ul>
-                                    <div class="clear"></div>
-                                </div>
-                                <div class="col-md-2 col-sm-4">
+                                <div class="col-md-4 col-sm-8">
                                     <h3 class="column-title">Our Services</h3>
                                     <ul class="column">
                                         <li><a href="#">About us</a></li>
@@ -53,7 +27,7 @@
                                     <div class="clear"></div>
                                 </div>
                                 <div class="clearfix visible-sm-block"></div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <h3 class="column-title">Company working hours</h3>
                                     <div class="footer-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</div>
                                     <div class="footer-description">

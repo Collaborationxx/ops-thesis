@@ -7,7 +7,6 @@
     <list default="true" id="4690b1ef-2609-4579-9529-35e1c096591a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/footer.php" afterPath="$PROJECT_DIR$/page/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/index.php" afterPath="$PROJECT_DIR$/page/index.php" />
     </list>
     <ignored path="ops-thesis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,7 +49,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/page/index.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="213">
@@ -60,13 +59,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="footer.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/page/footer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="334">
-              <caret line="207" column="50" selection-start-line="207" selection-start-column="50" selection-end-line="207" selection-end-column="50" />
+            <state relative-caret-position="157">
+              <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
               <folding>
-                <element signature="n#div#0;n#!!top" expanded="false" />
                 <element signature="n#div#2;n#!!top" expanded="false" />
                 <element signature="n#div#3;n#!!top" expanded="false" />
               </folding>
@@ -118,8 +116,8 @@
         <option value="$PROJECT_DIR$/page/header.php" />
         <option value="$PROJECT_DIR$/page/css/style.css" />
         <option value="$PROJECT_DIR$/page/js/global.js" />
-        <option value="$PROJECT_DIR$/page/footer.php" />
         <option value="$PROJECT_DIR$/page/index.php" />
+        <option value="$PROJECT_DIR$/page/footer.php" />
       </list>
     </option>
   </component>
@@ -344,7 +342,7 @@
       <option name="presentableId" value="Default" />
       <updated>1485264936973</updated>
       <workItem from="1485264942163" duration="5963000" />
-      <workItem from="1485350741353" duration="3886000" />
+      <workItem from="1485350741353" duration="4472000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -402,11 +400,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485354088565</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="-add product popup">
+      <created>1485354646858</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1485354646858</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="9849000" />
+    <option name="totallyTimeSpent" value="10435000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -445,7 +450,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="-update files" />
     <MESSAGE value="-add wishlist popup" />
-    <option name="LAST_COMMIT_MESSAGE" value="-add wishlist popup" />
+    <MESSAGE value="-add product popup" />
+    <option name="LAST_COMMIT_MESSAGE" value="-add product popup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -673,23 +679,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/page/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="334">
-          <caret line="207" column="50" selection-start-line="207" selection-start-column="50" selection-end-line="207" selection-end-column="50" />
-          <folding>
-            <element signature="n#div#0;n#!!top" expanded="false" />
-            <element signature="n#div#2;n#!!top" expanded="false" />
-            <element signature="n#div#3;n#!!top" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/page/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="213">
           <caret line="63" column="0" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="157">
+          <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+          <folding>
+            <element signature="n#div#2;n#!!top" expanded="false" />
+            <element signature="n#div#3;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
