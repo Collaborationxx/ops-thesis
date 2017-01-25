@@ -62,9 +62,10 @@
       <file leaf-file-name="footer.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/page/footer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+            <state relative-caret-position="209">
+              <caret line="31" column="125" selection-start-line="31" selection-start-column="125" selection-end-line="31" selection-end-column="125" />
               <folding>
+                <element signature="e#3381#3387#0#HTML" expanded="true" />
                 <element signature="n#div#2;n#!!top" expanded="false" />
                 <element signature="n#div#3;n#!!top" expanded="false" />
               </folding>
@@ -342,7 +343,7 @@
       <option name="presentableId" value="Default" />
       <updated>1485264936973</updated>
       <workItem from="1485264942163" duration="5963000" />
-      <workItem from="1485350741353" duration="4472000" />
+      <workItem from="1485350741353" duration="4837000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -407,11 +408,18 @@
       <option name="project" value="LOCAL" />
       <updated>1485354646858</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="-add product popup">
+      <created>1485355221355</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1485355221355</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10435000" />
+    <option name="totallyTimeSpent" value="10800000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -689,9 +697,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/page/footer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="15" column="52" selection-start-line="15" selection-start-column="52" selection-end-line="15" selection-end-column="52" />
+        <state relative-caret-position="209">
+          <caret line="31" column="125" selection-start-line="31" selection-start-column="125" selection-end-line="31" selection-end-column="125" />
           <folding>
+            <element signature="e#3381#3387#0#HTML" expanded="true" />
             <element signature="n#div#2;n#!!top" expanded="false" />
             <element signature="n#div#3;n#!!top" expanded="false" />
           </folding>

@@ -29,7 +29,7 @@
                                 <div class="clearfix visible-sm-block"></div>
                                 <div class="col-md-4">
                                     <h3 class="column-title">Company working hours</h3>
-                                    <div class="footer-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</div>
+                                    <div class="footer-description">Visit our shop and find premium quality medical supplies you can afford!</div>
                                     <div class="footer-description">
                                         <b>Monday-Friday:</b> 8.30 a.m. - 5.30 p.m.<br/>
                                         <b>Saturday:</b> 9.00 a.m. - 2.00 p.m.<br/>
@@ -49,7 +49,7 @@
                                     <a href="#">Orders and Returns</a>
                                     <a href="#">Contact Us</a>
                                 </div>
-                                <div class="copyright">Copyright &copy; MJ Jacobe Trading. All right reserved</div>
+                                <div class="copyright"><?php echo date('Y'); ?> Copyright &copy; MJ Jacobe Trading. All right reserved</div>
                             </div>
                             <div class="cell-view">
                                 <div class="payment-methods">
