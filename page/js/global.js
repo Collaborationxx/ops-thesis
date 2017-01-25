@@ -382,12 +382,12 @@ $(function() {
 		clearTimeout(closewishlistTimeout);
 
 		if(!$('.cart-box.popup').hasClass('active')){
-			closePopups();
+			closePopupsV2();
 			if($(this).offset().left>winW*0.5){
-				$('.cart-box.popup').addClass('active cart-right').css({'left':'auto', 'right':winW - $(this).offset().left-$(this).outerWidth()*0.5-47, 'top':$(this).offset().top-winScr+15, 'opacity':'0'}).stop().animate({'opacity':'1'}, 300);
+				$('.wishlist-box.popup').addClass('active cart-right').css({'left':'auto', 'right':winW - $(this).offset().left-$(this).outerWidth()*0.5-47, 'top':$(this).offset().top-winScr+15, 'opacity':'0'}).stop().animate({'opacity':'1'}, 300);
 			}
 			else{
-				$('.cart-box.popup').addClass('active cart-left').css({'right':'auto', 'left':$(this).offset().left, 'top':$(this).offset().top-winScr+15, 'opacity':'0'}).stop().animate({'opacity':'1'}, 300);
+				$('.wishlist-box.popup').addClass('active cart-left').css({'right':'auto', 'left':$(this).offset().left, 'top':$(this).offset().top-winScr+15, 'opacity':'0'}).stop().animate({'opacity':'1'}, 300);
 			}
 		}
 		//if($(this).offset().left<100) $('.cart-box.popup').addClass('left-align');
@@ -396,19 +396,19 @@ $(function() {
 	});
 
 	$('.open-wishlist-popup').on('mouseleave', function(){
-		closecartTimeout = setTimeout(function(){closePopups();}, 1000);
+		closewishlistTimeout = setTimeout(function(){closePopupsV2();}, 1000);
 	});
 
-	var closecartTimeout = 0;
+	var closewishlistTimeout = 0;
 	$('.cart-box.popup').on('mouseover', function(){
-		clearTimeout(closecartTimeout);
+		clearTimeout(closewishlistTimeout);
 	});
 	$('.cart-box.popup').on('mouseleave', function(){
-		closecartTimeout = setTimeout(function(){closePopups();}, 1000);
+		closewishlistTimeout = setTimeout(function(){closePopupsV2();}, 1000);
 	});
 
-	function closePopups(){
-		$('.popup.active').animate({'opacity':'0'}, 300, function(){$(this).removeClass('active'); $('.cart-box').removeClass('cart-left cart-right');});
+	function closePopupsV2(){
+		$('.popup.active').animate({'opacity':'0'}, 300, function(){$(this).removeClass('active'); $('.wishlist-box').removeClass('wishlist-left wishlist-right');});
 	}
 
 	/*main menu mouseover calculations*/

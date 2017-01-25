@@ -170,7 +170,7 @@
     <!-- end cart popup -->
 
     <!-- wish list popup content -->
-    <div class="cart-box popup">
+    <div class="wishlist-box popup">
         <div class="popup-container">
             <div class="wishlist-entry">
                 <a class="image"><img src="img/wheel chair1.png" alt="" /></a>
@@ -196,11 +196,7 @@
             </div>
             <div class="cart-buttons">
                 <div class="column">
-                    <a class="button style-3">view cart</a>
-                    <div class="clear"></div>
-                </div>
-                <div class="column">
-                    <a class="button style-4">checkout</a>
+                    <a class="button style-3">view wish list</a>
                     <div class="clear"></div>
                 </div>
                 <div class="clear"></div>

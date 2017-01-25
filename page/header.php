@@ -56,7 +56,6 @@
                             </div>
                             <div class="middle-line"></div>
                             <div class="line-entry">
-                                <a href="#" class="header-functionality-entry"><i class="fa fa-copy"></i><span>Compare</span></a>
                                 <a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>
                                 <a href="#" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> <b>$255,99</b></a>
                             </div>
