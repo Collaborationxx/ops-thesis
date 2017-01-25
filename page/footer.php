@@ -204,6 +204,110 @@
         </div>
     </div>
     <!-- wish list popup -->
+    <!-- product popup -->
+    <div id="product-popup" class="overlay-popup">
+        <div class="overflow">
+            <div class="table-view">
+                <div class="cell-view">
+                    <div class="close-layer"></div>
+                    <div class="popup-container">
+
+                        <div class="row">
+                            <div class="col-sm-6 information-entry">
+                                <div class="product-preview-box">
+                                    <div class="swiper-container product-preview-swiper" data-autoplay="0" data-loop="1" data-speed="500" data-center="0" data-slides-per-view="1">
+                                        <div class="swiper-wrapper">
+                                            <div class="swiper-slide">
+                                                <div class="product-zoom-image">
+                                                    <img src="img/wheel chair1.png" alt="" data-zoom="img/wheel chair1.png" />
+                                                </div>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div class="pagination"></div>
+                                        <div class="product-zoom-container">
+                                            <div class="move-box">
+                                                <img class="default-image" src="img/product-main-1.jpg" alt="" />
+                                                <img class="zoomed-image" src="img/product-main-1-zoom.jpg" alt="" />
+                                            </div>
+                                            <div class="zoom-area"></div>
+                                        </div>
+                                    </div>
+                                    <div class="swiper-hidden-edges">
+                                        <div class="swiper-container product-thumbnails-swiper" data-autoplay="0" data-loop="0" data-speed="500" data-center="0" data-slides-per-view="responsive" data-xs-slides="3" data-int-slides="3" data-sm-slides="3" data-md-slides="4" data-lg-slides="4" data-add-slides="4">
+                                            <div class="swiper-wrapper">
+                                                <div class="swiper-slide selected">
+                                                    <div class="paddings-container">
+                                                        <img src="img/wheel chair1.png" alt="" />
+                                                    </div>
+                                                </div>
+
+
+
+                                            </div>
+                                            <div class="pagination"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 information-entry">
+                                <div class="product-detail-box">
+                                    <h1 class="product-title">Wheel Chair</h1>
+                                    <h3 class="product-subtitle">Category</h3>
+                                    <div class="rating-box">
+                                        <div class="star"><i class="fa fa-star"></i></div>
+                                        <div class="star"><i class="fa fa-star"></i></div>
+                                        <div class="star"><i class="fa fa-star"></i></div>
+                                        <div class="star"><i class="fa fa-star-o"></i></div>
+                                        <div class="star"><i class="fa fa-star-o"></i></div>
+
+                                    </div>
+
+                                    <div class="price detail-info-entry">
+                                        <!-- <div class="prev">$90,00</div> -->
+                                        <div class="current">$70,00</div>
+                                    </div>
+
+                                    <!--   <div class="color-selector detail-info-entry">
+                                          <div class="detail-info-entry-title">Color</div>
+                                          <div class="entry active" style="background-color: #d23118;">&nbsp;</div>
+                                          <div class="entry" style="background-color: #2a84c9;">&nbsp;</div>
+                                          <div class="entry" style="background-color: #000;">&nbsp;</div>
+                                          <div class="entry" style="background-color: #d1d1d1;">&nbsp;</div>
+                                          <div class="spacer"></div>
+                                      </div> -->
+                                    <div class="quantity-selector detail-info-entry">
+                                        <div class="detail-info-entry-title">Quantity</div>
+                                        <div class="entry number-minus">&nbsp;</div>
+                                        <div class="entry number">10</div>
+                                        <div class="entry number-plus">&nbsp;</div>
+                                    </div>
+                                    <div class="detail-info-entry">
+                                        <a class="button style-10">Add to cart</a>
+                                        <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <!--   <div class="tags-selector detail-info-entry">
+                                          <div class="detail-info-entry-title">Tags:</div>
+                                          <a href="#">bootstrap</a>/
+                                          <a href="#">collections</a>/
+                                          <a href="#">color/</a>
+                                          <a href="#">responsive</a>
+                                      </div> -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="close-popup"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end product popup -->
+
 
     <!-- end popup content -->
 

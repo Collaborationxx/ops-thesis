@@ -60,7 +60,7 @@ include("header.php");
                                     <div class="product-slide-entry">
                                         <div class="product-image">
                                             <img src="img/wheel chair1.png" alt="" />
-                                         
+                                            <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
                                             <div class="bottom-line">
                                                     <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                                 </div>
