@@ -497,7 +497,7 @@ body:not(.mobile) .socials-box a:hover .fa{top: -5px;}
 .wishlist-box.popup .summary{text-align: right; margin-bottom: 25px;}
 .wishlist-box.popup .summary .subtotal{font-size: 14px; line-height: 22px; color: #878787; font-weight: 600;}
 .wishlist-box.popup .summary .grandtotal{font-size: 18px; line-height: 22px; color: #343434; font-weight: 600;}
-.wishlist-box.popup .summary .grandtotal span{color: #e11414;
+.wishlist-box.popup .summary .grandtotal span{color: #e11414;}
 .wishlist-buttons .column{width: 50%; padding-left: 5px; float: left;}
 .wishlist-buttons .column:first-child{padding-left: 0; padding-right: 5px;}
 .wishlist-buttons.cart-box.popup .button-x{position: absolute; top: 0; right: 0; cursor: pointer;}
