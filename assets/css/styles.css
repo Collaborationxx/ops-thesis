@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-.lgbutton {
+.lg-btn {
     background-color: #4CAF50;
     color: white;
     padding: 10px 15px;
@@ -18,7 +18,7 @@
     width: 40%;
 	border-radius:5px;
 }
-.cancelbtn {
+.cancel-btn {
     width: 40%;
     padding: 10px 15px;
     background-color: #f44336;

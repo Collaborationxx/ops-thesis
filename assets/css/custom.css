@@ -11,7 +11,7 @@ body {
 	padding:0px;
 }
 .title2 {
-	font-size:25x;
+	font-size:25px;
 	margin-top: 5px;
 	margin-bottom: 30px;
 }
@@ -456,9 +456,7 @@ line-height: 1.428571429;
         padding: 15px 30px;
         min-height: 600px;
 		
-    }
-	
-	
+     }
     .navbar-side {
         z-index: 1;
         position: absolute;
@@ -466,14 +464,16 @@ line-height: 1.428571429;
     }
 
    .navbar {
- border-radius: 0px; 
-}
-.img
-{
-	height:48px;
-	width:48px;
-}
-.txtbx
-{height:20px;
-width:200px;
-}
+        border-radius: 0px;
+    }
+    .img
+    {
+	    height:48px;
+        width:48px;
+    }
+    .txtbx
+    {
+        height:20px;
+        width:200px;
+    }
+ }
