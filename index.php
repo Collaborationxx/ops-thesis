@@ -5,7 +5,6 @@
     <meta name="author" content="3 Idiots">
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/styles.css" type="text/css" media="all" />
     <!--[if lte IE 6]><link rel="stylesheet" href="assets/css/ie6.css" type="text/css" media="all" /><![endif]-->
 
     <!-- Custom CSS -->
@@ -17,6 +16,8 @@
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <link rel="stylesheet" href="assets/css/styles.css" type="text/css" media="all" />
 
     <style>
         .carousel-inner > .item > img,
