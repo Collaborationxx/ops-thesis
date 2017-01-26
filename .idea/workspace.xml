@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4690b1ef-2609-4579-9529-35e1c096591a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/reports.html" afterPath="$PROJECT_DIR$/page/reports.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/order-tracking.html" afterPath="$PROJECT_DIR$/page/order-tracking.html" />
     </list>
     <ignored path="ops-thesis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,17 +66,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="order-tracking.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="order-tracking.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/page/order-tracking.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="112" column="20" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
+            <state relative-caret-position="42">
+              <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reports.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="reports.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/page/reports.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="410">
@@ -145,8 +145,8 @@
         <option value="$PROJECT_DIR$/page/user-management.html" />
         <option value="$PROJECT_DIR$/page/product-management.html" />
         <option value="$PROJECT_DIR$/page/inventory-management.html" />
-        <option value="$PROJECT_DIR$/page/order-tracking.html" />
         <option value="$PROJECT_DIR$/page/reports.html" />
+        <option value="$PROJECT_DIR$/page/order-tracking.html" />
       </list>
     </option>
   </component>
@@ -319,7 +319,7 @@
       <updated>1485264936973</updated>
       <workItem from="1485264942163" duration="5963000" />
       <workItem from="1485350741353" duration="8886000" />
-      <workItem from="1485437385142" duration="5802000" />
+      <workItem from="1485437385142" duration="5860000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -416,7 +416,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20651000" />
+    <option name="totallyTimeSpent" value="20709000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -781,14 +781,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/page/order-tracking.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="112" column="20" selection-start-line="112" selection-start-column="20" selection-end-line="112" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/page/user-management.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="80">
@@ -801,6 +793,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="410">
           <caret line="174" column="16" selection-start-line="174" selection-start-column="16" selection-end-line="174" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/page/order-tracking.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="145" column="40" selection-start-line="145" selection-start-column="40" selection-end-line="145" selection-end-column="40" />
           <folding />
         </state>
       </provider>
