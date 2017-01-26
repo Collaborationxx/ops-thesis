@@ -332,7 +332,7 @@
         </div>
 </footer>
 <!-- jQuery -->
-<script src="vendor/js/jquery-3.1.1.min.js"></script>
+<script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
