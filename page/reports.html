@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../vendor/ionicons/css/ionicons.min.css">
+  <!-- date picker -->
+  <link rel="stylesheet" type="text/css" href="../vendor/datepicker/datepicker3.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-green.min.css">
@@ -155,13 +157,23 @@
                       <div class="col-xs-6">
                         <div class="form-group">
                           <label>From</label>
-                          <input type="text" class="form-control" placeholder="Enter ...">
+                         <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker">
+                          </div>
                         </div>
                       </div>
                       <div class="col-xs-6">
                         <div class="form-group">
                           <label>To</label>
-                          <input type="text" class="form-control" placeholder="Enter ...">
+                          <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker">
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -229,6 +241,8 @@
 <script src="../vendor/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- datepicker -->
+<script src="../vendor/datepicker/bootstrap-datepicker.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
 

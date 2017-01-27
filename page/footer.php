@@ -289,6 +289,104 @@
     </div>
     <!-- end product popup -->
 
+    <!-- login && sign up popup -->
+    <div id="login-signup-modal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">OPS</h4>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-xs-6 login-group">
+                        Login
+                    </div>
+                    <div class="col-md-6 col-xs-6 signup-group">
+                        Sign Up
+                    </div>
+                </div>  
+            </div>
+            <div class="tab-content">
+                <div class="login-group-content">
+                    <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="email">Email address:</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="pwd">Password:</label>
+                                <input type="password" class="form-control" id="pwd">
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox"> Remember me</label>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="signup-group-content">
+                    <div class="panel-body">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">First Name:</label>
+                                        <input type="text" class="form-control" id="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Last Name:</label>
+                                        <input type="text" class="form-control" id="email">
+                                    </div>                                
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="email">Home Address:</label>
+                                        <textarea row3="3" class="form-control" id="email"></textarea>
+                                    </div>   
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="email">Shipping Address:</label>
+                                        <textarea row3="3" class="form-control" id="email"></textarea>
+                                    </div>   
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Contact No.:</label>
+                                        <input type="text" class="form-control" id="email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" class="form-control" id="email">
+                                    </div>                                
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-default">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!-- end login && sign up modal -->
 
     <!-- end popup content -->
 
@@ -303,6 +401,9 @@
 
      <!-- range slider -->
     <script src="js/jquery-ui.min.js"></script>
+
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+
      <script>
         $(document).ready(function(){
             var minVal = parseInt($('.min-price span').text());

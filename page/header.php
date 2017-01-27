@@ -12,7 +12,12 @@
     <link href="css/idangerous.swiper.css" rel="stylesheet" type="text/css" />
     <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href='http://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700%7CDancing+Script%7CMontserrat:400,700%7CMerriweather:400,300italic%7CLato:400,700,900' rel='stylesheet' type='text/css' />
+
+    <!-- Bootstrap 3.3.6 -->
+    <link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css">
+
     <link href="css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../assets/css/ops-custom.css">
     <!--[if IE 9]>
         <link href="css/ie9.css" rel="stylesheet" type="text/css" />
     <![endif]-->
@@ -49,7 +54,7 @@
                                     <div class="title"><i class="fa fa-search"></i> <span>Search</span></div>
                                 </div>
                                 <div class="header-top-entry increase-icon-responsive">
-                                    <div class="title"><i class="fa fa-user"></i> <span>My Account</span></div>
+                                    <div class="title"><a href="#" class="" data-toggle="modal" data-target="#login-signup-modal"><i class="fa fa-user"></i> <span>My Account</span></div>
                                 </div>
                                
                                 
