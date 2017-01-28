@@ -116,7 +116,7 @@
           <span>Order Tracking</span></a>
         </li>
         <li>
-          <a href="inventory-management.html">
+          <a href="inventory-management.php">
           <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
           <span>Inventory</span></a>
         </li>
@@ -163,7 +163,7 @@
                       <td>Wheelchair</td>
                       <td>4</td>
                       <td>
-                         <a href="inventory-management.html"><i class="fa fa-plus"></i>  <b>Restock</b></a>  
+                         <a href="inventory-management.php"><i class="fa fa-plus"></i>  <b>Restock</b></a>
                       </td>
                     </tr>
                   </tbody>
