@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 20, 2016 at 04:26 PM
+-- Generation Time: Jan 28, 2017 at 06:27 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -19,22 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `ops_db`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `customer`
---
-
-CREATE TABLE IF NOT EXISTS `customer` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
-  `home_address` varchar(255) NOT NULL,
-  `shipping_address` varchar(255) NOT NULL,
-  `contact_numer` int(15) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -91,6 +75,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `description` varchar(255) NOT NULL,
   `price` float(255,2) NOT NULL,
   `product_picture` blob NOT NULL,
+  `category` int(2) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
@@ -119,31 +104,23 @@ CREATE TABLE IF NOT EXISTS `user_account` (
   `password` varchar(255) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `contact_number` text NOT NULL,
-  `email` varchar(255) DEFAULT NULL,
-  `user_role` tinyint(1) NOT NULL COMMENT '0=customer; 1=admin; 2=staff; ',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+  `address` varchar(255) DEFAULT NULL,
+  `shipping_address` varchar(255) NOT NULL,
+  `contact_number` text,
+  `email` varchar(255) NOT NULL,
+  `user_role` tinyint(1) NOT NULL COMMENT '0=staff; 1=admin; 2 = customer',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `user_account`
 --
 
-INSERT INTO `user_account` (`id`, `username`, `password`, `first_name`, `last_name`, `address`, `contact_number`, `email`, `user_role`) VALUES
-(1, 'admin', '81dc9bdb52d04dc20036dbd8313ed055', 'admin', 'admin', 'Manila', '09170000000', 'admin@email.com', 1),
-(2, 'user', '81dc9bdb52d04dc20036dbd8313ed055', 'standard user', 'test', 'manila', '09172222222', 'user@email.com', 0);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `user_prev`
---
-
-CREATE TABLE IF NOT EXISTS `user_prev` (
-  `user_id` int(11) NOT NULL,
-  `admin_prev` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO `user_account` (`id`, `username`, `password`, `first_name`, `last_name`, `address`, `shipping_address`, `contact_number`, `email`, `user_role`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'Manila khsfksjdflksdnflkachdflkhdflkahdflkhsdlkfhslkdfhlsdflsdkf', '', '09170000000', 'admin@email.com', 1),
+(2, 'user', '81dc9bdb52d04dc20036dbd8313ed055', 'standard user', 'test', 'manila', '', '09172222222', 'user@email.com', 0),
+(9, 'juan01', '1271ed5ef305aadabc605b1609e24c52', 'Juan', 'Dela Cruz', 'sa bahay', 'sa batangas', '3252352352', 'juandelacruz@email.com', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

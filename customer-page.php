@@ -84,7 +84,6 @@ include('data-manager/get-profile.php');
                   <?php if(isset($arr) AND count($arr) > 0):?>
                     <?php foreach ($arr as $key => $value): ?>
                       <form role="form">
-                        <input type="hidden">
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
@@ -139,7 +138,7 @@ include('data-manager/get-profile.php');
                       <a href="#" class="btn btn-default pull-right edit-profile-btn"><i class="fa fa-pencil text-warning"></i>   Edit</a>
                     </div>
                     <div class="col-md-6 col-xs-6">
-                      <a href="#" class="btn btn-success pull-left update-profile-btn"><i class="fa fa-save">   Save</i></a>
+                      <a href="#" class="btn btn-success pull-left update-profile-btn disabled"><i class="fa fa-save">   Save</i></a>
                     </div>
                   </div>
                 </div>
@@ -459,13 +458,13 @@ include('data-manager/get-profile.php');
 
     $('.edit-profile-btn').click(function (e) {
       e.preventDefault();
-      $('.profile-section').find(':input').prop('disabled', false);
+      $('.profile-section').find(':input').prop('disabled', false)
+      $('.update-profile-btn').removeClass('disabled');
     });
 
     $('.update-profile-btn').click(function (e) {
       e.preventDefault();
       $('.profile-section').find(':input').prop('disabled', true);
-      console.log(updateProfileURL)
 
       var data = {
         firstName: $(this).closest('div.box').find('input[name="fname"]').val(),
@@ -487,6 +486,7 @@ include('data-manager/get-profile.php');
             if(e.status = 'success'){
               $('.alert-update-success').css('display', 'block');
               $('.alert').delay(3000).fadeOut('fast');
+              $(this).addClass('disabled');
             }
           });
         },
