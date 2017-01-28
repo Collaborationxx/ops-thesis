@@ -299,17 +299,15 @@
             <h4 class="modal-title">OPS</h4>
           </div>
           <div class="modal-body">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-xs-6 login-group">
-                        Login
-                    </div>
-                    <div class="col-md-6 col-xs-6 signup-group">
-                        Sign Up
-                    </div>
-                </div>  
-            </div>
-            <div class="tab-content">
+              <div class="tab-content">
+                  <div class="row">
+                      <div class="col-md-6 col-xs-6 login-group active-group">
+                          Login
+                      </div>
+                      <div class="col-md-6 col-xs-6 signup-group">
+                          Sign Up
+                      </div>
+                  </div>
                 <div class="login-group-content">
                     <div class="panel-body">
                         <form>
@@ -377,10 +375,7 @@
                         </form>
                     </div>
                 </div>
-            </div> 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
           </div>
         </div>
 
@@ -406,6 +401,7 @@
 
      <script>
         $(document).ready(function(){
+            $('.signup-group-content').css('display', 'none');
             var minVal = parseInt($('.min-price span').text());
             var maxVal = parseInt($('.max-price span').text());
             $( "#prices-range" ).slider({
@@ -419,6 +415,22 @@
                     $('.max-price span').text(ui.values[ 1 ]);
                 }
             });
+
+
+            $('.signup-group').click(function(){
+                $('.signup-group-content').css('display', 'block');
+                $('.login-group-content').css('display', 'none');
+                $(this).addClass('active-group');
+                $('.login-group').removeClass('active-group');
+            });
+
+            $('.login-group').click(function(){
+                $('.signup-group-content').css('display', 'none');
+                $('.login-group-content').css('display', 'block');
+                $(this).addClass('active-group');
+                $('.signup-group').removeClass('active-group');
+            });
+
         });
     </script>
 </body>
