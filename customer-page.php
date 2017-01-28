@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<?php
+//check if user has session
+session_start();
+if($_SESSION["username"] == null) { //if not redirect to login page
+  header('location: index.php');
+}
+
+include('data-manager/get-profile.php');
+
+//echo '<pre>'; print_r($arr); exit;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +24,7 @@
   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="vendor/ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
+
   <link rel="stylesheet" href="vendor/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="vendor/dist/css/skins/skin-green.min.css">
 
@@ -36,7 +46,13 @@
       </div>
       <div class="">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="logout.php"><i class="fa fa-sign-out text-danger"></i>  Logout</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="customer-page.php"><i class="fa fa-cogs"></i>My Account</a></li>
+                <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
+              </ul>
+            </li>
         </ul>
       </div>
   </nav>
@@ -60,18 +76,20 @@
                     <h3 class="box-title"><i class="fa fa-user"></i>   My Info</h3>
                 </div>    
                 <div class="box-body">
-                    <form role="form">
+                  <?php if(isset($arr) AND count($arr) > 0):?>
+                    <?php foreach ($arr as $key => $value): ?>
+                      <form role="form">
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <label>First Name</label>
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                            <input type="text" class="form-control" value="<?php echo $value['first_name']; ?>">
                           </div>
                         </div>
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <label>Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                            <input type="text" class="form-control" value="<?php echo $value['last_name']; ?>">
                           </div>
                         </div>
                       </div>
@@ -79,7 +97,7 @@
                         <div class="col-lg-12 col-xs-12">
                           <div class="form-group">
                             <label>Home Address</label>
-                            <textarea class="form-control" rows="2"></textarea>
+                            <textarea class="form-control" rows="3"><?php echo $value['address']; ?></textarea>
                           </div>
                         </div>
                       </div>
@@ -87,7 +105,7 @@
                         <div class="col-lg-12 col-xs-12">
                           <div class="form-group">
                             <label>Shipping Address</label>
-                            <textarea class="form-control" rows="2"></textarea>
+                            <textarea class="form-control" rows="3"><?php echo $value['shipping_address']; ?></textarea>
                           </div>
                         </div>
                       </div>
@@ -95,17 +113,19 @@
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <label>Contact No.</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" value="<?php echo $value['contact_number']; ?>">
                           </div>
                         </div>
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" value="<?php echo $value['email']; ?>">
                           </div>
                         </div>
                       </div>
                     </form>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
                 </div>
                 <div class="box-footer">
                   <div class="row">
@@ -230,7 +250,7 @@
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 
-<script src="..page/dist/js/app.min.js"></script>
+<script src="vendor/dist/js/app.min.js"></script>
 
 </body>
 </html>
