@@ -161,7 +161,7 @@
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="datepicker">
+                            <input type="text" class="form-control pull-right" id="datepicker-from">
                           </div>
                         </div>
                       </div>
@@ -172,7 +172,7 @@
                             <div class="input-group-addon">
                               <i class="fa fa-calendar"></i>
                             </div>
-                            <input type="text" class="form-control pull-right" id="datepicker">
+                            <input type="text" class="form-control pull-right" id="datepicker-to">
                           </div>
                         </div>
                       </div>
@@ -250,5 +250,18 @@
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<script>
+  $(function(){
+    //Date picker
+    //from
+      $('#datepicker-from').datepicker({
+        autoclose: true
+      });
+    //to
+    $('#datepicker-to').datepicker({
+      autoclose: true
+    });
+  });
+</script>
 </body>
 </html>
