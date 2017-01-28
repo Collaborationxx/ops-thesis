@@ -101,7 +101,7 @@
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="user-management.html">
+          <a href="user-management.php">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>
@@ -121,7 +121,7 @@
           <span>Inventory</span></a>
         </li>
         <li>
-          <a href="reports.html">
+          <a href="reports.php">
           <img src="assets/images/analytics.png" class="ops-sidebar-img">
           <span>Reports</span></a>
         </li>
@@ -152,7 +152,7 @@
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-archive"></i>   New Reservations</h3>
                 <div class="box-tools pull-right">
-                 <a href="print-reservation.html" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
+                 <a href="print-reservation.php" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
                 </div>
               </div>
               <div class="box-body no-padding">
@@ -166,7 +166,7 @@
                     </tr>
                     <tr>
                       <td>1.</td>
-                      <td><a href="reservation-information.html">OPS-43-34</a></td>
+                      <td><a href="reservation-information.php">OPS-43-34</a></td>
                       <td>01/10/17</td>
                       <td>Full</td>
                     </tr>

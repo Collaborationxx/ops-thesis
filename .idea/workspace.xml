@@ -5,11 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4690b1ef-2609-4579-9529-35e1c096591a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/dashboard.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/new-order.html" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/new-reservation.html" afterPath="$PROJECT_DIR$/new-reservation.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/order-information.html" afterPath="$PROJECT_DIR$/order-information.php" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/staff-page.html" afterPath="$PROJECT_DIR$/staff-page.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/print-reservation.html" afterPath="$PROJECT_DIR$/print-reservation.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/product-management.html" afterPath="$PROJECT_DIR$/product-management.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/reports.html" afterPath="$PROJECT_DIR$/reports.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/reservation-information.html" afterPath="$PROJECT_DIR$/reservation-information.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/user-management.html" afterPath="$PROJECT_DIR$/user-management.php" />
     </list>
     <ignored path="ops-thesis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -352,7 +352,7 @@
       <workItem from="1485350741353" duration="8886000" />
       <workItem from="1485437385142" duration="5998000" />
       <workItem from="1485569308966" duration="18386000" />
-      <workItem from="1485604099375" duration="3563000" />
+      <workItem from="1485604099375" duration="3693000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -449,7 +449,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42796000" />
+    <option name="totallyTimeSpent" value="42926000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1370" height="754" extended-state="0" />
@@ -625,15 +625,15 @@
           <folding>
             <element signature="e#2559#2565#0#HTML" expanded="false" />
             <element signature="e#2565#2571#0#HTML" expanded="false" />
-            <element signature="e#5846#5852#0#HTML" expanded="false" />
-            <element signature="e#5852#5858#0#HTML" expanded="false" />
+            <element signature="e#5843#5849#0#HTML" expanded="false" />
+            <element signature="e#5849#5855#0#HTML" expanded="false" />
             <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#6691#6697#0#HTML" expanded="false" />
-            <element signature="e#6697#6703#0#HTML" expanded="false" />
-            <element signature="e#6704#6710#0#HTML" expanded="false" />
-            <element signature="e#6710#6716#0#HTML" expanded="false" />
-            <element signature="e#7690#7696#0#HTML" expanded="false" />
-            <element signature="e#8088#8095#0#HTML" expanded="false" />
+            <element signature="e#6688#6694#0#HTML" expanded="false" />
+            <element signature="e#6694#6700#0#HTML" expanded="false" />
+            <element signature="e#6701#6707#0#HTML" expanded="false" />
+            <element signature="e#6707#6713#0#HTML" expanded="false" />
+            <element signature="e#7687#7693#0#HTML" expanded="false" />
+            <element signature="e#8085#8092#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -653,10 +653,10 @@
           <folding>
             <element signature="e#2565#2571#0#HTML" expanded="false" />
             <element signature="e#2571#2577#0#HTML" expanded="false" />
-            <element signature="e#5962#5968#0#HTML" expanded="false" />
-            <element signature="e#5968#5974#0#HTML" expanded="false" />
+            <element signature="e#5959#5965#0#HTML" expanded="false" />
+            <element signature="e#5965#5971#0#HTML" expanded="false" />
             <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#7483#7489#0#HTML" expanded="false" />
+            <element signature="e#7479#7485#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -680,11 +680,11 @@
             <element signature="e#2557#2563#0" expanded="false" />
             <element signature="e#2563#2569#0" expanded="false" />
             <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#6730#6736#0" expanded="false" />
-            <element signature="e#6736#6742#0" expanded="false" />
-            <element signature="e#6743#6749#0" expanded="false" />
-            <element signature="e#6749#6755#0" expanded="false" />
-            <element signature="e#7771#7777#0" expanded="false" />
+            <element signature="e#6728#6734#0" expanded="false" />
+            <element signature="e#6734#6740#0" expanded="false" />
+            <element signature="e#6741#6747#0" expanded="false" />
+            <element signature="e#6747#6753#0" expanded="false" />
+            <element signature="e#7769#7775#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -696,70 +696,70 @@
           <folding>
             <element signature="e#2501#2507#0" expanded="false" />
             <element signature="e#2507#2513#0" expanded="false" />
-            <element signature="e#6074#6080#0" expanded="false" />
-            <element signature="e#6080#6086#0" expanded="false" />
+            <element signature="e#6072#6078#0" expanded="false" />
+            <element signature="e#6078#6084#0" expanded="false" />
             <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="e#7664#7670#0" expanded="false" />
+            <element signature="e#7662#7668#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/print-reservation.html">
+    <entry file="file://$PROJECT_DIR$/print-reservation.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="215" column="24" selection-start-line="215" selection-start-column="24" selection-end-line="215" selection-end-column="24" />
           <folding>
-            <element signature="e#2507#2513#0" expanded="true" />
-            <element signature="e#2513#2519#0" expanded="true" />
-            <element signature="e#6105#6111#0" expanded="true" />
-            <element signature="e#6111#6117#0" expanded="true" />
-            <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#7609#7615#0" expanded="true" />
+            <element signature="e#2507#2513#0#HTML" expanded="false" />
+            <element signature="e#2513#2519#0#HTML" expanded="false" />
+            <element signature="e#6103#6109#0#HTML" expanded="false" />
+            <element signature="e#6109#6115#0#HTML" expanded="false" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#7607#7613#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/product-management.html">
+    <entry file="file://$PROJECT_DIR$/product-management.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="303" column="24" selection-start-line="303" selection-start-column="24" selection-end-line="303" selection-end-column="24" />
           <folding>
-            <element signature="e#2566#2572#0" expanded="true" />
-            <element signature="e#2572#2578#0" expanded="true" />
-            <element signature="e#5856#5862#0" expanded="true" />
-            <element signature="e#5862#5868#0" expanded="true" />
-            <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#6704#6710#0" expanded="true" />
-            <element signature="e#6710#6716#0" expanded="true" />
-            <element signature="e#6717#6723#0" expanded="true" />
-            <element signature="e#6723#6729#0" expanded="true" />
-            <element signature="e#7703#7709#0" expanded="true" />
-            <element signature="e#8103#8110#0" expanded="true" />
+            <element signature="e#2566#2572#0#HTML" expanded="false" />
+            <element signature="e#2572#2578#0#HTML" expanded="false" />
+            <element signature="e#5854#5860#0#HTML" expanded="false" />
+            <element signature="e#5860#5866#0#HTML" expanded="false" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#6702#6708#0#HTML" expanded="false" />
+            <element signature="e#6708#6714#0#HTML" expanded="false" />
+            <element signature="e#6715#6721#0#HTML" expanded="false" />
+            <element signature="e#6721#6727#0#HTML" expanded="false" />
+            <element signature="e#7701#7707#0#HTML" expanded="false" />
+            <element signature="e#8101#8108#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reports.html">
+    <entry file="file://$PROJECT_DIR$/reports.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="177">
           <caret line="247" column="24" selection-start-line="247" selection-start-column="24" selection-end-line="247" selection-end-column="24" />
           <folding>
-            <element signature="e#2663#2669#0" expanded="true" />
-            <element signature="e#2669#2675#0" expanded="true" />
-            <element signature="e#9028#9034#0" expanded="true" />
+            <element signature="e#2663#2669#0#HTML" expanded="false" />
+            <element signature="e#2669#2675#0#HTML" expanded="false" />
+            <element signature="e#9026#9032#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/reservation-information.html">
+    <entry file="file://$PROJECT_DIR$/reservation-information.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="232" column="24" selection-start-line="232" selection-start-column="24" selection-end-line="232" selection-end-column="24" />
           <folding>
-            <element signature="e#2513#2519#0" expanded="true" />
-            <element signature="e#2519#2525#0" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#8546#8552#0" expanded="true" />
+            <element signature="e#2513#2519#0#HTML" expanded="false" />
+            <element signature="e#2519#2525#0#HTML" expanded="false" />
+            <element signature="n#style#0;n#span#0;n#td#0;n#tr#2;n#tbody#0;n#table#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#8544#8550#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -782,22 +782,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-management.html">
+    <entry file="file://$PROJECT_DIR$/user-management.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="281">
           <caret line="305" column="24" selection-start-line="305" selection-start-column="24" selection-end-line="305" selection-end-column="24" />
           <folding>
-            <element signature="e#2565#2571#0" expanded="true" />
-            <element signature="e#2571#2577#0" expanded="true" />
-            <element signature="e#5853#5859#0" expanded="true" />
-            <element signature="e#5859#5865#0" expanded="true" />
-            <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#6777#6783#0" expanded="true" />
-            <element signature="e#6783#6789#0" expanded="true" />
-            <element signature="e#6790#6796#0" expanded="true" />
-            <element signature="e#6796#6802#0" expanded="true" />
-            <element signature="e#7776#7782#0" expanded="true" />
-            <element signature="e#8174#8181#0" expanded="true" />
+            <element signature="e#2565#2571#0#HTML" expanded="false" />
+            <element signature="e#2571#2577#0#HTML" expanded="false" />
+            <element signature="e#5851#5857#0#HTML" expanded="false" />
+            <element signature="e#5857#5863#0#HTML" expanded="false" />
+            <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#1;n#div#0;n#div#0;n#div#0;n#section#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="e#6775#6781#0#HTML" expanded="false" />
+            <element signature="e#6781#6787#0#HTML" expanded="false" />
+            <element signature="e#6788#6794#0#HTML" expanded="false" />
+            <element signature="e#6794#6800#0#HTML" expanded="false" />
+            <element signature="e#7774#7780#0#HTML" expanded="false" />
+            <element signature="e#8172#8179#0#HTML" expanded="false" />
           </folding>
         </state>
       </provider>

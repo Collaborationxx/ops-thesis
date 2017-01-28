@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OPS | Product Management</title>
+  <title>OPS | Reports</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -12,6 +12,8 @@
   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="vendor/ionicons/css/ionicons.min.css">
+  <!-- date picker -->
+  <link rel="stylesheet" type="text/css" href="vendor/datepicker/datepicker3.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="vendor/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="vendor/dist/css/skins/skin-green.min.css">
@@ -24,7 +26,7 @@
   <![endif]-->
 
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
-  <link rel="shortcut icon" href="assets/images/ops.png">
+  <link rel="shortcut icon" href="assets/images/ops.png" />
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
@@ -101,12 +103,12 @@
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="user-management.html">
+          <a href="user-management.php">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>
         <li>
-          <a href="#">
+          <a href="product-management.php">
           <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
           <span>Product Catalog</span></a>
         </li>
@@ -121,7 +123,7 @@
           <span>Inventory</span></a>
         </li>
         <li>
-          <a href="reports.html">
+          <a href="#">
           <img src="assets/images/analytics.png" class="ops-sidebar-img">
           <span>Reports</span></a>
         </li>
@@ -136,7 +138,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Product Management
+        Report Management
         <small>Control Panel</small>
       </h1>
     </section>
@@ -144,39 +146,65 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          <div class="col-lg-12 col-xs-12">
+          <div class="col-lg-4 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-list"></i>   Products</h3>
+                <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa fa-file-text-o"></i>   Generate Report</h3>
+                </div>
+                <div class="box-body">
+                  <form role="form">
+                    <div class="row">
+                      <div class="col-xs-6">
+                        <div class="form-group">
+                          <label>From</label>
+                         <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker-from">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xs-6">
+                        <div class="form-group">
+                          <label>To</label>
+                          <div class="input-group date">
+                            <div class="input-group-addon">
+                              <i class="fa fa-calendar"></i>
+                            </div>
+                            <input type="text" class="form-control pull-right" id="datepicker-to">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Category</label>
+                        <select class="form-control">
+                          <option>Orders</option>
+                          <option>Product</option>
+                          <option>Inventory</option>
+                          <option>Sales</option>
+                        </select>
+                    </div>
+                  </form>
+                </div>
+                <div class="box-footer">
+                  <button type="button" class="btn btn-success pull-right">Generate</button>
+                </div>
+            </div>
+          </div>
+        </div>
+          <div class="col-lg-8 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-file-excel-o"></i>   Preview</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#add-product-modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Product</button>
+                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
                 </div>
 
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Item</th>
-                      <th>Description</th>
-                      <th>Price</th>
-                      <th>Category
-                      <th>Action</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Wheel Chair</td>
-                      <td>Lorem ipsum dolor sit amet</td>
-                      <td>$10</td>
-                      <td>Storage and Transpor</td>
-                      <td>
-                        <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                        <a href=""><i class="fa fa-trash-o text-danger"></i></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
               </div>
               <div class="box-footer">
                 <div class="row">
@@ -207,92 +235,6 @@
   </footer>
 </div>
 <!-- ./wrapper -->
-<!--pop up content-->
-<!-- Modal -->
-<div id="add-product-modal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">New Product</h4>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-lg-12 col-xs-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <div class="box-header with-border">
-                  <h3 class="box-title">New Product</h3>
-                </div>
-                <div class="box-body">
-                  <form role="form">
-                    <div class="row">
-                      <div class="col-md-12 col-xs-12">
-                        <div class="form-group">
-                          <label>Product Category:</label>
-                          <select class="form-control">
-                          <option>*Choose Category</option>
-                          <option>Electronic</option>
-                          <option>Self-Care</option>
-                          <option>Diagnostic</option>
-                          <option>Surgical</option>
-                          <option>Durable Medical Equipment</option>
-                          <option>Acute Care</option>
-                          <option>Emergency and Trauma</option>
-                          <option>Long-Term Care</option>
-                          <option>Storage and Transport</option>
-                          </select>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12 col-xs-12">
-                        <div class="form-group">
-                          <label>Product Name:</label>
-                          <input type="text" class="form-control" name="product-name" placeholder="Enter ...">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12 col-xs-12">
-                        <div class="form-group">
-                          <label>Description:</label>
-                          <textarea rows="3" class="form-control" name="product-description" placeholder="Enter..."></textarea> 
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12 col-xs-12">
-                        <div class="form-group">
-                          <label>Price:</label>
-                          <input type="text" class="form-control" name="price" placeholder="Enter...">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-md-12 col-xs-12">
-                        <div class="form-group">
-                          <label>Product Photo:</label>
-                          <input type="file" name="product-photo">
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Save</button>
-                </div>
-            </div>
-          </div>
-        </div>
-        </div> 
-    </div>
-
-  </div>
-</div>
-<!--end pop up content-->
 
 <!-- REQUIRED JS SCRIPTS -->
 
@@ -300,6 +242,8 @@
 <script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- datepicker -->
+<script src="vendor/datepicker/bootstrap-datepicker.js"></script>
 <!-- AdminLTE App -->
 <script src="vendor/dist/js/app.min.js"></script>
 
@@ -307,5 +251,18 @@
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
+<script>
+  $(function(){
+    //Date picker
+    //from
+      $('#datepicker-from').datepicker({
+        autoclose: true
+      });
+    //to
+    $('#datepicker-to').datepicker({
+      autoclose: true
+    });
+  });
+</script>
 </body>
 </html>

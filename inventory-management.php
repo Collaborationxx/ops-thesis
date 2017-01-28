@@ -101,12 +101,12 @@
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="user-management.html">
+          <a href="user-management.php">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>
         <li>
-          <a href="product-management.html">
+          <a href="product-management.php">
           <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
           <span>Product Catalog</span></a>
         </li>
@@ -121,7 +121,7 @@
           <span>Inventory</span></a>
         </li>
         <li>
-          <a href="reports.html">
+          <a href="reports.php">
           <img src="assets/images/analytics.png" class="ops-sidebar-img">
           <span>Reports</span></a>
         </li>
