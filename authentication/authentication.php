@@ -39,7 +39,7 @@ if($row) {
 
     if($role == 1){ //admin role
         header("location: ../page/dashboard.html");
-    } else if($role == 2) { //staff
+    } else if($role == 0) { //staff
         header('location: ../staff.php');
     } else { //customer
         header('location: ../customer.php');

@@ -37,7 +37,13 @@
     <?php if (isset($_GET['message'])): ?>
         <div class="alert alert-danger alert-dismissable">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+            <strong>Oops!</strong> Seems like you have entered a wrong username or password.
+        </div>
+    <?php endif; ?>
+    <?php if (isset($_GET['status'])): ?>
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Success!</strong> Registration Successful! You can now login to your account.
         </div>
     <?php endif; ?>
     <div id="content-block">

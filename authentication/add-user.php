@@ -30,13 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 if(!empty($fname) && !empty($lname) && !empty($password) && !empty($username)) {
     mysqli_query($con, "INSERT INTO user_account (username, password, first_name, last_name, address, contact_number, email, user_role) VALUES ('$username', '$password', '$fname', '$lname', '$address', '$contact', '$email', '$role' )");
     $status = 'Success';
+
     header("Location: ../user.php?status=" . urlencode($message));;
 }
-//else {
-    //$message = 'Required Fields';
-    //header("Location: ../user.php?message=" . urlencode($message));
+else {
+    $message = 'Required Fields';
+    header("Location: ../user.php?message=" . urlencode($message));
 
-//}
+}
 
 
 ?>

@@ -328,47 +328,61 @@
                 </div>
                 <div class="signup-group-content">
                     <div class="panel-body">
-                        <form>
+                        <form action="../authentication/signup.php" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">First Name:</label>
-                                        <input type="text" class="form-control" id="email">
+                                        <label for="fname">First Name:</label>
+                                        <input type="text" class="form-control" name="fname" id="fname" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Last Name:</label>
-                                        <input type="text" class="form-control" id="email">
+                                        <label for="lname">Last Name:</label>
+                                        <input type="text" class="form-control" name="lname" id="lname" required>
                                     </div>                                
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="email">Home Address:</label>
-                                        <textarea row3="3" class="form-control" id="email"></textarea>
+                                        <label for="address">Home Address:</label>
+                                        <textarea row3="3" class="form-control" name="address" id="address" required></textarea>
                                     </div>   
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="email">Shipping Address:</label>
-                                        <textarea row3="3" class="form-control" id="email"></textarea>
+                                        <label for="ship-address">Shipping Address:</label>
+                                        <textarea row3="3" class="form-control" name="ship-address" id="ship-address"></textarea>
                                     </div>   
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="email">Contact No.:</label>
-                                        <input type="text" class="form-control" id="email">
+                                        <label for="contact">Contact No.:</label>
+                                        <input type="text" class="form-control" name="contact" id="contact" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email">Email:</label>
-                                        <input type="email" class="form-control" id="email">
+                                        <input type="email" class="form-control" name="email" id="email" required>
                                     </div>                                
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="signup-username">Username:</label>
+                                        <input type="text" class="form-control" name="username" id="signup-username" placeholder="Set a username" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="psw">Password</label>
+                                        <input type="password" class="form-control" name="password" id="psw" placeholder="Set a password" required>
+                                    </div>
                                 </div>
                             </div>
                             <button type="submit" class="btn btn-default">Submit</button>
@@ -431,32 +445,6 @@
                 $('.login-group-content').css('display', 'block');
                 $(this).addClass('active-group');
                 $('.signup-group').removeClass('active-group');
-            });
-
-            $('#login-form').formValidation({
-                framework: 'bootstrap',
-                excluded: ':disabled',
-                icon: {
-                    valid: 'glyphicon glyphicon-ok',
-                    invalid: 'glyphicon glyphicon-remove',
-                    validating: 'glyphicon glyphicon-refresh'
-                },
-                fields: {
-                    username: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The username is required'
-                            }
-                        }
-                    },
-                    password: {
-                        validators: {
-                            notEmpty: {
-                                message: 'The password is required'
-                            }
-                        }
-                    }
-                }
             });
 
         });
