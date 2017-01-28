@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OPS | Reservation Information</title>
+  <title>OPS | User Management</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -24,6 +24,7 @@
   <![endif]-->
 
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
+  <link rel="shortcut icon" href="assets/images/ops.png" />
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
@@ -95,32 +96,32 @@
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
-          <a href="dashboard.html">
+          <a href="dashboard.php">
           <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="user-management.html">
+          <a href="#">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>
         <li>
-          <a href="#">
+          <a href="product-management.php">
           <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
           <span>Product Catalog</span></a>
         </li>
         <li>
-          <a href="order-tracking.html">
+          <a href="order-tracking.php">
           <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
           <span>Order Tracking</span></a>
         </li>
         <li>
-          <a href="inventory-management.html">
+          <a href="inventory-management.php">
           <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
           <span>Inventory</span></a>
         </li>
         <li>
-          <a href="reports.html">
+          <a href="reports.php">
           <img src="assets/images/analytics.png" class="ops-sidebar-img">
           <span>Reports</span></a>
         </li>
@@ -135,77 +136,63 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Order Management
+        User Management
         <small>Control Panel</small>
       </h1>
-      <ol class="breadcrumb">
-       <li><a href="dashboard.html">Home</a></li>
-       <li><a href="new-order.html">New Reservations</a></li>
-       <li class="active">Reservation Information</li>
-     </ol>
     </section>
 
     <!-- Main content -->
     <section class="content">
-      <div class="row">
+        <div class="row">
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-info-circle"></i>   Reservvation Information</h3>
+                <h3 class="box-title"><i class="fa fa-user"></i>   Accounts</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#add-user-modal"><i class="fa fa-plus" ></i>&nbsp;&nbsp;New Account</button>
                 </div>
-                <div class="box-body">
-                  <form role="form">
-                    <div class="row">
-                      <div class="col-md-6 col-xs-6">
-                        <div class="form-group">
-                          <label>Reservation ID</label>
-                          <input type="text" class="form-control" placeholder="Enter ...">
-                        </div>  
-                      </div>
-                      <div class="col-md-6 col-xs-6">
-                        <div class="form-group">
-                          <label>Customer Name</label>
-                          <input type="text" class="form-control" placeholder="Enter ...">
-                        </div>  
-                      </div>
-                    </div> 
-                    <div class="row">
-                      <div class="col-md-12 col-xs-12">
-                        <table class="table table-striped table-responsive">
-                          <tbody>
-                            <tr>
-                              <th width="10%">#</th>
-                              <th width="30%;">Product Photo</th>
-                              <th width="30%;">Product Name</th>
-                              <th width="10%";>Quantity</th>
-                              <th width="10%;">Price</th>
-                              <th width="10%">Required Payment</th>
-                            </tr>
-                            <tr>
-                              <td>1.</td>
-                              <td>
-                                <img src="assets/images/wheelchair.jpg" class="ops-table-img">
-                              </td>
-                              <td>Wheelchair</td>
-                              <td>1</td>
-                              <td>6,000</td>
-                              <td>3,000</td>
-                            </tr>
-                            <tr>
-                              <td colspan="6"><span class="pull-right" style="padding-right: 75px;"><b>TOTAL:</b> 6,000</span></td>
-                              
-                            </tr>
-                          </tbody>
-                         </table>
-                      </div>
-                    </div>
-                  </form>
+
+              </div>
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Username</th>
+                      <th>Name</th>
+                      <th>Address</th>
+                      <th>Contact No.</th>
+                      <th>Email</th>
+                      <th>Action</th>
+                    </tr>
+                    <tr>
+                      <td>1.</td>
+                      <td>juan01</td>
+                      <td>Juan Dela Cruz</td>
+                      <td>Bagumbayan</td>
+                      <td>121 3569</td>
+                      <td>juandelacruz@email.com</td>
+                      <td>
+                        <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
+                        <a href=""><i class="fa fa-trash-o text-danger"></i></a>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-lg-3 col-xs-6">
+                    <span>Lorem ipsum dolor sit amet</span>
+                  </div>
+                  <div class="col-lg-3 col-lg-offset-6 col-xs-6">
+                    <span>Lorem ipsum dolor sit amet</span>
+                  </div>
                 </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -222,6 +209,92 @@
   </footer>
 </div>
 <!-- ./wrapper -->
+
+<!--pop up content-->
+<!-- Modal -->
+<div id="add-user-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">New Account</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <div class="box-header with-border">
+                  <h3 class="box-title">New Account</h3>
+                </div>
+                <div class="box-body">
+                  <form role="form">
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>First Name:</label>
+                          <input type="text" class="form-control" name="fname" placeholder="Enter ...">
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Last Name:</label>
+                          <input type="text" class="form-control" name="lname" placeholder="Enter ...">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <label>Address:</label>
+                          <textarea rows="3" class="form-control" name="address" placeholder="Enter..."></textarea> 
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Contact No.:</label>
+                          <input type="text" class="form-control" name="contact" placeholder="Enter ...">
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <div class="form-group">
+                          <label>Email:</label>
+                          <input type="email" class="form-control" name="email" placeholder="Enter ...">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <label>Username:</label>
+                          <input type="text" class="form-control" name="username" placeholder="Enter...">
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <label>User Role:</label>
+                          <input type="text" class="form-control" name="role" placeholder="1:Admin I 2:Staff">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="box-footer">
+                  <button type="button" class="btn btn-success pull-right">Save</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        </div> 
+    </div>
+
+  </div>
+</div>
+<!--end pop up content-->
 
 <!-- REQUIRED JS SCRIPTS -->
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OPS | New Order</title>
+  <title>OPS | Inventory</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -96,32 +96,32 @@
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
-          <a href="dashboard.html">
+          <a href="dashboard.php">
           <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="user-management.html">
+          <a href="user-management.php">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>
         <li>
-          <a href="#">
+          <a href="product-management.php">
           <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
           <span>Product Catalog</span></a>
         </li>
         <li>
-          <a href="order-tracking.html">
+          <a href="order-tracking.php">
           <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
           <span>Order Tracking</span></a>
         </li>
         <li>
-          <a href="inventory-management.html">
+          <a href="#">
           <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
           <span>Inventory</span></a>
         </li>
         <li>
-          <a href="reports.html">
+          <a href="reports.php">
           <img src="assets/images/analytics.png" class="ops-sidebar-img">
           <span>Reports</span></a>
         </li>
@@ -136,12 +136,9 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Order Management
+        Product Inventory
         <small>Control Panel</small>
       </h1>
-      <ol class="breadcrumb">
-       <li><a href="dashboard.html">Home</a></li>
-       <li class="active">New Orders</li>
     </section>
 
     <!-- Main content -->
@@ -150,25 +147,33 @@
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-shopping-bag"></i>   New Orders</h3>
+                <h3 class="box-title"><i class="fa fa-archive"></i>   Stocks</h3>
                 <div class="box-tools pull-right">
-                 <a href="print-order.html" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
+                  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#inventory-modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Stock</button>
                 </div>
+
               </div>
               <div class="box-body no-padding">
                 <table class="table table-striped">
                   <tbody>
                     <tr>
                       <th style="width: 10px">#</th>
-                      <th>Order ID</th>
-                      <th>Date Ordered</th>
-                      <th>Payment Status</th>
+                      <th>Product ID</th>
+                      <th>Product Name</th>
+                      <th>Quantity
+                      <th>Last Re-stock Date</th>
+                      <th>Action</th>
                     </tr>
                     <tr>
                       <td>1.</td>
-                      <td><a href="order-information.html">OPS-43-34</a></td>
-                      <td>01/10/17</td>
-                      <td>Paid</td>
+                      <td>OPS-34-65</td>
+                      <td>Wheel Chair</td>
+                      <td>10</td>
+                      <td>December 18, 2016</td>
+                      <td>
+                        <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
+                        <a href=""><i class="fa fa-trash-o text-danger"></i></a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -202,7 +207,70 @@
   </footer>
 </div>
 <!-- ./wrapper -->
+<!--pop up content-->
+<!-- Modal -->
+<div id="inventory-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Inventory</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Inventory</h3>
+                </div>
+                <div class="box-body">
+                  <form role="form">
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <label>Product Name:</label>
+                          <select class="form-control">
+                          <option>--Choose Product--</option>
+                          <option>Wheelchair</option>
+                          <option>Oxygen</option>
+                          <option>Nebulizer</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <label>Quantity:</label>
+                          <input type="text" class="form-control" name="quantity" placeholder="Enter..."></textarea> 
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <label>Re-stock Date:</label>
+                          <input type="text" class="form-control" name="date-restock" placeholder="Enter...">
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="box-footer">
+                  <button type="button" class="btn btn-success pull-right">Save</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        </div> 
+    </div>
+
+  </div>
+</div>
+<!--end pop up content-->
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->

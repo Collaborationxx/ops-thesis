@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OPS | Track Orders</title>
+  <title>OPS | Alert</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -65,8 +65,8 @@
                 <img src="assets/img/person-placeholder_opt.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  Juan Dela Cruz
+                  <small>Admin</small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -75,7 +75,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -96,32 +96,32 @@
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
-          <a href="dashboard.html">
+          <a href="dashboard.php">
           <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="user-management.html">
+          <a href="user-management.php">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>
         <li>
-          <a href="product-management.html">
+          <a href="#">
           <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
           <span>Product Catalog</span></a>
         </li>
         <li>
-          <a href="#">
+          <a href="order-tracking.php">
           <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
           <span>Order Tracking</span></a>
         </li>
         <li>
-          <a href="inventory-management.html">
+          <a href="inventory-management.php">
           <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
           <span>Inventory</span></a>
         </li>
         <li>
-          <a href="reports.html">
+          <a href="reports.php">
           <img src="assets/images/analytics.png" class="ops-sidebar-img">
           <span>Reports</span></a>
         </li>
@@ -136,7 +136,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Order Management
+        Alert Management
         <small>Control Panel</small>
       </h1>
     </section>
@@ -144,55 +144,27 @@
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          <div class="col-lg-4 col-xs-12">
+          <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-envelope-o"></i>   Sending Tracking Number</h3>
-                </div>
-                <div class="box-body">
-                  <form role="form">
-                    <div class="form-group">
-                      <label>Order ID</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
-                    </div>
-                    <div class="form-group">
-                      <label>Order Information</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
-                    </div>
-                    <div class="form-group">
-                      <label>Tracking Number</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
-                    </div>
-                  </form>
-                </div>
-                <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Send</button>
-                </div>
-            </div>
-          </div>
-        </div>
-          <div class="col-lg-8 col-xs-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-thumb-tack"></i>   Track Orders</h3>
-                
-
+                <h3 class="box-title"><i class="fa fa-bell"></i>   Alert</h3>
               </div>
               <div class="box-body no-padding">
                 <table class="table table-striped">
                   <tbody>
                     <tr>
-                      <th>Order ID</th>
-                      <th>Tracking Number</th>
-                      <th>Customer Name</th>
-                      <th>Date Sent</th>
+                      <th style="width: 10px">#</th>
+                      <th>Product Name</th>
+                      <th>Quantity Left</th>
+                      <th width=25%;>Action</th>
                     </tr>
                     <tr>
-                      <td>OPS-45-345</td>
-                      <td>OPS-S4-34</td>
-                      <td>Rubie Domingo</td>
-                      <td>December 18, 2016</td>
+                      <td>1.</td>
+                      <td>Wheelchair</td>
+                      <td>4</td>
+                      <td>
+                         <a href="inventory-management.php"><i class="fa fa-plus"></i>  <b>Restock</b></a>
+                      </td>
                     </tr>
                   </tbody>
                 </table>
@@ -226,7 +198,6 @@
   </footer>
 </div>
 <!-- ./wrapper -->
-
 
 <!-- REQUIRED JS SCRIPTS -->
 

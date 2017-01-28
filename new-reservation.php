@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OPS | Reports</title>
+  <title>OPS | New Reservation</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -12,8 +12,6 @@
   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="vendor/ionicons/css/ionicons.min.css">
-  <!-- date picker -->
-  <link rel="stylesheet" type="text/css" href="vendor/datepicker/datepicker3.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="vendor/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="vendor/dist/css/skins/skin-green.min.css">
@@ -98,32 +96,32 @@
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
-          <a href="dashboard.html">
+          <a href="dashboard.php">
           <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="user-management.html">
+          <a href="user-management.php">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>
         <li>
-          <a href="product-management.html">
+          <a href="#">
           <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
           <span>Product Catalog</span></a>
         </li>
         <li>
-          <a href="order-tracking.html">
+          <a href="order-tracking.php">
           <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
           <span>Order Tracking</span></a>
         </li>
         <li>
-          <a href="inventory-management.html">
+          <a href="inventory-management.php">
           <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
           <span>Inventory</span></a>
         </li>
         <li>
-          <a href="#">
+          <a href="reports.php">
           <img src="assets/images/analytics.png" class="ops-sidebar-img">
           <span>Reports</span></a>
         </li>
@@ -138,73 +136,42 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Report Management
+        Reservation Management
         <small>Control Panel</small>
       </h1>
+      <ol class="breadcrumb">
+       <li><a href="dashboard.php">Home</a></li>
+       <li class="active">New Reservations</li>
     </section>
 
     <!-- Main content -->
     <section class="content">
         <div class="row">
-          <div class="col-lg-4 col-xs-12">
+          <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-file-text-o"></i>   Generate Report</h3>
-                </div>
-                <div class="box-body">
-                  <form role="form">
-                    <div class="row">
-                      <div class="col-xs-6">
-                        <div class="form-group">
-                          <label>From</label>
-                         <div class="input-group date">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="datepicker-from">
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xs-6">
-                        <div class="form-group">
-                          <label>To</label>
-                          <div class="input-group date">
-                            <div class="input-group-addon">
-                              <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" id="datepicker-to">
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                        <label>Category</label>
-                        <select class="form-control">
-                          <option>Orders</option>
-                          <option>Product</option>
-                          <option>Inventory</option>
-                          <option>Sales</option>
-                        </select>
-                    </div>
-                  </form>
-                </div>
-                <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Generate</button>
-                </div>
-            </div>
-          </div>
-        </div>
-          <div class="col-lg-8 col-xs-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-file-excel-o"></i>   Preview</h3>
+                <h3 class="box-title"><i class="fa fa-archive"></i>   New Reservations</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                 <a href="print-reservation.php" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
                 </div>
-
               </div>
               <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Reservation ID</th>
+                      <th>Date Ordered</th>
+                      <th>Payment Status</th>
+                    </tr>
+                    <tr>
+                      <td>1.</td>
+                      <td><a href="reservation-information.php">OPS-43-34</a></td>
+                      <td>01/10/17</td>
+                      <td>Full</td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
               <div class="box-footer">
                 <div class="row">
@@ -242,8 +209,6 @@
 <script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-<!-- datepicker -->
-<script src="vendor/datepicker/bootstrap-datepicker.js"></script>
 <!-- AdminLTE App -->
 <script src="vendor/dist/js/app.min.js"></script>
 
@@ -251,18 +216,5 @@
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the
      fixed layout. -->
-<script>
-  $(function(){
-    //Date picker
-    //from
-      $('#datepicker-from').datepicker({
-        autoclose: true
-      });
-    //to
-    $('#datepicker-to').datepicker({
-      autoclose: true
-    });
-  });
-</script>
 </body>
 </html>
