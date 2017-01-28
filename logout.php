@@ -16,5 +16,5 @@ if (ini_get("session.use_cookies")) {
 //destroy the session.
 session_destroy();
 
-header('Refresh: 0; URL = index.php');
+header('Refresh: 0; URL = page/index.php');
 ?>

@@ -34,7 +34,12 @@
             <span id="bubble3"></span>
         </div>
     </div>
-
+    <?php if (isset($_GET['message'])): ?>
+        <div class="alert alert-danger alert-dismissable">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Danger!</strong> This alert box could indicate a dangerous or potentially negative action.
+        </div>
+    <?php endif; ?>
     <div id="content-block">
 
         <div class="content-center fixed-header-margin">
@@ -54,7 +59,7 @@
                                     <div class="title"><i class="fa fa-search"></i> <span>Search</span></div>
                                 </div>
                                 <div class="header-top-entry increase-icon-responsive">
-                                    <div class="title"><a href="#" class="" data-toggle="modal" data-target="#login-signup-modal"><i class="fa fa-user"></i> <span>My Account</span></div>
+                                    <div class="title"><a href="#" data-toggle="modal" data-target="#login-signup-modal"><i class="fa fa-user"></i> <span>My Account</span></div>
                                 </div>
                                
                                 
