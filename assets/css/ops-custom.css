@@ -3,7 +3,7 @@
 .ops-nav-logo {width: 100%; max-width: 125px; height: auto;  margin-top: -11px;}
 .tab-content {background-color: #fcfcfc; padding: 15px; border: 1px #ebebeb solid; }
 .ops-table-img {width: 100%; max-width: 150px; height: auto;}
-.link-no-decoration:hover { text-decoration: none; }
+.header-top-entry .title a:hover { text-decoration: none; }
 .login-group { padding: 20px; background-color: #d2d6de; text-align: center; }
 .login-group-content { background-color: #ffffff; }
 .signup-group { padding: 20px; background-color: #d2d6de; text-align: center; }

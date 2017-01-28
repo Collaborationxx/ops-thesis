@@ -310,19 +310,19 @@
                   </div>
                 <div class="login-group-content">
                     <div class="panel-body">
-                        <form>
+                        <form id="login-form" method="post" action="../authentication/authentication.php">
                             <div class="form-group">
-                                <label for="email">Email address:</label>
-                                <input type="email" class="form-control" id="email">
+                                <label for="username">Username</label>
+                                <input type="text" name="username" class="form-control" id="username" required>
                             </div>
                             <div class="form-group">
                                 <label for="pwd">Password:</label>
-                                <input type="password" class="form-control" id="pwd">
+                                <input type="password" name="password" class="form-control" id="pwd" required>
                             </div>
                             <div class="checkbox">
                                 <label><input type="checkbox"> Remember me</label>
                             </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <button type="submit" class="btn btn-default">Sign In</button>
                         </form>
                     </div>
                 </div>
@@ -398,10 +398,12 @@
     <script src="js/jquery-ui.min.js"></script>
 
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendor/js/validator.js"></script>
 
      <script>
         $(document).ready(function(){
             $('.signup-group-content').css('display', 'none');
+            $('.alert').delay(3000).fadeOut('fast');
             var minVal = parseInt($('.min-price span').text());
             var maxVal = parseInt($('.max-price span').text());
             $( "#prices-range" ).slider({
@@ -429,6 +431,32 @@
                 $('.login-group-content').css('display', 'block');
                 $(this).addClass('active-group');
                 $('.signup-group').removeClass('active-group');
+            });
+
+            $('#login-form').formValidation({
+                framework: 'bootstrap',
+                excluded: ':disabled',
+                icon: {
+                    valid: 'glyphicon glyphicon-ok',
+                    invalid: 'glyphicon glyphicon-remove',
+                    validating: 'glyphicon glyphicon-refresh'
+                },
+                fields: {
+                    username: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The username is required'
+                            }
+                        }
+                    },
+                    password: {
+                        validators: {
+                            notEmpty: {
+                                message: 'The password is required'
+                            }
+                        }
+                    }
+                }
             });
 
         });

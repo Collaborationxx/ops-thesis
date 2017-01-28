@@ -38,7 +38,7 @@ if($row) {
     $_SESSION['user_role'] = $role;
 
     if($role == 1){ //admin role
-        header("location: ../admin.php");
+        header("location: ../page/dashboard.html");
     } else if($role == 2) { //staff
         header('location: ../staff.php');
     } else { //customer
@@ -50,7 +50,7 @@ if($row) {
 else {
     //redirect back to index for wrong credentials
     $message = 'Wrong username or password';
-    header("Location: ../login.php?message=" . urlencode($message));
+    header("Location: ../page/index.php?message=" . urlencode($message));
 
 }
 
