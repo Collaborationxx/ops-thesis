@@ -45,7 +45,8 @@
     <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="tab" href="#profile-tab-content">Profile</a></li>
       <li><a data-toggle="tab" href="#wishlist-tab-content">Wish List</a></li>
-      <li><a data-toggle="tab" href="#orders-tab-content">Orders</a></li>
+      <li><a data-toggle="tab" href="#message-tab-content">Message</a></li>
+      <li><a data-toggle="tab" href="#notification-tab-content">Notification</a></li>
       <li><a data-toggle="tab" href="#accountSettings-tab-content">Settings</a></li>
     </ul> 
 
@@ -78,7 +79,7 @@
                         <div class="col-lg-12 col-xs-12">
                           <div class="form-group">
                             <label>Home Address</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="2"></textarea>
                           </div>
                         </div>
                       </div>
@@ -86,7 +87,7 @@
                         <div class="col-lg-12 col-xs-12">
                           <div class="form-group">
                             <label>Shipping Address</label>
-                            <textarea class="form-control" rows="3"></textarea>
+                            <textarea class="form-control" rows="2"></textarea>
                           </div>
                         </div>
                       </div>
@@ -107,7 +108,14 @@
                     </form>
                 </div>
                 <div class="box-footer">
-                    <button type="button" class="btn btn-success pull-right">Save</button>
+                  <div class="row">
+                    <div class="col-md-6 col-xs-6">
+                      <button type="button" class="btn btn-default pull-right">Edit</button>
+                    </div>
+                    <div class="col-md-6 col-xs-6">
+                      <button type="button" class="btn btn-success pull-left">Save</button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -140,31 +148,37 @@
           </table>
         </div>
       </div>
-      <div id="orders-tab-content" class="tab-pane fade in">
+      <div id="message-tab-content" class="tab-pane fade in">
         <div class="panel-body">
-          <table class="table table-striped table-responsive">
+          <table class="table table-striped table-responsive table-bordered" style="max-width: 40%">
             <tbody>
               <tr>
                 <th style="width: 10px">#</th>
-                <th>Item</th>
-                <th>Quantity</th>
-                <th>Status</th>
-                <th>Delivery Date</th>
-                <th>Preview</th>
-                <th style="text-align: center;">Action</th>
+                <th>Message</th>
+                <th>Date</th>
               </tr>
               <tr>
                 <td>1.</td>
-                <td>Wheelchair</td>
-                <td>1</td>
-                <td>For Verification</td>
-                <td>Jan 27 - Feb 4, 2017</td>
-                <td>
-                  <img src="assets/images/wheelchair.jpg" class="ops-table-img">
-                </td>
-                <td style="text-align: center;">
-                  <button class="btn btn-warning" type="button">Cancel Order</button>
-                </td>
+                <td>Order Confirmation</td>
+                <td>01/23/17</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div> 
+      <div id="notification-tab-content" class="tab-pane fade in">
+        <div class="panel-body">
+          <table class="table table-striped table-responsive table-bordered" style="max-width: 40%">
+            <tbody>
+              <tr>
+                <th style="width: 10px">#</th>
+                <th>Message</th>
+                <th>Date</th>
+              </tr>
+              <tr>
+                <td>1.</td>
+                <td>OrderTracking</td>
+                <td>01/23/17</td>
               </tr>
             </tbody>
           </table>
@@ -215,11 +229,8 @@
 <!-- Bootstrap 3.3.6 -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<<<<<<< HEAD
+
 <script src="..page/dist/js/app.min.js"></script>
-=======
-<script src="vendor/vendor/dist/js/app.min.js"></script>
->>>>>>> 7e32d54828217acf09c58dd9e790f541f77378a9
 
 </body>
 </html>
