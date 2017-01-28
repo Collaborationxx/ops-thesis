@@ -96,7 +96,7 @@
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
-          <a href="dashboard.html">
+          <a href="dashboard.php">
           <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
           <span>Dashboard</span></a>
         </li>
