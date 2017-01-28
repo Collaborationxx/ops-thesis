@@ -4,8 +4,7 @@
                         <div class="footer-columns-entry">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <img class="footer-logo" src="img/ops1.png" alt="" />
-                                    
+                                    <img class="ops-logo" src="assets/images/ops.png" alt="" />
                                     <div class="footer-address"><i class="fa fa-phone-square"></i> (+63)935-744-7362<br/>
                                         <i class="fa fa-map-marker"></i> Bambang Street, Sta Cruz, Manila<br/>
                                         Email: <a href="mailto:sample@email.com">sample@email.com</a><br/>
@@ -310,7 +309,7 @@
                   </div>
                 <div class="login-group-content">
                     <div class="panel-body">
-                        <form id="login-form" method="post" action="../authentication/authentication.php">
+                        <form id="login-form" method="post" action="authentication/authentication.php">
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" name="username" class="form-control" id="username" required>
@@ -328,7 +327,7 @@
                 </div>
                 <div class="signup-group-content">
                     <div class="panel-body">
-                        <form action="../authentication/signup.php" method="post">
+                        <form action="authentication/signup.php" method="post">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">

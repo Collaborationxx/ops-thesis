@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<?php
+//check if user has session
+session_start();
+if($_SESSION["username"] == null) { //if not redirect to login page
+  header('location: index.php');
+}
+
+include('data-manager/get-profile.php');
+
+//echo '<pre>'; print_r($arr); exit;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +24,7 @@
   <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="vendor/ionicons/css/ionicons.min.css">
-  <!-- Theme style -->
+
   <link rel="stylesheet" href="vendor/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="vendor/dist/css/skins/skin-green.min.css">
 
@@ -36,7 +46,13 @@
       </div>
       <div class="">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="logout.php"><i class="fa fa-sign-out text-danger"></i>  Logout</a></li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>   Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="customer-page.php"><i class="fa fa-cogs"></i>My Account</a></li>
+                <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
+              </ul>
+            </li>
         </ul>
       </div>
   </nav>
@@ -52,6 +68,10 @@
     </ul> 
 
     <div class="tab-content">
+      <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong>Success!</strong> Profile Updated.
+      </div>
        <div id="profile-tab-content" class="tab-pane fade in active">
         <div class="panel-body">
           <div class="row">
@@ -60,19 +80,21 @@
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-user"></i>   My Info</h3>
                 </div>    
-                <div class="box-body">
-                    <form role="form">
+                <div class="box-body profile-section">
+                  <?php if(isset($arr) AND count($arr) > 0):?>
+                    <?php foreach ($arr as $key => $value): ?>
+                      <form role="form">
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <label>First Name</label>
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                            <input type="text" class="form-control" name="fname" value="<?php echo $value['first_name']; ?>" required disabled>
                           </div>
                         </div>
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <label>Last Name</label>
-                            <input type="text" class="form-control" placeholder="Enter ...">
+                            <input type="text" class="form-control" name="lname" value="<?php echo $value['last_name']; ?>" required disabled>
                           </div>
                         </div>
                       </div>
@@ -80,7 +102,7 @@
                         <div class="col-lg-12 col-xs-12">
                           <div class="form-group">
                             <label>Home Address</label>
-                            <textarea class="form-control" rows="2"></textarea>
+                            <textarea class="form-control" rows="3"  name="address" required disabled><?php echo $value['address']; ?></textarea>
                           </div>
                         </div>
                       </div>
@@ -88,7 +110,7 @@
                         <div class="col-lg-12 col-xs-12">
                           <div class="form-group">
                             <label>Shipping Address</label>
-                            <textarea class="form-control" rows="2"></textarea>
+                            <textarea class="form-control" rows="3" name="shipAddress" disabled><?php echo $value['shipping_address']; ?></textarea>
                           </div>
                         </div>
                       </div>
@@ -96,25 +118,27 @@
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <label>Contact No.</label>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" name="contact" value="<?php echo $value['contact_number']; ?>" required disabled>
                           </div>
                         </div>
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <label>Email</label>
-                            <input type="email" class="form-control">
+                            <input type="email" class="form-control" name="email" value="<?php echo $value['email']; ?>" required disabled>
                           </div>
                         </div>
                       </div>
                     </form>
+                    <?php endforeach; ?>
+                  <?php endif; ?>
                 </div>
                 <div class="box-footer">
                   <div class="row">
                     <div class="col-md-6 col-xs-6">
-                      <button type="button" class="btn btn-default pull-right">Edit</button>
+                      <a href="#" class="btn btn-default pull-right edit-profile-btn"><i class="fa fa-pencil text-warning"></i>   Edit</a>
                     </div>
                     <div class="col-md-6 col-xs-6">
-                      <button type="button" class="btn btn-success pull-left">Save</button>
+                      <a href="#" class="btn btn-success pull-left update-profile-btn"><i class="fa fa-save">   Save</i></a>
                     </div>
                   </div>
                 </div>
@@ -392,7 +416,7 @@
                   <form role="form">
                     <div class="form-group">
                       <label>Username</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
+                      <input type="text" class="form-control" value="<?php echo $value['username']; ?>">
                     </div>
                     <div class="form-group">
                       <label>Old Password</label>
@@ -419,14 +443,57 @@
     </div>
   </div>
 </div>
-
+<?php $updateProfileURL = "http://$_SERVER[HTTP_HOST]" ?>
   <!-- jQuery 2.2.3 -->
 <script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 
-<script src="..page/dist/js/app.min.js"></script>
+<script src="vendor/dist/js/app.min.js"></script>
+
+<script>
+  $(function () {
+    var updateProfileURL = <?php echo json_encode($updateProfileURL)?>
+
+    $('.edit-profile-btn').click(function (e) {
+      e.preventDefault();
+      $('.profile-section').find(':input').prop('disabled', false);
+    });
+
+    $('.update-profile-btn').click(function (e) {
+      e.preventDefault();
+      $('.profile-section').find(':input').prop('disabled', true);
+      console.log(updateProfileURL)
+
+      var data = {
+        firstName: $(this).closest('div.box').find('input[name="fname"]').val(),
+        lastName: $(this).closest('div.box').find('input[name="lname"]').val(),
+        address: $(this).closest('div.box').find('textarea[name="address"]').val(),
+        shippingAddress: $(this).closest('div.box').find('textarea[name="shipAddress"]').val(),
+        contact: $(this).closest('div.box').find('input[name="contact"]').val(),
+        email: $(this).closest('div.box').find('input[name="email"]').val(),
+        username : '<?php echo $_SESSION['username']; ?>'
+
+    }
+      $.ajax({
+        type: "POST",
+        url: updateProfileURL + '/ops-thesis/data-manager/update-profile.php',
+        data: data,
+        dataType: "json",
+        success: function (rData) {
+          $.each(rData, function (i,e) {
+            if(e.status = 'success'){
+              $('.alert-update-success').css('display', 'block');
+              $('.alert').delay(3000).fadeOut('fast');
+            }
+          });
+        },
+      });
+    });
+
+  });
+</script>
 
 </body>
 </html>

@@ -38,7 +38,7 @@ if($row) {
     $_SESSION['user_role'] = $role;
 
     if($role == 1){ //admin role
-        header("location: ../page/dashboard.html");
+        header("location: ../dashboard.php");
     } else if($role == 0) { //staff
         header('location: ../staff.php');
     } else { //customer

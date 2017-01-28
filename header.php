@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 
@@ -39,7 +40,7 @@
         </div>
     <?php endif; ?>
     <?php if (isset($_GET['status'])): ?>
-        <div class="alert alert-danger alert-dismissable">
+        <div class="alert alert-success alert-dismissable">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
             <strong>Success!</strong> Registration Successful! You can now login to your account.
         </div>
@@ -53,7 +54,7 @@
 
                     <div class="header-product">
                         <div class="logo-wrapper">
-                            <a href="#" id="logo"><img alt="" src="img/ops1.png"></a>
+                            <a href="#" id="logo"><img class="ops-logo" alt="" src="assets/images/ops.png"></a>
                         </div>
                        
                         <div class="product-header-content">
@@ -63,7 +64,25 @@
                                     <div class="title"><i class="fa fa-search"></i> <span>Search</span></div>
                                 </div>
                                 <div class="header-top-entry increase-icon-responsive">
-                                    <div class="title"><a href="#" data-toggle="modal" data-target="#login-signup-modal"><i class="fa fa-user"></i> <span>My Account</span></div>
+
+                                    <?php if(isset($_SESSION['username'])): ?>
+                                        <div class="title"
+                                            <ul>
+                                                <li class="dropdown">
+                                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
+                                                    <ul class="dropdown-menu">
+                                                        <li><a href="customer-page.php"><i class="fa fa-cogs"></i>My Account</a></li>
+                                                        <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    <?php else: ?>
+                                        <div class="title"><a href="#" data-toggle="modal" data-target="#login-signup-modal"><i class="fa fa-user"></i>
+                                                <span>My Account</span>
+                                        </div>
+                                    <?php endif; ?>
+
                                 </div>
                                
                                 
