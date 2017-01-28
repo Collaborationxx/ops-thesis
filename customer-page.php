@@ -61,7 +61,8 @@ include('data-manager/get-profile.php');
     <ul class="nav nav-tabs">
       <li class="active"><a data-toggle="tab" href="#profile-tab-content">Profile</a></li>
       <li><a data-toggle="tab" href="#wishlist-tab-content">Wish List</a></li>
-      <li><a data-toggle="tab" href="#message-tab-content">Message</a></li>
+      <li><a data-toggle="tab" href="#order-tab-content">Orders</a></li>
+      <li><a data-toggle="tab" href="#reservation-tab-content">Reservations</a></li>
       <li><a data-toggle="tab" href="#notification-tab-content">Notification</a></li>
       <li><a data-toggle="tab" href="#accountSettings-tab-content">Settings</a></li>
     </ul> 
@@ -173,40 +174,235 @@ include('data-manager/get-profile.php');
           </table>
         </div>
       </div>
-      <div id="message-tab-content" class="tab-pane fade in">
+      <div id="order-tab-content" class="tab-pane fade in">
         <div class="panel-body">
-          <table class="table table-striped table-responsive table-bordered" style="max-width: 40%">
-            <tbody>
-              <tr>
-                <th style="width: 10px">#</th>
-                <th>Message</th>
-                <th>Date</th>
-              </tr>
-              <tr>
-                <td>1.</td>
-                <td>Order Confirmation</td>
-                <td>01/23/17</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="row">
+            <div class="col-lg-4 col-xs-12">
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa fa-inbox"></i>   Orders</h3>
+                </div>
+                <div class="box-body no-padding">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                      </tr>
+                      <tr>
+                        <td>OPS-1-2</td>
+                        <td>01/06/17</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-lg-8 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
+                </div>
+                <div class="box-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <p>
+                        Good day! Thank you for ordering medical supplies at OPS! The following is the list of your orders:
+                      </p>
+                      <textarea rows="2" style="width:200px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <p>Please deposit your full payment in the bank account provided below within 7 days to process your order.</p>
+                      <p>Reply with the deposit number when you paid your order:</p>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                          <label>Deposit No:</label>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <input type="text" name="deposit-number">
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                          <label>Amount Deposited:</label>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <input type="text" name="amount-deposited">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                          <button type="submit" class="btn btn-success btn-sm pull-right">Send <i class="fa fa-share-square-o"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="box-footer">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label><strong>ACCOUNT NAME:</strong>  MJ Jacobe Trading | <strong>ACCOUNT NUMBER:</strong>  0932-4587</label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        </div>
         </div>
       </div> 
+      <div id="reservation-tab-content" class="tab-pane fade in">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-lg-4 col-xs-12">
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa fa-inbox"></i>   Reservation</h3>
+                </div>
+                <div class="box-body no-padding">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th>Reservation ID</th>
+                        <th>Date</th>
+                      </tr>
+                      <tr>
+                        <td>OPS-11-22</td>
+                        <td>01/06/17</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+          </div>
+
+          <div class="col-lg-8 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
+                </div>
+                <div class="box-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <p>
+                        Good day! Thank you for the reservation of medical supplies at OPS! The following is the list of items you placed as reservation:
+                      </p>
+                      <textarea rows="2" style="width:200px;"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <p>Please deposit your down payment in the bank account provided below within 7 days to process your reservation.</p>
+                      <p>Reply with the deposit number when you place your downpayment:</p>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                          <label>Deposit No:</label>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <input type="text" name="deposit-number">
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                          <label>Downpayment:</label>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <input type="text" name="downpayment">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                          <button type="submit" class="btn btn-success btn-sm pull-right">Send <i class="fa fa-share-square-o"></i></button>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="box-footer">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <label><strong>ACCOUNT NAME:</strong>  MJ Jacobe Trading | <strong>ACCOUNT NUMBER:</strong>  0932-4587</label>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+      </div>
       <div id="notification-tab-content" class="tab-pane fade in">
         <div class="panel-body">
-          <table class="table table-striped table-responsive table-bordered" style="max-width: 40%">
-            <tbody>
-              <tr>
-                <th style="width: 10px">#</th>
-                <th>Message</th>
-                <th>Date</th>
-              </tr>
-              <tr>
-                <td>1.</td>
-                <td>OrderTracking</td>
-                <td>01/23/17</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="row">
+            <div class="col-lg-4 col-xs-12">
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa fa-inbox"></i>   Tracking Orders</h3>
+                </div>
+                <div class="box-body no-padding">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th>Message</th>
+                        <th>Date</th>
+                      </tr>
+                      <tr>
+                        <td>Tracking Number</td>
+                        <td>01/06/17</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+             </div>
+
+            <div class="col-lg-8 col-xs-12">
+              <div class="box box-success">
+                <div class="box-header with-border">
+                  <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
+                </div>
+                <div class="box-body">
+                  <form role="form">
+                    <div class="form-group">
+                      <p>
+                        Good day! Thank you for purchasing medical supplies at OPS! 
+                      </p>
+                    </div>
+                    <div class="form-group">
+                      <p>We already shipped your purchased medical supplies with the following information:</p>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                          <label>Order ID:</label>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <input type="text" name="order-id">
+                        </div>
+                      </div>
+                      <br>
+                      <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                          <label>Tracking Number:</label>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <input type="text" name="tracking-number">
+                        </div>
+                      </div>
+                  </form>
+                </div>
+               
+            </div>
+          </div>
+        </div>
+        </div>
         </div>
       </div>
       <div id="accountSettings-tab-content" class="tab-pane fade in">
