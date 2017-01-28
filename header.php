@@ -40,7 +40,7 @@
         </div>
     <?php endif; ?>
     <?php if (isset($_GET['status'])): ?>
-        <div class="alert alert-danger alert-dismissable">
+        <div class="alert alert-success alert-dismissable">
             <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
             <strong>Success!</strong> Registration Successful! You can now login to your account.
         </div>
