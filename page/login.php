@@ -1,14 +1,11 @@
 <?php
     include("header.php");
 ?>
-
             <div class="content-push">
-
                 <div class="breadcrumb-box">
                     <a href="#">Home</a>
                     <a href="#">Login Form</a>
                 </div>
-
                 <div class="information-blocks">
                     <div class="row">
                         <div class="col-sm-6 information-entry">
@@ -36,8 +33,7 @@
                             </div>
                         </div>
                     </div>
-                </div>              
-
+                </div>
       <?php
         include("footer.php");
     ?>
