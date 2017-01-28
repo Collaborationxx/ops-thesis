@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OPS | Dashboard</title>
+  <title>OPS | Print Order</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -12,9 +12,6 @@
   <link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="../vendor/ionicons/css/ionicons.min.css">
-
-  <!-- MORRIS CHART STYLES-->
-  <link href="../assets/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
   <!-- Theme style -->
   <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="dist/css/skins/skin-green.min.css">
@@ -77,7 +74,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="../logout.php" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -98,7 +95,7 @@
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
-          <a href="#">
+          <a href="dashboard.html">
           <img src="../assets/images/dashboard.ico" class="ops-sidebar-img">
           <span>Dashboard</span></a>
         </li>
@@ -108,7 +105,7 @@
           <span>Account Manager</span></a>
         </li>
         <li>
-          <a href="product-management.html">
+          <a href="#">
           <img src="../assets/images/catalogue-icon.png" class="ops-sidebar-img">
           <span>Product Catalog</span></a>
         </li>
@@ -138,105 +135,62 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
+        Order Management
         <small>Control Panel</small>
       </h1>
+      <!--<button class="btn btn-default btn-sm pull-right back-btn"><a href="new-order.html">Back to Order Page</a></button>-->
+      <ol class="breadcrumb">
+       <li><a href="dashboard.html">Home</a></li>
+       <li><a href="new-order.html">New Orders</a></li>
+       <li class="active">Print Orders</li>
+     </ol>
     </section>
+
     <!-- Main content -->
     <section class="content">
-      <div class="row">
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-aqua">
-            <div class="inner">
-              <h3>150</h3>
-
-              <p>New Orders</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-bag"></i>
-            </div>
-            <a href="new-order.html" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-              <h3>53</h3>
-              <p>New Reservation</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-ios-box-outline"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-              <h3>10</h3>
-
-              <p>New Payment</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-card"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-3 col-xs-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-              <h3>25</h3>
-
-              <p>New Notifications</p>
-            </div>
-            <div class="icon">
-              <i class="ion ion-ios-bell-outline"></i>
-            </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
-
-      <!-- bar chart -->
-      <div class="row">
-        <div class="col-lg-12 col-xs-12">
-          <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title"><i class="fa fa-bar-chart-o fa-fw"></i> Sales Statistics</h3>
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-              </div>
-            </div>
-            <div class="box-body no-padding chart-responsive">
-              <div class="chart">
-                <div id="sales-chart"></div>
-              </div>
-            </div>
-            <div class="box-footer">
-              <div class="row">
-                <div class="col-lg-3 col-xs-6">
-                  <span><b>Sales:</b> 1 January, 2016 - 31 December, 2016</span>
+        <div class="row">
+          <div class="col-lg-12 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-shopping-bag"></i>   New Orders</h3>
+                <div class="box-tools pull-right">
+                  <button type="button" class="btn btn-default btn-sm print-btn"><i class="fa fa-print"></i>&nbsp;&nbsp;Print for Delivery</button>
                 </div>
-                <div class="col-lg-3 col-lg-offset-6 col-xs-6">
-                  <span><b>Total Profit:</b> $24,813.53</span>
+
+              </div>
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tbody>
+                    <tr>
+                      <th style="width: 10px">#</th>
+                      <th>Customer</th>
+                      <th>Orders</th>
+                      <th>Order Date</th>
+                      <th>Shipping Destination</th>
+                    </tr>
+                    <tr>
+                      <td>1.</td>
+                      <td>Louie Francisco</td>
+                      <td>1 Wheelchair</td>
+                      <td>01/10/17</td>
+                      <td>San Miguel, Bulacan</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-lg-3 col-xs-6">
+                    <span>Lorem ipsum dolor sit amet</span>
+                  </div>
+                  <div class="col-lg-3 col-lg-offset-6 col-xs-6">
+                    <span>Lorem ipsum dolor sit amet</span>
+                  </div>
                 </div>
               </div>
-              
-              </div>
             </div>
           </div>
-          
         </div>
-      </div>
     </section>
     <!-- /.content -->
   </div>
@@ -263,75 +217,6 @@
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
 
-    <!-- MORRIS CHART SCRIPTS -->
-<script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
-<script src="../assets/js/morris/morris.js"></script>
-<script>
-    $(document).ready(function() {
-      barChart();
 
-      $(window).resize(function() {
-        window.barChart.redraw();
-      });
-    });
-    
-    function barChart() {
-      window.barChart = Morris.Bar({
-        element: 'sales-chart',
-        // Chart data records -- each entry in this array corresponds to a point on
-        // the chart.
-        data: [
-          { month: 'Jan', a: 70 },
-          { month: 'Feb', a: 60 },
-          { month: 'Mar', a: 100 },
-          { month: 'Apr', a: 80 },
-          { month: 'May', a: 25 },
-          { month: 'Jun', a: 25 },
-          { month: 'Jul', a: 25 },
-          { month: 'Aug', a: 25 },
-          { month: 'Sep', a: 75 },
-          { month: 'Oct', a: 25 },
-          { month: 'Nov', a: 25 },
-          { month: 'Dec', a: 25 }
-
-        ],
-        // The name of the data record attribute that contains x-values.
-        xkey: 'month',
-        // A list of names of data record attributes that contain y-values.
-        ykeys: ['a'],
-        // Labels for the ykeys -- will be displayed when you hover over the
-        // chart.
-        labels: ['Monthly Sales']
-      });
-    }
-//        new Morris.Bar({
-//            // ID of the element in which to draw the chart.
-//            element: 'sales-chart',
-//            // Chart data records -- each entry in this array corresponds to a point on
-//            // the chart.
-//            data: [
-//                { month: 'Jan', a: 20, b: 70 },
-//                { month: 'Feb', a: 50, b: 60 },
-//                { month: 'Mar', a: 50, b: 100 },
-//                { month: 'Apr', a: 5, b: 80 },
-//                { month: 'May', a: 20, b: 25 },
-//                { month: 'Jun', a: 20, b: 25 },
-//                { month: 'Jul', a: 20, b: 25 },
-//                { month: 'Aug', a: 20, b: 25 },
-//                { month: 'Sep', a: 20, b: 75 },
-//                { month: 'Oct', a: 20, b: 25 },
-//                { month: 'Nov', a: 20, b: 25 },
-//                { month: 'Dec', a: 20, b: 25 }
-//
-//            ],
-//            // The name of the data record attribute that contains x-values.
-//            xkey: 'month',
-//            // A list of names of data record attributes that contain y-values.
-//            ykeys: ['a','b'],
-//            // Labels for the ykeys -- will be displayed when you hover over the
-//            // chart.
-//            labels: ['Over the counter', 'Online Store']
-//        });
-    </script>
 </body>
 </html>
