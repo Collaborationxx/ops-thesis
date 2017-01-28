@@ -40,9 +40,9 @@ if($row) {
     if($role == 1){ //admin role
         header("location: ../dashboard.php");
     } else if($role == 0) { //staff
-        header('location: ../staff.php');
+        header('location: ../staff-page.php');
     } else { //customer
-        header('location: ../customer.php');
+        header('location: ../customer-page.php');
     }
 
 
@@ -50,7 +50,7 @@ if($row) {
 else {
     //redirect back to index for wrong credentials
     $message = 'Wrong username or password';
-    header("Location: ../page/index.php?message=" . urlencode($message));
+    header("Location: ../index.php?message=" . urlencode($message));
 
 }
 

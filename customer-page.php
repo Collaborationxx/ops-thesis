@@ -83,6 +83,7 @@ include('data-manager/get-profile.php');
                   <?php if(isset($arr) AND count($arr) > 0):?>
                     <?php foreach ($arr as $key => $value): ?>
                       <form role="form">
+                        <input type="hidden">
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">

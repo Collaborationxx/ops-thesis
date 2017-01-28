@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4690b1ef-2609-4579-9529-35e1c096591a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data-manager/update-profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/authentication/authentication.php" afterPath="$PROJECT_DIR$/authentication/authentication.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customer-page.php" afterPath="$PROJECT_DIR$/customer-page.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/header.php" afterPath="$PROJECT_DIR$/header.php" />
     </list>
     <ignored path="ops-thesis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,11 +59,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customer-page.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="authentication.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/authentication/authentication.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="458">
+              <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+              <folding>
+                <marker date="1485622997873" expanded="true" signature="492:570" ph="SELECT * FRO... user_account" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="customer-page.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/customer-page.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="254">
-              <caret line="291" column="54" selection-start-line="291" selection-start-column="54" selection-end-line="291" selection-end-column="54" />
+            <state relative-caret-position="135">
+              <caret line="85" column="43" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -75,10 +85,10 @@
                 <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#div#0;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1485621082921" expanded="true" signature="258:840" ph="..." />
-                <marker date="1485621082921" expanded="true" signature="265:840" ph="..." />
-                <marker date="1485621082921" expanded="true" signature="11022:11120" ph="..." />
-                <marker date="1485621082921" expanded="true" signature="11040:11120" ph="{...}" />
+                <marker date="1485622856916" expanded="true" signature="258:840" ph="..." />
+                <marker date="1485622856916" expanded="true" signature="265:840" ph="..." />
+                <marker date="1485622856916" expanded="true" signature="11068:11166" ph="..." />
+                <marker date="1485622856916" expanded="true" signature="11086:11166" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -165,13 +175,13 @@
         <option value="$PROJECT_DIR$/dashboard.html" />
         <option value="$PROJECT_DIR$/index-wide.html" />
         <option value="$PROJECT_DIR$/footer.php" />
-        <option value="$PROJECT_DIR$/authentication/authentication.php" />
         <option value="$PROJECT_DIR$/dashboard.php" />
         <option value="$PROJECT_DIR$/assets/css/ops-custom.css" />
         <option value="$PROJECT_DIR$/data-manager/get-profile.php" />
         <option value="$PROJECT_DIR$/data-manager/update-profile.php" />
         <option value="$PROJECT_DIR$/header.php" />
         <option value="$PROJECT_DIR$/customer-page.php" />
+        <option value="$PROJECT_DIR$/authentication/authentication.php" />
       </list>
     </option>
   </component>
@@ -444,7 +454,7 @@
       <workItem from="1485350741353" duration="8886000" />
       <workItem from="1485437385142" duration="5998000" />
       <workItem from="1485569308966" duration="18386000" />
-      <workItem from="1485604099375" duration="14077000" />
+      <workItem from="1485604099375" duration="15620000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -541,13 +551,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53310000" />
+    <option name="totallyTimeSpent" value="54853000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24583964" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -882,16 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/authentication/authentication.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="40" column="42" selection-start-line="40" selection-start-column="42" selection-end-line="40" selection-end-column="42" />
-          <folding>
-            <marker date="1485615082764" expanded="true" signature="492:570" ph="SELECT * FRO... user_account" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/order-tracking.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="291">
@@ -978,8 +978,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/customer-page.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="291" column="54" selection-start-line="291" selection-start-column="54" selection-end-line="291" selection-end-column="54" />
+        <state relative-caret-position="135">
+          <caret line="85" column="43" selection-start-line="85" selection-start-column="43" selection-end-line="85" selection-end-column="43" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -989,10 +989,20 @@
             <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#3;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#div#0;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#th#0;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#4;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1485621082921" expanded="true" signature="258:840" ph="..." />
-            <marker date="1485621082921" expanded="true" signature="265:840" ph="..." />
-            <marker date="1485621082921" expanded="true" signature="11022:11120" ph="..." />
-            <marker date="1485621082921" expanded="true" signature="11040:11120" ph="{...}" />
+            <marker date="1485622856916" expanded="true" signature="258:840" ph="..." />
+            <marker date="1485622856916" expanded="true" signature="265:840" ph="..." />
+            <marker date="1485622856916" expanded="true" signature="11068:11166" ph="..." />
+            <marker date="1485622856916" expanded="true" signature="11086:11166" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/authentication/authentication.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="458">
+          <caret line="54" column="1" selection-start-line="54" selection-start-column="1" selection-end-line="54" selection-end-column="1" />
+          <folding>
+            <marker date="1485622997873" expanded="true" signature="492:570" ph="SELECT * FRO... user_account" />
           </folding>
         </state>
       </provider>
