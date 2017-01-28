@@ -282,14 +282,6 @@ include("header.php");
                                         </div>
                                     <div class="clear"></div>
                                 </div>
-
-                                
-
-                            
-
-                                
-
-                               
                             </div>
                             <div class="page-selector">
                                 <div class="description">Showing: 1-3 of 16</div>

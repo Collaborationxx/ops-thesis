@@ -21,7 +21,7 @@
     <!--[if IE 9]>
         <link href="css/ie9.css" rel="stylesheet" type="text/css" />
     <![endif]-->
-    <link rel="shortcut icon" href="img/favicon-6.ico" />
+    <link rel="shortcut icon" href="../assets/images/ops.png" />
   	<title>OPS - HOME</title>
 </head>
 <body class="style-10">
