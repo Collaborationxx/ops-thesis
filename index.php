@@ -1,340 +1,353 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>OPS | Premium Quality You Can Afford</title>
-    <meta name="author" content="3 Idiots">
-    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--[if lte IE 6]><link rel="stylesheet" href="assets/css/ie6.css" type="text/css" media="all" /><![endif]-->
+<?php
+include("header.php");
 
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/nav.css" type="text/css" media="all" />
-   <!-- <link rel="stylesheet" href="css/shop.css" type="text/css" media="all" /> -->
+?>
+            <div class="content-push">
 
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
-    <link rel="stylesheet" href="assets/css/styles.css" type="text/css" media="all" />
-
-    <style>
-        .carousel-inner > .item > img,
-        .carousel-inner > .item > a > img {
-            width: 100%;
-            margin: auto;
-        }
-    </style>
-
-</head>
-<body>
-<div class="wrapper">
-    <!-- nav -->
-    <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
-        <div class="container topnav">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-               <a href="index.php">
-                <img src="assets/images/ops.png" class="img1">
-                <img src="assets/images/received_10210688875834340.png" class="img2">
-               </a>
-
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li style="position:absolute; right:370px;">
-                        <div class="input-group custom-search-form">
-                            <input type="text" class="form-control" placeholder="Search...">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                        </div>
-                    </li>
-                    <li style="position:absolute; right:220px;">
-                        <a href="cart.php">
-                            <img class="cart-img" src="assets/images/cart.png">
-                            MY CART
-                        </a>
-                    </li>
-                    <li class="dropdown" style="position:absolute; right:75px;">
-                        <a class="dropdown-toggle" data-toggle="dropdown">MY ACCOUNT<span class="caret"></span></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="login.php"><i class="fa fa-sign-in"></i>&nbsp;&nbsp;Login</a></li>
-                        </ul>
-                    </li>
-
-
-                </ul>
-            </div>
-            <!-- navigation  -->
-
-        </div>
-        <!-- /.container -->
-
-    </nav>
-
-    <!-- end nav -->
-    <!--
-    <div id="page-wrapper" style="min-height: 367px;">
-        <div class="social">
-            <ul>
-                <li>
-                    <a class="fa fa-facebook" href="https://facebook.com">
-                        <span>Facebook</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="fa fa-twitter" href="https://twitter.com">
-                        <span>Twitter</span>
-                    </a>
-                </li>
-                <li>
-                    <a class="fa fa-instagram" href="https://instagram.com">
-                        <span>Instagram</span>
-                    </a>
-                </li>
-            </ul>
-        </div>-->
-        <div class="container container-box">
-            <div class="box-title">
-              <h2>Medical Supplies for Reservation</h2></div>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
-                <!-- Indicators -->
-                <ol class="carousel-indicators carousel-indicators-btn">
-                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#myCarousel" data-slide-to="1"></li>
-                </ol>
-
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner" role="listbox">
-                    <div class="item active">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <a href="#"><img src="assets/images/nebulizer.png" alt=""/></a>
-                                <div class="product-info">
-                                    <h3>&nbsp;&nbsp;&nbsp;&nbsp;Nebulizer</h3>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="#"><img src="assets/images/walker-boots.jpg" alt="" /></a>
-                                <div class="product-info">
-                                    <h3>Walker Boots</h3>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="#"><img src="assets/images/wheelchair.jpg" alt="" /></a>
-                                <div class="product-info">
-                                    <h3>wheelchair</h3>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="#"><img src="assets/images/oxygen-tank.jpg" alt="" /></a>
-                                <div class="product-info">
-                                    <h3>Oxygen tank</h3>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <a href="#"><img src="assets/images/bandage.jpg" alt="" /></a>
-                                <div class="product-info">
-                                    <h3>&nbsp;&nbsp;&nbsp;&nbsp;Bandage</h3>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="info.php"><img src="assets/images/first-aid-kit.jpg" alt="" /></a>
-                                <div class="product-info">
-                                    <h3>First Aid Kit</h3>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="#"><img src="assets/images/Blood-Pressure-Monitor.jpg" alt="" /></a>
-                                <div class="product-info">
-                                    <h3>Rossmax BP Digital</h3>
-                                    
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <a href="#"><img src="assets/images/nebulizer.png" alt="" /></a>
-                                <div class="product-info">
-                                    <h3>Nebulizer</h3>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-
-                    <!-- Left and right controls -->
-                    <a class="left carousel-control carousel-btn" href="#myCarousel" role="button" data-slide="prev">
-                        <span class="glyphicon glyphicon-chevron-left green" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="right carousel-control carousel-btn" href="#myCarousel" role="button" data-slide="next">
-                        <span class="glyphicon glyphicon-chevron-right green" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
+                <div class="breadcrumb-box">
+                    <a href="#">Home</a>
+                    <a href="#">Medical Supplies</a>
                 </div>
-            </div>
-        </div>
+
+                <div class="information-blocks">
+                    <div class="row">
+                        <div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
+                            <div class="page-selector">
+                                <div class="pages-box hidden-xs">
+                                    <a href="#" class="square-button active">1</a>
+                                    <a href="#" class="square-button">2</a>
+                                    <a href="#" class="square-button">3</a>
+                                    <div class="divider">...</div>
+                                    <a href="#" class="square-button"><i class="fa fa-angle-right"></i></a>
+                                </div>
+                                <div class="shop-grid-controls">
+                                    <div class="entry">
+                                        <div class="inline-text">Sorty by</div>
+                                        <div class="simple-drop-down">
+                                            <select>
+                                                <option>Position</option>
+                                                <option>Price</option>
+                                                <option>Category</option>
+                                                <option>Rating</option>
+                                                <option>Color</option>
+                                            </select>
+                                        </div>
+                                        <div class="sort-button"></div>
+                                    </div>
+                                    <div class="entry">
+                                        <div class="view-button active grid"><i class="fa fa-th"></i></div>
+                                        <div class="view-button list"><i class="fa fa-list"></i></div>
+                                    </div>
+                                    <div class="entry">
+                                        <div class="inline-text">Show</div>
+                                        <div class="simple-drop-down" style="width: 75px;">
+                                            <select>
+                                                <option>12</option>
+                                                <option>20</option>
+                                                <option>30</option>
+                                                <option>40</option>
+                                                <option>all</option>
+                                            </select>
+                                        </div>
+                                        <div class="inline-text">per page</div>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <div class="row shop-grid grid-view">
+
+                                <div class="col-md-3 col-sm-4 shop-grid-item">
+                                    <div class="product-slide-entry">
+                                        <div class="product-image">
+                                            <img src="img/wheel chair1.png" alt="" />
+                                            <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
+                                            <div class="bottom-line">
+                                                    <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                </div>
+                                        </div>
+                                           <a class="tag" href="#">Category</a>
+                                            <a class="title" href="#">Wheel Chair</a>
+                                        <div class="rating-box">
+                                            <div class="star"><i class="fa fa-star"></i></div>
+                                            <div class="star"><i class="fa fa-star"></i></div>
+                                            <div class="star"><i class="fa fa-star"></i></div>
+                                            <div class="star"><i class="fa fa-star"></i></div>
+                                            <div class="star"><i class="fa fa-star"></i></div>
+                                           
+                                        </div>
+                                          <div class="article-container style-1">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
+                                        <div class="price">
+                                                <!-- <div class="prev">$199,99</div> -->
+                                                <div class="current">₱3,000.00</div>
+                                            </div>
+                                        <div class="list-buttons">
+                                            <a class="button style-10">Add to cart</a>
+                                            <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-4 shop-grid-item">
+                                    <div class="product-slide-entry">
+                                        <div class="product-image">
+                                                <img src="img/nebulizer1.png" alt="" />
+                                                <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
+                                                <div class="bottom-line">
+                                                    <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                              </div>
+                                            </div>
+                                        <a class="tag" href="#">Category</a>
+                                            <a class="title" href="#">Nebulizer</a>
+                                            <div class="rating-box">
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                            </div>
+                                              <div class="article-container style-1">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
+                                            <div class="price">
+                                                <!-- <div class="prev">$199,99</div> -->
+                                                <div class="current">₱1,450.00</div>
+                                            </div>
+                                        
+                                        <div class="list-buttons">
+                                            <a class="button style-10">Add to cart</a>
+                                            <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-4 shop-grid-item">
+                                         <div class="product-slide-entry">
+                                            <div class="product-image">
+                                                <img src="img/bandage1.png" alt="" />
+                                                  <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
+                                                <div class="bottom-line">
         
-        <div class="container" style="border:solid 1px #bfbbbb;">
-        <div class="box-title">
-          <h2>Always Available Medical Supplies</h2></div>
-            <div class="products">
+                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                  
+                                                </div>
+                                            </div>
+                                            <a class="tag" href="#">Category</a>
+                                            <a class="title" href="#">Bandage</a>
+                                            <div class="rating-box">
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                            </div>
+                                              <div class="article-container style-1">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
+                                            <div class="price">
+                                                <!-- <div class="prev">$199,99</div> -->
+                                                <div class="current">₱200.00</div>
+                                            </div>
+                                        </div>
+                                    <div class="clear"></div>
+                                </div>
 
-                    <ul style="margin-bottom: 20px;">
-                        <li>
-                            <a href="#"><img src="assets/images/Blood-Pressure-Monitor.jpg" alt="" /></a>
-                            <div class="product-info">
-                                <h3>Rossmax BP Digital</h3>
-                                <div class="product-desc">
-                                    <p>Lorem ipsum dolor sit<br />
-                                        amet
-                                        <h4>In Stock: 4pcs</h4>
-                                    <strong class="product-info-price">1,900.00</strong>
-                                    <button type="button" class="btn btn-default cart-btn">Add to Cart</button>
+                                <div class="col-md-3 col-sm-4 shop-grid-item">
+                                        <div class="product-slide-entry">
+                                            <div class="product-image">
+                                                <img src="img/medkit.png" alt="" />
+                                                  <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
+                                                <div class="bottom-line">
+        
+                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                  
+                                                </div>
+                                            </div>
+                                            <a class="tag" href="#">Category</a>
+                                            <a class="title" href="#">First-aid Kit</a>
+                                            <div class="rating-box">
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                            </div>
+                                             <div class="article-container style-1">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                            </div>
+                                            <div class="price">
+                                                <!-- <div class="prev">$199,99</div> -->
+                                                <div class="current">₱3,000.00</div>
+                                            </div>
+                                        </div>
+                                    <div class="clear"></div>
                                 </div>
-                            </div>
-                        </li>
-                        <li> <a href="#"><img src="assets/images/first-aid-kit.jpg" alt="" /></a>
-                            <div class="product-info">
-                                <h3>First-aid Kit</h3>
-                                <div class="product-desc">
-                                    <p>Lorem ipsum dolor sit<br />
-                                        amet</p>
-                                    <h4>In Stock: 15pcs</h4>
-                                    <strong class="product-info-price">3,000.00</strong>
-                                    <button type="button" class="btn btn-default cart-btn">Add to Cart</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#"><img src="assets/images/nebulizer.png" alt="" /></a>
-                            <div class="product-info">
-                                <h3>Nebulizer</h3>
-                                <div class="product-desc">
-                                    <p>Lorem ipsum dolor sit<br />
-                                        amet</p>
-                                    <h4>In Stock: 5pcs</h4>
-                                    <strong class="product-info-price">1,450.00</strong>
-                                    <button type="button" class="btn btn-default cart-btn">Add to Cart</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li> <a href="#"><img src="assets/images/wheelchair.jpg" alt="" /></a>
-                            <div class="product-info">
-                                <h3>Wheelchair</h3>
-                                <div class="product-desc">
-                                    <p>Lorem ipsum dolor sit<br />
-                                        amet</p>
-                                    <h4>In Stock: 10pcs</h4>
-                                    <strong class="product-info-price">3,000.00</strong>
-                                        <button type="button" class="btn btn-default cart-btn">Add to Cart</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#"><img src="assets/images/oxygen-tank.jpg" alt="" /></a>
-                            <div class="product-info">
-                                <h3>OXYGEN TANK</h3>
-                                <div class="product-desc">
-                                    <p>Lorem ipsum dolor sit<br />
-                                        amet</p>
-                                    <h4>In Stock: 10pcs</h4>
-                                    <strong class="product-info-price">8,000.00</strong>
-                                    <button type="button" class="btn btn-default cart-btn">Add to Cart</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#"><img src="assets/images/wheelchair.jpg" alt="" /></a>
-                            <div class="product-info">
-                                <h3>Wheelchair</h3>
-                                <div class="product-desc">
-                                    <p>Lorem ipsum dolor sit<br />
-                                        amet</p>
-                                    <h4>In Stock: 10pcs</h4>
-                                    <strong class="product-info-price">3,000.00</strong>
-                                    <button type="button" class="btn btn-default cart-btn">Add to Cart</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#"><img src="assets/images/walker-boots.jpg" alt="" /></a>
-                            <div class="product-info">
-                                <h3>Walker Boots</h3>
-                                <div class="product-desc">
-                                    <p>Lorem ipsum dolor sit<br />
-                                        amet
-                                    <h4>In Stock: 4pcs</h4>
-                                    <strong class="product-info-price">5,000.00</strong>
-                                    <button type="button" class="btn btn-default cart-btn">Add to Cart</button>
-                                </div>
-                            </div>
-                        </li>
-                        <li>
-                            <a href="#"><img src="assets/images/oxygen-tank.jpg" alt="" /></a>
-                            <div class="product-info">
-                                <h3>OXYGEN TANK</h3>
-                                <div class="product-desc">
-                                    <p>Lorem ipsum dolor sit<br />
-                                        amet</p>
-                                    <h4>In Stock: 10pcs</h4>
-                                    <strong class="product-info-price">8,000.00</strong>
-                                    <button type="button" class="btn btn-default cart-btn">Add to Cart</button>
-                                </div>
-                             </div>
-                        </li>
-                        
-        </ul>
-                <div class="cl">&nbsp;</div>
-            </div>
-            <!-- end product -->
-        </div>
 
-</div>
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-9">
-                <p class="copyright" style="float:left;">Copyright &copy; MJ Jacobe Trading <?php echo date('Y'); ?> All Rights Reserved</p>
-            </div>
-        </div>
+                                <div class="col-md-3 col-sm-4 shop-grid-item">
+                                    <div class="product-slide-entry">
+                                     <div class="product-image">
+                                                <img src="img/oxygentank1.png" alt="" />
+                                                <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
+                                                <div class="bottom-line">
+        
+                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                  
+                                                </div>
+                                            </div>
+                                            <a class="tag" href="#">Category</a>
+                                            <a class="title" href="#">Oxygen Tank</a>
+                                            <div class="rating-box">
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                            </div>
+                                        <div class="article-container style-1">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        </div>
+                                       <div class="price">
+                                                <!-- <div class="prev">$199,99</div> -->
+                                                <div class="current">₱8,000.00</div>
+                                            </div>
+                                        <div class="list-buttons">
+                                            <a class="button style-10">Add to cart</a>
+                                            <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
 
-    </div><div class="row">
-            <div class="col-lg-12">
-                <p class="con"><img src="assets/images/received_10202588331944947.jpeg" style="width:20px; height:20px;">&nbsp;&nbsp;0935-744-7362</p>
+                                <div class="col-md-3 col-sm-4 shop-grid-item">
+                                  <div class="product-slide-entry">
+                                            <div class="product-image">
+                                                <img src="img/walkerboots1.png" alt="" />
+                                                <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
+                                                <div class="bottom-line">
+        
+                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                  
+                                                </div>
+                                            </div>
+                                            <a class="tag" href="#">Category</a>
+                                            <a class="title" href="#">Walker Boots</a>
+                                            <div class="rating-box">
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                            </div>
+                                             <div class="article-container style-1">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        </div>
+                                            <div class="price">
+                                                <!-- <div class="prev">$199,99</div> -->
+                                                <div class="current">₱5,000.00</div>
+                                            </div>
+                                        </div>
+                                    <div class="clear"></div>
+                                </div>
+
+                                <div class="col-md-3 col-sm-4 shop-grid-item">
+                                      <div class="product-slide-entry">
+                                            <div class="product-image">
+                                                <img src="img/rossmax1.png" alt="" />
+                                                <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
+                                                <div class="bottom-line">
+        
+                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                  
+                                                </div>
+                                            </div>
+                                            <a class="tag" href="#">Woman's clothing</a>
+                                            <a class="title" href="#">Rossmax BP Digital</a>
+                                            <div class="rating-box">
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                            </div>
+                                             <div class="article-container style-1">
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                        </div>
+                                            <div class="price">
+                                                <!-- <div class="prev">$199,99</div> -->
+                                                <div class="current">₱1,900.00</div>
+                                            </div>
+                                        </div>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="page-selector">
+                                <div class="description">Showing: 1-3 of 16</div>
+                                <div class="pages-box">
+                                    <a href="#" class="square-button active">1</a>
+                                    <a href="#" class="square-button">2</a>
+                                    <a href="#" class="square-button">3</a>
+                                    <div class="divider">...</div>
+                                    <a href="#" class="square-button"><i class="fa fa-angle-right"></i></a>
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8 blog-sidebar">
+                            <div class="information-blocks categories-border-wrapper">
+                                <div class="block-title size-3">Categories</div>
+                                <div class="accordeon">
+                                    <div class="accordeon-title">Medical Supplies</div>
+                                    <div class="accordeon-entry" style="display: block;">
+                                        <div class="article-container style-1">
+                                            <ul>
+                                                <li><a href="#">Electronic</a></li>
+                                                <li><a href="#">Self-Care</a></li>
+                                                <li><a href="#">Diagnostic</a></li>
+                                                <li><a href="#">Surgical</a></li>
+                                                <li><a href="#">Durable Medical Equipment</a></li>
+                                                <li><a href="#">Acute Care</a></li>
+                                                <li><a href="#">Emergency and Trauma</a></li>
+                                                <li><a href="#">Long-Term Care</a></li>
+                                                <li><a href="#">Storage and Transport</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                 
+                                    
+                                    
+                                   
+                                   
+                                </div>
+                            </div>
+
+                            <div class="information-blocks">
+                                <div class="block-title size-2">Sort by sizes</div>
+                                <div class="range-wrapper">
+                                    <div id="prices-range"></div>
+                                    <div class="range-price">
+                                        Price: 
+                                        <div class="min-price"><b>&pound;<span>0</span></b></div>
+                                        <b>-</b>
+                                        <div class="max-price"><b>&pound;<span>200</span></b></div>
+                                    </div>
+                                    <a class="button style-14">filter</a>
+                                </div>
+                            </div>
+
+                          
+
+                         
+
+                             
+                        </div>
+                    </div>
                 </div>
-                </div>
-                </div><div class="row">
-            <div class="col-lg-12">
-                <p class="add" style="margin-right: 17px;"><img src="assets/images/received_10202588330064900.jpeg" style="width:20px; height:20px;">&nbsp;&nbsp;Bambang Street, Sta Cruz, Manila</p>
-            </div>
-        </div>
-</footer>
-<!-- jQuery -->
-<script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
+                
+                            
 
-<!-- Bootstrap Core JavaScript -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-</body>
-</html>
+              <?php
+                include("footer.php");
+            ?>

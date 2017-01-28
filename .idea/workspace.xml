@@ -5,16 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4690b1ef-2609-4579-9529-35e1c096591a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/authentication/add-user.php" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/authentication/addUser.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/admin.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/alert.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/bootstrap.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/cart-responsive.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/cart.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/custom.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/font-awesome.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/login-form.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/nav.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/shop.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/css/styles.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/cart.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/catalog.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/confirmation.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/customer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/delivey.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/fg.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/footer.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/forgot-password.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/header.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/info.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/inventory.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logout.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/main-menu.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/modal.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/order-tracking.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/order.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/alert.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/customer-page.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/dashboard.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/footer.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/header.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/img/bandage1.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/index-wide.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/index.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/inventory-management.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/login.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/new-order.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/new-reservation.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/order-id-information.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/order-tracking.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/payment.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/print-order.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/print-reservation.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/product-management.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/reports.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/reservation-information.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/staff-page.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/starter.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/page/user-management.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/payment.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/registration.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/reports.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/reservation-list.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/reservation-report.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/staff.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/tac.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/try.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/user-management.php" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/user.php" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/authentication/authentication.php" afterPath="$PROJECT_DIR$/authentication/authentication.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/authentication/signup.php" afterPath="$PROJECT_DIR$/authentication/signup.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/db_connection.php" afterPath="$PROJECT_DIR$/config/db_connection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/footer.php" afterPath="$PROJECT_DIR$/page/footer.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/page/header.php" afterPath="$PROJECT_DIR$/page/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user-management.php" afterPath="$PROJECT_DIR$/user-management.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user.php" afterPath="$PROJECT_DIR$/user.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/login.php" afterPath="$PROJECT_DIR$/login.php" />
     </list>
     <ignored path="ops-thesis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,31 +88,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/page/footer.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2104">
-              <caret line="448" column="0" selection-start-line="448" selection-start-column="0" selection-end-line="448" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/page/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="283" column="38" selection-start-line="283" selection-start-column="38" selection-end-line="283" selection-end-column="38" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="signup.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/authentication/signup.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="32" column="79" selection-start-line="32" selection-start-column="79" selection-end-line="32" selection-end-column="79" />
+            <state relative-caret-position="680">
+              <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
               <folding>
                 <marker date="1485602285432" expanded="true" signature="866:1107" ph="INSERT INTO customer... " />
               </folding>
@@ -80,8 +113,8 @@
       <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="17" column="91" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="91" />
+            <state relative-caret-position="-23">
+              <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -90,21 +123,11 @@
       <file leaf-file-name="authentication.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/authentication/authentication.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+            <state relative-caret-position="225">
+              <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
               <folding>
-                <marker date="1485602470422" expanded="true" signature="492:570" ph="SELECT * FRO... user_account" />
+                <marker date="1485603532889" expanded="true" signature="492:570" ph="SELECT * FRO... user_account" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/logout.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -114,16 +137,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
               <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="header.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/page/header.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="183">
-              <caret line="39" column="92" selection-start-line="39" selection-start-column="92" selection-end-line="39" selection-end-column="92" />
               <folding />
             </state>
           </provider>
@@ -260,34 +273,6 @@
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="authentication" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -360,7 +345,7 @@
       <workItem from="1485264942163" duration="5963000" />
       <workItem from="1485350741353" duration="8886000" />
       <workItem from="1485437385142" duration="5998000" />
-      <workItem from="1485569308966" duration="17144000" />
+      <workItem from="1485569308966" duration="18318000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -457,7 +442,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37991000" />
+    <option name="totallyTimeSpent" value="39165000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1370" height="754" extended-state="0" />
@@ -815,22 +800,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="17" column="91" selection-start-line="17" selection-start-column="6" selection-end-line="17" selection-end-column="91" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/page/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="283" column="38" selection-start-line="283" selection-start-column="38" selection-end-line="283" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/authentication/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -875,20 +844,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/authentication/signup.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="32" column="79" selection-start-line="32" selection-start-column="79" selection-end-line="32" selection-end-column="79" />
+        <state relative-caret-position="680">
+          <caret line="40" column="24" selection-start-line="40" selection-start-column="24" selection-end-line="40" selection-end-column="24" />
           <folding>
             <marker date="1485602285432" expanded="true" signature="866:1107" ph="INSERT INTO customer... " />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/page/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-685">
+          <caret line="283" column="38" selection-start-line="283" selection-start-column="38" selection-end-line="283" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-23">
+          <caret line="7" column="22" selection-start-line="7" selection-start-column="22" selection-end-line="7" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/authentication/authentication.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="41" column="24" selection-start-line="41" selection-start-column="24" selection-end-line="41" selection-end-column="24" />
+        <state relative-caret-position="225">
+          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
           <folding>
-            <marker date="1485602470422" expanded="true" signature="492:570" ph="SELECT * FRO... user_account" />
+            <marker date="1485603532889" expanded="true" signature="492:570" ph="SELECT * FRO... user_account" />
           </folding>
         </state>
       </provider>
