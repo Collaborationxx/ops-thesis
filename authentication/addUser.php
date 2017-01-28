@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fname = test_input($_POST["fname"]);
     $lname = test_input($_POST["lname"]);
     $username = test_input($_POST["username"]);
-    $password = test_input(md5($_POST["password"]));
 	$address = test_input ($_POST["address"]);
 	$contact = test_input ($_POST["contact"]);
 	$email = test_input ($_POST["email"]);

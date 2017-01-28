@@ -148,7 +148,7 @@
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-archive"></i>   Stocks</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Stock</button>
+                  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#inventory-modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Stock</button>
                 </div>
 
               </div>
@@ -204,7 +204,70 @@
   </footer>
 </div>
 <!-- ./wrapper -->
+<!--pop up content-->
+<!-- Modal -->
+<div id="inventory-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Inventory</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-lg-12 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Inventory</h3>
+                </div>
+                <div class="box-body">
+                  <form role="form">
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <label>Product Name:</label>
+                          <select class="form-control">
+                          <option>--Choose Product--</option>
+                          <option>Wheelchair</option>
+                          <option>Oxygen</option>
+                          <option>Nebulizer</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <label>Quantity:</label>
+                          <input type="text" class="form-control" name="quantity" placeholder="Enter..."></textarea> 
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <label>Re-stock Date:</label>
+                          <input type="text" class="form-control" name="date-restock" placeholder="Enter...">
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="box-footer">
+                  <button type="button" class="btn btn-success pull-right">Save</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        </div> 
+    </div>
+
+  </div>
+</div>
+<!--end pop up content-->
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
