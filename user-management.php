@@ -42,7 +42,7 @@ include('data-manager/get-data.php');
   <!-- Modal content -->
   <div class="modal-content1">
     
-    <form action="authentication/addUser.php" method="POST"  style="border:1px solid #0C6; padding:15px; width:auto;" enctype="multipart/form-data" >
+    <form action="authentication/add-user.php" method="POST" style="border:1px solid #0C6; padding:15px; width:auto;" enctype="multipart/form-data" >
         
         <div class="row">
         	<div class="col-md-3">
