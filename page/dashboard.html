@@ -267,34 +267,71 @@
 <script src="../assets/js/morris/raphael-2.1.0.min.js"></script>
 <script src="../assets/js/morris/morris.js"></script>
 <script>
-        new Morris.Bar({
-            // ID of the element in which to draw the chart.
-            element: 'sales-chart',
-            // Chart data records -- each entry in this array corresponds to a point on
-            // the chart.
-            data: [
-                { month: 'Jan', a: 20, b: 70 },
-                { month: 'Feb', a: 50, b: 60 },
-                { month: 'Mar', a: 50, b: 100 },
-                { month: 'Apr', a: 5, b: 80 },
-                { month: 'May', a: 20, b: 25 },
-                { month: 'Jun', a: 20, b: 25 },
-                { month: 'Jul', a: 20, b: 25 },
-                { month: 'Aug', a: 20, b: 25 },
-                { month: 'Sep', a: 20, b: 75 },
-                { month: 'Oct', a: 20, b: 25 },
-                { month: 'Nov', a: 20, b: 25 },
-                { month: 'Dec', a: 20, b: 25 }
+    $(document).ready(function() {
+      barChart();
 
-            ],
-            // The name of the data record attribute that contains x-values.
-            xkey: 'month',
-            // A list of names of data record attributes that contain y-values.
-            ykeys: ['a','b'],
-            // Labels for the ykeys -- will be displayed when you hover over the
-            // chart.
-            labels: ['Over the counter', 'Online Store']
-        });
+      $(window).resize(function() {
+        window.barChart.redraw();
+      });
+    });
+    
+    function barChart() {
+      window.barChart = Morris.Bar({
+        element: 'sales-chart',
+        // Chart data records -- each entry in this array corresponds to a point on
+        // the chart.
+        data: [
+          { month: 'Jan', a: 70 },
+          { month: 'Feb', a: 60 },
+          { month: 'Mar', a: 100 },
+          { month: 'Apr', a: 80 },
+          { month: 'May', a: 25 },
+          { month: 'Jun', a: 25 },
+          { month: 'Jul', a: 25 },
+          { month: 'Aug', a: 25 },
+          { month: 'Sep', a: 75 },
+          { month: 'Oct', a: 25 },
+          { month: 'Nov', a: 25 },
+          { month: 'Dec', a: 25 }
+
+        ],
+        // The name of the data record attribute that contains x-values.
+        xkey: 'month',
+        // A list of names of data record attributes that contain y-values.
+        ykeys: ['a'],
+        // Labels for the ykeys -- will be displayed when you hover over the
+        // chart.
+        labels: ['Monthly Sales']
+      });
+    }
+//        new Morris.Bar({
+//            // ID of the element in which to draw the chart.
+//            element: 'sales-chart',
+//            // Chart data records -- each entry in this array corresponds to a point on
+//            // the chart.
+//            data: [
+//                { month: 'Jan', a: 20, b: 70 },
+//                { month: 'Feb', a: 50, b: 60 },
+//                { month: 'Mar', a: 50, b: 100 },
+//                { month: 'Apr', a: 5, b: 80 },
+//                { month: 'May', a: 20, b: 25 },
+//                { month: 'Jun', a: 20, b: 25 },
+//                { month: 'Jul', a: 20, b: 25 },
+//                { month: 'Aug', a: 20, b: 25 },
+//                { month: 'Sep', a: 20, b: 75 },
+//                { month: 'Oct', a: 20, b: 25 },
+//                { month: 'Nov', a: 20, b: 25 },
+//                { month: 'Dec', a: 20, b: 25 }
+//
+//            ],
+//            // The name of the data record attribute that contains x-values.
+//            xkey: 'month',
+//            // A list of names of data record attributes that contain y-values.
+//            ykeys: ['a','b'],
+//            // Labels for the ykeys -- will be displayed when you hover over the
+//            // chart.
+//            labels: ['Over the counter', 'Online Store']
+//        });
     </script>
 </body>
 </html>
