@@ -400,19 +400,19 @@
     <!-- end popup content -->
 
 
-    <script src="js/jquery-2.1.3.min.js"></script>
-    <script src="js/idangerous.swiper.min.js"></script>
-    <script src="js/global.js"></script>
+    <script src="assets/js/jquery-2.1.3.min.js"></script>
+    <script src="assets/js/idangerous.swiper.min.js"></script>
+    <script src="assets/js/global.js"></script>
 
     <!-- custom scrollbar -->
-    <script src="js/jquery.mousewheel.js"></script>
-    <script src="js/jquery.jscrollpane.min.js"></script>
+    <script src="assets/js/jquery.mousewheel.js"></script>
+    <script src="assets/js/jquery.jscrollpane.min.js"></script>
 
      <!-- range slider -->
-    <script src="js/jquery-ui.min.js"></script>
+    <script src="assets/js/jquery-ui.min.js"></script>
 
-    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="../vendor/js/validator.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="vendor/js/validator.js"></script>
 
      <script>
         $(document).ready(function(){
