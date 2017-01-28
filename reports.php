@@ -113,7 +113,7 @@
           <span>Product Catalog</span></a>
         </li>
         <li>
-          <a href="order-tracking.html">
+          <a href="order-tracking.php">
           <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
           <span>Order Tracking</span></a>
         </li>
