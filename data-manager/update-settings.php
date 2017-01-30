@@ -7,7 +7,13 @@ $username = test_input($_POST['username']);
 $currentPassword = test_input(md5($_POST['current_password']));
 $newPassword = test_input(md5($_POST['new_password']));
 $retypePassword = test_input(md5($_POST['retype_password']));
-$errMess = array('notMatch' => '', 'incorrect' => '', 'errCurrPass' => '', 'errNewPass' => '', 'errUsername' => '');
+$errMess = array('notMatch' => '',
+    'incorrect' => '',
+    'errCurrPass' => '',
+    'errNewPass' => '',
+    'errUsername' => '',
+    'errPassLen' => ''
+);
 $response = array();
 
 $select = "SELECT * FROM `user_account` WHERE username = '$currentUsername'";
@@ -27,9 +33,14 @@ if ($result = mysqli_query($con, $select)) {
         }
 
         if(!empty($_POST['current_password'])){
-            if ($password !== $currentPassword){
-                $errMess['incorrect'] = true;
+            if(strlen($_POST['new_password']) < 8 || !strlen($_POST['new_password']) > 25){
+                $errMess['errPassLen'] = true;
+            } else {
+                if ($password !== $currentPassword){
+                    $errMess['incorrect'] = true;
+                }
             }
+
         } else {
             $errMess['errCurrPass'] = true;
         }
@@ -39,7 +50,7 @@ if ($result = mysqli_query($con, $select)) {
         }
 
         if($errMess['notMatch'] == '' && $errMess['incorrect'] == '' && $errMess['errNewPass'] == '' &&
-            $errMess['errCurrPass'] == '' && $errMess['errUsername'] == ''){
+            $errMess['errCurrPass'] == '' && $errMess['errUsername'] == '' && $errMess['errPassLen'] == ''){
 
             $query = "UPDATE
                         `user_account`
@@ -62,6 +73,8 @@ if ($result = mysqli_query($con, $select)) {
                 'errNewPass' => $errMess['errNewPass'],
                 'errCurrPass' => $errMess['errCurrPass'],
                 'errUsername' => $errMess['errUsername'],
+                'errPassLen' => $errMess['errPassLen'],
+
             );
 
             header('Content-Type: application/json');

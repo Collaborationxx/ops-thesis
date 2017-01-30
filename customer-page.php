@@ -443,11 +443,12 @@ include('data-manager/get-profile.php');
                     </div>
                     <div class="form-group pass-group">
                       <p class="error-mess errNewPassReq" style="display: none">* This is a Required Field</p>
+                      <p class="error-mess errPassLen" style="display: none">Password must be between 8 and 25 characters</p>
                       <label>New Password</label>
                       <input type="password" class="form-control" name="new_password" placeholder="Enter ..." required>
                     </div>
                     <div class="form-group pass-group">
-                      <p class="error-mess errRePassReq" style="display: none">* This is a Required Field</p>
+                      <p class="error-mess errRePassReq" style="display: none">* Please type Password again.</p>
                       <label>Re-type Password</label>
                       <input type="password" class="form-control" name="retype_password" placeholder="Enter ..." required>
                     </div>
@@ -628,6 +629,12 @@ include('data-manager/get-profile.php');
               if(aData.errUsername) {
                 $('div#accountSettings-tab-content').find('.errUsernameReq').closest('.form-group').addClass('has-error');
                 $('div#accountSettings-tab-content').find('p.errUsernameReq').css('display', 'block');
+              }
+
+              if(aData.errPassLen){
+                $('div#accountSettings-tab-content').find('.errPassLen').closest('.form-group').addClass('has-error');
+                $('div#accountSettings-tab-content').find('p.errPassLen').css('display', 'block');
+                $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'none');
               }
 
 //              setTimeout(function(){

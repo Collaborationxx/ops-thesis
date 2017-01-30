@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4690b1ef-2609-4579-9529-35e1c096591a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/ops-custom.css" afterPath="$PROJECT_DIR$/assets/css/ops-custom.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customer-page.php" afterPath="$PROJECT_DIR$/customer-page.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/update-settings.php" afterPath="$PROJECT_DIR$/data-manager/update-settings.php" />
     </list>
@@ -50,16 +49,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update-settings.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="update-settings.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data-manager/update-settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
+            <state relative-caret-position="244">
+              <caret line="75" column="55" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
               <folding>
-                <marker date="1485791662714" expanded="true" signature="526:590" ph="SELECT * FRO... user_account" />
-                <marker date="1485791662714" expanded="true" signature="1526:1777" ph="UPDATE `user... " />
-                <marker date="1485791662714" expanded="true" signature="2467:2473" ph="..." />
+                <marker date="1485792751914" expanded="true" signature="567:631" ph="SELECT * FRO... user_account" />
+                <marker date="1485792751914" expanded="true" signature="1786:2037" ph="UPDATE `user... " />
+                <marker date="1485792751914" expanded="true" signature="2784:2790" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user-management.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/user-management.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="341">
+              <caret line="305" column="24" selection-start-line="305" selection-start-column="24" selection-end-line="305" selection-end-column="24" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -84,11 +93,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customer-page.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="customer-page.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/customer-page.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="271">
-              <caret line="444" column="81" selection-start-line="444" selection-start-column="81" selection-end-line="444" selection-end-column="81" />
+            <state relative-caret-position="370">
+              <caret line="635" column="98" selection-start-line="635" selection-start-column="98" selection-end-line="635" selection-end-column="98" />
               <folding>
                 <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -101,6 +110,7 @@
                 <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#1;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -183,8 +193,8 @@
         <option value="$PROJECT_DIR$/footer.php" />
         <option value="$PROJECT_DIR$/data-manager/update-profile.php" />
         <option value="$PROJECT_DIR$/assets/css/ops-custom.css" />
-        <option value="$PROJECT_DIR$/customer-page.php" />
         <option value="$PROJECT_DIR$/data-manager/update-settings.php" />
+        <option value="$PROJECT_DIR$/customer-page.php" />
       </list>
     </option>
   </component>
@@ -471,7 +481,7 @@
       <workItem from="1485437385142" duration="5998000" />
       <workItem from="1485569308966" duration="18386000" />
       <workItem from="1485604099375" duration="16767000" />
-      <workItem from="1485783125634" duration="8527000" />
+      <workItem from="1485783125634" duration="9933000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -568,7 +578,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="64527000" />
+    <option name="totallyTimeSpent" value="65933000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="0" width="1370" height="754" extended-state="0" />
@@ -812,13 +822,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/user-management.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret line="305" column="24" selection-start-line="305" selection-start-column="24" selection-end-line="305" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/alert.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
@@ -954,10 +957,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/user-management.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="305" column="24" selection-start-line="305" selection-start-column="24" selection-end-line="305" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data-manager/update-settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="244">
+          <caret line="75" column="55" selection-start-line="75" selection-start-column="55" selection-end-line="75" selection-end-column="55" />
+          <folding>
+            <marker date="1485792751914" expanded="true" signature="567:631" ph="SELECT * FRO... user_account" />
+            <marker date="1485792751914" expanded="true" signature="1786:2037" ph="UPDATE `user... " />
+            <marker date="1485792751914" expanded="true" signature="2784:2790" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/customer-page.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="444" column="81" selection-start-line="444" selection-start-column="81" selection-end-line="444" selection-end-column="81" />
+        <state relative-caret-position="370">
+          <caret line="635" column="98" selection-start-line="635" selection-start-column="98" selection-end-line="635" selection-end-column="98" />
           <folding>
             <element signature="n#style#0;n#p#1;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
@@ -970,19 +993,8 @@
             <element signature="n#style#0;n#p#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#2;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#1;n#div#3;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data-manager/update-settings.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="54" column="42" selection-start-line="54" selection-start-column="42" selection-end-line="54" selection-end-column="42" />
-          <folding>
-            <marker date="1485791662714" expanded="true" signature="526:590" ph="SELECT * FRO... user_account" />
-            <marker date="1485791662714" expanded="true" signature="1526:1777" ph="UPDATE `user... " />
-            <marker date="1485791662714" expanded="true" signature="2467:2473" ph="..." />
           </folding>
         </state>
       </provider>
