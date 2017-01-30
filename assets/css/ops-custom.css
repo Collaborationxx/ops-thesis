@@ -12,4 +12,4 @@
 .active-group {background-color: #00a65a;}
 .ops-logo {width: 100%; max-width: 150px; height: auto; }
 .error-box p { text-align: center; font-weight: bold; color: red;}
-.form-group p.err-mess {font-weight: bold; color: red;}
+.form-group.has-error p {color: red;}

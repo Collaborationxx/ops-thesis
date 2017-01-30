@@ -442,7 +442,7 @@ include('data-manager/get-profile.php');
                       <input type="password" class="form-control" name="current_password" placeholder="Enter ..." required>
                     </div>
                     <div class="form-group pass-group">
-                      <p class="error-mess errNewPassReq" style="display: none">+ This is a Required Field</p>
+                      <p class="error-mess errNewPassReq" style="display: none">* This is a Required Field</p>
                       <label>New Password</label>
                       <input type="password" class="form-control" name="new_password" placeholder="Enter ..." required>
                     </div>
@@ -572,6 +572,10 @@ include('data-manager/get-profile.php');
 
     /** update password **/
     $('.update-password').click(function(){
+      $('div#accountSettings-tab-content div.form-group').removeClass('has-error');
+      $('div.error-box p').css('display', 'none');
+      $('p.error-mess').css('display', 'none');
+
         var data = {
           current_username: '<?php echo $_SESSION['username']; ?>',
           username: $(this).closest('div.box').find('input[name="username"]').val(),
@@ -599,24 +603,38 @@ include('data-manager/get-profile.php');
               }
               
               if(aData.errMess2) {
-                console.log('incorrect')
                 $('div#accountSettings-tab-content div.password-group').addClass('has-error');
                 $('div.error-box .errMess2').css('display', 'block');
 
                }
 
               if(aData.errMess){
-                console.log('not match')
                 $('div#accountSettings-tab-content div.pass-group').addClass('has-error');
                 $('div.error-box .errMess').css('display', 'block');
               }
 
-              setTimeout(function(){
-                $('div#accountSettings-tab-content div.form-group').removeClass('has-error');
-                $('div.error-box p').css('display', 'none');
-              }, 3000);
+              if(aData.errNewPass){
+                $('div#accountSettings-tab-content').find('.errNewPassReq').closest('.form-group').addClass('has-error');
+                $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'block');
+                $('div#accountSettings-tab-content').find('.errRePassReq').closest('.form-group').addClass('has-error');
+                $('div#accountSettings-tab-content').find('p.errRePassReq').css('display', 'block');
+              }
 
-            //});
+              if(aData.errCurrPass){
+                $('div#accountSettings-tab-content').find('.errOldPassReq').closest('.form-group').addClass('has-error');
+                $('div#accountSettings-tab-content').find('p.errOldPassReq').css('display', 'block');
+              }
+
+              if(aData.errUsername) {
+                $('div#accountSettings-tab-content').find('.errUsernameReq').closest('.form-group').addClass('has-error');
+                $('div#accountSettings-tab-content').find('p.errUsernameReq').css('display', 'block');
+              }
+
+//              setTimeout(function(){
+//                $('div#accountSettings-tab-content div.form-group').removeClass('has-error');
+//                $('div.error-box p').css('display', 'none');
+//              }, 3000);
+
           },
         });
     });
