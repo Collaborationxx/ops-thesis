@@ -1,3 +1,16 @@
+<?php
+//check if user has session
+session_start();
+if($_SESSION["username"] == null) { //if not redirect to login page
+  header('location: index.php');
+}
+
+include('authentication/functions.php');
+include('data-manager/get-users.php');
+$count = 1;
+
+//echo '<pre>'; print_r($arr); exit;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,14 +69,13 @@
               <!-- The user image in the navbar-->
               <img src="assets/img/person-placeholder_opt.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Hello Admin</span>&nbsp;&nbsp;
+              <span class="hidden-xs">Hello <?php echo $_SESSION['username']; ?></span>&nbsp;&nbsp;
               <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
               <li class="user-header">
                 <img src="assets/img/person-placeholder_opt.jpg" class="img-circle" alt="User Image">
-
                 <p>
                   Alexander Pierce - Web Developer
                   <small>Member since Nov. 2012</small>
@@ -75,7 +87,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -163,20 +175,27 @@
                       <th>Address</th>
                       <th>Contact No.</th>
                       <th>Email</th>
+                      <th>Role</th>
                       <th>Action</th>
                     </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>juan01</td>
-                      <td>Juan Dela Cruz</td>
-                      <td>Bagumbayan</td>
-                      <td>121 3569</td>
-                      <td>juandelacruz@email.com</td>
-                      <td>
-                        <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                        <a href=""><i class="fa fa-trash-o text-danger"></i></a>
-                      </td>
-                    </tr>
+                    <?php if(isset($arr) AND count($arr) > 0): ?>
+                      <?php foreach ($arr as $key => $value): ?>
+                        <tr>
+                          <td name="user-id" style="display: none"></td>
+                          <td><?php echo $count++; ?></td>
+                          <td><?php echo $value['username']; ?></td>
+                          <td><?php echo strtoupper($value['last_name']).", ".$value['first_name']; ?></td>
+                          <td><?php echo $value['address']; ?></td>
+                          <td><?php echo $value['contact_number']; ?></td>
+                          <td><?php echo $value['email']; ?></td>
+                          <td><?php echo userRoles($value['user_role']); ?></td>
+                          <td>
+                            <a href="#" ata-toggle="tooltip" title="Update User Info"><i class="fa fa-pencil text-info edit-user"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="#" ata-toggle="tooltip" title="Delete User"><i class="fa fa-trash-o text-danger delete-user"></i></a>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
+                    <?php endif; ?>
                   </tbody>
                 </table>
               </div>
@@ -305,9 +324,10 @@
 <!-- AdminLTE App -->
 <script src="vendor/dist/js/app.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<script>
+  $(function () {
+
+  });
+</script>
 </body>
 </html>

@@ -10,4 +10,19 @@ function test_input($data) {
   return $data;
 }
 
+function userRoles($role){
+    $user_role = '';
+    switch ($role){
+        case 0:
+            $user_role = 'Staff';
+            break;
+        case 1:
+            $user_role = 'Admin';
+            break;
+        case 2:
+            $user_role = 'Customer';
+    }
+    return $user_role;
+}
+
 ?>
