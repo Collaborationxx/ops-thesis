@@ -331,13 +331,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fname">First Name:</label>
+                                        <label for="fname">* First Name:</label>
                                         <input type="text" class="form-control" name="fname" id="fname" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="lname">Last Name:</label>
+                                        <label for="lname">* Last Name:</label>
                                         <input type="text" class="form-control" name="lname" id="lname" required>
                                     </div>                                
                                 </div>

@@ -10,27 +10,60 @@ $address = test_input($_POST['address']);
 $shipAddress = test_input($_POST['shippingAddress']);
 $contact = test_input($_POST['contact']);
 $email = test_input($_POST['email']);
-$errMess = array('errFname' => '', 'errLname' => '', 'errContact' => '', 'errEmail' => '');
+$errMess = array(
+    'errFname' => '',
+    'errFnameReq' => '',
+    'errLname' => '',
+    'errLnameReq' => '',
+    'errContact' => '',
+    'errContactReq' => '',
+    'errEmail' => '',
+    'errEmailReq' => '',
+    'errAddReq' => '',
+);
 
-if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
-  $errMess['errFname'] = "Only letters and white space allowed"; 
+$response = array();
+
+if(!empty($fname)){
+    if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+        $errMess['errFname'] = true;
+    }
+} else {
+    $errMess['errFnameReq'] = true;
 }
 
-if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
-  $errMess['errLname'] = "Only letters and white space allowed"; 
+if(!empty($lname)){
+    if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
+        $errMess['errLname'] = "Only letters and white space allowed";
+    }
+} else {
+    $errMess['errLnameReq'] = true;
 }
 
-if (!is_numeric($contact)) {
-  $errMess['errContact'] = "invalid mobile number format"; 
+if(!empty($contact)){
+    if (!is_numeric($contact)) {
+        $errMess['errContact'] = "invalid mobile number format";
+    }
+} else {
+    $errMess['errContactReq'] = true;
 }
 
-if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-  $errMess['errEmail'] = "Invalid email format"; 
+if(!empty($email)){
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errMess['errEmail'] = "Invalid email format";
+    }
+} else {
+    $errMess['errEmailReq'] = true;
 }
 
+if(empty($address)){
+    $errMess['errAddReq'] = true;
+}
 
+if($errMess['errFname'] == '' && $errMess['errLname'] == '' && $errMess['errContact'] == '' && $errMess['errEmail'] == ''
+    && $errMess['errFnameReq'] == '' && $errMess['errLnameReq'] == '' && $errMess['errContactReq'] == ''
+    && $errMess['errEmailReq'] == '' && $errMess['errAddReq'] == ''){
 
-if($errMess['errFname'] == '' && $errMess['errLname'] == '' && $errMess['errContact'] == '' && $errMess['errEmail'] == ''){
     $query = "UPDATE
             `user_account`
           SET
@@ -47,11 +80,28 @@ if($errMess['errFname'] == '' && $errMess['errLname'] == '' && $errMess['errCont
         $response = array('status'=>'success');
         header('Content-Type: application/json');
         echo json_encode($response);
-
     }
+
+
+
+
 } else {
-    $response = array('errFname'=> $errMess['errFname'], 'errLname'=> $errMess['errLname'], 'errContact' => $errMess['errContact'], 'errEmail' =>$errMess['errEmail']);
+    $response = array(
+        'errFname' => $errMess['errFname'],
+        'errLname' => $errMess['errLname'],
+        'errContact' => $errMess['errContact'],
+        'errEmail' => $errMess['errEmail'],
+        'errFnameReq' => $errMess['errFnameReq'],
+        'errLnameReq' => $errMess['errLnameReq'],
+        'errContactReq' => $errMess['errContactReq'],
+        'errEmailReq' => $errMess['errEmailReq'],
+        'errAddReq' => $errMess['errAddReq'],
+    );
+
     header('Content-Type: application/json');
     echo json_encode($response);
+
 }
+
+
 

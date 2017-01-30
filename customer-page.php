@@ -87,22 +87,27 @@ include('data-manager/get-profile.php');
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <p class="error-mess errFname" style="display: none;">Only letters and white space allowed</p>
+                            <p class="error-mess errFnameReq" style="display: none;">* First Name is Required</p>
                             <label>First Name</label>
-                            <input type="text" class="form-control" name="fname" value="<?php echo $value['first_name']; ?>" required disabled>
+                            <input type="text" class="form-control" name="fname" value="<?php echo $value['first_name']; ?>" disabled required>
                           </div>
                         </div>
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <p class="error-mess errLname" style="display: none;">Only letters and white space allowed</p>
+                            <p class="error-mess errLnameReq" style="display:none;">* Last Name is Required</p>
                             <label>Last Name</label>
-                            <input type="text" class="form-control" name="lname" value="<?php echo $value['last_name']; ?>" required disabled>
+                            <input type="text" class="form-control" name="lname" value="<?php echo $value['last_name']; ?>" disabled required>
                           </div>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-lg-12 col-xs-12">
                           <div class="form-group">
+                            <p class="error-mess errAddReq" style="display: none">* Home Address is Required</p>
                             <label>Home Address</label>
-                            <textarea class="form-control" rows="3"  name="address" required disabled><?php echo $value['address']; ?></textarea>
+                            <textarea class="form-control" rows="3"  name="address" disabled required><?php echo $value['address']; ?></textarea>
                           </div>
                         </div>
                       </div>
@@ -117,14 +122,18 @@ include('data-manager/get-profile.php');
                        <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <p class="error-mess errContact" style="display: none">Numbers Only</p>
+                            <p class="error-mess errContactReq" style="display: none">* Contact is Required</p>
                             <label>Contact No.</label>
-                            <input type="text" class="form-control" name="contact" value="<?php echo $value['contact_number']; ?>" required disabled>
+                            <input type="text" class="form-control" name="contact" value="<?php echo $value['contact_number']; ?>" disabled required>
                           </div>
                         </div>
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
+                            <p class="error-mess errEmail" style="display: none">Invalid Email</p>
+                            <p class="error-mess errEmailReq" style="display: none">* Email is Required</p>
                             <label>Email</label>
-                            <input type="email" class="form-control" name="email" value="<?php echo $value['email']; ?>" required disabled>
+                            <input type="email" class="form-control" name="email" value="<?php echo $value['email']; ?>" disabled required>
                           </div>
                         </div>
                       </div>
@@ -138,7 +147,7 @@ include('data-manager/get-profile.php');
                       <a href="#" class="btn btn-default pull-right edit-profile-btn"><i class="fa fa-pencil text-warning"></i>   Edit</a>
                     </div>
                     <div class="col-md-6 col-xs-6">
-                      <a href="#" class="btn btn-success pull-left update-profile-btn disabled"><i class="fa fa-save">   Save</i></a>
+                      <button type="submit" class="btn btn-success pull-left update-profile-btn disabled"><i class="fa fa-save">   Save</i></button>
                     </div>
                   </div>
                 </div>
@@ -423,25 +432,29 @@ include('data-manager/get-profile.php');
                       <p class="errMess" style="display: none;">New Password Not Match</p>
                     </div>
                     <div class="form-group username-group">
+                      <p class="error-mess errUsernameReq" style="display: none">* Username is Required</p>
                       <label>Username</label>
                       <input type="text" class="form-control" name ="username" value="<?php echo $value['username']; ?>" required>
                     </div>
                     <div class="form-group password-group">
+                      <p class="error-mess errOldPassReq" style="display: none">* This is a Required Field</p>
                       <label>Old Password</label>
                       <input type="password" class="form-control" name="current_password" placeholder="Enter ..." required>
                     </div>
                     <div class="form-group pass-group">
+                      <p class="error-mess errNewPassReq" style="display: none">+ This is a Required Field</p>
                       <label>New Password</label>
                       <input type="password" class="form-control" name="new_password" placeholder="Enter ..." required>
                     </div>
                     <div class="form-group pass-group">
+                      <p class="error-mess errRePassReq" style="display: none">* This is a Required Field</p>
                       <label>Re-type Password</label>
                       <input type="password" class="form-control" name="retype_password" placeholder="Enter ..." required>
                     </div>
                   </form>  
                 </div>
                 <div class="box-footer">
-                  <button type="button" class="btn btn-info pull-right update-password">Modify</button>
+                  <button type="submit" class="btn btn-info pull-right update-password">Modify</button>
                 </div>
               </div>
             </div>
@@ -477,6 +490,9 @@ include('data-manager/get-profile.php');
     $('.update-profile-btn').click(function (e) {
       e.preventDefault();
 
+      $('div#profile-tab-content div.form-group').removeClass('has-error');
+      $('p.error-mess').css('display', 'none');
+
       var data = { //get the values of inputs
         firstName: $(this).closest('div.box').find('input[name="fname"]').val(), 
         lastName: $(this).closest('div.box').find('input[name="lname"]').val(),
@@ -500,6 +516,56 @@ include('data-manager/get-profile.php');
             $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
             $(this).addClass('disabled'); //disable save button
           }
+
+          if(rData.errFname){
+            $('div#profile-tab-content').find('.errFname').closest('.form-group').addClass('has-error');
+            $('div#profile-tab-content').find('p.errFname').css('display', 'block');
+
+          }
+
+          if(rData.errFnameReq){
+            $('div#profile-tab-content').find('.errFnameReq').closest('.form-group').addClass('has-error');
+            $('div#profile-tab-content').find('p.errFnameReq').css('display', 'block');
+
+          }
+
+          if(rData.errLname){
+            $('div#profile-tab-content').find('.errLname').closest('.form-group').addClass('has-error');
+            $('div#profile-tab-content').find('p.errLname').css('display', 'block');
+
+          }
+
+          if(rData.errLnameReq){
+            $('div#profile-tab-content').find('.errLnameReq').closest('.form-group').addClass('has-error');
+            $('div#profile-tab-content').find('p.errLnameReq').css('display', 'block');
+
+          }
+
+          if(rData.errAddReq){
+            $('div#profile-tab-content').find('.errAddReq').closest('.form-group').addClass('has-error');
+            $('div#profile-tab-content').find('p.errAddReq').css('display', 'block');
+          }
+
+          if(rData.errContact){
+            $('div#profile-tab-content').find('.errContact').closest('.form-group').addClass('has-error');
+            $('div#profile-tab-content').find('p.errContact').css('display', 'block');
+          }
+
+          if(rData.errContactReq){
+            $('div#profile-tab-content').find('.errContactReq').closest('.form-group').addClass('has-error');
+            $('div#profile-tab-content').find('p.errContactReq').css('display', 'block');
+          }
+
+          if(rData.errEmail){
+            $('div#profile-tab-content').find('.errEmail').closest('.form-group').addClass('has-error');
+            $('div#profile-tab-content').find('p.errEmail').css('display', 'block');
+          }
+
+          if(rData.errEmailReq){
+            $('div#profile-tab-content').find('.errEmailReq').closest('.form-group').addClass('has-error');
+            $('div#profile-tab-content').find('p.errEmailReq').css('display', 'block');
+          }
+
         },
       });
     });
