@@ -443,7 +443,7 @@ include('data-manager/get-profile.php');
     </div>
   </div>
 </div>
-<?php $updateProfileURL = "http://$_SERVER[HTTP_HOST]" ?>
+<?php $serverURL = "http://$_SERVER[HTTP_HOST]" ?>
   <!-- jQuery 2.2.3 -->
 <script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -454,20 +454,21 @@ include('data-manager/get-profile.php');
 
 <script>
   $(function () {
-    var updateProfileURL = <?php echo json_encode($updateProfileURL)?>
+    var serverURL = <?php echo json_encode($updateProfileURL)?> // get server url (localhost/webserver)
 
+    /** Edit button Functionality **/
     $('.edit-profile-btn').click(function (e) {
       e.preventDefault();
-      $('.profile-section').find(':input').prop('disabled', false)
-      $('.update-profile-btn').removeClass('disabled');
+      $('.profile-section').find(':input').prop('disabled', false); //enable the input fields for editing
+      $('.update-profile-btn').removeClass('disabled'); //enable save button; save button first state is disabled
     });
 
+    /** Save button functionality  **/
     $('.update-profile-btn').click(function (e) {
       e.preventDefault();
-      $('.profile-section').find(':input').prop('disabled', true);
 
-      var data = {
-        firstName: $(this).closest('div.box').find('input[name="fname"]').val(),
+      var data = { //get the values of inputs
+        firstName: $(this).closest('div.box').find('input[name="fname"]').val(), 
         lastName: $(this).closest('div.box').find('input[name="lname"]').val(),
         address: $(this).closest('div.box').find('textarea[name="address"]').val(),
         shippingAddress: $(this).closest('div.box').find('textarea[name="shipAddress"]').val(),
@@ -475,18 +476,20 @@ include('data-manager/get-profile.php');
         email: $(this).closest('div.box').find('input[name="email"]').val(),
         username : '<?php echo $_SESSION['username']; ?>'
 
-    }
+      }
+      /** POST request via ajax to send data to /data-manager/update-profile.php **/
       $.ajax({
         type: "POST",
-        url: updateProfileURL + '/ops-thesis/data-manager/update-profile.php',
+        url: serverURL + './data-manager/update-profile.php',
         data: data,
         dataType: "json",
         success: function (rData) {
           $.each(rData, function (i,e) {
             if(e.status = 'success'){
-              $('.alert-update-success').css('display', 'block');
-              $('.alert').delay(3000).fadeOut('fast');
-              $(this).addClass('disabled');
+              $('.profile-section').find(':input').prop('disabled', true); //on update success disables inputs
+              $('.alert-update-success').css('display', 'block'); //show success alert
+              $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+              $(this).addClass('disabled'); //disable save button
             }
           });
         },

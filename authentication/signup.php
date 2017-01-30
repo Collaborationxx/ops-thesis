@@ -34,11 +34,11 @@ if(!empty($fname) && !empty($lname) && !empty($password) && !empty($username)) {
             echo("Error description: " . mysqli_error($con));
     }
     $status = 'Success';
-    header("Location: ../page/index.php?status=" . urlencode($message));;
+    header("Location: ../index.php?status=" . urlencode($message));;
 }
 else {
     $message = 'Required Fields';
-    header("Location: ../page/index.php?message=" . urlencode($message));
+    header("Location: ../index.php?message=" . urlencode($message));
 
 }
 
