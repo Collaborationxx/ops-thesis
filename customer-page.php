@@ -454,7 +454,8 @@ include('data-manager/get-profile.php');
 
 <script>
   $(function () {
-    var serverURL = <?php echo json_encode($updateProfileURL)?> // get server url (localhost/webserver)
+    var serverURL = <?php echo json_encode($serverURL)?> // get server url (localhost/webserver)
+    console.log(serverURL);
 
     /** Edit button Functionality **/
     $('.edit-profile-btn').click(function (e) {
