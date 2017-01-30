@@ -1,13 +1,15 @@
 <?php
 include('../config/db_connection.php');
+//include functions.php to test sql injections
+include('../authentication/functions.php');
 
-$username = $_POST['username'];
-$fname = $_POST['firstName'];
-$lname = $_POST['lastName'];
-$address = $_POST['address'];
-$shipAddress = $_POST['shippingAddress'];
-$contact = $_POST['contact'];
-$email = $_POST['email'];
+$username = test_input($_POST['username']);
+$fname = test_input($_POST['firstName']);
+$lname = test_input($_POST['lastName']);
+$address = test_input($_POST['address']);
+$shipAddress = test_input($_POST['shippingAddress']);
+$contact = test_input($_POST['contact']);
+$email = test_input($_POST['email']);
 
 $query = "UPDATE
             `user_account`

@@ -11,3 +11,4 @@
 .signup-group-content { background-color: #ffffff; }
 .active-group {background-color: #00a65a;}
 .ops-logo {width: 100%; max-width: 150px; height: auto; }
+.error-box p { text-align: center; font-weight: bold; color: red;}

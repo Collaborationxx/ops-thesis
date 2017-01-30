@@ -406,6 +406,10 @@ include('data-manager/get-profile.php');
       </div>
       <div id="accountSettings-tab-content" class="tab-pane fade in">
         <div class="panel-body">
+          <div class="alert alert-success alert-dismissable alert-update-settings-success" style="display: none;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Success!</strong> Account settings Updated.
+          </div>
           <div class="row">
             <div class="col-lg-6 col-lg-offset-3 col-xs-12">
               <div class="box box-success">
@@ -414,26 +418,30 @@ include('data-manager/get-profile.php');
                 </div>
                 <div class="box-body">
                   <form role="form">
-                    <div class="form-group">
+                    <div class="error-box">
+                      <p class="errMess2" style="display: none;">Password incorrect!</p>
+                      <p class="errMess" style="display: none;">New Password Not Match</p>
+                    </div>
+                    <div class="form-group username-group">
                       <label>Username</label>
-                      <input type="text" class="form-control" value="<?php echo $value['username']; ?>">
+                      <input type="text" class="form-control" name ="username" value="<?php echo $value['username']; ?>" required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group password-group">
                       <label>Old Password</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
+                      <input type="password" class="form-control" name="current_password" placeholder="Enter ..." required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group pass-group">
                       <label>New Password</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
+                      <input type="password" class="form-control" name="new_password" placeholder="Enter ..." required>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group pass-group">
                       <label>Re-type Password</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
+                      <input type="password" class="form-control" name="retype_password" placeholder="Enter ..." required>
                     </div>
                   </form>  
                 </div>
                 <div class="box-footer">
-                  <button type="button" class="btn btn-info pull-right">Modify</button>
+                  <button type="button" class="btn btn-info pull-right update-password">Modify</button>
                 </div>
               </div>
             </div>
@@ -452,10 +460,11 @@ include('data-manager/get-profile.php');
 
 <script src="vendor/dist/js/app.min.js"></script>
 
+<script src="vendor/js/validator.js"></script>
+
 <script>
   $(function () {
     var serverURL = <?php echo json_encode($serverURL)?> // get server url (localhost/webserver)
-    console.log(serverURL);
 
     /** Edit button Functionality **/
     $('.edit-profile-btn').click(function (e) {
@@ -481,7 +490,7 @@ include('data-manager/get-profile.php');
       /** POST request via ajax to send data to /data-manager/update-profile.php **/
       $.ajax({
         type: "POST",
-        url: serverURL + './data-manager/update-profile.php',
+        url: serverURL + '/ops-thesis/data-manager/update-profile.php',
         data: data,
         dataType: "json",
         success: function (rData) {
@@ -495,6 +504,50 @@ include('data-manager/get-profile.php');
           });
         },
       });
+    });
+
+    /** update password **/
+    $('.update-password').click(function(){
+        var data = {
+          current_username: '<?php echo $_SESSION['username']; ?>',
+          username: $(this).closest('div.box').find('input[name="username"]').val(),
+          current_password: $(this).closest('div.box').find('input[name="current_password"]').val(),
+          new_password: $(this).closest('div.box').find('input[name="new_password"]').val(), 
+          retype_password: $(this).closest('div.box').find('input[name="retype_password"]').val(), 
+        }
+
+        $.ajax({
+          type: "POST",
+          url: serverURL + '/ops-thesis/data-manager/update-settings.php',
+          data: data,
+          dataType: "json",
+          success: function(aData){
+            $.each(aData, function(x,y){
+              console.log(x,y);
+              // if(e.status = 'success'){
+              //   $('.aalert-update-settings-success').css('display', 'block'); //show success alert
+              //   $('.alert').delay(3000).fadeOut('fast');
+              // }
+              
+              if(y.errMess2 = 'Incorrect Password!') {
+                $('div#accountSettings-tab-content div.password-group').addClass('has-error');
+                $('div.error-box .errMess2').css('display', 'block');
+
+               }
+
+              if(y.errMess = 'Password not match!'){
+                $('div#accountSettings-tab-content div.pass-group').addClass('has-error');
+                $('div.error-box .errMess').css('display', 'block');
+              }
+
+              setTimeout(function(){
+                $('div#accountSettings-tab-content div.form-group').removeClass('has-error');
+                $('div.error-box p').css('display', 'none');
+              }, 3000);
+
+            });
+          },
+        });
     });
 
   });

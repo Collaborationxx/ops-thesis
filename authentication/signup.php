@@ -34,7 +34,7 @@ if(!empty($fname) && !empty($lname) && !empty($password) && !empty($username)) {
             echo("Error description: " . mysqli_error($con));
     }
     $status = 'Success';
-    header("Location: ../index.php?status=" . urlencode($message));;
+    header("Location: ../index.php?status=" . urlencode($status));
 }
 else {
     $message = 'Required Fields';
