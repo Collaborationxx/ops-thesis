@@ -522,20 +522,27 @@ include('data-manager/get-profile.php');
           data: data,
           dataType: "json",
           success: function(aData){
-            $.each(aData, function(x,y){
-              console.log(x,y);
-              // if(e.status = 'success'){
-              //   $('.aalert-update-settings-success').css('display', 'block'); //show success alert
-              //   $('.alert').delay(3000).fadeOut('fast');
-              // }
+            console.log(aData)
+
+              if(aData.status){
+                console.log('success')
+                $('.alert-update-settings-success').css('display', 'block'); //show success alert
+                $('.alert').delay(3000).fadeOut('fast');
+                $('div#accountSettings-tab-content').closest('div.box').find('input[name="current_password"]').val('');
+                $('div#accountSettings-tab-content').closest('div.box').find('input[name="new_password"]').val('');
+                $('div#accountSettings-tab-content').closest('div.box').find('input[name="retype_password"]').val('');
+
+              }
               
-              if(y.errMess2 = 'Incorrect Password!') {
+              if(aData.errMess2) {
+                console.log('incorrect')
                 $('div#accountSettings-tab-content div.password-group').addClass('has-error');
                 $('div.error-box .errMess2').css('display', 'block');
 
                }
 
-              if(y.errMess = 'Password not match!'){
+              if(aData.errMess){
+                console.log('not match')
                 $('div#accountSettings-tab-content div.pass-group').addClass('has-error');
                 $('div.error-box .errMess').css('display', 'block');
               }
@@ -545,7 +552,7 @@ include('data-manager/get-profile.php');
                 $('div.error-box p').css('display', 'none');
               }, 3000);
 
-            });
+            //});
           },
         });
     });
