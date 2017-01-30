@@ -528,9 +528,9 @@ include('data-manager/get-profile.php');
                 console.log('success')
                 $('.alert-update-settings-success').css('display', 'block'); //show success alert
                 $('.alert').delay(3000).fadeOut('fast');
-                $('div#accountSettings-tab-content').closest('div.box').find('input[name="current_password"]').val('');
-                $('div#accountSettings-tab-content').closest('div.box').find('input[name="new_password"]').val('');
-                $('div#accountSettings-tab-content').closest('div.box').find('input[name="retype_password"]').val('');
+                $('div#accountSettings-tab-content').find('div.box').find('input[name="current_password"]').val('');
+                $('div#accountSettings-tab-content').find('div.box').find('input[name="new_password"]').val('');
+                $('div#accountSettings-tab-content').find('div.box').find('input[name="retype_password"]').val('');
 
               }
               
