@@ -494,14 +494,12 @@ include('data-manager/get-profile.php');
         data: data,
         dataType: "json",
         success: function (rData) {
-          $.each(rData, function (i,e) {
-            if(e.status = 'success'){
-              $('.profile-section').find(':input').prop('disabled', true); //on update success disables inputs
-              $('.alert-update-success').css('display', 'block'); //show success alert
-              $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
-              $(this).addClass('disabled'); //disable save button
-            }
-          });
+          if(rData.status){
+            $('.profile-section').find(':input').prop('disabled', true); //on update success disables inputs
+            $('.alert-update-success').css('display', 'block'); //show success alert
+            $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+            $(this).addClass('disabled'); //disable save button
+          }
         },
       });
     });
