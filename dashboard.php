@@ -1,3 +1,17 @@
+<?php
+session_start(); 
+$role = $_SESSION['user_role'];
+
+if($_SESSION["username"] == null) { //if not redirect to login page
+  header('location: index.php');
+} else { 
+    if($role != 1){ //prevent other people other than admin in accessing dashboard
+        header('location: index.php');
+    }
+}
+
+include('authentication/functions.php');
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -59,7 +73,7 @@
                             <!-- The user image in the navbar-->
                             <img src="assets/img/person-placeholder_opt.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Hello Admin</span>&nbsp;&nbsp;
+                            <span class="hidden-xs">Hello <?php echo $_SESSION['username']; ?></span>&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu">
@@ -68,8 +82,8 @@
                                 <img src="assets/img/person-placeholder_opt.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    Alexander Pierce - Web Developer
-                                    <small>Member since Nov. 2012</small>
+                                    <?php echo $_SESSION['name']; ?>
+                                    <small><?php echo userRoles($role); ?></small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->

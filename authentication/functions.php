@@ -29,7 +29,7 @@ function landingPage($role) {
   $redir = '';
   switch ($role){
         case 0:
-            $redir = 'staff.php';
+            $redir = 'staff-page.php';
             break;
         case 1:
             $redir = 'dashboard.php';
