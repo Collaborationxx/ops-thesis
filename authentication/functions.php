@@ -10,6 +10,10 @@ function test_input($data) {
   return $data;
 }
 
+/** mask user role to display word value
+ * @param $role int
+ * @return mixed
+ */
 function userRoles($role){
     $user_role = '';
     switch ($role){
@@ -25,6 +29,10 @@ function userRoles($role){
     return $user_role;
 }
 
+/** Set landing page base on user role
+ * @param $role int
+ * @return mixed
+ */
 function landingPage($role) {
   $redir = '';
   switch ($role){
