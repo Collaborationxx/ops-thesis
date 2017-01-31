@@ -64,7 +64,7 @@ if(empty($address)){
     $error['addressEmpty'] = true;
 }
 
-if(empty($role)){
+if(!isset($role)){
     $error['roleEmpty'] = true;
 }
 

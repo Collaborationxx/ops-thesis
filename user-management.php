@@ -189,15 +189,17 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                           <tr class="word-wrapper">
                             <td name="user-id" style="display: none"><?php echo $value['id']; ?></td>
                             <td><?php echo $count++; ?></td>
-                            <td><?php echo $value['username']; ?></td>
+                            <td name="username"><?php echo $value['username']; ?></td>
                             <td><?php echo strtoupper($value['last_name']).", ".$value['first_name']; ?></td>
-                            <td><?php echo $value['address']; ?></td>
-                            <td><?php echo $value['contact_number']; ?></td>
-                            <td><?php echo $value['email']; ?></td>
-                            <td><?php echo userRoles($value['user_role']); ?></td>
+                            <td name="fname" style="display: none"><?php echo $value['first_name']; ?></td>
+                            <td name="lname" style="display: none"><?php echo $value['last_name']; ?></td>
+                            <td name="address"><?php echo $value['address']; ?></td>
+                            <td name="contact"><?php echo $value['contact_number']; ?></td>
+                            <td name="email"><?php echo $value['email']; ?></td>
+                            <td name="role"><?php echo userRoles($value['user_role']); ?></td>
                             <td>
-                              <a href="#" data-toggle="modal" data-target="#add-user-modal" class="edit-user"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                              <a href="#" data-toggle="tooltip" title="Delete User" class="delete-user"><i class="fa fa-trash-o text-danger"></i></a>
+                              <a href="#" data-toggle="tooltip" title="Edit User?" class="edit-user"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                              <a href="#" data-toggle="tooltip" title="Delete User?" class="delete-user"><i class="fa fa-trash-o text-danger"></i></a>
                             </td>
                           </tr>
                         <?php endforeach; ?>
@@ -357,8 +359,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script src="assets/js/bootbox.min.js"></script>
 
 <script>
-  var serverURL = <?php echo json_encode($serverURL)?>
-
   $(document).ready(function () {
       var serverURL = <?php echo json_encode($serverURL); ?>;
 
@@ -379,11 +379,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   dataType: 'json',
                   success: function(rData){
                     if(rData.response){
-                      $('div.delete-success').css('display', 'block');
-                      $('.alert').delay(3000).fadeOut('fast');
-                      setTimeout(function(){
                         location.reload();
-                      }, 3000);
                     }
                   },
                 });
@@ -427,7 +423,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       $('.alert-create-success').css('display', 'block'); //show success alert
                       $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
                       setTimeout(function(){
-                          $('#add-user-modal').modal('hide')
+                          $('#add-user-modal').modal('hide');
+                          location.reload();
                       }, 3200);
                   }
 
@@ -491,6 +488,35 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
 
       });
+
+
+      $(document).on('click', 'a.modify-info', function(){
+          //e.preventDefault();
+          $('div#add-user-modal.modal').modal('show');
+
+          $('div#add-user-modal div.box-header').find('h3').html('Edit Account');
+          var fname = $(this).closest('tr').find('td[name="fname"]').text();
+          var lname = $(this).closest('div.box-body').find('td[name="lname"]').text();
+          var address = $(this).closest('div.box-body').find('td[name="address"]').text();
+          var contact = $(this).closest('div.box-body').find('td[name="contact"]').text();
+          var email = $(this).closest('div.box-body').find('td[name="email"]').val();
+          var user_role = $(this).closest('div.box-body').find('td[name="user-role"]').text();
+          var username = $(this).closest('div.box-body').find('td[name="username"]').text();
+
+          var data = {
+              fname: fname,
+              lname: lname,
+              address: address,
+              contact: contact,
+              email: email,
+              user_role: user_role,
+              username: username,
+          }
+          console.log(data);
+
+
+      });
+
   });
 </script>
 </body>
