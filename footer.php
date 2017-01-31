@@ -410,8 +410,8 @@
      <!-- range slider -->
     <script src="assets/js/jquery-ui.min.js"></script>
 
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/js/validator.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/js/validator.js"></script>
 
      <script>
         $(document).ready(function(){

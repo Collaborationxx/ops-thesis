@@ -21,14 +21,14 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="vendor/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="vendor/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="vendor/dist/css/skins/skin-green.min.css">
+  <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -326,11 +326,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
+<script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="vendor/dist/js/app.min.js"></script>
+<script src="plugins/dist/js/app.min.js"></script>
 <!-- bootbox.js -->
 <script src="assets/js/bootbox.min.js"></script>
 
