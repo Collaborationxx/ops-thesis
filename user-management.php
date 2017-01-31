@@ -166,38 +166,41 @@ $count = 1;
 
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Username</th>
-                      <th>Name</th>
-                      <th>Address</th>
-                      <th>Contact No.</th>
-                      <th>Email</th>
-                      <th>Role</th>
-                      <th>Action</th>
-                    </tr>
-                    <?php if(isset($arr) AND count($arr) > 0): ?>
-                      <?php foreach ($arr as $key => $value): ?>
-                        <tr>
-                          <td name="user-id" style="display: none"></td>
-                          <td><?php echo $count++; ?></td>
-                          <td><?php echo $value['username']; ?></td>
-                          <td><?php echo strtoupper($value['last_name']).", ".$value['first_name']; ?></td>
-                          <td><?php echo $value['address']; ?></td>
-                          <td><?php echo $value['contact_number']; ?></td>
-                          <td><?php echo $value['email']; ?></td>
-                          <td><?php echo userRoles($value['user_role']); ?></td>
-                          <td>
-                            <a href="#" ata-toggle="tooltip" title="Update User Info"><i class="fa fa-pencil text-info edit-user"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="#" ata-toggle="tooltip" title="Delete User"><i class="fa fa-trash-o text-danger delete-user"></i></a>
-                          </td>
-                        </tr>
-                      <?php endforeach; ?>
-                    <?php endif; ?>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Username</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Contact No.</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Action</th>
+                      </tr>
+                      <?php if(isset($arr) AND count($arr) > 0): ?>
+                        <?php foreach ($arr as $key => $value): ?>
+                          <tr class="word-wrapper">
+                            <td name="user-id" style="display: none"></td>
+                            <td><?php echo $count++; ?></td>
+                            <td><?php echo $value['username']; ?></td>
+                            <td><?php echo strtoupper($value['last_name']).", ".$value['first_name']; ?></td>
+                            <td><?php echo $value['address']; ?></td>
+                            <td><?php echo $value['contact_number']; ?></td>
+                            <td><?php echo $value['email']; ?></td>
+                            <td><?php echo userRoles($value['user_role']); ?></td>
+                            <td>
+                              <a href="#" ata-toggle="tooltip" title="Update User Info"><i class="fa fa-pencil text-info edit-user"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                              <a href="#" ata-toggle="tooltip" title="Delete User"><i class="fa fa-trash-o text-danger delete-user"></i></a>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>
+                    </tbody>
+                  </table>
+                </div>
+
               </div>
               <div class="box-footer">
                 <div class="row">

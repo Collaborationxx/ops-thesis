@@ -156,22 +156,24 @@
                 </div>
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Reservation ID</th>
-                      <th>Date Ordered</th>
-                      <th>Payment Status</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td><a href="reservation-information.php">OPS-43-34</a></td>
-                      <td>01/10/17</td>
-                      <td>Full</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Reservation ID</th>
+                        <th>Date Ordered</th>
+                        <th>Payment Status</th>
+                      </tr>
+                      <tr>
+                        <td>1.</td>
+                        <td><a href="reservation-information.php">OPS-43-34</a></td>
+                        <td>01/10/17</td>
+                        <td>Full</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>  
               </div>
               <div class="box-footer">
                 <div class="row">

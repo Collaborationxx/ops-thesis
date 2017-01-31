@@ -159,22 +159,24 @@
 
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Customer</th>
-                      <th>Reservation</th>
-                      <th>Reservation Date</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Louie Francisco</td>
-                      <td>1 Wheelchair</td>
-                      <td>01/10/17</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Customer</th>
+                        <th>Reservation</th>
+                        <th>Reservation Date</th>
+                      </tr>
+                      <tr>
+                        <td>1.</td>
+                        <td>Louie Francisco</td>
+                        <td>1 Wheelchair</td>
+                        <td>01/10/17</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>  
               </div>
               <div class="box-footer">
                 <div class="row">

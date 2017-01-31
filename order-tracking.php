@@ -180,22 +180,24 @@
 
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <th>Order ID</th>
-                      <th>Tracking Number</th>
-                      <th>Customer Name</th>
-                      <th>Date Sent</th>
-                    </tr>
-                    <tr>
-                      <td>OPS-45-345</td>
-                      <td>OPS-S4-34</td>
-                      <td>Rubie Domingo</td>
-                      <td>December 18, 2016</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th>Order ID</th>
+                        <th>Tracking Number</th>
+                        <th>Customer Name</th>
+                        <th>Date Sent</th>
+                      </tr>
+                      <tr>
+                        <td>OPS-45-345</td>
+                        <td>OPS-S4-34</td>
+                        <td>Rubie Domingo</td>
+                        <td>December 18, 2016</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div class="box-footer">
                 <div class="row">

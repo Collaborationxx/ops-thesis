@@ -154,8 +154,9 @@
 
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tbody>
                     <tr>
                       <th style="width: 10px">#</th>
                       <th>Item</th>
@@ -175,8 +176,9 @@
                         <a href=""><i class="fa fa-trash-o text-danger"></i></a>
                       </td>
                     </tr>
-                  </tbody>
-                </table>
+                    </tbody>
+                  </table>
+                </div>
               </div>
               <div class="box-footer">
                 <div class="row">

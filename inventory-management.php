@@ -154,29 +154,31 @@
 
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Product ID</th>
-                      <th>Product Name</th>
-                      <th>Quantity
-                      <th>Last Re-stock Date</th>
-                      <th>Action</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>OPS-34-65</td>
-                      <td>Wheel Chair</td>
-                      <td>10</td>
-                      <td>December 18, 2016</td>
-                      <td>
-                        <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                        <a href=""><i class="fa fa-trash-o text-danger"></i></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Product ID</th>
+                        <th>Product Name</th>
+                        <th>Quantity
+                        <th>Last Re-stock Date</th>
+                        <th>Action</th>
+                      </tr>
+                      <tr>
+                        <td>1.</td>
+                        <td>OPS-34-65</td>
+                        <td>Wheel Chair</td>
+                        <td>10</td>
+                        <td>December 18, 2016</td>
+                        <td>
+                          <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
+                          <a href=""><i class="fa fa-trash-o text-danger"></i></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>  
               </div>
               <div class="box-footer">
                 <div class="row">

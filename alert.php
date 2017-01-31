@@ -150,24 +150,26 @@
                 <h3 class="box-title"><i class="fa fa-bell"></i>   Alert</h3>
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Product Name</th>
-                      <th>Quantity Left</th>
-                      <th width=25%;>Action</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Wheelchair</td>
-                      <td>4</td>
-                      <td>
-                         <a href="inventory-management.php"><i class="fa fa-plus"></i>  <b>Restock</b></a>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Product Name</th>
+                        <th>Quantity Left</th>
+                        <th width=25%;>Action</th>
+                      </tr>
+                      <tr>
+                        <td>1.</td>
+                        <td>Wheelchair</td>
+                        <td>4</td>
+                        <td>
+                           <a href="inventory-management.php"><i class="fa fa-plus"></i>  <b>Restock</b></a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>  
               </div>
               <div class="box-footer">
                 <div class="row">
