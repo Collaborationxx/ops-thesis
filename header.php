@@ -1,4 +1,9 @@
-<?php session_start(); ?>
+<?php
+session_start();
+
+include('authentication/functions.php');
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -71,7 +76,7 @@
                                                 <li class="dropdown">
                                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="customer-page.php"><i class="fa fa-cogs"></i>My Account</a></li>
+                                                        <li><a href="<?php echo landingPage($_SESSION['user_role']); ?>"><i class="fa fa-cogs"></i>My Account</a></li>
                                                         <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
                                                     </ul>
                                                 </li>

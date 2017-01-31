@@ -30,7 +30,6 @@ $row = mysqli_fetch_assoc($result);
 
 // If result matched $username and $password
 if($row) {
-    print_r($row);
     // Register $username, $password and redirect to file "admin-dashboard.php"
     $role = $row['user_role'];
     $_SESSION["username"] = $username;

@@ -25,4 +25,19 @@ function userRoles($role){
     return $user_role;
 }
 
+function landingPage($role) {
+  $redir = '';
+  switch ($role){
+        case 0:
+            $redir = 'staff.php';
+            break;
+        case 1:
+            $redir = 'dashboard.php';
+            break;
+        case 2:
+            $redir = 'customer-page.php';
+    }
+  return $redir;
+}
+
 ?>

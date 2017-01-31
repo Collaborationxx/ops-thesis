@@ -182,7 +182,7 @@ $count = 1;
                       <?php if(isset($arr) AND count($arr) > 0): ?>
                         <?php foreach ($arr as $key => $value): ?>
                           <tr class="word-wrapper">
-                            <td name="user-id" style="display: none"></td>
+                            <td name="user-id" style="display: none"><?php echo $value['id']; ?></td>
                             <td><?php echo $count++; ?></td>
                             <td><?php echo $value['username']; ?></td>
                             <td><?php echo strtoupper($value['last_name']).", ".$value['first_name']; ?></td>
@@ -191,8 +191,8 @@ $count = 1;
                             <td><?php echo $value['email']; ?></td>
                             <td><?php echo userRoles($value['user_role']); ?></td>
                             <td>
-                              <a href="#" ata-toggle="tooltip" title="Update User Info"><i class="fa fa-pencil text-info edit-user"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                              <a href="#" ata-toggle="tooltip" title="Delete User"><i class="fa fa-trash-o text-danger delete-user"></i></a>
+                              <a href="#" ata-toggle="tooltip" title="Update User Info" class="edit-user"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                              <a href="#" ata-toggle="tooltip" title="Delete User" class="delete-user"><i class="fa fa-trash-o text-danger"></i></a>
                             </td>
                           </tr>
                         <?php endforeach; ?>
@@ -328,8 +328,25 @@ $count = 1;
 <script src="vendor/dist/js/app.min.js"></script>
 
 <script>
-  $(function () {
+  var serverURL = <?php echo json_encode($serverURL)?>
 
+  $(function () {
+      $('body').on('click', 'a.delete-user', function(){
+          var data = {
+              id: $(this).closest('tr').find('td[name="user-id"]').text(),
+          }
+
+          $.ajax({
+            type: 'POST',
+            url: serverURL + '/ops-thesis/data-manager/delete-user.php',
+            data: data,
+            dataType: 'json',
+            success: function(){
+
+            },
+
+          });
+      });
   });
 </script>
 </body>

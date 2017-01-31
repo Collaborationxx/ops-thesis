@@ -178,7 +178,7 @@
                       </tr>
                     </tbody>
                   </table>
-                </div>  
+                </div  
               </div>
               <div class="box-footer">
                 <div class="row">
