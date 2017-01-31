@@ -8,6 +8,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 include('authentication/functions.php');
 include('data-manager/get-users.php');
 $count = 1;
+$serverURL = "http://$_SERVER[HTTP_HOST]";
 
 //echo '<pre>'; print_r($arr); exit;
 ?>
@@ -155,6 +156,10 @@ $count = 1;
 
     <!-- Main content -->
     <section class="content">
+        <div class="alert alert-success alert-dismissable delete-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong> Record Deleted.
+        </div>
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
@@ -326,27 +331,43 @@ $count = 1;
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="vendor/dist/js/app.min.js"></script>
+<!-- bootbox.js -->
+<script src="assets/js/bootbox.min.js"></script>
 
 <script>
   var serverURL = <?php echo json_encode($serverURL)?>
 
   $(function () {
+
       $('body').on('click', 'a.delete-user', function(){
-          var data = {
-              id: $(this).closest('tr').find('td[name="user-id"]').text(),
-          }
 
-          $.ajax({
-            type: 'POST',
-            url: serverURL + '/ops-thesis/data-manager/delete-user.php',
-            data: data,
-            dataType: 'json',
-            success: function(){
+          bootbox.confirm({
+            size: 'small',
+            message: 'Delete record?',
+            callback: function(result){
+              if(result == true){
+                var data = {
+                  id: $(this).closest('tr').find('td[name="user-id"]').text(),
+                }
 
-            },
+                $.ajax({
+                  type: 'POST',
+                  url: serverURL + '/ops-thesis/data-manager/delete-users.php',
+                  data: data,
+                  dataType: 'json',
+                  success: function(rData){
+                    if(rData.response){
+                      $('div.delete-success').css('display', 'block');
+                      $('.alert').delay(3000).fadeOut('fast');
+                    }
+                  },
 
-          });
+                });
+            }
+          },
+        });    
       });
+
   });
 </script>
 </body>

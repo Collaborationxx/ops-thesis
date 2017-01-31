@@ -6,6 +6,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('data-manager/get-profile.php');
+$serverURL = "http://$_SERVER[HTTP_HOST]";
 
 //echo '<pre>'; print_r($arr); exit;
 ?>
@@ -465,7 +466,6 @@ include('data-manager/get-profile.php');
     </div>
   </div>
 </div>
-<?php $serverURL = "http://$_SERVER[HTTP_HOST]" ?>
   <!-- jQuery 2.2.3 -->
 <script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
