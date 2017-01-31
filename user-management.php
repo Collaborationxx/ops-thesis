@@ -196,8 +196,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                             <td><?php echo $value['email']; ?></td>
                             <td><?php echo userRoles($value['user_role']); ?></td>
                             <td>
-                              <a href="#" ata-toggle="tooltip" title="Update User Info" class="edit-user"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                              <a href="#" ata-toggle="tooltip" title="Delete User" class="delete-user"><i class="fa fa-trash-o text-danger"></i></a>
+                              <a href="#" data-toggle="modal" data-target="#add-user-modal" class="edit-user"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                              <a href="#" data-toggle="tooltip" title="Delete User" class="delete-user"><i class="fa fa-trash-o text-danger"></i></a>
                             </td>
                           </tr>
                         <?php endforeach; ?>
@@ -246,78 +246,100 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">New Account</h4>
+        <h4 class="modal-title">OPS</h4>
       </div>
       <div class="modal-body">
+      <div class="alert alert-success alert-dismissable alert-create-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Success!</strong> New user created.
+      </div>
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <div class="box-header with-border">
                   <h3 class="box-title">New Account</h3>
-                </div>
-                <div class="box-body">
-                  <form role="form">
+              </div>
+              <div class="box-body">
+                <form role="form" method="post">
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
                         <div class="form-group">
+                          <p class="errMess invalidFname" style="display: none">Only letters and white space allowed</p>
+                          <p class="errMess fnameReq" style="display: none">*First Name is Required</p>
                           <label>First Name:</label>
-                          <input type="text" class="form-control" name="fname" placeholder="Enter ...">
+                          <input type="text" class="form-control" name="fname" placeholder="Enter ..." required>
                         </div>
                       </div>
                       <div class="col-md-6 col-xs-12">
                         <div class="form-group">
+                            <p class="errMess invalidLname" style="display: none">Only letters and white space allowed</p>
+                            <p class="errMess lnameReq" style="display: none">*Last Name is Required</p>
                           <label>Last Name:</label>
-                          <input type="text" class="form-control" name="lname" placeholder="Enter ...">
+                          <input type="text" class="form-control" name="lname" placeholder="Enter ..." required>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                            <p class="errMess addReq" style="display: none">*Address is Required</p>
                           <label>Address:</label>
-                          <textarea rows="3" class="form-control" name="address" placeholder="Enter..."></textarea> 
+                          <textarea rows="3" class="form-control" name="address" placeholder="Enter..." required></textarea>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
                         <div class="form-group">
+                            <p class="invalidContact" style="display: none">Numbers without white space only.</p>
+                            <p class="contactReq" style="display: none">*This is a Required Field</p>
                           <label>Contact No.:</label>
-                          <input type="text" class="form-control" name="contact" placeholder="Enter ...">
+                          <input type="text" class="form-control" name="contact" placeholder="Enter ..." required>
                         </div>
                       </div>
                       <div class="col-md-6 col-xs-12">
                         <div class="form-group">
+                            <p class="errMess invalidEmail" style="display: none">Invalid Email</p>
+                            <p class="errMess emailReq" style="display: none">*This is a Required Field</p>
                           <label>Email:</label>
-                          <input type="email" class="form-control" name="email" placeholder="Enter ...">
+                          <input type="email" class="form-control" name="email" placeholder="Enter ..." required>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                            <p class="errMess usernameReq" style="display: none">*This is a Required Field</p>
                           <label>Username:</label>
-                          <input type="text" class="form-control" name="username" placeholder="Enter...">
+                          <input type="text" class="form-control" name="username" placeholder="Enter..." required>
+                        </div>
                       </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="form-group">
+                                <p class=" errMess roleReq" style="display: none">*This is a Required Field</p>
+                                <label>User Role:</label>
+                                <select class="form-control" id="user-role">
+                                    <option value="">-- Chose one --</option>
+                                    <option value="1">Admin</option>
+                                    <option value="0">Staff</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                       <div class="col-md-12 col-xs-12">
-                        <div class="form-group">
-                          <label>User Role:</label>
-                          <input type="text" class="form-control" name="role" placeholder="1:Admin I 2:Staff">
+                        <button type="submit" class="btn btn-info pull-right modify-info" style="display: none">Modify</button>
+                        <button type="submit" class="btn btn-success pull-right new-user">Save</button>
                       </div>
                     </div>
-                  </form>
-                </div>
-                <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Save</button>
-                </div>
+              </form>
+            </div>
             </div>
           </div>
-        </div>
         </div> 
-    </div>
+      </div>
 
   </div>
 </div>
@@ -337,9 +359,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script>
   var serverURL = <?php echo json_encode($serverURL)?>
 
-  $(function () {
+  $(document).ready(function () {
+      var serverURL = <?php echo json_encode($serverURL); ?>;
 
-      $('body').on('click', 'a.delete-user', function(){
+      $(document).on('click', 'a.delete-user', function(){
           var data = {
             id: $(this).closest('tr').find('td[name="user-id"]').text(),
           } 
@@ -369,6 +392,105 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         });    
       });
 
+      $(document).on('click', '.new-user', function(e){
+          e.preventDefault();
+
+          $('div#add-user-modal div.form-group').removeClass('has-error');
+          $('p.errMess').css('display', 'none');
+          var fname = $(this).closest('div.box-body').find('input[name="fname"]').val();
+          var lname = $(this).closest('div.box-body').find('input[name="lname"]').val();
+          var address = $(this).closest('div.box-body').find('textarea[name="address"]').val();
+          var contact = $(this).closest('div.box-body').find('input[name="contact"]').val();
+          var email = $(this).closest('div.box-body').find('input[name="email"]').val();
+          var user_role = $(this).closest('div.box-body').find('select#user-role').val();
+          var username = $(this).closest('div.box-body').find('input[name="username"]').val();
+
+          var data = {
+              fname: fname,
+              lname: lname,
+              address: address,
+              contact: contact,
+              email: email,
+              user_role: user_role,
+              username: username,
+          }
+          console.log(data);
+
+          $.ajax({
+              type: "POST",
+              url: serverURL + '/ops-thesis/data-manager/add-user.php',
+              data: data,
+              dataType: "json",
+              success: function(rData){
+                  console.log(rData)
+                  if(rData.status){
+                      $('.alert-create-success').css('display', 'block'); //show success alert
+                      $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+                      setTimeout(function(){
+                          $('#add-user-modal').modal('hide')
+                      }, 3200);
+                  }
+
+                  if(rData.invalidFname){
+                      $('#add-user-modal').find('.invalidFname').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.invalidFname').css('display', 'block');
+                  }
+
+                  if(rData.fnameEmpty){
+                      $('#add-user-modal').find('.fnameReq').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.fnameReq').css('display', 'block');
+                  }
+
+                  if(rData.invalidLname){
+                      $('#add-user-modal').find('.invalidLname').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.invalidLname').css('display', 'block');
+                  }
+
+                  if(rData.lnameEmpty){
+                      $('#add-user-modal').find('.lnameReq').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.lnameReq').css('display', 'block');
+                  }
+
+                  if(rData.address){
+                      $('#add-user-modal').find('.addReq').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.addReq').css('display', 'block');
+                  }
+
+                  if(rData.roleEmpty){
+                      $('#add-user-modal').find('.roleReq').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.roleReq').css('display', 'block');
+                  }
+
+                  if(rData.contactEmpty){
+                      $('#add-user-modal').find('.contactReq').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.contactReq').css('display', 'block');
+                  }
+
+                  if(rData.invalidContact) {
+                      $('#add-user-modal').find('.invalidContact').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.invalidContact').css('display', 'block');
+                  }
+
+                  if(rData.emailEmpty){
+                      $('#add-user-modal').find('.emailReq').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.emailReq').css('display', 'block');
+                  }
+
+                  if(rData.invalidEmail) {
+                      $('#add-user-modal').find('.invalidEmail').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.invalidEmail').css('display', 'block');
+                  }
+
+                  if(rData.usernameEmpty){
+                      $('#add-user-modal').find('.usernameReq').closest('.form-group').addClass('has-error');
+                      $('#add-user-modal').find('p.usernameReq').css('display', 'block');
+                  }
+
+              },
+          });
+
+
+      });
   });
 </script>
 </body>
