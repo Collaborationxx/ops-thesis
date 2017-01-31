@@ -340,16 +340,15 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   $(function () {
 
       $('body').on('click', 'a.delete-user', function(){
+          var data = {
+            id: $(this).closest('tr').find('td[name="user-id"]').text(),
+          } 
 
           bootbox.confirm({
             size: 'small',
             message: 'Delete record?',
             callback: function(result){
               if(result == true){
-                var data = {
-                  id: $(this).closest('tr').find('td[name="user-id"]').text(),
-                }
-
                 $.ajax({
                   type: 'POST',
                   url: serverURL + '/ops-thesis/data-manager/delete-users.php',
@@ -359,9 +358,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     if(rData.response){
                       $('div.delete-success').css('display', 'block');
                       $('.alert').delay(3000).fadeOut('fast');
+                      setTimeout(function(){
+                        location.reload();
+                      }, 3000);
                     }
                   },
-
                 });
             }
           },
