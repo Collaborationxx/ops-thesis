@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OPS | Print Order</title>
+  <title>OPS | New Order</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -24,6 +24,7 @@
   <![endif]-->
 
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
+  <link rel="shortcut icon" href="assets/images/ops.png" />
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
@@ -95,12 +96,12 @@
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
-          <a href="dashboard.php">
+          <a href="dashboard.html">
           <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="user-management.php">
+          <a href="user-management.html">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>
@@ -110,7 +111,7 @@
           <span>Product Catalog</span></a>
         </li>
         <li>
-          <a href="order-tracking.php">
+          <a href="order-tracking.html">
           <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
           <span>Order Tracking</span></a>
         </li>
@@ -120,7 +121,7 @@
           <span>Inventory</span></a>
         </li>
         <li>
-          <a href="reports.php">
+          <a href="reports.html">
           <img src="assets/images/analytics.png" class="ops-sidebar-img">
           <span>Reports</span></a>
         </li>
@@ -138,12 +139,9 @@
         Order Management
         <small>Control Panel</small>
       </h1>
-      <!--<button class="btn btn-default btn-sm pull-right back-btn"><a href="new-order.php">Back to Order Page</a></button>-->
       <ol class="breadcrumb">
-       <li><a href="dashboard.php">Home</a></li>
-       <li><a href="new-order.php">New Orders</a></li>
-       <li class="active">Print Orders</li>
-     </ol>
+       <li><a href="dashboard.html">Home</a></li>
+       <li class="active">New Orders</li>
     </section>
 
     <!-- Main content -->
@@ -154,29 +152,28 @@
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-shopping-bag"></i>   New Orders</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-default btn-sm print-btn"><i class="fa fa-print"></i>&nbsp;&nbsp;Print for Delivery</button>
+                 <a href="print-order.html" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
                 </div>
-
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Customer</th>
-                      <th>Orders</th>
-                      <th>Order Date</th>
-                      <th>Shipping Destination</th>
-                    </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Louie Francisco</td>
-                      <td>1 Wheelchair</td>
-                      <td>01/10/17</td>
-                      <td>San Miguel, Bulacan</td>
-                    </tr>
-                  </tbody>
-                </table>
+                <div class="table-responsive">
+                  <table class="table table-striped">
+                    <tbody>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Order ID</th>
+                        <th>Date Ordered</th>
+                        <th>Payment Status</th>
+                      </tr>
+                      <tr>
+                        <td>1.</td>
+                        <td><a href="order-information.html">OPS-43-34</a></td>
+                        <td>01/10/17</td>
+                        <td>Paid</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>  
               </div>
               <div class="box-footer">
                 <div class="row">
@@ -217,6 +214,9 @@
 <!-- AdminLTE App -->
 <script src="vendor/dist/js/app.min.js"></script>
 
-
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
 </body>
 </html>
