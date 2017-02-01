@@ -8,6 +8,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 include('authentication/functions.php');
 include('data-manager/get-users.php');
 $count = 1;
+$serverURL = "http://$_SERVER[HTTP_HOST]";
 
 //echo '<pre>'; print_r($arr); exit;
 ?>
@@ -20,14 +21,14 @@ $count = 1;
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
-  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="plugins/bootstrap/css/bootstrap.min.css">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="vendor/ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="vendor/dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="vendor/dist/css/skins/skin-green.min.css">
+  <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
+  <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -155,13 +156,17 @@ $count = 1;
 
     <!-- Main content -->
     <section class="content">
+        <div class="alert alert-success alert-dismissable delete-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong> Record Deleted.
+        </div>
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-user"></i>   Accounts</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#add-user-modal"><i class="fa fa-plus" ></i>&nbsp;&nbsp;New Account</button>
+                  <button type="button" class="btn btn-default btn-sm btn-new" data-toggle="modal" data-target="#add-user-modal"><i class="fa fa-plus" ></i>&nbsp;&nbsp;New Account</button>
                 </div>
 
               </div>
@@ -184,15 +189,17 @@ $count = 1;
                           <tr class="word-wrapper">
                             <td name="user-id" style="display: none"><?php echo $value['id']; ?></td>
                             <td><?php echo $count++; ?></td>
-                            <td><?php echo $value['username']; ?></td>
+                            <td name="username"><?php echo $value['username']; ?></td>
                             <td><?php echo strtoupper($value['last_name']).", ".$value['first_name']; ?></td>
-                            <td><?php echo $value['address']; ?></td>
-                            <td><?php echo $value['contact_number']; ?></td>
-                            <td><?php echo $value['email']; ?></td>
-                            <td><?php echo userRoles($value['user_role']); ?></td>
+                            <td name="fname" style="display: none"><?php echo $value['first_name']; ?></td>
+                            <td name="lname" style="display: none"><?php echo $value['last_name']; ?></td>
+                            <td name="address"><?php echo $value['address']; ?></td>
+                            <td name="contact"><?php echo $value['contact_number']; ?></td>
+                            <td name="email"><?php echo $value['email']; ?></td>
+                            <td name="role"><?php echo userRoles($value['user_role']); ?></td>
                             <td>
-                              <a href="#" ata-toggle="tooltip" title="Update User Info" class="edit-user"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                              <a href="#" ata-toggle="tooltip" title="Delete User" class="delete-user"><i class="fa fa-trash-o text-danger"></i></a>
+                              <a href="#" data-toggle="tooltip" title="Edit User?" class="edit-user"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                              <a href="#" data-toggle="tooltip" title="Delete User?" class="delete-user"><i class="fa fa-trash-o text-danger"></i></a>
                             </td>
                           </tr>
                         <?php endforeach; ?>
@@ -241,78 +248,105 @@ $count = 1;
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">New Account</h4>
+        <h4 class="modal-title">OPS</h4>
       </div>
       <div class="modal-body">
+      <div class="alert alert-success alert-dismissable alert-create-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Success!</strong> New user created.
+      </div>
+      <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong>Success!</strong> Record Updated.
+      </div>
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <div class="box-header with-border">
                   <h3 class="box-title">New Account</h3>
-                </div>
-                <div class="box-body">
-                  <form role="form">
+              </div>
+              <div class="box-body">
+                <form role="form" method="post">
+                    <input name="user-id" style="display: none" value="">
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
                         <div class="form-group">
+                          <p class="errMess invalidFname" style="display: none">Only letters and white space allowed</p>
+                          <p class="errMess fnameReq" style="display: none">*First Name is Required</p>
                           <label>First Name:</label>
-                          <input type="text" class="form-control" name="fname" placeholder="Enter ...">
+                          <input type="text" class="form-control" name="fname" placeholder="Enter ..." required>
                         </div>
                       </div>
                       <div class="col-md-6 col-xs-12">
                         <div class="form-group">
+                            <p class="errMess invalidLname" style="display: none">Only letters and white space allowed</p>
+                            <p class="errMess lnameReq" style="display: none">*Last Name is Required</p>
                           <label>Last Name:</label>
-                          <input type="text" class="form-control" name="lname" placeholder="Enter ...">
+                          <input type="text" class="form-control" name="lname" placeholder="Enter ..." required>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                            <p class="errMess addReq" style="display: none">*Address is Required</p>
                           <label>Address:</label>
-                          <textarea rows="3" class="form-control" name="address" placeholder="Enter..."></textarea> 
+                          <textarea rows="3" class="form-control" name="address" placeholder="Enter..." required></textarea>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
                         <div class="form-group">
+                            <p class="invalidContact" style="display: none">Numbers without white space only.</p>
+                            <p class="contactReq" style="display: none">*This is a Required Field</p>
                           <label>Contact No.:</label>
-                          <input type="text" class="form-control" name="contact" placeholder="Enter ...">
+                          <input type="text" class="form-control" name="contact" placeholder="Enter ..." required>
                         </div>
                       </div>
                       <div class="col-md-6 col-xs-12">
                         <div class="form-group">
+                            <p class="errMess invalidEmail" style="display: none">Invalid Email</p>
+                            <p class="errMess emailReq" style="display: none">*This is a Required Field</p>
                           <label>Email:</label>
-                          <input type="email" class="form-control" name="email" placeholder="Enter ...">
+                          <input type="email" class="form-control" name="email" placeholder="Enter ..." required>
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                            <p class="errMess usernameReq" style="display: none">*This is a Required Field</p>
                           <label>Username:</label>
-                          <input type="text" class="form-control" name="username" placeholder="Enter...">
+                          <input type="text" class="form-control" name="username" placeholder="Enter..." required>
+                        </div>
                       </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="form-group">
+                                <p class=" errMess roleReq" style="display: none">*This is a Required Field</p>
+                                <label>User Role:</label>
+                                <select class="form-control" id="user-role">
+                                    <option value="">-- Chose one --</option>
+                                    <option value="1">Admin</option>
+                                    <option value="0">Staff</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
                       <div class="col-md-12 col-xs-12">
-                        <div class="form-group">
-                          <label>User Role:</label>
-                          <input type="text" class="form-control" name="role" placeholder="1:Admin I 2:Staff">
+                        <button type="submit" class="btn btn-info pull-right modify-info" style="display: none">Modify</button>
+                        <button type="submit" class="btn btn-success pull-right new-user">Save</button>
                       </div>
                     </div>
-                  </form>
-                </div>
-                <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Save</button>
-                </div>
+              </form>
+            </div>
             </div>
           </div>
-        </div>
         </div> 
-    </div>
+      </div>
 
   </div>
 </div>
@@ -321,32 +355,306 @@ $count = 1;
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery 2.2.3 -->
-<script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
+<script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="vendor/dist/js/app.min.js"></script>
+<script src="plugins/dist/js/app.min.js"></script>
+<!-- bootbox.js -->
+<script src="assets/js/bootbox.min.js"></script>
 
 <script>
-  var serverURL = <?php echo json_encode($serverURL)?>
+  $(document).ready(function () {
+      var serverURL = <?php echo json_encode($serverURL); ?>;
 
-  $(function () {
-      $('body').on('click', 'a.delete-user', function(){
+      $(document).on('click', 'a.delete-user', function(){
           var data = {
-              id: $(this).closest('tr').find('td[name="user-id"]').text(),
+            id: $(this).closest('tr').find('td[name="user-id"]').text(),
+          } 
+
+          bootbox.confirm({
+            size: 'small',
+            message: 'Delete record?',
+            callback: function(result){
+              if(result == true){
+                $.ajax({
+                  type: 'POST',
+                  url: serverURL + '/ops-thesis/data-manager/delete-users.php',
+                  data: data,
+                  dataType: 'json',
+                  success: function(rData){
+                    if(rData.response){
+                        location.reload();
+                    }
+                  },
+                });
+            }
+          },
+        });    
+      });
+
+      $(document).on('click', '.new-user', function(e){
+        e.preventDefault();
+        var button = $(this);
+        $('div#add-user-modal div.form-group').removeClass('has-error');
+        $('p.errMess').css('display', 'none');
+        $('div#add-user-modal div.box-header').find('h3').html('New Account');
+        var fname = $(button).closest('div.box-body').find('input[name="fname"]').val();
+        var lname = $(button).closest('div.box-body').find('input[name="lname"]').val();
+        var address = $(button).closest('div.box-body').find('textarea[name="address"]').val();
+        var contact = $(button).closest('div.box-body').find('input[name="contact"]').val();
+        var email = $(button).closest('div.box-body').find('input[name="email"]').val();
+        var user_role = $(button).closest('div.box-body').find('select#user-role').val();
+        var username = $(button).closest('div.box-body').find('input[name="username"]').val();
+
+        var data = {
+          fname: fname,
+          lname: lname,
+          address: address,
+          contact: contact,
+          email: email,
+          user_role: user_role,
+          username: username,
+        }
+        console.log(data);
+
+        $.ajax({
+          type: "POST",
+          url: serverURL + '/ops-thesis/data-manager/add-user.php',
+          data: data,
+          dataType: "json",
+          success: function(rData){
+            console.log(rData)
+            if(rData.status){
+              $('.alert-create-success').css('display', 'block'); //show success alert
+              $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+              setTimeout(function(){
+                $('#add-user-modal').modal('hide');
+                location.reload();
+              }, 3200);
+            }
+
+            if(rData.invalidFname){
+              $('#add-user-modal').find('.invalidFname').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.invalidFname').css('display', 'block');
+            }
+
+            if(rData.fnameEmpty){
+              $('#add-user-modal').find('.fnameReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.fnameReq').css('display', 'block');
+            }
+
+            if(rData.invalidLname){
+              $('#add-user-modal').find('.invalidLname').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.invalidLname').css('display', 'block');
+            }
+
+            if(rData.lnameEmpty){
+              $('#add-user-modal').find('.lnameReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.lnameReq').css('display', 'block');
+            }
+
+            if(rData.address){
+              $('#add-user-modal').find('.addReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.addReq').css('display', 'block');
+            }
+
+            if(rData.roleEmpty){
+              $('#add-user-modal').find('.roleReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.roleReq').css('display', 'block');
+            }
+
+            if(rData.contactEmpty){
+              $('#add-user-modal').find('.contactReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.contactReq').css('display', 'block');
+            }
+
+            if(rData.invalidContact) {
+              $('#add-user-modal').find('.invalidContact').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.invalidContact').css('display', 'block');
+            }
+
+            if(rData.emailEmpty){
+              $('#add-user-modal').find('.emailReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.emailReq').css('display', 'block');
+            }
+
+            if(rData.invalidEmail) {
+              $('#add-user-modal').find('.invalidEmail').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.invalidEmail').css('display', 'block');
+            }
+
+            if(rData.usernameEmpty){
+              $('#add-user-modal').find('.usernameReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.usernameReq').css('display', 'block');
+            }
+
+          },
+        });
+
+      });
+
+
+      $(document).on('click', 'a.edit-user', function(){
+          $('.modify-info').css('display', 'block');
+          $('.new-user').css('display', 'none');
+          var modal = $('div#add-user-modal.modal.fade');
+          $('div#add-user-modal div.box-header').find('h3').html('Edit Account');
+          var id =  $(this).closest('tr').find('td[name="user-id"]').text();
+          var fname = $(this).closest('tr').find('td[name="fname"]').text();
+          var lname = $(this).closest('tr').find('td[name="lname"]').text();
+          var address = $(this).closest('tr').find('td[name="address"]').text();
+          var contact = $(this).closest('tr').find('td[name="contact"]').text();
+          var email = $(this).closest('tr').find('td[name="email"]').text();
+          var user_role = $(this).closest('tr').find('td[name="role"]').text();
+          var username = $(this).closest('tr').find('td[name="username"]').text();
+
+          var data = {
+          id: id,
+          fname: fname,
+          lname: lname,
+          address: address,
+          contact: contact,
+          email: email,
+          user_role: user_role,
+          username: username,
+        }
+        console.log(data);
+
+          var role = '';
+          if(user_role = 'Admin'){
+            role = 1;
+          } else if(user_role = 'Staff'){
+            role = 0;
+          } else {
+            role =2
           }
 
-          $.ajax({
-            type: 'POST',
-            url: serverURL + '/ops-thesis/data-manager/delete-user.php',
-            data: data,
-            dataType: 'json',
-            success: function(){
+        $(modal).modal('show');
+        $(modal).on('shown.bs.modal', function () {
+          $(modal).find('.modal-body input[name="fname"]').val(fname);
+          $(modal).find('.modal-body input[name="lname"]').val(lname);
+          $(modal).find('.modal-body textarea[name="address"]').val(address);
+          $(modal).find('.modal-body input[name="contact"]').val(contact);
+          $(modal).find('.modal-body input[name="email"]').val(email);
+          $(modal).find('.modal-body select#user-role').val(role);
+          $(modal).find('.modal-body input[name="username"]').val(username);
+          $(modal).find('.modal-body input[name="user-id"]').val(id);
+        });
 
-            },
 
-          });
       });
+
+    $(document).on('click', '.btn-new', function(){
+      $('.modify-info').css('display', 'none');
+      $('.new-user').css('display', 'block');
+    });
+
+
+    $(document).on('click', '.modify-info', function(e){
+      e.preventDefault();
+
+      var button = $(this);
+      $('div#add-user-modal div.form-group').removeClass('has-error');
+      $('p.errMess').css('display', 'none');
+      $('div#add-user-modal div.box-header').find('h3').html('New Account');
+      var id =  $(this).closest('div.box-body').find('input[name="user-id"]').val();
+      var fname = $(button).closest('div.box-body').find('input[name="fname"]').val();
+      var lname = $(button).closest('div.box-body').find('input[name="lname"]').val();
+      var address = $(button).closest('div.box-body').find('textarea[name="address"]').val();
+      var contact = $(button).closest('div.box-body').find('input[name="contact"]').val();
+      var email = $(button).closest('div.box-body').find('input[name="email"]').val();
+      var user_role = $(button).closest('div.box-body').find('select#user-role').val();
+      var username = $(button).closest('div.box-body').find('input[name="username"]').val();
+
+      var data = {
+        id: id,
+        fname: fname,
+        lname: lname,
+        address: address,
+        contact: contact,
+        email: email,
+        user_role: user_role,
+        username: username,
+      }
+      console.log(data);
+
+      $.ajax({
+        type: "POST",
+        url: serverURL + '/ops-thesis/data-manager/edit-user.php',
+        data: data,
+        dataType: "json",
+        success: function(rData){
+          console.log(rData)
+          if(rData.status){
+            $('.alert-update-success').css('display', 'block'); //show success alert
+            $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+            setTimeout(function(){
+              $('#add-user-modal').modal('hide');
+              location.reload();
+            }, 3200);
+          }
+
+          if(rData.invalidFname){
+            $('#add-user-modal').find('.invalidFname').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.invalidFname').css('display', 'block');
+          }
+
+          if(rData.fnameEmpty){
+            $('#add-user-modal').find('.fnameReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.fnameReq').css('display', 'block');
+          }
+
+          if(rData.invalidLname){
+            $('#add-user-modal').find('.invalidLname').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.invalidLname').css('display', 'block');
+          }
+
+          if(rData.lnameEmpty){
+            $('#add-user-modal').find('.lnameReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.lnameReq').css('display', 'block');
+          }
+
+          if(rData.address){
+            $('#add-user-modal').find('.addReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.addReq').css('display', 'block');
+          }
+
+          if(rData.roleEmpty){
+            $('#add-user-modal').find('.roleReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.roleReq').css('display', 'block');
+          }
+
+          if(rData.contactEmpty){
+            $('#add-user-modal').find('.contactReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.contactReq').css('display', 'block');
+          }
+
+          if(rData.invalidContact) {
+            $('#add-user-modal').find('.invalidContact').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.invalidContact').css('display', 'block');
+          }
+
+          if(rData.emailEmpty){
+            $('#add-user-modal').find('.emailReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.emailReq').css('display', 'block');
+          }
+
+          if(rData.invalidEmail) {
+            $('#add-user-modal').find('.invalidEmail').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.invalidEmail').css('display', 'block');
+          }
+
+          if(rData.usernameEmpty){
+            $('#add-user-modal').find('.usernameReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.usernameReq').css('display', 'block');
+          }
+
+        },
+      });
+
+    });
+
   });
 </script>
 </body>

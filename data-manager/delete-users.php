@@ -1,7 +1,6 @@
 <?php
 include('../config/db_connection.php');
 
-$tableName = $_POST['table_name'];
 $id = $_POST['id'];
 
 $sql = "DELETE FROM `user_account` WHERE id = '$id' ";
