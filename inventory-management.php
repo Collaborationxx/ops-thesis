@@ -336,7 +336,7 @@ include('authentication/functions.php');
               dataType: 'json',
               success: function(rData){
                 if(rData.response){
-                  //location.reload();
+                  location.reload();
                 }
               },
             });

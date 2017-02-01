@@ -1,5 +1,5 @@
 <?php
-include('../config/db_connection.php');
+include('./config/db_connection.php');
 //include functions.php to test sql injections
 include('../authentication/functions.php');
 
