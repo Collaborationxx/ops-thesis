@@ -1,3 +1,16 @@
+<?php
+session_start();
+$role = $_SESSION['user_role'];
+
+if($_SESSION["username"] == null) { //if not redirect to login page
+  header('location: index.php');
+} else {
+  if($role != 1){ //prevent other people other than admin in accessing dashboard
+    header('location: index.php');
+  }
+}
+
+?>
 <!DOCTYPE html>
 <html>
 <head>

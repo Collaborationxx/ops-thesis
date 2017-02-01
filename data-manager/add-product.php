@@ -34,13 +34,12 @@ if(!empty($price)){
 if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($error['priceEmpty']) && empty($error['invalidPrice'])){
     $query = "INSERT INTO `product` (name, description, price, picture, category) VALUES ('$name', '$desc', $price, '$photo_name', $category)";
     if(mysqli_query($con, $query)){
-        echo 1;
         $response = array('status'=>'success');
         $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $photo));
         file_put_contents($dir.$photo_name, $data);
 
     }
-    echo $query;
+
     header('Content-Type: application/json');
     echo json_encode($response);
 } else {

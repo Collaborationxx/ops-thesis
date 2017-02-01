@@ -1,3 +1,21 @@
+<?php
+session_start();
+$role = $_SESSION['user_role'];
+$count = 1;
+$serverURL = "http://$_SERVER[HTTP_HOST]";
+
+if($_SESSION["username"] == null) { //if not redirect to login page
+  header('location: index.php');
+} else {
+  if($role != 1){ //prevent other people other than admin in accessing dashboard
+    header('location: index.php');
+  }
+}
+
+include('data-manager/get-inventory.php');
+include('data-manager/get-products.php');
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -165,17 +183,25 @@
                         <th>Last Re-stock Date</th>
                         <th>Action</th>
                       </tr>
-                      <tr>
-                        <td>1.</td>
-                        <td>OPS-34-65</td>
-                        <td>Wheel Chair</td>
-                        <td>10</td>
-                        <td>December 18, 2016</td>
-                        <td>
-                          <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                          <a href=""><i class="fa fa-trash-o text-danger"></i></a>
-                        </td>
-                      </tr>
+                      <?php if(isset($inventory) AND count($inventory) > 0): ?>
+                        <?php foreach ($inventory as $key => $value): ?>
+                          <tr>
+                            <td><?php echo $count++; ?></td>
+                            <td>OPS-2017-0<?php echo $value['id']; ?></td>
+                            <td><?php echo $value['product_id']; ?></td>
+                            <td><?php echo $value['quantity']; ?></td>
+                            <td><?php echo $value['stock_date']; ?></td>
+                            <td>
+                              <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                              <a href=""><i class="fa fa-trash-o text-danger"></i></a>
+                            </td>
+                          </tr>
+                        <?php endforeach; ?>
+                      <?php else: ?>
+                          <tr>
+                            <td colspan="6" style="text-align: center"><b>No Records Found.</b></td>
+                          </tr>
+                      <?php endif; ?>
                     </tbody>
                   </table>
                 </div>  
@@ -235,10 +261,12 @@
                         <div class="form-group">
                           <label>Product Name:</label>
                           <select class="form-control">
-                          <option>--Choose Product--</option>
-                          <option>Wheelchair</option>
-                          <option>Oxygen</option>
-                          <option>Nebulizer</option>
+                            <option value="">--Choose Product--</option>
+                            <?php if(isset($arr) AND count($arr) > 0): ?>
+                                <?php foreach ($arr as $key => $value): ?>
+                                    <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                           </select>
                         </div>
                       </div>
@@ -251,14 +279,14 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-12 col-xs-12">
-                        <div class="form-group">
-                          <label>Re-stock Date:</label>
-                          <input type="text" class="form-control" name="date-restock" placeholder="Enter...">
-                        </div>
-                      </div>
-                    </div>
+<!--                    <div class="row">-->
+<!--                      <div class="col-md-12 col-xs-12">-->
+<!--                        <div class="form-group">-->
+<!--                          <label>Re-stock Date:</label>-->
+<!--                          <input type="text" class="form-control" name="date-restock" placeholder="Enter...">-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
                   </form>
                 </div>
                 <div class="box-footer">
