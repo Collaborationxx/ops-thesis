@@ -294,7 +294,7 @@ nav>ul:nth-child(2){float: right;}
 .submenu .list-type-1 .fa{font-size: 13px; color: #cacaca!important; margin: 0 7px 0 0;}
 
 /*submenu full width*/
-.submenu{position: absolute; width: 100%; background: #fff; left: 0; top: 100%; border: 1px #f2f2f2 solid; display: none;}
+.submenu{position: absolute; width: 100%; background: #1C8F01; left: 0; top: 100%; border: 1px #f2f2f2 solid; display: none;}
 @media (min-width: 1200px) {
     .submenu.left-align{left: 0!important; margin: 0!important;}
     .submenu.right-align{left: auto!important; right: 0; margin: 0!important;}

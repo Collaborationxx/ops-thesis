@@ -15,9 +15,10 @@ include("header.php");
                                     <div class="divider">...</div>
                                     <a href="#" class="square-button"><i class="fa fa-angle-right"></i></a>
                                 </div>
+
                                 <div class="shop-grid-controls">
                                     <div class="entry">
-                                        <div class="inline-text">Sorty by</div>
+                                        <div class="inline-text">Sort by</div>
                                         <div class="simple-drop-down">
                                             <select>
                                                 <option>Price</option>
@@ -311,7 +312,7 @@ include("header.php");
                                 </div>
                             </div>
 
-                            <div class="information-blocks">
+                            <!--<div class="information-blocks">
                                 <div class="block-title size-2">Sort by sizes</div>
                                 <div class="range-wrapper">
                                     <div id="prices-range"></div>
@@ -323,7 +324,7 @@ include("header.php");
                                     </div>
                                     <a class="button style-14">filter</a>
                                 </div>
-                            </div>
+                            </div>-->
 
                           
 

@@ -110,28 +110,17 @@ include('authentication/functions.php');
                             <nav>
                                 <ul>
                                     <li class="full-width">
-                                        <a href="#" class="active">Home</a><i class="fa fa-chevron-down"></i>
+                                        <a href="index.php" class="active" style="text-decoration: none; margin-left: -20px;">Home</a></i>
                                         
                                     </li>
                                   
-                                    <li class="simple-list">
-                                        <a href="product.html">Products</a><i class="fa fa-chevron-down"></i>
+                                    <li class="simple-list" style="margin-left: 15px">
+                                        <a style="text-decoration: none;">Products</a><i class="fa fa-chevron-down"></i>
                                         <div class="submenu">
                                             <ul class="simple-menu-list-column">
                                                
-                                                <li><a href="product.html"><i class="fa fa-angle-right"></i>Product</a></li>
-                                               
-                                            </ul>
-                                        </div>
-                                    </li>
-                                  
-                                   
-                                    <li class="simple-list">
-                                        <a>More</a><i class="fa fa-chevron-down"></i>
-                                        <div class="submenu">
-                                            <ul class="simple-menu-list-column">
-                                                <li><a href="login.html"><i class="fa fa-angle-right"></i>Login</a></li>
-                                              
+                                               <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>Always on Hand</a></li>
+                                               <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>For Reservation</a></li>
                                             </ul>
                                         </div>
                                     </li>
