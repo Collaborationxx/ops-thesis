@@ -341,7 +341,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="contact">Contact No.:</label>
-                                        <input type="text" class="form-control" name="contact" id="contact" required>
+                                        <input type="text" class="form-control" name="contact" id="contact" maxlength="13" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
