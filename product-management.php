@@ -195,7 +195,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                           <td name="prod-desc"><?php echo $value['description']; ?></td>
                           <td name="prod-price"><?php echo $value['price']; ?></td>
                           <td name="prod-category" data-id="<?php echo $value['category']; ?>"><?php echo category($value['category']); ?></td>
-                          <td name="prod-photo" class="table-pic"><img id="prod-pic" src="assets/images/<?php echo $value['picture'];?>"></td>
+                          <td name="prod-photo" class="table-pic"><img id="prod-pic" src="assets/images/products/<?php echo $value['picture'];?>"></td>
+                          <td name="photo_name" style="display: none"><?php echo $value['picture'];?></td>
                           <td>
                             <a href="#" data-toggle="tooltip" title="Edit Product" class="edit-product"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
                             <a href="#" data-toggle="tooltip" title="Delete Product" class="delete-product"><i class="fa fa-trash-o text-danger"></i></a>
@@ -408,7 +409,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       var price =  parseFloat($(this).closest('div.box').find('.box-body input[name="price"]').val()).toFixed(2);
       var desc = $(this).closest('div.box').find('.box-body textarea[name="product-description"]').val();
       var photo = $(this).closest('div.box').find('.box-body img#prod-img').attr('src');
-      var photo_name = $(this).closest('div.box').find('.box-body .image-name').val()
+      var photo_name = $(this).closest('div.box').find('.box-body .image-name').val();
       var modal = $('div#add-product-modal');
 
 
@@ -504,7 +505,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       var product = $(this).closest('tr').find('td[name="prod-name"]').text();
       var price =  parseFloat($(this).closest('tr').find('td[name="prod-price"]').text()).toFixed(2);
       var desc = $(this).closest('tr').find('td[name="prod-desc"]').text();
-      //var photo = $(this).closest('tr').find('.box-body img#prod-img').attr('src');
+      var photo = $(this).closest('tr').find('img#prod-pic').attr('src');
+      var photo_name = $(this).closest('tr').find('td[name="photo_name"]').text();
       var modal = $('div#add-product-modal.fade');
 
       $(modal).modal('show');
@@ -514,6 +516,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         $(modal).find('.modal-body textarea[name="product-description"]').val(desc);
         $(modal).find('.modal-body input[name="price"]').val(price);
         $(modal).find('.modal-body select#prod-category').val(category);
+        $(modal).find('.modal-body .image-name').val(photo_name);
+        $(modal).find('.modal-body img#prod-img').css('display','block');
+        $(modal).find('.modal-body img#prod-img').attr('src', photo);
+
+
       });
     });
 
@@ -536,6 +543,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       var price =  parseFloat($(this).closest('div.box').find('.box-body input[name="price"]').val()).toFixed(2);
       var desc = $(this).closest('div.box').find('.box-body textarea[name="product-description"]').val();
       var photo = $(this).closest('div.box').find('.box-body img#prod-img').attr('src');
+      var photo_name = $(this).closest('div.box').find('.box-body .image-name').val();
       var modal = $('div#add-product-modal');
 
       var data = {
@@ -545,6 +553,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         price: price,
         desc: desc,
         photo: photo,
+        photo_name: photo_name,
       }
 
       console.log(data)

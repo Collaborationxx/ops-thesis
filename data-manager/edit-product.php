@@ -8,6 +8,7 @@ $desc = $_POST['desc'];
 $price = $_POST['price'];
 $category = $_POST['category'];
 $photo = $_POST['photo'];
+$photo_name = $_POST['photo_name'];
 $response = array();
 $error = array(
     'categoryEmpty' => '',
@@ -16,6 +17,7 @@ $error = array(
     'invalidPhoto' => '',
     'invalidPrice' => '',
 );
+$dir = '../assets/images/products/';
 
 if(empty($category)){
     $error['categoryEmpty'] = true;
@@ -38,6 +40,7 @@ if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($err
                   name = '$name',
                   description = '$desc',
                   price = $price,
+                  picture = '$photo_name',
                   category = $category
               WHERE
                   id = $id
@@ -45,6 +48,7 @@ if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($err
 
     if(mysqli_query($con, $query)){
         $response = array('status'=>'success');
+        file_put_contents($dir.$photo_name, file_get_contents($photo));
     }
     header('Content-Type: application/json');
     echo json_encode($response);
