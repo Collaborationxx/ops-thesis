@@ -166,7 +166,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-user"></i>   Accounts</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#add-user-modal"><i class="fa fa-plus" ></i>&nbsp;&nbsp;New Account</button>
+                  <button type="button" class="btn btn-default btn-sm btn-new" data-toggle="modal" data-target="#add-user-modal"><i class="fa fa-plus" ></i>&nbsp;&nbsp;New Account</button>
                 </div>
 
               </div>
@@ -255,6 +255,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
           <strong>Success!</strong> New user created.
       </div>
+      <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong>Success!</strong> Record Updated.
+      </div>
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
@@ -263,6 +267,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               </div>
               <div class="box-body">
                 <form role="form" method="post">
+                    <input name="user-id" style="display: none" value="">
                     <div class="row">
                       <div class="col-md-6 col-xs-12">
                         <div class="form-group">
@@ -389,133 +394,266 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       });
 
       $(document).on('click', '.new-user', function(e){
-          e.preventDefault();
+        e.preventDefault();
+        var button = $(this);
+        $('div#add-user-modal div.form-group').removeClass('has-error');
+        $('p.errMess').css('display', 'none');
+        $('div#add-user-modal div.box-header').find('h3').html('New Account');
+        var fname = $(button).closest('div.box-body').find('input[name="fname"]').val();
+        var lname = $(button).closest('div.box-body').find('input[name="lname"]').val();
+        var address = $(button).closest('div.box-body').find('textarea[name="address"]').val();
+        var contact = $(button).closest('div.box-body').find('input[name="contact"]').val();
+        var email = $(button).closest('div.box-body').find('input[name="email"]').val();
+        var user_role = $(button).closest('div.box-body').find('select#user-role').val();
+        var username = $(button).closest('div.box-body').find('input[name="username"]').val();
 
-          $('div#add-user-modal div.form-group').removeClass('has-error');
-          $('p.errMess').css('display', 'none');
-          var fname = $(this).closest('div.box-body').find('input[name="fname"]').val();
-          var lname = $(this).closest('div.box-body').find('input[name="lname"]').val();
-          var address = $(this).closest('div.box-body').find('textarea[name="address"]').val();
-          var contact = $(this).closest('div.box-body').find('input[name="contact"]').val();
-          var email = $(this).closest('div.box-body').find('input[name="email"]').val();
-          var user_role = $(this).closest('div.box-body').find('select#user-role').val();
-          var username = $(this).closest('div.box-body').find('input[name="username"]').val();
+        var data = {
+          fname: fname,
+          lname: lname,
+          address: address,
+          contact: contact,
+          email: email,
+          user_role: user_role,
+          username: username,
+        }
+        console.log(data);
 
-          var data = {
-              fname: fname,
-              lname: lname,
-              address: address,
-              contact: contact,
-              email: email,
-              user_role: user_role,
-              username: username,
-          }
-          console.log(data);
+        $.ajax({
+          type: "POST",
+          url: serverURL + '/ops-thesis/data-manager/add-user.php',
+          data: data,
+          dataType: "json",
+          success: function(rData){
+            console.log(rData)
+            if(rData.status){
+              $('.alert-create-success').css('display', 'block'); //show success alert
+              $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+              setTimeout(function(){
+                $('#add-user-modal').modal('hide');
+                location.reload();
+              }, 3200);
+            }
 
-          $.ajax({
-              type: "POST",
-              url: serverURL + '/ops-thesis/data-manager/add-user.php',
-              data: data,
-              dataType: "json",
-              success: function(rData){
-                  console.log(rData)
-                  if(rData.status){
-                      $('.alert-create-success').css('display', 'block'); //show success alert
-                      $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
-                      setTimeout(function(){
-                          $('#add-user-modal').modal('hide');
-                          location.reload();
-                      }, 3200);
-                  }
+            if(rData.invalidFname){
+              $('#add-user-modal').find('.invalidFname').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.invalidFname').css('display', 'block');
+            }
 
-                  if(rData.invalidFname){
-                      $('#add-user-modal').find('.invalidFname').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.invalidFname').css('display', 'block');
-                  }
+            if(rData.fnameEmpty){
+              $('#add-user-modal').find('.fnameReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.fnameReq').css('display', 'block');
+            }
 
-                  if(rData.fnameEmpty){
-                      $('#add-user-modal').find('.fnameReq').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.fnameReq').css('display', 'block');
-                  }
+            if(rData.invalidLname){
+              $('#add-user-modal').find('.invalidLname').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.invalidLname').css('display', 'block');
+            }
 
-                  if(rData.invalidLname){
-                      $('#add-user-modal').find('.invalidLname').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.invalidLname').css('display', 'block');
-                  }
+            if(rData.lnameEmpty){
+              $('#add-user-modal').find('.lnameReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.lnameReq').css('display', 'block');
+            }
 
-                  if(rData.lnameEmpty){
-                      $('#add-user-modal').find('.lnameReq').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.lnameReq').css('display', 'block');
-                  }
+            if(rData.address){
+              $('#add-user-modal').find('.addReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.addReq').css('display', 'block');
+            }
 
-                  if(rData.address){
-                      $('#add-user-modal').find('.addReq').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.addReq').css('display', 'block');
-                  }
+            if(rData.roleEmpty){
+              $('#add-user-modal').find('.roleReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.roleReq').css('display', 'block');
+            }
 
-                  if(rData.roleEmpty){
-                      $('#add-user-modal').find('.roleReq').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.roleReq').css('display', 'block');
-                  }
+            if(rData.contactEmpty){
+              $('#add-user-modal').find('.contactReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.contactReq').css('display', 'block');
+            }
 
-                  if(rData.contactEmpty){
-                      $('#add-user-modal').find('.contactReq').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.contactReq').css('display', 'block');
-                  }
+            if(rData.invalidContact) {
+              $('#add-user-modal').find('.invalidContact').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.invalidContact').css('display', 'block');
+            }
 
-                  if(rData.invalidContact) {
-                      $('#add-user-modal').find('.invalidContact').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.invalidContact').css('display', 'block');
-                  }
+            if(rData.emailEmpty){
+              $('#add-user-modal').find('.emailReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.emailReq').css('display', 'block');
+            }
 
-                  if(rData.emailEmpty){
-                      $('#add-user-modal').find('.emailReq').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.emailReq').css('display', 'block');
-                  }
+            if(rData.invalidEmail) {
+              $('#add-user-modal').find('.invalidEmail').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.invalidEmail').css('display', 'block');
+            }
 
-                  if(rData.invalidEmail) {
-                      $('#add-user-modal').find('.invalidEmail').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.invalidEmail').css('display', 'block');
-                  }
+            if(rData.usernameEmpty){
+              $('#add-user-modal').find('.usernameReq').closest('.form-group').addClass('has-error');
+              $('#add-user-modal').find('p.usernameReq').css('display', 'block');
+            }
 
-                  if(rData.usernameEmpty){
-                      $('#add-user-modal').find('.usernameReq').closest('.form-group').addClass('has-error');
-                      $('#add-user-modal').find('p.usernameReq').css('display', 'block');
-                  }
-
-              },
-          });
-
+          },
+        });
 
       });
 
 
-      $(document).on('click', 'a.modify-info', function(){
-          //e.preventDefault();
-          $('div#add-user-modal.modal').modal('show');
-
+      $(document).on('click', 'a.edit-user', function(){
+          $('.modify-info').css('display', 'block');
+          $('.new-user').css('display', 'none');
+          var modal = $('div#add-user-modal.modal.fade');
           $('div#add-user-modal div.box-header').find('h3').html('Edit Account');
+          var id =  $(this).closest('tr').find('td[name="user-id"]').text();
           var fname = $(this).closest('tr').find('td[name="fname"]').text();
-          var lname = $(this).closest('div.box-body').find('td[name="lname"]').text();
-          var address = $(this).closest('div.box-body').find('td[name="address"]').text();
-          var contact = $(this).closest('div.box-body').find('td[name="contact"]').text();
-          var email = $(this).closest('div.box-body').find('td[name="email"]').val();
-          var user_role = $(this).closest('div.box-body').find('td[name="user-role"]').text();
-          var username = $(this).closest('div.box-body').find('td[name="username"]').text();
+          var lname = $(this).closest('tr').find('td[name="lname"]').text();
+          var address = $(this).closest('tr').find('td[name="address"]').text();
+          var contact = $(this).closest('tr').find('td[name="contact"]').text();
+          var email = $(this).closest('tr').find('td[name="email"]').text();
+          var user_role = $(this).closest('tr').find('td[name="role"]').text();
+          var username = $(this).closest('tr').find('td[name="username"]').text();
 
           var data = {
-              fname: fname,
-              lname: lname,
-              address: address,
-              contact: contact,
-              email: email,
-              user_role: user_role,
-              username: username,
+          id: id,
+          fname: fname,
+          lname: lname,
+          address: address,
+          contact: contact,
+          email: email,
+          user_role: user_role,
+          username: username,
+        }
+        console.log(data);
+
+          var role = '';
+          if(user_role = 'Admin'){
+            role = 1;
+          } else if(user_role = 'Staff'){
+            role = 0;
+          } else {
+            role =2
           }
-          console.log(data);
+
+        $(modal).modal('show');
+        $(modal).on('shown.bs.modal', function () {
+          $(modal).find('.modal-body input[name="fname"]').val(fname);
+          $(modal).find('.modal-body input[name="lname"]').val(lname);
+          $(modal).find('.modal-body textarea[name="address"]').val(address);
+          $(modal).find('.modal-body input[name="contact"]').val(contact);
+          $(modal).find('.modal-body input[name="email"]').val(email);
+          $(modal).find('.modal-body select#user-role').val(role);
+          $(modal).find('.modal-body input[name="username"]').val(username);
+          $(modal).find('.modal-body input[name="user-id"]').val(id);
+        });
 
 
       });
+
+    $(document).on('click', '.btn-new', function(){
+      $('.modify-info').css('display', 'none');
+      $('.new-user').css('display', 'block');
+    });
+
+
+    $(document).on('click', '.modify-info', function(e){
+      e.preventDefault();
+
+      var button = $(this);
+      $('div#add-user-modal div.form-group').removeClass('has-error');
+      $('p.errMess').css('display', 'none');
+      $('div#add-user-modal div.box-header').find('h3').html('New Account');
+      var id =  $(this).closest('div.box-body').find('input[name="user-id"]').val();
+      var fname = $(button).closest('div.box-body').find('input[name="fname"]').val();
+      var lname = $(button).closest('div.box-body').find('input[name="lname"]').val();
+      var address = $(button).closest('div.box-body').find('textarea[name="address"]').val();
+      var contact = $(button).closest('div.box-body').find('input[name="contact"]').val();
+      var email = $(button).closest('div.box-body').find('input[name="email"]').val();
+      var user_role = $(button).closest('div.box-body').find('select#user-role').val();
+      var username = $(button).closest('div.box-body').find('input[name="username"]').val();
+
+      var data = {
+        id: id,
+        fname: fname,
+        lname: lname,
+        address: address,
+        contact: contact,
+        email: email,
+        user_role: user_role,
+        username: username,
+      }
+      console.log(data);
+
+      $.ajax({
+        type: "POST",
+        url: serverURL + '/ops-thesis/data-manager/edit-user.php',
+        data: data,
+        dataType: "json",
+        success: function(rData){
+          console.log(rData)
+          if(rData.status){
+            $('.alert-update-success').css('display', 'block'); //show success alert
+            $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+            setTimeout(function(){
+              $('#add-user-modal').modal('hide');
+              location.reload();
+            }, 3200);
+          }
+
+          if(rData.invalidFname){
+            $('#add-user-modal').find('.invalidFname').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.invalidFname').css('display', 'block');
+          }
+
+          if(rData.fnameEmpty){
+            $('#add-user-modal').find('.fnameReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.fnameReq').css('display', 'block');
+          }
+
+          if(rData.invalidLname){
+            $('#add-user-modal').find('.invalidLname').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.invalidLname').css('display', 'block');
+          }
+
+          if(rData.lnameEmpty){
+            $('#add-user-modal').find('.lnameReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.lnameReq').css('display', 'block');
+          }
+
+          if(rData.address){
+            $('#add-user-modal').find('.addReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.addReq').css('display', 'block');
+          }
+
+          if(rData.roleEmpty){
+            $('#add-user-modal').find('.roleReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.roleReq').css('display', 'block');
+          }
+
+          if(rData.contactEmpty){
+            $('#add-user-modal').find('.contactReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.contactReq').css('display', 'block');
+          }
+
+          if(rData.invalidContact) {
+            $('#add-user-modal').find('.invalidContact').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.invalidContact').css('display', 'block');
+          }
+
+          if(rData.emailEmpty){
+            $('#add-user-modal').find('.emailReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.emailReq').css('display', 'block');
+          }
+
+          if(rData.invalidEmail) {
+            $('#add-user-modal').find('.invalidEmail').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.invalidEmail').css('display', 'block');
+          }
+
+          if(rData.usernameEmpty){
+            $('#add-user-modal').find('.usernameReq').closest('.form-group').addClass('has-error');
+            $('#add-user-modal').find('p.usernameReq').css('display', 'block');
+          }
+
+        },
+      });
+
+    });
 
   });
 </script>
