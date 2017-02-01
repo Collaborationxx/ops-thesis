@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 28, 2017 at 06:27 PM
+-- Generation Time: Feb 01, 2017 at 01:35 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -74,10 +74,29 @@ CREATE TABLE IF NOT EXISTS `product` (
   `name` varchar(255) NOT NULL,
   `description` varchar(255) NOT NULL,
   `price` float(255,2) NOT NULL,
-  `product_picture` blob NOT NULL,
+  `picture` text NOT NULL,
   `category` int(2) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`id`, `name`, `description`, `price`, `picture`, `category`) VALUES
+(1, 'bp monitor', 'bp ', 850.00, 'Blood-Pressure-Monitor.jpg', 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `product_gallery`
+--
+
+CREATE TABLE IF NOT EXISTS `product_gallery` (
+  `product_id` int(11) NOT NULL,
+  `photo` blob NOT NULL,
+  PRIMARY KEY (`product_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -111,16 +130,17 @@ CREATE TABLE IF NOT EXISTS `user_account` (
   `user_role` tinyint(1) NOT NULL COMMENT '0=staff; 1=admin; 2 = customer',
   PRIMARY KEY (`id`),
   UNIQUE KEY `username` (`username`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=29 ;
 
 --
 -- Dumping data for table `user_account`
 --
 
 INSERT INTO `user_account` (`id`, `username`, `password`, `first_name`, `last_name`, `address`, `shipping_address`, `contact_number`, `email`, `user_role`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'Manila khsfksjdflksdnflkachdflkhdflkahdflkhsdlkfhslkdfhlsdflsdkf', '', '09170000000', 'admin@email.com', 1),
-(2, 'user', '81dc9bdb52d04dc20036dbd8313ed055', 'standard user', 'test', 'manila', '', '09172222222', 'user@email.com', 0),
-(9, 'juan01', '1271ed5ef305aadabc605b1609e24c52', 'Juan', 'Dela Cruz', 'sa bahay', 'sa batangas', '3252352352', 'juandelacruz@email.com', 2);
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'admin', 'Manila PH', '', '09170000000', 'admin@email.com', 1),
+(9, 'juan', '25d55ad283aa400af464c76d713c07ad', 'Juan', 'Dela Cruz', 'sa bahay..', 'sa batangas', '3252352352', 'juandelacruz@email.com', 2),
+(24, 'rootsdadas', '635b6d89912a0c52da2d953ccc468aad', 'adasd', 'sad', 'asdeee', '', '0213457989', 'email@email.com', 1),
+(25, 'test1', '635b6d89912a0c52da2d953ccc468aad', 'test', 'test', 'test', '', '09178025551', 'jozellriili@gmail.com', 1);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
