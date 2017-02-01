@@ -514,18 +514,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           var user_role = $(this).closest('tr').find('td[name="role"]').text();
           var username = $(this).closest('tr').find('td[name="username"]').text();
 
-          var data = {
-          id: id,
-          fname: fname,
-          lname: lname,
-          address: address,
-          contact: contact,
-          email: email,
-          user_role: user_role,
-          username: username,
-        }
-        console.log(data);
-
           var role = '';
           if(user_role = 'Admin'){
             role = 1;

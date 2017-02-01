@@ -484,9 +484,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
     $(document).on('click', '.edit-product', function (e) {
       e.preventDefault();
 
-      $('p.errMess').css('display','none');
       $('div#add-product-modal div.box-header').find('h3').html('Update Product');
       $('div#add-product-modal div.form-group').removeClass('has-error');
+      $('p.errMess').css('display','none');
       $('button.update-product').css('display','block');
       $('button.new-product').css('display','none');
       var id = $(this).closest('tr').find('td[name="prod-id"]').text();
@@ -497,21 +497,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       //var photo = $(this).closest('tr').find('.box-body img#prod-img').attr('src');
       var modal = $('div#add-product-modal.fade');
 
-
-      var data = {
-        id: id,
-        category: category,
-        product: product,
-        price: price,
-        desc: desc,
-        //photo: photo,
-      }
-
-      console.log(data);
-
       $(modal).modal('show');
       $(modal).on('shown.bs.modal', function () {
-        $(modal).find('.modal-body input[name="prod-id"]').val();
+        $(modal).find('.modal-body input[name="prod-id"]').val(id);
         $(modal).find('.modal-body input[name="product-name"]').val(product);
         $(modal).find('.modal-body textarea[name="product-description"]').val(desc);
         $(modal).find('.modal-body input[name="price"]').val(price);
@@ -527,8 +515,29 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       $('div#add-product-modal div.form-group').removeClass('has-error');
     });
 
-    $(document).on('click', '.update-product', function () {
+    $(document).on('click', '.update-product', function (e) {
+      e.preventDefault();
 
+      $('p.errMess').css('display','none');
+      $('div#add-product-modal div.form-group').removeClass('has-error');
+      var id = $(this).closest('div.box').find('.box-body input[name="prod-id"]').val();
+      var category = $(this).closest('div.box').find('.box-body select#prod-category').val();
+      var product = $(this).closest('div.box').find('.box-body input[name="product-name"]').val();
+      var price =  parseFloat($(this).closest('div.box').find('.box-body input[name="price"]').val()).toFixed(2);
+      var desc = $(this).closest('div.box').find('.box-body textarea[name="product-description"]').val();
+      var photo = $(this).closest('div.box').find('.box-body img#prod-img').attr('src');
+      var modal = $('div#add-product-modal');
+
+      var data = {
+        id: id,
+        category: category,
+        product: product,
+        price: price,
+        desc: desc,
+        photo: photo,
+      }
+
+      console.log(data)
 
       $.ajax({
         type: "POST",
@@ -538,7 +547,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         success: function (rData) {
           console.log(rData)
           if (rData.status) {
-            $('.alert-create-success').css('display', 'block'); //show success alert
+            $('.alert-update-success').css('display', 'block'); //show success alert
             $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
             setTimeout(function () {
               $('#add-product-modal').modal('hide');
