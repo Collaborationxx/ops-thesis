@@ -13,3 +13,8 @@
 .ops-logo {width: 100%; max-width: 150px; height: auto; }
 .error-box p { text-align: center; font-weight: bold; color: red;}
 .form-group.has-error p {color: red;}
+.photo-container {border: solid 1px #d2d6de; padding: 10px;}
+.file { visibility: hidden; position: absolute; }
+.image-preview .form-group {padding: 20px; margin-top: 5px; border: solid 1px #e3e3e3; background-color: #d2d6de; }
+.image-preview img {max-width: 160px; width: 100%; height: auto; }
+

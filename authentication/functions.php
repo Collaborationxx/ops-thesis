@@ -48,4 +48,40 @@ function landingPage($role) {
   return $redir;
 }
 
+function category($id){
+    $name = '';
+    switch ($id){
+        case 1:
+            $name = 'Electronic';
+            break;
+        case 2:
+            $name = 'Self-Care';
+            break;
+        case 3:
+            $name = 'Diagnostic';
+            break;
+        case 4:
+            $name = 'Surgical';
+            break;
+        case 5:
+            $name = 'Durable Medical Equipment';
+            break;
+        case 6:
+            $name = 'Acute Care';
+            break;
+        case 7:
+            $name = 'Emergency and Trauma';
+            break;
+        case 8:
+            $name = 'Long-Term Care';
+            break;
+        case  9:
+            $name = 'Storage and Transport';
+            break;
+    }
+
+    return $name;
+
+}
+
 ?>

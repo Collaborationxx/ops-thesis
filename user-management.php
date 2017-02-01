@@ -1,8 +1,13 @@
 <?php
 //check if user has session
 session_start();
+$role = $_SESSION['user_role'];
 if($_SESSION["username"] == null) { //if not redirect to login page
   header('location: index.php');
+} else {
+  if($role != 1){ //prevent other people other than admin in accessing dashboard
+    header('location: index.php');
+  }
 }
 
 include('authentication/functions.php');
@@ -78,8 +83,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               <li class="user-header">
                 <img src="assets/img/person-placeholder_opt.jpg" class="img-circle" alt="User Image">
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <?php echo $_SESSION['name']; ?>
+                  <small><?php echo userRoles($role); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
