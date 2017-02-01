@@ -181,7 +181,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       <th>Item</th>
                       <th>Description</th>
                       <th>Price (&#x20B1;)</th>
-                      <th>Category
+                      <th>Category</th>
+                      <th>Photo</th>
                       <th>Action</th>
                     </tr>
                     <!-- &#x20B1; //peso sign-->
@@ -194,6 +195,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                           <td name="prod-desc"><?php echo $value['description']; ?></td>
                           <td name="prod-price"><?php echo $value['price']; ?></td>
                           <td name="prod-category" data-id="<?php echo $value['category']; ?>"><?php echo category($value['category']); ?></td>
+                          <td name="prod-photo" class="table-pic"><img id="prod-pic" src="assets/images/<?php echo $value['picture'];?>"></td>
                           <td>
                             <a href="#" data-toggle="tooltip" title="Edit Product" class="edit-product"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
                             <a href="#" data-toggle="tooltip" title="Delete Product" class="delete-product"><i class="fa fa-trash-o text-danger"></i></a>
@@ -207,6 +209,12 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <?php endif; ?>
                     </tbody>
                   </table>
+                </div>
+                <!-- Preview image product Modal -->
+                <div id="preview-image" class="modal">
+                  <span class="close">&times;</span>
+                  <img class="modal-content" id="img01">
+                  <div id="caption"></div>
                 </div>
               </div>
               <div class="box-footer">
@@ -400,6 +408,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       var price =  parseFloat($(this).closest('div.box').find('.box-body input[name="price"]').val()).toFixed(2);
       var desc = $(this).closest('div.box').find('.box-body textarea[name="product-description"]').val();
       var photo = $(this).closest('div.box').find('.box-body img#prod-img').attr('src');
+      var photo_name = $(this).closest('div.box').find('.box-body .image-name').val()
       var modal = $('div#add-product-modal');
 
 
@@ -409,6 +418,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         price: price,
         desc: desc,
         photo: photo,
+        photo_name: photo_name,
       }
 
       console.log(data);
@@ -581,5 +591,28 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
   });
 </script>
+<!--<script>-->
+<!--  // Get the modal-->
+<!--  var modal = document.getElementById('preview-image');-->
+<!---->
+<!--  // Get the image and insert it inside the modal - use its "alt" text as a caption-->
+<!--  var img = document.getElementById('prod-pic');-->
+<!--  var modalImg = document.getElementById("img01");-->
+<!--  var captionText = document.getElementById("caption");-->
+<!--  img.onclick = function(){-->
+<!--    modal.style.display = "block";-->
+<!--    modalImg.src = this.src;-->
+<!--    captionText.innerHTML = this.alt;-->
+<!--  }-->
+<!---->
+<!--  // Get the <span> element that closes the modal-->
+<!--  var span = document.getElementsByClassName("close")[0];-->
+<!---->
+<!--  // When the user clicks on <span> (x), close the modal-->
+<!--  span.onclick = function() {-->
+<!--    modal.style.display = "none";-->
+<!--  }-->
+<!--</script>-->
+
 </body>
 </html>
