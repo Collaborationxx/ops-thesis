@@ -113,7 +113,7 @@ include('authentication/functions.php');
                 </li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="active">
-                    <a href="#">
+                    <a href="dashboard.php">
                         <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
                         <span>Dashboard</span></a>
                 </li>

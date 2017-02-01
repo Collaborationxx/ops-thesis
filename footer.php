@@ -5,46 +5,39 @@
                             <div class="row">
                                 <div class="col-md-4">
                                     <img class="ops-logo" src="assets/images/ops.png" alt="" />
-                                    <div class="footer-address"><i class="fa fa-phone-square"></i> (+63)935-744-7362<br/>
-                                        <i class="fa fa-map-marker"></i> Bambang Street, Sta Cruz, Manila<br/>
-                                        Email: <a href="mailto:sample@email.com">sample@email.com</a><br/>
+                                    <div class="footer-address"><i class="fa fa-phone-square"></i> (+63)915-219-6248<br/>
+                                        <i class="fa fa-map-marker"></i> &nbsp;&nbsp;Bambang Street, Sta Cruz, Manila<br/>
+                                        <i class="fa fa-envelope-o"></i> Email: <a href="https://login.yahoo.com" target="_blank">mjjacobe_traiding2015@yahoo.com</a><br/>
                                        
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                <div class="col-md-2 col-sm-4">
+                                <div class="col-md-4 col-sm-4">
                                     <h3 class="column-title">Our Services</h3>
                                     <ul class="column">
-                                        <li><a href="#">About us</a></li>
-                                        <li><a href="#">Customer Service</a></li>
-                                        <li><a href="#">FAQs</a></li>
-                                        <li><a href="#">Terms &amp; Condition</a></li>
+                                        <li><a href="about-us.html">About us</a></li>
+                                        <li><a href="tac.html" >Terms &amp; Conditions</a></li>
+                                        <li><a href="#">Mode of Payment</a></li>
                                     </ul>
                                     <div class="clear"></div>
                                 </div>
-                                <div class="col-md-2 col-sm-4">
-                                    <h3 class="column-title">Our Services</h3>
-                                    <ul class="column">
-                                        <li><a href="#">Order History</a></li>
-                                        <li><a href="#">Reservation</a></li>
-                                        <li><a href="#">Payment</a></li>
-                                        <li><a href="#">Returns</a></li>
-                                    </ul>
-                                    <div class="clear"></div>
-                                </div>
+                               
                                 <div class="clearfix visible-sm-block"></div>
                                 <div class="col-md-4">
                                     <h3 class="column-title">Company working hours</h3>
-                                    <div class="footer-description">Visit our shop and find premium quality medical supplies you can afford!</div>
+                                    <div class="footer-description">Visit our shop and find premium quality of medical supplies you can afford!</div>
                                     <div class="footer-description">
-                                        <b>Monday-Friday:</b> 8.30 a.m. - 5.30 p.m.<br/>
-                                        <b>Saturday:</b> 9.00 a.m. - 2.00 p.m.<br/>
-                                        <b>Sunday:</b> Closed
+                                        <b>Monday-Sunday:</b> 8:00 a.m. - 5:O0 p.m.<br/>
+                                    </div>
+                                    <div class="footer-description">Online Store cut off for processing delivery:</div>
+                                    <div class="footer-description">
+                                         <b>Monday-Sunday:</b> 3:00 p.m.<br/>
                                     </div>
                                     <div class="clear"></div>
                                 </div>
                             </div>
                         </div>
+
                         <div class="footer-bottom-navigation">
                             <div class="cell-view">
                                 <div class="footer-links">
@@ -52,30 +45,22 @@
                                     <a href="#">Search</a>
                                     <a href="#">Terms</a>
                                     <a href="#">Advanced Search</a>
-                                    <a href="#">Orders and Returns</a>
                                     <a href="#">Contact Us</a>
                                 </div>
                                 <div class="copyright"><?php echo date('Y'); ?> Copyright &copy; MJ Jacobe Trading. All right reserved</div>
                             </div>
-                            <div class="cell-view">
-                                <div class="payment-methods">
-                                    <a href="#"><img src="img/payment-method-1.png" alt="" /></a>
-                                    <a href="#"><img src="img/payment-method-2.png" alt="" /></a>
-                                    <a href="#"><img src="img/payment-method-3.png" alt="" /></a>
-                                    <a href="#"><img src="img/payment-method-4.png" alt="" /></a>
-                                    <a href="#"><img src="img/payment-method-5.png" alt="" /></a>
-                                    <a href="#"><img src="img/payment-method-6.png" alt="" /></a>
-                                </div>
-                            </div>
+                            
                         </div>
+                    </div>
                     </footer>
                 </div>
-            </div>
+        
 
-        </div>
+
+        
         <div class="clear"></div>
 
-    </div>
+  
 
     <!-- popup content -->
 
@@ -95,10 +80,6 @@
                         <div class="category-entry">Category 2</div>
                         <div class="category-entry">Category 4</div>
                         <div class="category-entry">Category 5</div>
-                        <div class="category-entry">Lorem</div>
-                        <div class="category-entry">Ipsum</div>
-                        <div class="category-entry">Dollor</div>
-                        <div class="category-entry">Sit Amet</div>
                     </div>
                 </div>
             </div>
@@ -136,7 +117,7 @@
             </div>
             <div class="cart-buttons">
                 <div class="column">
-                    <a class="button style-3">view cart</a>
+                    <a class="button style-3" href="shopping-cart.html">view cart</a>
                     <div class="clear"></div>
                 </div>
                 <div class="column">
@@ -319,9 +300,9 @@
                                 <input type="password" name="password" class="form-control" id="pwd" required>
                             </div>
                             <div class="checkbox">
-                                <label><input type="checkbox"> Remember me</label>
+                                <label>Forgot Pasword?   <a href="#">Click here</a></label>
                             </div>
-                            <button type="submit" class="btn btn-default">Sign In</button>
+                            <button type="submit" class="btn btn-success pull-right">Sign In</button>
                         </form>
                     </div>
                 </div>
@@ -331,13 +312,13 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="fname">* First Name:</label>
+                                        <label for="fname">First Name:</label>
                                         <input type="text" class="form-control" name="fname" id="fname" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="lname">* Last Name:</label>
+                                        <label for="lname">Last Name:</label>
                                         <input type="text" class="form-control" name="lname" id="lname" required>
                                     </div>                                
                                 </div>
@@ -346,13 +327,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="address">Home Address:</label>
-                                        <textarea row3="3" class="form-control" name="address" id="address" required></textarea>
+                                        <textarea rows="2" class="form-control" name="address" id="address" required></textarea>
                                     </div>   
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="ship-address">Shipping Address:</label>
-                                        <textarea row3="3" class="form-control" name="ship-address" id="ship-address"></textarea>
+                                        <textarea rows="2" class="form-control" name="ship-address" id="ship-address"></textarea>
                                     </div>   
                                 </div>
                             </div>
@@ -384,7 +365,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
+                            <br>
+                            <button type="submit" class="btn btn-success pull-right">Submit</button>
                         </form>
                     </div>
                 </div>

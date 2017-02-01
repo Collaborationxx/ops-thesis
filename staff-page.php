@@ -36,7 +36,7 @@
       </div>
       <div class="">
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="logout.php"><i class="fa fa-sign-out text-danger"></i>  Logout</a></li>
+          <li><a href="logout.php"><i class="fa fa-sign-out"></i>  Logout</a></li>
         </ul>
       </div>
   </nav>
@@ -46,6 +46,7 @@
         Staff Dashboard
         <small>Control Panel</small>
       </h1>
+      
     </section>
 
     <!-- Main content -->
@@ -83,10 +84,10 @@
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-file"></i>   Trading Preview</h3>
-                <button class="btn btn-success btn-sm pull-right" style="margin-bottom: 10px;"><i class="fa fa-arrow-down">  Save</i></button>
+                <button class="btn btn-success btn-sm pull-right" style="margin-bottom: 10px;">Save  <i class="fa fa-arrow-down"></i></button>
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped">
+                <table class="table table-striped table-bordered">
                   <tbody>
                     <tr>
                       <th>Product Photo</th>
@@ -103,7 +104,8 @@
                       <td>10,000</td>
                     </tr>
                     <tr>
-                      <td colspan="5"><span class="pull-right" style="padding-right: 145px;"><b>TOTAL:</b> 10,000</span></td>
+                      <td colspan="4"><span class="pull-right"><b>TOTAL:</b></span></td>
+                      <td><span>10,000</span></td>
                     </tr>
                   </tbody>
                 </table>

@@ -4,11 +4,6 @@ include("header.php");
 ?>
             <div class="content-push">
 
-                <div class="breadcrumb-box">
-                    <a href="#">Home</a>
-                    <a href="#">Medical Supplies</a>
-                </div>
-
                 <div class="information-blocks">
                     <div class="row">
                         <div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
@@ -25,11 +20,9 @@ include("header.php");
                                         <div class="inline-text">Sorty by</div>
                                         <div class="simple-drop-down">
                                             <select>
-                                                <option>Position</option>
                                                 <option>Price</option>
                                                 <option>Category</option>
                                                 <option>Rating</option>
-                                                <option>Color</option>
                                             </select>
                                         </div>
                                         <div class="sort-button"></div>
@@ -43,8 +36,8 @@ include("header.php");
                                         <div class="simple-drop-down" style="width: 75px;">
                                             <select>
                                                 <option>12</option>
-                                                <option>20</option>
-                                                <option>30</option>
+                                                <option>24</option>
+                                                <option>32</option>
                                                 <option>40</option>
                                                 <option>all</option>
                                             </select>
@@ -59,7 +52,7 @@ include("header.php");
                                 <div class="col-md-3 col-sm-4 shop-grid-item">
                                     <div class="product-slide-entry">
                                         <div class="product-image">
-                                            <img src="img/wheel chair1.png" alt="" />
+                                            <img src="assets/images/wheelchair.jpg" alt="" />
                                             <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
                                             <div class="bottom-line">
                                                     <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>

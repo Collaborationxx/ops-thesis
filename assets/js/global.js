@@ -343,8 +343,8 @@ $(function() {
 	});
 
 	/*cart popup*/
-	$('.open-cart-popup').on('mouseover', function(e){
-		clearTimeout(closecartTimeout);
+	$('.open-cart-popup').on('click', function(e){
+		//clearTimeout(closecartTimeout);
 		
 		if(!$('.cart-box.popup').hasClass('active')){
 			closePopups();
@@ -378,8 +378,8 @@ $(function() {
 
 
 	/*wishlist popup*/
-	$('.open-wishlist-popup').on('mouseover', function(e){
-		clearTimeout(closewishlistTimeout);
+	$('.open-wishlist-popup').on('click', function(e){
+		//clearTimeout(closewishlistTimeout);
 
 		if(!$('.cart-box.popup').hasClass('active')){
 			closePopupsV2();

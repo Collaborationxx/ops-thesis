@@ -56,6 +56,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
             </li>
         </ul>
       </div>
+    </div>
   </nav>
   <div class="container">
     <h3>My Account</h3>
@@ -68,19 +69,23 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       <li><a data-toggle="tab" href="#accountSettings-tab-content">Settings</a></li>
     </ul> 
 
+    <!--start of tab-->
     <div class="tab-content">
       <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
         <strong>Success!</strong> Profile Updated.
       </div>
-       <div id="profile-tab-content" class="tab-pane fade in active">
+      <!--profile-->
+      <div id="profile-tab-content" class="tab-pane fade in active">
         <div class="panel-body">
           <div class="row">
             <div class="col-lg-8 col-lg-offset-2 col-xs-12">
               <div class="box box-success">
                 <div class="box-header with-border">
                     <h3 class="box-title"><i class="fa fa-user"></i>   My Info</h3>
-                </div>    
+                </div>  
+              </div>  
+
                 <div class="box-body profile-section">
                   <?php if(isset($arr) AND count($arr) > 0):?>
                     <?php foreach ($arr as $key => $value): ?>
@@ -142,6 +147,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <?php endforeach; ?>
                   <?php endif; ?>
                 </div>
+
                 <div class="box-footer">
                   <div class="row">
                     <div class="col-md-6 col-xs-6">
@@ -152,11 +158,15 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </div>
                   </div>
                 </div>
-              </div>
+
+             
             </div>
           </div>
         </div>
       </div>
+      <!--end of profile-->
+
+      <!--wishlist-->
       <div id="wishlist-tab-content" class="tab-pane fade in">
         <div class="panel-body">
           <table class="table table-striped table-bordered table-responsive">
@@ -183,9 +193,13 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           </table>
         </div>
       </div>
+      <!--end of wishlist-->
+
+      <!--order-->
       <div id="order-tab-content" class="tab-pane fade in">
         <div class="panel-body">
           <div class="row">
+            
             <div class="col-lg-4 col-xs-12">
               <div class="box box-success">
                 <div class="box-header with-border">
@@ -206,14 +220,14 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   </table>
                 </div>
               </div>
-          </div>
+            </div>
 
-          <div class="col-lg-8 col-xs-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
+            <div class="col-lg-8 col-xs-12">
+              <div class="box box-success">
                 <div class="box-header with-border">
                   <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
                 </div>
+
                 <div class="box-body">
                   <form role="form">
                     <div class="form-group">
@@ -252,6 +266,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </div>
                   </form>
                 </div>
+
                 <div class="box-footer">
                   <div class="row">
                     <div class="col-md-12">
@@ -259,12 +274,17 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </div>
                   </div>
                 </div>
+
+              </div>
             </div>
+
           </div>
         </div>
-        </div>
-        </div>
       </div> 
+      <!--end of order-->
+
+      
+      <!--reservation-->
       <div id="reservation-tab-content" class="tab-pane fade in">
         <div class="panel-body">
           <div class="row">
@@ -347,6 +367,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         </div>
         </div>
       </div>
+      <!--end of reservation-->
+
+      <!--notification-->
       <div id="notification-tab-content" class="tab-pane fade in">
         <div class="panel-body">
           <div class="row">
@@ -414,6 +437,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         </div>
         </div>
       </div>
+      <!--end of notification-->
+
+      <!--settings-->
       <div id="accountSettings-tab-content" class="tab-pane fade in">
         <div class="panel-body">
           <div class="alert alert-success alert-dismissable alert-update-settings-success" style="display: none;">
@@ -455,17 +481,20 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </div>
                   </form>  
                 </div>
+
                 <div class="box-footer">
                   <button type="submit" class="btn btn-info pull-right update-password">Modify</button>
                 </div>
+
               </div>
             </div>
+            <!--end off settings-->
+
           </div>
         </div>
       </div>
-    </div>
   </div>
-</div>
+
   <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
