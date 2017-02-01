@@ -2,19 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4690b1ef-2609-4579-9529-35e1c096591a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/add-inventory.php" afterPath="$PROJECT_DIR$/data-manager/add-inventory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/add-product.php" afterPath="$PROJECT_DIR$/data-manager/add-product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/add-user.php" afterPath="$PROJECT_DIR$/data-manager/add-user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/delete-inventory.php" afterPath="$PROJECT_DIR$/data-manager/delete-inventory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/delete-product.php" afterPath="$PROJECT_DIR$/data-manager/delete-product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/delete-users.php" afterPath="$PROJECT_DIR$/data-manager/delete-users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/edit-product.php" afterPath="$PROJECT_DIR$/data-manager/edit-product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/edit-user.php" afterPath="$PROJECT_DIR$/data-manager/edit-user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/get-inventory.php" afterPath="$PROJECT_DIR$/data-manager/get-inventory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/get-products.php" afterPath="$PROJECT_DIR$/data-manager/get-products.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/get-users.php" afterPath="$PROJECT_DIR$/data-manager/get-users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/update-profile.php" afterPath="$PROJECT_DIR$/data-manager/update-profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/update-settings.php" afterPath="$PROJECT_DIR$/data-manager/update-settings.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inventory-management.php" afterPath="$PROJECT_DIR$/inventory-management.php" />
     </list>
     <ignored path="ops-thesis.iws" />
@@ -39,17 +26,17 @@
       <file leaf-file-name="inventory-management.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/inventory-management.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="848">
-              <caret line="338" column="36" selection-start-line="338" selection-start-column="36" selection-end-line="338" selection-end-column="36" />
+            <state relative-caret-position="322">
+              <caret line="363" column="56" selection-start-line="363" selection-start-column="56" selection-end-line="363" selection-end-column="56" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add-inventory.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="add-inventory.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/data-manager/add-inventory.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="-85">
               <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
               <folding>
                 <marker date="1485961559906" expanded="true" signature="475:545" ph="INSERT INTO `inventory`... " />
@@ -58,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="get-profile.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="get-profile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data-manager/get-profile.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
-              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="2" />
+              <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
               <folding>
                 <marker date="1485619257768" expanded="true" signature="91:146" ph="SELECT * FRO... user_account" />
               </folding>
@@ -146,8 +133,8 @@
         <option value="$PROJECT_DIR$/data-manager/get-products.php" />
         <option value="$PROJECT_DIR$/data-manager/get-users.php" />
         <option value="$PROJECT_DIR$/data-manager/delete-inventory.php" />
-        <option value="$PROJECT_DIR$/inventory-management.php" />
         <option value="$PROJECT_DIR$/data-manager/add-inventory.php" />
+        <option value="$PROJECT_DIR$/inventory-management.php" />
       </list>
     </option>
   </component>
@@ -353,7 +340,7 @@
       <workItem from="1485604099375" duration="16767000" />
       <workItem from="1485783125634" duration="13379000" />
       <workItem from="1485869794349" duration="12310000" />
-      <workItem from="1485912601127" duration="45502000" />
+      <workItem from="1485912601127" duration="46480000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -450,11 +437,11 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127191000" />
+    <option name="totallyTimeSpent" value="128169000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25945538" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -901,30 +888,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data-manager/get-profile.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="2" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
+          <folding>
+            <marker date="1485619257768" expanded="true" signature="91:146" ph="SELECT * FRO... user_account" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/inventory-management.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="848">
-          <caret line="338" column="36" selection-start-line="338" selection-start-column="36" selection-end-line="338" selection-end-column="36" />
+        <state relative-caret-position="322">
+          <caret line="363" column="56" selection-start-line="363" selection-start-column="56" selection-end-line="363" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data-manager/add-inventory.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="-85">
           <caret line="1" column="9" selection-start-line="1" selection-start-column="9" selection-end-line="1" selection-end-column="9" />
           <folding>
             <marker date="1485961559906" expanded="true" signature="475:545" ph="INSERT INTO `inventory`... " />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data-manager/get-profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="2" />
-          <folding>
-            <marker date="1485619257768" expanded="true" signature="91:146" ph="SELECT * FRO... user_account" />
           </folding>
         </state>
       </provider>

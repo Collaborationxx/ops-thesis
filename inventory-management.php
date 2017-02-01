@@ -168,7 +168,7 @@ include('authentication/functions.php');
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-archive"></i>   Stocks</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#inventory-modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Stock</button>
+                  <button type="button" class="btn btn-default btn-sm btn-new" data-toggle="modal" data-target="#inventory-modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Stock</button>
                 </div>
 
               </div>
@@ -262,7 +262,7 @@ include('authentication/functions.php');
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
                           <label>Product Name:</label>
-                          <select class="form-control">
+                          <select class="form-control" id="product-select">
                             <option value="">--Choose Product--</option>
                             <?php if(isset($arr) AND count($arr) > 0): ?>
                                 <?php foreach ($arr as $key => $value): ?>
@@ -292,7 +292,7 @@ include('authentication/functions.php');
                   </form>
                 </div>
                 <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Save</button>
+                  <button type="button" class="btn btn-success pull-right new-inventory">Save</button>
                 </div>
             </div>
           </div>
@@ -344,6 +344,35 @@ include('authentication/functions.php');
         },
       });
     });
+
+    // $(document).on('click', '.new-inventory', function (e) {
+    //     e.preventDefault();
+
+    //     var modal = $('div#inventory-modal');
+    //     var product = $(this).closest('div.box').find('div.box-body select#product-select').val();
+    //     var qty = $(this).closest('div.box').find('div.box-body input[name="quantity"]').val();
+
+    //     var data = {
+    //       product: product,
+    //       qty: qty,
+    //     }
+
+    //     console.log(data)
+
+    //     $.ajax({
+    //       type: 'POST',
+    //       url: serverURL + '/ops-thesis/data-manager/add-inventory.php',
+    //       data: data,
+    //       dataType: 'json',
+    //       success: function(rData){
+    //         if(rData.response){
+    //           location.reload();
+    //         }
+    //       },
+    //     });
+
+
+    // });
 
   });
 </script>
