@@ -40,56 +40,51 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   <link rel="shortcut icon" href="assets/images/ops.png" />
 </head>
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="index.php"><img src="assets/images/ops.png" class="ops-nav-logo"></a>
-      </div>
-      <div class="">
-        <ul class="nav navbar-nav navbar-right">
-            <li class="dropdown">
-              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>   Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="customer-page.php"><i class="fa fa-cogs"></i>My Account</a></li>
-                <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
-              </ul>
-            </li>
-        </ul>
-      </div>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="index.php"><img src="assets/images/ops.png" class="ops-nav-logo"></a>
     </div>
-  </nav>
-  <div class="container">
-    <h3>My Account</h3>
-    <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#profile-tab-content">Profile</a></li>
-      <li><a data-toggle="tab" href="#wishlist-tab-content">Wish List</a></li>
-      <li><a data-toggle="tab" href="#order-tab-content">Orders</a></li>
-      <li><a data-toggle="tab" href="#reservation-tab-content">Reservations</a></li>
-      <li><a data-toggle="tab" href="#notification-tab-content">Notification</a></li>
-      <li><a data-toggle="tab" href="#accountSettings-tab-content">Settings</a></li>
-    </ul> 
+    <div class="">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>   Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="customer-page.php"><i class="fa fa-cogs"></i>My Account</a></li>
+            <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+</nav>
+<div class="container">
+  <h3>My Account</h3>
+  <ul class="nav nav-tabs">
+    <li class="active"><a data-toggle="tab" href="#profile-tab-content">Profile</a></li>
+    <li><a data-toggle="tab" href="#wishlist-tab-content">Wish List</a></li>
+    <li><a data-toggle="tab" href="#order-tab-content">Orders</a></li>
+    <li><a data-toggle="tab" href="#reservation-tab-content">Reservations</a></li>
+    <li><a data-toggle="tab" href="#notification-tab-content">Notification</a></li>
+    <li><a data-toggle="tab" href="#accountSettings-tab-content">Settings</a></li>
+  </ul>
 
-    <!--start of tab-->
-    <div class="tab-content">
-      <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
-        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-        <strong>Success!</strong> Profile Updated.
-      </div>
-      <!--profile-->
-      <div id="profile-tab-content" class="tab-pane fade in active">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                    <h3 class="box-title"><i class="fa fa-user"></i>   My Info</h3>
-                </div>  
-              </div>  
-
-                <div class="box-body profile-section">
-                  <?php if(isset($arr) AND count($arr) > 0):?>
-                    <?php foreach ($arr as $key => $value): ?>
-                      <form role="form">
+  <div class="tab-content">
+    <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+      <strong>Success!</strong> Profile Updated.
+    </div>
+    <div id="profile-tab-content" class="tab-pane fade in active">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-user"></i>   My Info</h3>
+              </div>
+              <div class="box-body profile-section">
+                <?php if(isset($arr) AND count($arr) > 0):?>
+                  <?php foreach ($arr as $key => $value): ?>
+                    <form role="form">
                       <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
@@ -125,7 +120,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                           </div>
                         </div>
                       </div>
-                       <div class="row">
+                      <div class="row">
                         <div class="col-lg-6 col-xs-12">
                           <div class="form-group">
                             <p class="error-mess errContact" style="display: none">Numbers Only</p>
@@ -144,90 +139,81 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         </div>
                       </div>
                     </form>
-                    <?php endforeach; ?>
-                  <?php endif; ?>
-                </div>
-
-                <div class="box-footer">
-                  <div class="row">
-                    <div class="col-md-6 col-xs-6">
-                      <a href="#" class="btn btn-default pull-right edit-profile-btn"><i class="fa fa-pencil text-warning"></i>   Edit</a>
-                    </div>
-                    <div class="col-md-6 col-xs-6">
-                      <button type="submit" class="btn btn-success pull-left update-profile-btn disabled"><i class="fa fa-save">   Save</i></button>
-                    </div>
+                  <?php endforeach; ?>
+                <?php endif; ?>
+              </div>
+              <div class="box-footer">
+                <div class="row">
+                  <div class="col-md-6 col-xs-6">
+                    <a href="#" class="btn btn-default pull-right edit-profile-btn"><i class="fa fa-pencil text-warning"></i>   Edit</a>
+                  </div>
+                  <div class="col-md-6 col-xs-6">
+                    <button type="submit" class="btn btn-success pull-left update-profile-btn disabled"><i class="fa fa-save">   Save</i></button>
                   </div>
                 </div>
-
-             
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <!--end of profile-->
-
-      <!--wishlist-->
-      <div id="wishlist-tab-content" class="tab-pane fade in">
-        <div class="panel-body">
-          <table class="table table-striped table-bordered table-responsive">
-            <tbody>
-              <tr>
-                <th style="width: 10px">#</th>
-                <th>Item</th>
-                <th>Quatity</th>
-                <th>Preview</th>
-                <th style="text-align: center;">Action</th>
-              </tr>
-              <tr>
-                <td>1.</td>
-                <td>Wheelchair</td>
-                <td>1</td>
-                <td>
-                  <img src="assets/images/wheelchair.jpg" class="ops-table-img">
-                </td>
-                <td style="text-align: center;">
-                  <a href="#" data-toggle="tooltip" title="Remove this item from Wishlist"><i class="fa fa-times text-danger"></i></a>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    </div>
+    <div id="wishlist-tab-content" class="tab-pane fade in">
+      <div class="panel-body">
+        <table class="table table-striped table-bordered table-responsive">
+          <tbody>
+          <tr>
+            <th style="width: 10px">#</th>
+            <th>Item</th>
+            <th>Quatity</th>
+            <th>Preview</th>
+            <th style="text-align: center;">Action</th>
+          </tr>
+          <tr>
+            <td>1.</td>
+            <td>Wheelchair</td>
+            <td>1</td>
+            <td>
+              <img src="assets/images/wheelchair.jpg" class="ops-table-img">
+            </td>
+            <td style="text-align: center;">
+              <a href="#" data-toggle="tooltip" title="Remove this item from Wishlist"><i class="fa fa-times text-danger"></i></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
       </div>
-      <!--end of wishlist-->
-
-      <!--order-->
-      <div id="order-tab-content" class="tab-pane fade in">
-        <div class="panel-body">
-          <div class="row">
-            
-            <div class="col-lg-4 col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-inbox"></i>   Orders</h3>
-                </div>
-                <div class="box-body no-padding">
-                  <table class="table table-striped">
-                    <tbody>
-                      <tr>
-                        <th>Order ID</th>
-                        <th>Date</th>
-                      </tr>
-                      <tr>
-                        <td>OPS-1-2</td>
-                        <td>01/06/17</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+    </div>
+    <div id="order-tab-content" class="tab-pane fade in">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-4 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-inbox"></i>   Orders</h3>
+              </div>
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tbody>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                  </tr>
+                  <tr>
+                    <td>OPS-1-2</td>
+                    <td>01/06/17</td>
+                  </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
+          </div>
 
-            <div class="col-lg-8 col-xs-12">
-              <div class="box box-success">
+          <div class="col-lg-8 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
                 <div class="box-header with-border">
                   <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
                 </div>
-
                 <div class="box-body">
                   <form role="form">
                     <div class="form-group">
@@ -266,7 +252,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </div>
                   </form>
                 </div>
-
                 <div class="box-footer">
                   <div class="row">
                     <div class="col-md-12">
@@ -274,40 +259,35 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
-
           </div>
         </div>
-      </div> 
-      <!--end of order-->
-
-      
-      <!--reservation-->
-      <div id="reservation-tab-content" class="tab-pane fade in">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-4 col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-inbox"></i>   Reservation</h3>
-                </div>
-                <div class="box-body no-padding">
-                  <table class="table table-striped">
-                    <tbody>
-                      <tr>
-                        <th>Reservation ID</th>
-                        <th>Date</th>
-                      </tr>
-                      <tr>
-                        <td>OPS-11-22</td>
-                        <td>01/06/17</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
+      </div>
+    </div>
+    <div id="reservation-tab-content" class="tab-pane fade in">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-4 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-inbox"></i>   Reservation</h3>
               </div>
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tbody>
+                  <tr>
+                    <th>Reservation ID</th>
+                    <th>Date</th>
+                  </tr>
+                  <tr>
+                    <td>OPS-11-22</td>
+                    <td>01/06/17</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
 
           <div class="col-lg-8 col-xs-12">
@@ -361,141 +341,132 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </div>
                   </div>
                 </div>
-            </div>
-          </div>
-        </div>
-        </div>
-        </div>
-      </div>
-      <!--end of reservation-->
-
-      <!--notification-->
-      <div id="notification-tab-content" class="tab-pane fade in">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-lg-4 col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-inbox"></i>   Tracking Orders</h3>
-                </div>
-                <div class="box-body no-padding">
-                  <table class="table table-striped">
-                    <tbody>
-                      <tr>
-                        <th>Message</th>
-                        <th>Date</th>
-                      </tr>
-                      <tr>
-                        <td>Tracking Number</td>
-                        <td>01/06/17</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-             </div>
-
-            <div class="col-lg-8 col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
-                </div>
-                <div class="box-body">
-                  <form role="form">
-                    <div class="form-group">
-                      <p>
-                        Good day! Thank you for purchasing medical supplies at OPS! 
-                      </p>
-                    </div>
-                    <div class="form-group">
-                      <p>We already shipped your purchased medical supplies with the following information:</p>
-                    </div>
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-md-6 col-xs-12">
-                          <label>Order ID:</label>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                          <input type="text" name="order-id">
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-md-6 col-xs-12">
-                          <label>Tracking Number:</label>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                          <input type="text" name="tracking-number">
-                        </div>
-                      </div>
-                  </form>
-                </div>
-               
-            </div>
-          </div>
-        </div>
-        </div>
-        </div>
-      </div>
-      <!--end of notification-->
-
-      <!--settings-->
-      <div id="accountSettings-tab-content" class="tab-pane fade in">
-        <div class="panel-body">
-          <div class="alert alert-success alert-dismissable alert-update-settings-success" style="display: none;">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            <strong>Success!</strong> Account settings Updated.
-          </div>
-          <div class="row">
-            <div class="col-lg-6 col-lg-offset-3 col-xs-12">
-              <div class="box box-success">
-                <div class="box-header with-border">
-                  <h4>Change username or password</h4>
-                </div>
-                <div class="box-body">
-                  <form role="form">
-                    <div class="error-box">
-                      <p class="errMess2" style="display: none;">Password incorrect!</p>
-                      <p class="errMess" style="display: none;">New Password Not Match</p>
-                    </div>
-                    <div class="form-group username-group">
-                      <p class="error-mess errUsernameReq" style="display: none">* Username is Required</p>
-                      <label>Username</label>
-                      <input type="text" class="form-control" name ="username" value="<?php echo $value['username']; ?>" required>
-                    </div>
-                    <div class="form-group password-group">
-                      <p class="error-mess errOldPassReq" style="display: none">* This is a Required Field</p>
-                      <label>Old Password</label>
-                      <input type="password" class="form-control" name="current_password" placeholder="Enter ..." required>
-                    </div>
-                    <div class="form-group pass-group">
-                      <p class="error-mess errNewPassReq" style="display: none">* This is a Required Field</p>
-                      <p class="error-mess errPassLen" style="display: none">Password must be between 8 and 25 characters</p>
-                      <label>New Password</label>
-                      <input type="password" class="form-control" name="new_password" placeholder="Enter ..." required>
-                    </div>
-                    <div class="form-group pass-group">
-                      <p class="error-mess errRePassReq" style="display: none">* Please type Password again.</p>
-                      <label>Re-type Password</label>
-                      <input type="password" class="form-control" name="retype_password" placeholder="Enter ..." required>
-                    </div>
-                  </form>  
-                </div>
-
-                <div class="box-footer">
-                  <button type="submit" class="btn btn-info pull-right update-password">Modify</button>
-                </div>
-
               </div>
             </div>
-            <!--end off settings-->
-
           </div>
         </div>
       </div>
+    </div>
+    <div id="notification-tab-content" class="tab-pane fade in">
+      <div class="panel-body">
+        <div class="row">
+          <div class="col-lg-4 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-inbox"></i>   Tracking Orders</h3>
+              </div>
+              <div class="box-body no-padding">
+                <table class="table table-striped">
+                  <tbody>
+                  <tr>
+                    <th>Message</th>
+                    <th>Date</th>
+                  </tr>
+                  <tr>
+                    <td>Tracking Number</td>
+                    <td>01/06/17</td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-8 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
+              </div>
+              <div class="box-body">
+                <form role="form">
+                  <div class="form-group">
+                    <p>
+                      Good day! Thank you for purchasing medical supplies at OPS!
+                    </p>
+                  </div>
+                  <div class="form-group">
+                    <p>We already shipped your purchased medical supplies with the following information:</p>
+                  </div>
+                  <div class="form-group">
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <label>Order ID:</label>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <input type="text" name="order-id">
+                      </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                      <div class="col-md-6 col-xs-12">
+                        <label>Tracking Number:</label>
+                      </div>
+                      <div class="col-md-6 col-xs-12">
+                        <input type="text" name="tracking-number">
+                      </div>
+                    </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <!-- jQuery 2.2.3 -->
+  <div id="accountSettings-tab-content" class="tab-pane fade in">
+    <div class="panel-body">
+      <div class="alert alert-success alert-dismissable alert-update-settings-success" style="display: none;">
+        <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+        <strong>Success!</strong> Account settings Updated.
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-lg-offset-3 col-xs-12">
+          <div class="box box-success">
+            <div class="box-header with-border">
+              <h4>Change username or password</h4>
+            </div>
+            <div class="box-body">
+              <form role="form">
+                <div class="error-box">
+                  <p class="errMess2" style="display: none;">Password incorrect!</p>
+                  <p class="errMess" style="display: none;">New Password Not Match</p>
+                </div>
+                <div class="form-group username-group">
+                  <p class="error-mess errUsernameReq" style="display: none">* Username is Required</p>
+                  <label>Username</label>
+                  <input type="text" class="form-control" name ="username" value="<?php echo $value['username']; ?>" required>
+                </div>
+                <div class="form-group password-group">
+                  <p class="error-mess errOldPassReq" style="display: none">* This is a Required Field</p>
+                  <label>Old Password</label>
+                  <input type="password" class="form-control" name="current_password" placeholder="Enter ..." required>
+                </div>
+                <div class="form-group pass-group">
+                  <p class="error-mess errNewPassReq" style="display: none">* This is a Required Field</p>
+                  <p class="error-mess errPassLen" style="display: none">Password must be between 8 and 25 characters</p>
+                  <label>New Password</label>
+                  <input type="password" class="form-control" name="new_password" placeholder="Enter ..." required>
+                </div>
+                <div class="form-group pass-group">
+                  <p class="error-mess errRePassReq" style="display: none">* Please type Password again.</p>
+                  <label>Re-type Password</label>
+                  <input type="password" class="form-control" name="retype_password" placeholder="Enter ..." required>
+                </div>
+              </form>
+            </div>
+            <div class="box-footer">
+              <button type="submit" class="btn btn-info pull-right update-password">Modify</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+<!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -509,12 +480,12 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   $(function () {
     var serverURL = <?php echo json_encode($serverURL)?> // get server url (localhost/webserver)
 
-    /** Edit button Functionality **/
-    $('.edit-profile-btn').click(function (e) {
-      e.preventDefault();
-      $('.profile-section').find(':input').prop('disabled', false); //enable the input fields for editing
-      $('.update-profile-btn').removeClass('disabled'); //enable save button; save button first state is disabled
-    });
+        /** Edit button Functionality **/
+        $('.edit-profile-btn').click(function (e) {
+          e.preventDefault();
+          $('.profile-section').find(':input').prop('disabled', false); //enable the input fields for editing
+          $('.update-profile-btn').removeClass('disabled'); //enable save button; save button first state is disabled
+        });
 
     /** Save button functionality  **/
     $('.update-profile-btn').click(function (e) {
@@ -524,7 +495,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       $('p.error-mess').css('display', 'none');
 
       var data = { //get the values of inputs
-        firstName: $(this).closest('div.box').find('input[name="fname"]').val(), 
+        firstName: $(this).closest('div.box').find('input[name="fname"]').val(),
         lastName: $(this).closest('div.box').find('input[name="lname"]').val(),
         address: $(this).closest('div.box').find('textarea[name="address"]').val(),
         shippingAddress: $(this).closest('div.box').find('textarea[name="shipAddress"]').val(),
@@ -606,73 +577,73 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       $('div.error-box p').css('display', 'none');
       $('p.error-mess').css('display', 'none');
 
-        var data = {
-          current_username: '<?php echo $_SESSION['username']; ?>',
-          username: $(this).closest('div.box').find('input[name="username"]').val(),
-          current_password: $(this).closest('div.box').find('input[name="current_password"]').val(),
-          new_password: $(this).closest('div.box').find('input[name="new_password"]').val(), 
-          retype_password: $(this).closest('div.box').find('input[name="retype_password"]').val(), 
-        }
+      var data = {
+        current_username: '<?php echo $_SESSION['username']; ?>',
+        username: $(this).closest('div.box').find('input[name="username"]').val(),
+        current_password: $(this).closest('div.box').find('input[name="current_password"]').val(),
+        new_password: $(this).closest('div.box').find('input[name="new_password"]').val(),
+        retype_password: $(this).closest('div.box').find('input[name="retype_password"]').val(),
+      }
 
-        $.ajax({
-          type: "POST",
-          url: serverURL + '/ops-thesis/data-manager/update-settings.php',
-          data: data,
-          dataType: "json",
-          success: function(aData){
-            console.log(aData)
+      $.ajax({
+        type: "POST",
+        url: serverURL + '/ops-thesis/data-manager/update-settings.php',
+        data: data,
+        dataType: "json",
+        success: function(aData){
+          console.log(aData)
 
-              if(aData.status){
-                console.log('success')
-                $('.alert-update-settings-success').css('display', 'block'); //show success alert
-                $('.alert').delay(3000).fadeOut('fast');
-                $('div#accountSettings-tab-content').find('div.box').find('input[name="current_password"]').val('');
-                $('div#accountSettings-tab-content').find('div.box').find('input[name="new_password"]').val('');
-                $('div#accountSettings-tab-content').find('div.box').find('input[name="retype_password"]').val('');
+          if(aData.status){
+            console.log('success')
+            $('.alert-update-settings-success').css('display', 'block'); //show success alert
+            $('.alert').delay(3000).fadeOut('fast');
+            $('div#accountSettings-tab-content').find('div.box').find('input[name="current_password"]').val('');
+            $('div#accountSettings-tab-content').find('div.box').find('input[name="new_password"]').val('');
+            $('div#accountSettings-tab-content').find('div.box').find('input[name="retype_password"]').val('');
 
-              }
-              
-              if(aData.errMess2) {
-                $('div#accountSettings-tab-content div.password-group').addClass('has-error');
-                $('div.error-box .errMess2').css('display', 'block');
+          }
 
-               }
+          if(aData.errMess2) {
+            $('div#accountSettings-tab-content div.password-group').addClass('has-error');
+            $('div.error-box .errMess2').css('display', 'block');
 
-              if(aData.errMess){
-                $('div#accountSettings-tab-content div.pass-group').addClass('has-error');
-                $('div.error-box .errMess').css('display', 'block');
-              }
+          }
 
-              if(aData.errNewPass){
-                $('div#accountSettings-tab-content').find('.errNewPassReq').closest('.form-group').addClass('has-error');
-                $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'block');
-                $('div#accountSettings-tab-content').find('.errRePassReq').closest('.form-group').addClass('has-error');
-                $('div#accountSettings-tab-content').find('p.errRePassReq').css('display', 'block');
-              }
+          if(aData.errMess){
+            $('div#accountSettings-tab-content div.pass-group').addClass('has-error');
+            $('div.error-box .errMess').css('display', 'block');
+          }
 
-              if(aData.errCurrPass){
-                $('div#accountSettings-tab-content').find('.errOldPassReq').closest('.form-group').addClass('has-error');
-                $('div#accountSettings-tab-content').find('p.errOldPassReq').css('display', 'block');
-              }
+          if(aData.errNewPass){
+            $('div#accountSettings-tab-content').find('.errNewPassReq').closest('.form-group').addClass('has-error');
+            $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'block');
+            $('div#accountSettings-tab-content').find('.errRePassReq').closest('.form-group').addClass('has-error');
+            $('div#accountSettings-tab-content').find('p.errRePassReq').css('display', 'block');
+          }
 
-              if(aData.errUsername) {
-                $('div#accountSettings-tab-content').find('.errUsernameReq').closest('.form-group').addClass('has-error');
-                $('div#accountSettings-tab-content').find('p.errUsernameReq').css('display', 'block');
-              }
+          if(aData.errCurrPass){
+            $('div#accountSettings-tab-content').find('.errOldPassReq').closest('.form-group').addClass('has-error');
+            $('div#accountSettings-tab-content').find('p.errOldPassReq').css('display', 'block');
+          }
 
-              if(aData.errPassLen){
-                $('div#accountSettings-tab-content').find('.errPassLen').closest('.form-group').addClass('has-error');
-                $('div#accountSettings-tab-content').find('p.errPassLen').css('display', 'block');
-                $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'none');
-              }
+          if(aData.errUsername) {
+            $('div#accountSettings-tab-content').find('.errUsernameReq').closest('.form-group').addClass('has-error');
+            $('div#accountSettings-tab-content').find('p.errUsernameReq').css('display', 'block');
+          }
+
+          if(aData.errPassLen){
+            $('div#accountSettings-tab-content').find('.errPassLen').closest('.form-group').addClass('has-error');
+            $('div#accountSettings-tab-content').find('p.errPassLen').css('display', 'block');
+            $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'none');
+          }
 
 //              setTimeout(function(){
 //                $('div#accountSettings-tab-content div.form-group').removeClass('has-error');
 //                $('div.error-box p').css('display', 'none');
 //              }, 3000);
 
-          },
-        });
+        },
+      });
     });
 
   });

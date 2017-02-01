@@ -401,7 +401,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
       $.ajax({
         type: "POST",
-        url: serverURL + '/ops-thesis/data-manager/add=product.php',
+        url: serverURL + '/ops-thesis/data-manager/add-product.php',
         data: data,
         dataType: "json",
         success: function (rData) {

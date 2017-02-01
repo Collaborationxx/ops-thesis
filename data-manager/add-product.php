@@ -1,5 +1,5 @@
 <?php
-include('./config/db_connection.php');
+include('../config/db_connection.php');
 
 $name = $_POST['product'];
 $desc = $_POST['desc'];
@@ -24,8 +24,8 @@ if(empty($price)){
     $error['priceEmpty'] = true;
 }
 
-if(empty( $error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($error['priceEmpty']) && empty($error['invalidPhoto'])){
-    $query = "INSERT INTO `product` (name, description, price, picture, category) SET VALUES ('$name', '$desc', $price, '$photo', $category)";
+if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($error['priceEmpty'])){
+    $query = "INSERT INTO `product` (name, description, price, category) VALUES ('$name', '$desc', $price, $category)";
     if(mysqli_query($con, $query)){
         $response = array('status'=>'success');
     }
@@ -36,7 +36,6 @@ if(empty( $error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($er
         'categoryEmpty' =>  $error['categoryEmpty'],
         'pruductEmpty' => $error['pruductEmpty'],
         'priceEmpty' => $error['priceEmpty'],
-        'invalidPhoto' => $error['invalidPhoto']
     );
     header('Content-Type: application/json');
     echo json_encode($response);
