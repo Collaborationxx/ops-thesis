@@ -1,3 +1,22 @@
+<?php
+//check if user has session
+session_start();
+$role = $_SESSION['user_role'];
+if($_SESSION["username"] == null) { //if not redirect to login page
+  header('location: index.php');
+} else {
+  if($role != 1){ //prevent other people other than admin in accessing dashboard
+    header('location: index.php');
+  }
+}
+
+include('authentication/functions.php');
+include('data-manager/get-products.php');
+$count = 1;
+$serverURL = "http://$_SERVER[HTTP_HOST]";
+
+//echo '<pre>'; print_r($arr); exit;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,7 +75,7 @@
               <!-- The user image in the navbar-->
               <img src="assets/img/person-placeholder_opt.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Hello Admin</span>&nbsp;&nbsp;
+              <span class="hidden-xs">Hello <?php echo $_SESSION['username']; ?></span>&nbsp;&nbsp;
               <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu">
@@ -65,8 +84,8 @@
                 <img src="assets/img/person-placeholder_opt.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <?php echo $_SESSION['name']; ?>
+                  <small><?php echo userRoles($role); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -165,17 +184,26 @@
                       <th>Category
                       <th>Action</th>
                     </tr>
-                    <tr>
-                      <td>1.</td>
-                      <td>Wheel Chair</td>
-                      <td>Lorem ipsum dolor sit amet</td>
-                      <td>$10</td>
-                      <td>Storage and Transpor</td>
-                      <td>
-                        <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                        <a href=""><i class="fa fa-trash-o text-danger"></i></a>
-                      </td>
-                    </tr>
+                    <?php if(isset($arr)): ?>
+                      <?php foreach ($arr as $key => $value): ?>
+                        <tr>
+                          <td><?php echo $count++ ?></td>
+                          <td name ="prod-id" style="display: none"><?php echo $value['id']; ?></td>
+                          <td name="prod-name"><?php echo $value['name']; ?></td>
+                          <td name="prod-desc"><?php echo $value['description']; ?></td>
+                          <td name="prod-price">&#x20B1; <?php echo $value['price']; ?></td>
+                          <td name="prod-category"><?php echo $value['category']; ?></td>
+                          <td>
+                            <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href=""><i class="fa fa-trash-o text-danger"></i></a>
+                          </td>
+                        </tr>
+                      <?php endforeach; ?>
+                     <?php else: ?>
+                        <tr>
+                          <td colspan="6">No Results Found</td>
+                        </tr>
+                    <?php endif; ?>
                     </tbody>
                   </table>
                 </div>
@@ -221,30 +249,37 @@
         <h4 class="modal-title">New Product</h4>
       </div>
       <div class="modal-body">
+        <div class="alert alert-success alert-dismissable alert-create-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Success!</strong> New user created.
+        </div>
+        <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Success!</strong> Record Updated.
+        </div>
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
-              <div class="box-header with-border">
                 <div class="box-header with-border">
                   <h3 class="box-title">New Product</h3>
                 </div>
                 <div class="box-body">
-                  <form role="form">
+                  <form role="form" method="post" action="data-manager/add-product.php">
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
                           <label>Product Category:</label>
-                          <select class="form-control">
-                          <option>*Choose Category</option>
-                          <option>Electronic</option>
-                          <option>Self-Care</option>
-                          <option>Diagnostic</option>
-                          <option>Surgical</option>
-                          <option>Durable Medical Equipment</option>
-                          <option>Acute Care</option>
-                          <option>Emergency and Trauma</option>
-                          <option>Long-Term Care</option>
-                          <option>Storage and Transport</option>
+                          <select class="form-control" id="prod-category">
+                          <option value="">*Choose Category</option>
+                          <option value="1">Electronic</option>
+                          <option value="2">Self-Care</option>
+                          <option value="3">Diagnostic</option>
+                          <option value="4">Surgical</option>
+                          <option value="5">Durable Medical Equipment</option>
+                          <option value="6">Acute Care</option>
+                          <option value="7">Emergency and Trauma</option>
+                          <option value="8">Long-Term Care</option>
+                          <option value="9">Storage and Transport</option>
                           </select>
                         </div>
                       </div>
@@ -276,22 +311,36 @@
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
-                          <label>Product Photo:</label>
-                          <input type="file" name="product-photo">
+                          <div class="row">
+                            <div class="col-md-12 col-xs-12">
+                              <input type="file" name="product-img" class="file">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
+                                <input type="text" class="form-control input-lg image-name" disabled placeholder="Upload Image">
+                                <span class="input-group-btn">
+                                  <button class="browse btn btn-danger input-lg" type="button"><i class="glyphicon glyphicon-search"></i> Browse</button>
+                                </span>
+                              </div>
+                            </div>
+                            <div class="image-preview col-md-12 col-xs-12">
+                              <div class="form-group">
+                                <small class="pull-left">  Preview will appear here.</small>
+                                <img id="prod-img" src="#" alt="your image" class="center-block img-responsive" style="display: none"/>
+                              </div>
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </form>
                 </div>
                 <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Save</button>
+                  <button type="submit" class="btn btn-success pull-right new-product">Save</button>
                 </div>
-            </div>
           </div>
         </div>
-        </div> 
+      </div>
     </div>
-
   </div>
 </div>
 <!--end pop up content-->
@@ -305,9 +354,71 @@
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<script>
+  $(document).ready(function () {
+    var serverURL = <?php echo json_encode($serverURL); ?>;
+
+    $(document).on('click', '.browse', function(){
+      var file = $(this).parent().parent().parent().find('.file');
+      file.trigger('click');
+    });
+
+    $(document).on('change', '.file', function(){
+      $(this).parent().find('.form-control').val($(this).val().replace(/C:\\fakepath\\/i, ''));
+
+      var preview = $('img#prod-img');
+      var file    = ($('input[type="file"]'))[0].files[0]
+      var reader  = new FileReader();
+
+      reader.onloadend = function () {
+        $(preview).css('display', 'block');
+        $(preview).attr('src', reader.result );
+      }
+      if (file) {
+        reader.readAsDataURL(file); //reads the data as a URL
+      } else {
+        $(preview).attr('src', '');
+      }
+    });
+
+    $(document).on('click', '.new-product', function(e){
+      e.preventDefault();
+      var category = $(this).closest('div.box').find('.box-body select#prod-category').val();
+      var product = $(this).closest('div.box').find('.box-body input[name="product-name"]').val();
+      var price = $(this).closest('div.box').find('.box-body input[name="price"]').val();
+      var desc = $(this).closest('div.box').find('.box-body textarea[name="product-description"]').val();
+      var photo = $(this).closest('div.box').find('.box-body img#prod-img').attr('src');
+
+      var data = {
+        category: category,
+        product: product,
+        price: price,
+        desc: desc,
+        photo: photo,
+      }
+
+      console.log(data);
+
+      $.ajax({
+        type: "POST",
+        url: serverURL + '/ops-thesis/data-manager/add=product.php',
+        data: data,
+        dataType: "json",
+        success: function (rData) {
+          console.log(rData)
+          if (rData.status) {
+            $('.alert-create-success').css('display', 'block'); //show success alert
+            $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+            setTimeout(function () {
+              $('#add-product-modal').modal('hide');
+              location.reload();
+            }, 3200);
+          }
+        },
+      });
+    });
+
+  });
+</script>
 </body>
 </html>
