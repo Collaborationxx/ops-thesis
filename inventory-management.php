@@ -14,6 +14,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('data-manager/get-inventory.php');
 include('data-manager/get-products.php');
+include('authentication/functions.php');
 
 ?>
 <!DOCTYPE html>
@@ -74,7 +75,7 @@ include('data-manager/get-products.php');
               <!-- The user image in the navbar-->
               <img src="assets/img/person-placeholder_opt.jpg" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Hello Admin</span>&nbsp;&nbsp;
+              <span class="hidden-xs">Hello <?php echo $_SESSION['username']; ?></span>&nbsp;&nbsp;
               <i class="fa fa-caret-down"></i>
             </a>
             <ul class="dropdown-menu">
@@ -83,8 +84,8 @@ include('data-manager/get-products.php');
                 <img src="assets/img/person-placeholder_opt.jpg" class="img-circle" alt="User Image">
 
                 <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
+                  <?php echo $_SESSION['name']; ?>
+                  <small><?php echo userRoles($role); ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->
@@ -187,13 +188,14 @@ include('data-manager/get-products.php');
                         <?php foreach ($inventory as $key => $value): ?>
                           <tr>
                             <td><?php echo $count++; ?></td>
-                            <td>OPS-2017-0<?php echo $value['id']; ?></td>
-                            <td><?php echo $value['product_id']; ?></td>
-                            <td><?php echo $value['quantity']; ?></td>
-                            <td><?php echo $value['stock_date']; ?></td>
+                            <td name="inventory-id" style="display: none"><?php echo $value['id']; ?></td>
+                            <td name="generated-id">OPS-2017-0<?php echo $value['id']; ?></td>
+                            <td name="product-id"><?php echo $value['product_id']; ?></td>
+                            <td name="quantity"><?php echo $value['quantity']; ?></td>
+                            <td name="stock-date"><?php echo $value['stock_date']; ?></td>
                             <td>
-                              <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                              <a href=""><i class="fa fa-trash-o text-danger"></i></a>
+                              <a href="#" data-toggle="tooltip" title="Update Inventory" class="edit-inventory"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                              <a href="#" data-toggle="tooltip" title="Delete Inventory" class="delete-inventory"><i class="fa fa-trash-o text-danger"></i></a>
                             </td>
                           </tr>
                         <?php endforeach; ?>
@@ -309,10 +311,41 @@ include('data-manager/get-products.php');
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
+<!-- bootbox.js -->
+<script src="assets/js/bootbox.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<script>
+  $(document).ready(function () {
+      var serverURL = <?php echo json_encode($serverURL); ?>;
+
+    $(document).on('click', '.delete-inventory', function(){
+      var data = {
+        id: $(this).closest('tr').find('td[name="inventory-id"]').text(),
+      }
+      console.log(data);
+
+      bootbox.confirm({
+        size: 'small',
+        message: 'Delete record?',
+        callback: function(result){
+          if(result == true){
+            $.ajax({
+              type: 'POST',
+              url: serverURL + '/ops-thesis/data-manager/delete-inventory.php',
+              data: data,
+              dataType: 'json',
+              success: function(rData){
+                if(rData.response){
+                  //location.reload();
+                }
+              },
+            });
+          }
+        },
+      });
+    });
+
+  });
+</script>
 </body>
 </html>

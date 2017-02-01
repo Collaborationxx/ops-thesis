@@ -37,7 +37,6 @@ if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($err
         $response = array('status'=>'success');
         $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $photo));
         file_put_contents($dir.$photo_name, $data);
-
     }
 
     header('Content-Type: application/json');
