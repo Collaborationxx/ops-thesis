@@ -342,7 +342,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </div>
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
-                        <button type="submit" class="btn btn-info pull-right modify-info" style="display: none">Modify</button>
+                        <button type="submit" class="btn btn-info pull-right modify-info" style="display: none">Update</button>
                         <button type="submit" class="btn btn-success pull-right new-user">Save</button>
                       </div>
                     </div>
@@ -514,18 +514,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           var user_role = $(this).closest('tr').find('td[name="role"]').text();
           var username = $(this).closest('tr').find('td[name="username"]').text();
 
-          var data = {
-          id: id,
-          fname: fname,
-          lname: lname,
-          address: address,
-          contact: contact,
-          email: email,
-          user_role: user_role,
-          username: username,
-        }
-        console.log(data);
-
           var role = '';
           if(user_role = 'Admin'){
             role = 1;
@@ -553,6 +541,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
     $(document).on('click', '.btn-new', function(){
       $('.modify-info').css('display', 'none');
       $('.new-user').css('display', 'block');
+      $('p.errMess').css('display','none');
+      $('div#add-user-modal div.form-group').removeClass('has-error');
     });
 
 
