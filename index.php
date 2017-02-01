@@ -48,6 +48,7 @@ include("header.php");
                                 </div>
                                 <div class="clear"></div>
                             </div>
+
                             <div class="row shop-grid grid-view">
 
                                 <div class="col-md-3 col-sm-4 shop-grid-item">
@@ -75,7 +76,7 @@ include("header.php");
                                         <div class="price">
                                                 <!-- <div class="prev">$199,99</div> -->
                                                 <div class="current">₱3,000.00</div>
-                                            </div>
+                                        </div>
                                         <div class="list-buttons">
                                             <a class="button style-10">Add to cart</a>
                                             <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
@@ -84,199 +85,9 @@ include("header.php");
                                     <div class="clear"></div>
                                 </div>
 
-                                <div class="col-md-3 col-sm-4 shop-grid-item">
-                                    <div class="product-slide-entry">
-                                        <div class="product-image">
-                                                <img src="img/nebulizer1.png" alt="" />
-                                                <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
-                                                <div class="bottom-line">
-                                                    <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                              </div>
-                                            </div>
-                                        <a class="tag" href="#">Category</a>
-                                            <a class="title" href="#">Nebulizer</a>
-                                            <div class="rating-box">
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                            </div>
-                                              <div class="article-container style-1">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                            <div class="price">
-                                                <!-- <div class="prev">$199,99</div> -->
-                                                <div class="current">₱1,450.00</div>
-                                            </div>
-                                        
-                                        <div class="list-buttons">
-                                            <a class="button style-10">Add to cart</a>
-                                            <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-4 shop-grid-item">
-                                         <div class="product-slide-entry">
-                                            <div class="product-image">
-                                                <img src="img/bandage1.png" alt="" />
-                                                  <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
-                                                <div class="bottom-line">
-        
-                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                  
-                                                </div>
-                                            </div>
-                                            <a class="tag" href="#">Category</a>
-                                            <a class="title" href="#">Bandage</a>
-                                            <div class="rating-box">
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                            </div>
-                                              <div class="article-container style-1">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                            <div class="price">
-                                                <!-- <div class="prev">$199,99</div> -->
-                                                <div class="current">₱200.00</div>
-                                            </div>
-                                        </div>
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-4 shop-grid-item">
-                                        <div class="product-slide-entry">
-                                            <div class="product-image">
-                                                <img src="img/medkit.png" alt="" />
-                                                  <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
-                                                <div class="bottom-line">
-        
-                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                  
-                                                </div>
-                                            </div>
-                                            <a class="tag" href="#">Category</a>
-                                            <a class="title" href="#">First-aid Kit</a>
-                                            <div class="rating-box">
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                            </div>
-                                             <div class="article-container style-1">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                            </div>
-                                            <div class="price">
-                                                <!-- <div class="prev">$199,99</div> -->
-                                                <div class="current">₱3,000.00</div>
-                                            </div>
-                                        </div>
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-4 shop-grid-item">
-                                    <div class="product-slide-entry">
-                                     <div class="product-image">
-                                                <img src="img/oxygentank1.png" alt="" />
-                                                <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
-                                                <div class="bottom-line">
-        
-                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                  
-                                                </div>
-                                            </div>
-                                            <a class="tag" href="#">Category</a>
-                                            <a class="title" href="#">Oxygen Tank</a>
-                                            <div class="rating-box">
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                            </div>
-                                        <div class="article-container style-1">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                       <div class="price">
-                                                <!-- <div class="prev">$199,99</div> -->
-                                                <div class="current">₱8,000.00</div>
-                                            </div>
-                                        <div class="list-buttons">
-                                            <a class="button style-10">Add to cart</a>
-                                            <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-4 shop-grid-item">
-                                  <div class="product-slide-entry">
-                                            <div class="product-image">
-                                                <img src="img/walkerboots1.png" alt="" />
-                                                <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
-                                                <div class="bottom-line">
-        
-                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                  
-                                                </div>
-                                            </div>
-                                            <a class="tag" href="#">Category</a>
-                                            <a class="title" href="#">Walker Boots</a>
-                                            <div class="rating-box">
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                            </div>
-                                             <div class="article-container style-1">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                            <div class="price">
-                                                <!-- <div class="prev">$199,99</div> -->
-                                                <div class="current">₱5,000.00</div>
-                                            </div>
-                                        </div>
-                                    <div class="clear"></div>
-                                </div>
-
-                                <div class="col-md-3 col-sm-4 shop-grid-item">
-                                      <div class="product-slide-entry">
-                                            <div class="product-image">
-                                                <img src="img/rossmax1.png" alt="" />
-                                                <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
-                                                <div class="bottom-line">
-        
-                                                        <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                                  
-                                                </div>
-                                            </div>
-                                            <a class="tag" href="#">Woman's clothing</a>
-                                            <a class="title" href="#">Rossmax BP Digital</a>
-                                            <div class="rating-box">
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                            </div>
-                                             <div class="article-container style-1">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                                        </div>
-                                            <div class="price">
-                                                <!-- <div class="prev">$199,99</div> -->
-                                                <div class="current">₱1,900.00</div>
-                                            </div>
-                                        </div>
-                                    <div class="clear"></div>
-                                </div>
                             </div>
+
+                            
                             <div class="page-selector">
                                 <div class="description">Showing: 1-3 of 16</div>
                                 <div class="pages-box">
