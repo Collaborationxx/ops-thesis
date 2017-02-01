@@ -342,7 +342,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </div>
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
-                        <button type="submit" class="btn btn-info pull-right modify-info" style="display: none">Modify</button>
+                        <button type="submit" class="btn btn-info pull-right modify-info" style="display: none">Update</button>
                         <button type="submit" class="btn btn-success pull-right new-user">Save</button>
                       </div>
                     </div>
@@ -553,6 +553,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
     $(document).on('click', '.btn-new', function(){
       $('.modify-info').css('display', 'none');
       $('.new-user').css('display', 'block');
+      $('p.errMess').css('display','none');
+      $('div#add-user-modal div.form-group').removeClass('has-error');
     });
 
 

@@ -9,22 +9,27 @@ $photo = $_POST['photo'];
 $response = array();
 $error = array(
     'categoryEmpty' => '',
-    'pruductEmpty' =>'',
+    'productEmpty' =>'',
     'priceEmpty' => '',
     'invalidPhoto' => '',
+    'invalidPrice' => '',
 );
 
 if(empty($category)){
     $error['categoryEmpty'] = true;
 }
 if(empty($name)){
-    $error['pruductEmpty'] = true;
+    $error['productEmpty'] = true;
 }
-if(empty($price)){
+if(!empty($price)){
+    if(filter_var($price, FILTER_VALIDATE_FLOAT) === false){
+        $error['invalidPrice'] = true;
+    }
+} else{
     $error['priceEmpty'] = true;
 }
 
-if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($error['priceEmpty'])){
+if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($error['priceEmpty']) && empty($error['invalidPrice'])){
     $query = "INSERT INTO `product` (name, description, price, category) VALUES ('$name', '$desc', $price, $category)";
     if(mysqli_query($con, $query)){
         $response = array('status'=>'success');
@@ -34,8 +39,9 @@ if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($err
 } else {
     $response = array(
         'categoryEmpty' =>  $error['categoryEmpty'],
-        'pruductEmpty' => $error['pruductEmpty'],
+        'productEmpty' => $error['productEmpty'],
         'priceEmpty' => $error['priceEmpty'],
+        'invalidPrice' => $error['invalidPrice'],
     );
     header('Content-Type: application/json');
     echo json_encode($response);

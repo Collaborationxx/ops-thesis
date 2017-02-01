@@ -94,7 +94,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -168,7 +168,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-list"></i>   Products</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-default btn-sm" data-toggle="modal" data-target="#add-product-modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Product</button>
+                  <button type="button" class="btn btn-default btn-sm btn-new" data-toggle="modal" data-target="#add-product-modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Product</button>
                 </div>
 
               </div>
@@ -180,28 +180,29 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       <th style="width: 10px">#</th>
                       <th>Item</th>
                       <th>Description</th>
-                      <th>Price</th>
+                      <th>Price (&#x20B1;)</th>
                       <th>Category
                       <th>Action</th>
                     </tr>
-                    <?php if(isset($arr)): ?>
+                    <!-- &#x20B1; //peso sign-->
+                    <?php if(isset($arr) AND count($arr) > 0): ?>
                       <?php foreach ($arr as $key => $value): ?>
                         <tr>
                           <td><?php echo $count++ ?></td>
                           <td name ="prod-id" style="display: none"><?php echo $value['id']; ?></td>
                           <td name="prod-name"><?php echo $value['name']; ?></td>
                           <td name="prod-desc"><?php echo $value['description']; ?></td>
-                          <td name="prod-price">&#x20B1; <?php echo $value['price']; ?></td>
-                          <td name="prod-category"><?php echo $value['category']; ?></td>
+                          <td name="prod-price"><?php echo $value['price']; ?></td>
+                          <td name="prod-category" data-id="<?php echo $value['category']; ?>"><?php echo category($value['category']); ?></td>
                           <td>
-                            <a href=""><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href=""><i class="fa fa-trash-o text-danger"></i></a>
+                            <a href="#" data-toggle="tooltip" title="Edit Product" class="edit-product"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                            <a href="#" data-toggle="tooltip" title="Delete Product" class="delete-product"><i class="fa fa-trash-o text-danger"></i></a>
                           </td>
                         </tr>
                       <?php endforeach; ?>
-                     <?php else: ?>
+                    <?php else: ?>
                         <tr>
-                          <td colspan="6">No Results Found</td>
+                          <td colspan="6" style="text-align: center"><b>No Results Found</b></td>
                         </tr>
                     <?php endif; ?>
                     </tbody>
@@ -246,12 +247,12 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">New Product</h4>
+        <h4 class="modal-title">OPS</h4>
       </div>
       <div class="modal-body">
         <div class="alert alert-success alert-dismissable alert-create-success" style="display: none;">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-          <strong>Success!</strong> New user created.
+          <strong>Success!</strong> New product created.
         </div>
         <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
@@ -265,9 +266,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                 </div>
                 <div class="box-body">
                   <form role="form" method="post" action="data-manager/add-product.php">
+                    <input name="prod-id" style="display: none" value="">
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                          <p class="errMess categoryEmpty" style="display: none">Choose at least 1 category.</p>
                           <label>Product Category:</label>
                           <select class="form-control" id="prod-category">
                           <option value="">*Choose Category</option>
@@ -287,6 +290,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                          <p class="errMess productEmpty" style="display: none">*This is a Required Field</p>
                           <label>Product Name:</label>
                           <input type="text" class="form-control" name="product-name" placeholder="Enter ...">
                         </div>
@@ -303,14 +307,16 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                          <p class="errMess invalidPrice" style="display: none">Numbers Only (e.g 100 or 100.00)</p>
                           <label>Price:</label>
-                          <input type="text" class="form-control" name="price" placeholder="Enter...">
+                          <input type="text" class="form-control" name="price" placeholder="0.00">
                         </div>
                       </div>
                     </div>
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                          <p class="errMess invalid Photo" style="display: none">Image only (.jpg, .jpeg, .png)</p>
                           <div class="row">
                             <div class="col-md-12 col-xs-12">
                               <input type="file" name="product-img" class="file">
@@ -335,6 +341,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   </form>
                 </div>
                 <div class="box-footer">
+                  <button type="submit" class="btn btn-info pull-right update-product" style="display: none">Update</button>
                   <button type="submit" class="btn btn-success pull-right new-product">Save</button>
                 </div>
           </div>
@@ -353,6 +360,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
+<!-- bootbox.js -->
+<script src="assets/js/bootbox.min.js"></script>
 
 <script>
   $(document).ready(function () {
@@ -383,11 +392,16 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
     $(document).on('click', '.new-product', function(e){
       e.preventDefault();
+
+      $('p.errMess').css('display','none');
+      $('div#add-product-modal div.form-group').removeClass('has-error');
       var category = $(this).closest('div.box').find('.box-body select#prod-category').val();
       var product = $(this).closest('div.box').find('.box-body input[name="product-name"]').val();
-      var price = $(this).closest('div.box').find('.box-body input[name="price"]').val();
+      var price =  parseFloat($(this).closest('div.box').find('.box-body input[name="price"]').val()).toFixed(2);
       var desc = $(this).closest('div.box').find('.box-body textarea[name="product-description"]').val();
       var photo = $(this).closest('div.box').find('.box-body img#prod-img').attr('src');
+      var modal = $('div#add-product-modal');
+
 
       var data = {
         category: category,
@@ -414,6 +428,144 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               location.reload();
             }, 3200);
           }
+
+          if(rData.productEmpty){
+            $(modal).find('.productEmpty').closest('.form-group').addClass('has-error');
+            $(modal).find('p.productEmpty').css('display', 'block');
+          }
+
+          if(rData.categoryEmpty){
+            $(modal).find('.categoryEmpty').closest('.form-group').addClass('has-error');
+            $(modal).find('p.categoryEmpty').css('display', 'block');
+          }
+
+          if(rData.priceEmpty){
+            $(modal).find('.priceEmpty').closest('.form-group').addClass('has-error');
+            $(modal).find('p.priceEmpty').css('display', 'block');
+          }
+
+          if(rData.invalidPrice){
+            $(modal).find('.invalidPrice').closest('.form-group').addClass('has-error');
+            $(modal).find('p.invalidPrice').css('display', 'block');
+          }
+
+        },
+      });
+    });
+
+    $(document).on('click', 'a.delete-product', function(){
+      var data = {
+        id: $(this).closest('tr').find('td[name="prod-id"]').text(),
+      }
+      console.log(data);
+
+      bootbox.confirm({
+        size: 'small',
+        message: 'Delete record?',
+        callback: function(result){
+          if(result == true){
+            $.ajax({
+              type: 'POST',
+              url: serverURL + '/ops-thesis/data-manager/delete-product.php',
+              data: data,
+              dataType: 'json',
+              success: function(rData){
+                if(rData.response){
+                  location.reload();
+                }
+              },
+            });
+          }
+        },
+      });
+    });
+
+
+    $(document).on('click', '.edit-product', function (e) {
+      e.preventDefault();
+
+      $('p.errMess').css('display','none');
+      $('div#add-product-modal div.box-header').find('h3').html('Update Product');
+      $('div#add-product-modal div.form-group').removeClass('has-error');
+      $('button.update-product').css('display','block');
+      $('button.new-product').css('display','none');
+      var id = $(this).closest('tr').find('td[name="prod-id"]').text();
+      var category = $(this).closest('tr').find('td[name="prod-category"]').attr('data-id');
+      var product = $(this).closest('tr').find('td[name="prod-name"]').text();
+      var price =  parseFloat($(this).closest('tr').find('td[name="prod-price"]').text()).toFixed(2);
+      var desc = $(this).closest('tr').find('td[name="prod-desc"]').text();
+      //var photo = $(this).closest('tr').find('.box-body img#prod-img').attr('src');
+      var modal = $('div#add-product-modal.fade');
+
+
+      var data = {
+        id: id,
+        category: category,
+        product: product,
+        price: price,
+        desc: desc,
+        //photo: photo,
+      }
+
+      console.log(data);
+
+      $(modal).modal('show');
+      $(modal).on('shown.bs.modal', function () {
+        $(modal).find('.modal-body input[name="prod-id"]').val();
+        $(modal).find('.modal-body input[name="product-name"]').val(product);
+        $(modal).find('.modal-body textarea[name="product-description"]').val(desc);
+        $(modal).find('.modal-body input[name="price"]').val(price);
+        $(modal).find('.modal-body select#prod-category').val(category);
+      });
+    });
+
+    $(document).on('click', '.btn-new', function () {
+      $('div#add-product-modal div.box-header').find('h3').html('New Product');
+      $('button.update-product').css('display','none');
+      $('button.new-product').css('display','block');
+      $('p.errMess').css('display','none');
+      $('div#add-product-modal div.form-group').removeClass('has-error');
+    });
+
+    $(document).on('click', '.update-product', function () {
+
+
+      $.ajax({
+        type: "POST",
+        url: serverURL + '/ops-thesis/data-manager/edit-product.php',
+        data: data,
+        dataType: "json",
+        success: function (rData) {
+          console.log(rData)
+          if (rData.status) {
+            $('.alert-create-success').css('display', 'block'); //show success alert
+            $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+            setTimeout(function () {
+              $('#add-product-modal').modal('hide');
+              location.reload();
+            }, 3200);
+          }
+
+          if(rData.productEmpty){
+            $(modal).find('.productEmpty').closest('.form-group').addClass('has-error');
+            $(modal).find('p.productEmpty').css('display', 'block');
+          }
+
+          if(rData.categoryEmpty){
+            $(modal).find('.categoryEmpty').closest('.form-group').addClass('has-error');
+            $(modal).find('p.categoryEmpty').css('display', 'block');
+          }
+
+          if(rData.priceEmpty){
+            $(modal).find('.priceEmpty').closest('.form-group').addClass('has-error');
+            $(modal).find('p.priceEmpty').css('display', 'block');
+          }
+
+          if(rData.invalidPrice){
+            $(modal).find('.invalidPrice').closest('.form-group').addClass('has-error');
+            $(modal).find('p.invalidPrice').css('display', 'block');
+          }
+
         },
       });
     });
