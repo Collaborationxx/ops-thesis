@@ -113,7 +113,7 @@ $count = 1;
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="#">
+          <a href="user-management.php">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>

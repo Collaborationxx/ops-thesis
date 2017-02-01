@@ -26,13 +26,13 @@ include('authentication/functions.php');
     <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
 
     <link rel="shortcut icon" href="assets/images/ops.png" />
-  	<title>OPS - HOME</title>
+  	<title>OPS | Premium Quality You Can Afford!</title>
 </head>
 <body class="style-10">
     <!-- LOADER -->
     <div id="loader-wrapper">
         <div class="bubbles">
-            <div class="title">loading</div>
+            <div class="title">Loading</div>
             <span></span>
             <span id="bubble2"></span>
             <span id="bubble3"></span>

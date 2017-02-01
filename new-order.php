@@ -96,12 +96,12 @@
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
-          <a href="dashboard.html">
+          <a href="dashboard.php">
           <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
           <span>Dashboard</span></a>
         </li>
         <li>
-          <a href="user-management.html">
+          <a href="user-management.php">
           <img src="assets/images/user-512.png" class="ops-sidebar-img">
           <span>Account Manager</span></a>
         </li>
@@ -111,7 +111,7 @@
           <span>Product Catalog</span></a>
         </li>
         <li>
-          <a href="order-tracking.html">
+          <a href="order-tracking.php">
           <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
           <span>Order Tracking</span></a>
         </li>
@@ -121,7 +121,7 @@
           <span>Inventory</span></a>
         </li>
         <li>
-          <a href="reports.html">
+          <a href="reports.php">
           <img src="assets/images/analytics.png" class="ops-sidebar-img">
           <span>Reports</span></a>
         </li>
@@ -140,7 +140,7 @@
         <small>Control Panel</small>
       </h1>
       <ol class="breadcrumb">
-       <li><a href="dashboard.html">Home</a></li>
+       <li><a href="dashboard.php">Home</a></li>
        <li class="active">New Orders</li>
     </section>
 
@@ -152,7 +152,7 @@
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-shopping-bag"></i>   New Orders</h3>
                 <div class="box-tools pull-right">
-                 <a href="print-order.html" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
+                 <a href="print-order.php" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
                 </div>
               </div>
               <div class="box-body no-padding">
@@ -167,7 +167,7 @@
                       </tr>
                       <tr>
                         <td>1.</td>
-                        <td><a href="order-information.html">OPS-43-34</a></td>
+                        <td><a href="order-information.php">OPS-43-34</a></td>
                         <td>01/10/17</td>
                         <td>Paid</td>
                       </tr>
@@ -200,7 +200,7 @@
       Premium Quality Products you can afford!
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">MJ Jacobe Trading</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2016 <a href="index.php">MJ Jacobe Trading</a>.</strong> All rights reserved.
   </footer>
 </div>
 <!-- ./wrapper -->

@@ -105,7 +105,7 @@
           <span>Account Manager</span></a>
         </li>
         <li>
-          <a href="#">
+          <a href="product-management.php">
           <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
           <span>Product Catalog</span></a>
         </li>
@@ -172,7 +172,7 @@
                     </div> 
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
-                        <table class="table table-striped table-responsive">
+                        <table class="table table-striped table-responsive table-bordered">
                           <tbody>
                             <tr>
                               <th width="10%">#</th>
@@ -193,8 +193,8 @@
                               <td>6,000</td>
                             </tr>
                             <tr>
-                              <td colspan="6"><span class="pull-right" style="padding-right: 75px;"><b>TOTAL:</b> 6,000</span></td>
-                              
+                              <td colspan="5"><span class="pull-right"><b>TOTAL:</b></span></td>
+                              <td>6,000</td>
                             </tr>
                           </tbody>
                          </table>
