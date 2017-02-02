@@ -74,7 +74,7 @@ include('authentication/functions.php');
                                 <div class="header-top-entry increase-icon-responsive">
 
                                     <?php if(isset($_SESSION['username'])): ?>
-                                        <div class="title"
+                                        <div class="title">
                                             <ul>
                                                 <li class="dropdown">
                                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
@@ -85,6 +85,7 @@ include('authentication/functions.php');
                                                 </li>
                                             </ul>
                                         </div>
+
                                     <?php else: ?>
                                         <div class="title"><a href="#" data-toggle="modal" data-target="#login-signup-modal"><i class="fa fa-user"></i>
                                                 <span>My Account</span>
@@ -100,15 +101,21 @@ include('authentication/functions.php');
                             <div class="line-entry">
                                 <a href="index.php" class="header-functionality-entry"><i class="fa fa-home"></i><span>Home</span></a>
 
-                                <a class="header-functionality-entry"><i class="fa fa-bar"></i><span>Products</span>
-                                    <div class="submenu">
-                                            <ul class="simple-menu-list-column">
-                                               
-                                               <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>Always on Hand</a></li>
-                                               <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>For Reservation</a></li>
-                                            </ul>
-                                        </div>
-                                </a>
+                                <div class="title">
+                                    <ul>
+                                        <li class="dropdown">
+                                            <a class="header-functionality-entry dropdown-toggle"><i class="fa fa-bars"></i><span>Products</span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>Always on Hand</a></li>
+                                                <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>For Reservation</a></li>
+                                                </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+
+                                
                                 <a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>
                                 <a href="#" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> <b>$255,99</b></a>
                             </div>
