@@ -48,6 +48,7 @@ function landingPage($role) {
   return $redir;
 }
 
+//product category
 function category($id){
     $name = '';
     switch ($id){

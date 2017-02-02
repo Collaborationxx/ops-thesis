@@ -1,8 +1,8 @@
 <?php
-$username = "root";
-$password = "";
+$username = "root";//username ng phpMyAdmin
+$password = "test123`";//pw ng phpMyAdmin
 $servername = "localhost";
-$db = "ops_db";
+$db = "ops_db";//name database sa xampp
 
 $con = mysqli_connect("$servername","$username","$password","$db");
 
