@@ -29,13 +29,13 @@
   <link rel="shortcut icon" href="assets/images/small-logo.png" />
 </head>
 <body>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-default" style="height: 70px; background-color: #e6ffe6;">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="index.php"><img src="assets/images/small-logo.png" class="ops-nav-logo"></a>
+        <a class="navbar-brand" href="index.php"><img src="assets/images/opslogo.png" class="ops-nav-logo"></a>
       </div>
       <div class="">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: -5px;">
           <li><a href="logout.php"><i class="fa fa-sign-out"></i>  Logout</a></li>
         </ul>
       </div>
@@ -65,11 +65,11 @@
                       <input type="text" class="form-control" placeholder="Enter ...">
                     </div>
                     <div class="form-group">
-                      <label>Quantity:</label>
+                      <label>Price:</label>
                       <input type="text" class="form-control" placeholder="Enter ...">
                     </div>
                     <div class="form-group">
-                      <label>Price:</label>
+                      <label>Quantity:</label>
                       <input type="text" class="form-control" placeholder="Enter ...">
                     </div>
                   </form>
@@ -125,6 +125,7 @@
         </div>
     </section>
   
+                   
 
   <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>

@@ -56,7 +56,9 @@ include("header.php");
                                             <div class="product-slide-entry">
                                                 <div class="product-image">
                                                     <img src="assets/images/<?php echo $value['picture']?>" alt="" />
-                                                    <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
+                                                    
+                                                    <!--<a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>-->
+                                                    
                                                     <div class="bottom-line">
                                                     <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                                 </div>
@@ -79,7 +81,7 @@ include("header.php");
                                             </div>
                                             <div class="list-buttons">
                                                 <a class="button style-10">Add to cart</a>
-                                                <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                                <!--<a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>-->
                                             </div>
                                         </div>
                                         <div class="clear"></div>

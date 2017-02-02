@@ -20,4 +20,4 @@
 .image-preview img {max-width: 160px; width: 100%; height: auto; }
 .table-pic img { max-width: 100px; width: 100%; height: auto; }
 .modal-content { margin: auto; display: block; width: 80%; max-width: 400px;}
-
+.break { height: 3px; background: #1C8F01; width: 1140px; margin-bottom: 10px; }

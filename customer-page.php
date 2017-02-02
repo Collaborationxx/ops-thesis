@@ -58,10 +58,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
     </div>
 </nav>
 <div class="container">
-  <h3>My Account</h3>
+  <h3 style="margin-top: -5px; margin-bottom: 5px; font-weight: bold;">My Account</h3>
+  <div class="break"></div>
   <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#profile-tab-content">Profile</a></li>
-    <li><a data-toggle="tab" href="#wishlist-tab-content">Wish List</a></li>
+    <!--<li><a data-toggle="tab" href="#wishlist-tab-content">Wish List</a></li>-->
     <li><a data-toggle="tab" href="#order-tab-content">Orders</a></li>
     <li><a data-toggle="tab" href="#reservation-tab-content">Reservations</a></li>
     <li><a data-toggle="tab" href="#notification-tab-content">Notification</a></li>
@@ -157,6 +158,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         </div>
       </div>
     </div>
+
+    <!--
     <div id="wishlist-tab-content" class="tab-pane fade in">
       <div class="panel-body">
         <table class="table table-striped table-bordered table-responsive">
@@ -182,7 +185,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           </tbody>
         </table>
       </div>
-    </div>
+    </div>-->
+
     <div id="order-tab-content" class="tab-pane fade in">
       <div class="panel-body">
         <div class="row">
@@ -265,6 +269,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         </div>
       </div>
     </div>
+
     <div id="reservation-tab-content" class="tab-pane fade in">
       <div class="panel-body">
         <div class="row">

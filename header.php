@@ -102,22 +102,18 @@ include('data-manager/get-products.php');
                             <div class="line-entry">
                                 <a href="index.php" class="header-functionality-entry"><i class="fa fa-home"></i><span>Home</span></a>
 
-                                <div class="title">
-                                    <ul>
-                                        <li class="dropdown">
-                                            <a class="header-functionality-entry dropdown-toggle"><i class="fa fa-cubes"></i><span>Products</span></a>
-                                                <ul class="dropdown-menu">
+                                
+                                <a class="header-functionality-entry"><i class="fa fa-cubes"></i><span>Products</span></a>
+                                                <!--<ul class="dropdown-menu">
                                                     <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>Always on Hand</a></li>
                                                 <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>For Reservation</a></li>
                                                 </ul>
                                         </li>
-                                    </ul>
-                                </div>
+                                    </ul>-->
+                               
 
-
-
-                                
-                                <a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>
+                                <!--wishlist-->
+                                <!--<a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>-->
 
                                 <a href="#" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> <b>$255,99</b></a>
 
