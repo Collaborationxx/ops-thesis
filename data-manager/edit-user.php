@@ -1,7 +1,7 @@
 <?php
 session_start();
 //include database file for connection to the server
-include('./config/db_connection.php');
+include('../config/db_connection.php');
 //include functions.php to test sql injections
 include('../authentication/functions.php');
 

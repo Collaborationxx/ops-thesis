@@ -1,5 +1,5 @@
 <?php
-include('./config/db_connection.php');
+include('../config/db_connection.php');
 
 $product = $_POST['product'];
 $qty = $_POST['qty'];

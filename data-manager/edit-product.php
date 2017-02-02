@@ -1,5 +1,5 @@
 <?php
-include('./config/db_connection.php');
+include('../config/db_connection.php');
 include('../authentication/functions.php');
 
 $id = $_POST['id'];
