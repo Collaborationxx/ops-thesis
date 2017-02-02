@@ -104,7 +104,7 @@ include('authentication/functions.php');
                                 <div class="title">
                                     <ul>
                                         <li class="dropdown">
-                                            <a class="header-functionality-entry dropdown-toggle"><i class="fa fa-bars"></i><span>Products</span></a>
+                                            <a class="header-functionality-entry dropdown-toggle"><i class="fa fa-cubes"></i><span>Products</span></a>
                                                 <ul class="dropdown-menu">
                                                     <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>Always on Hand</a></li>
                                                 <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>For Reservation</a></li>
@@ -117,7 +117,9 @@ include('authentication/functions.php');
 
                                 
                                 <a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>
+
                                 <a href="#" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> <b>$255,99</b></a>
+
                             </div>
                         </div>
                     </div>
