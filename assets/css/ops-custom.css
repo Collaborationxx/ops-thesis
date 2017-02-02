@@ -1,6 +1,6 @@
 .ops-sidebar-img { width: 100%; max-width: 32px; height: auto; margin-right: 5px;  }
 .ops-sidebar-logo { width: 100%; max-width: 100px; height: auto; margin-left:40px }
-.ops-nav-logo {width: 100%; max-width: 80px; height: auto; margin-bottom: -18px;}
+.ops-nav-logo {width: 100%; max-width: 150px; height: auto; margin-top: -10px;}
 .tab-content {background-color: #fcfcfc; padding: 15px; border: 1px #ebebeb solid; }
 .ops-table-img {width: 100%; max-width: 150px; height: auto;}
 .header-top-entry .title a:hover { text-decoration: none; }
@@ -20,3 +20,4 @@
 .image-preview img {max-width: 160px; width: 100%; height: auto; }
 .table-pic img { max-width: 100px; width: 100%; height: auto; }
 .modal-content { margin: auto; display: block; width: 80%; max-width: 400px;}
+

@@ -40,13 +40,13 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   <link rel="shortcut icon" href="assets/images/small-logo.png" />
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" style="height: 70px; background-color: #e6ffe6;">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.php"><img src="assets/images/small-logo.png" class="ops-nav-logo"></a>
+      <a class="navbar-brand" href="index.php"><img src="assets/images/opslogo.png" class="ops-nav-logo"></a>
     </div>
     <div class="">
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right" style="margin-top: 10px; margin-right: -5px;">
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>   Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
           <ul class="dropdown-menu">
