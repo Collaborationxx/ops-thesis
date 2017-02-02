@@ -2,46 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4690b1ef-2609-4579-9529-35e1c096591a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/assets/images/smalllogo.png" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/about-us.html" afterPath="$PROJECT_DIR$/about-us.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/alert.php" afterPath="$PROJECT_DIR$/alert.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/assets/css/ops-custom.css" afterPath="$PROJECT_DIR$/assets/css/ops-custom.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/authentication/authentication.php" afterPath="$PROJECT_DIR$/authentication/authentication.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/authentication/signup.php" afterPath="$PROJECT_DIR$/authentication/signup.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/customer-page.php" afterPath="$PROJECT_DIR$/customer-page.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dashboard.php" afterPath="$PROJECT_DIR$/dashboard.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/add-inventory.php" afterPath="$PROJECT_DIR$/data-manager/add-inventory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/add-product.php" afterPath="$PROJECT_DIR$/data-manager/add-product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/add-user.php" afterPath="$PROJECT_DIR$/data-manager/add-user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/delete-inventory.php" afterPath="$PROJECT_DIR$/data-manager/delete-inventory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/delete-product.php" afterPath="$PROJECT_DIR$/data-manager/delete-product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/delete-users.php" afterPath="$PROJECT_DIR$/data-manager/delete-users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/edit-product.php" afterPath="$PROJECT_DIR$/data-manager/edit-product.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/edit-user.php" afterPath="$PROJECT_DIR$/data-manager/edit-user.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/get-inventory.php" afterPath="$PROJECT_DIR$/data-manager/get-inventory.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/get-products.php" afterPath="$PROJECT_DIR$/data-manager/get-products.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/get-profile.php" afterPath="$PROJECT_DIR$/data-manager/get-profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/get-users.php" afterPath="$PROJECT_DIR$/data-manager/get-users.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/update-profile.php" afterPath="$PROJECT_DIR$/data-manager/update-profile.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/update-settings.php" afterPath="$PROJECT_DIR$/data-manager/update-settings.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/header.php" afterPath="$PROJECT_DIR$/header.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index-wide.html" afterPath="$PROJECT_DIR$/index-wide.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/inventory-management.php" afterPath="$PROJECT_DIR$/inventory-management.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new-order.php" afterPath="$PROJECT_DIR$/new-order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/new-reservation.php" afterPath="$PROJECT_DIR$/new-reservation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/order-information.php" afterPath="$PROJECT_DIR$/order-information.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/order-tracking.php" afterPath="$PROJECT_DIR$/order-tracking.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/payment.php" afterPath="$PROJECT_DIR$/payment.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/print-order.php" afterPath="$PROJECT_DIR$/print-order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/print-reservation.php" afterPath="$PROJECT_DIR$/print-reservation.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/product-management.php" afterPath="$PROJECT_DIR$/product-management.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reports.php" afterPath="$PROJECT_DIR$/reports.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reservation-information.php" afterPath="$PROJECT_DIR$/reservation-information.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/shopping-cart.html" afterPath="$PROJECT_DIR$/shopping-cart.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staff-page.php" afterPath="$PROJECT_DIR$/staff-page.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/starter.html" afterPath="$PROJECT_DIR$/starter.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tac.html" afterPath="$PROJECT_DIR$/tac.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/user-management.php" afterPath="$PROJECT_DIR$/user-management.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ops-thesis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -86,14 +48,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="update-profile.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="update-profile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data-manager/update-profile.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+            <state relative-caret-position="0">
+              <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
               <folding>
                 <marker date="1486045493626" expanded="true" signature="1799:2117" ph="UPDATE `user... " />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="34">
+              <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="test.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -115,8 +97,10 @@
         <entry file="file://$PROJECT_DIR$/header.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="129">
-              <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
-              <folding />
+              <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+              <folding>
+                <marker date="1486046223130" expanded="true" signature="6302:6660" ph="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -137,30 +121,6 @@
             <state relative-caret-position="17">
               <caret line="1" column="82" selection-start-line="1" selection-start-column="82" selection-end-line="1" selection-end-column="82" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="edit-user.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data-manager/edit-user.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
-              <folding>
-                <marker date="1486045494216" expanded="true" signature="2237:2646" ph="UPDATE `user... " />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="get-inventory.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data-manager/get-inventory.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-              <folding>
-                <marker date="1486045493537" expanded="true" signature="76:101" ph="SELECT * FRO... inventory" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -192,7 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/authentication/add-user.php" />
         <option value="$PROJECT_DIR$/authentication/signup.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/inventory-management.html" />
@@ -243,6 +202,7 @@
         <option value="$PROJECT_DIR$/header.php" />
         <option value="$PROJECT_DIR$/about-us.html" />
         <option value="$PROJECT_DIR$/assets/css/ops-custom.css" />
+        <option value="$PROJECT_DIR$/config/.gitignore" />
       </list>
     </option>
   </component>
@@ -315,38 +275,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="assets" />
-              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -435,7 +363,7 @@
       <workItem from="1485783125634" duration="13379000" />
       <workItem from="1485869794349" duration="12310000" />
       <workItem from="1485912601127" duration="46480000" />
-      <workItem from="1486044416923" duration="1671000" />
+      <workItem from="1486044416923" duration="2590000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -532,13 +460,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="129840000" />
+    <option name="totallyTimeSpent" value="130759000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2632375" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2632375" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -606,8 +534,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/page/dashboard.html" />
-    <entry file="file://$PROJECT_DIR$/page/login.php" />
     <entry file="file://$PROJECT_DIR$/logout.php" />
     <entry file="file://$PROJECT_DIR$/assets/js/login-form.js" />
     <entry file="file://$PROJECT_DIR$/page/user-management.html" />
@@ -949,8 +875,10 @@
     <entry file="file://$PROJECT_DIR$/header.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
-          <caret line="27" column="50" selection-start-line="27" selection-start-column="50" selection-end-line="27" selection-end-column="50" />
-          <folding />
+          <caret line="28" column="50" selection-start-line="28" selection-start-column="50" selection-end-line="28" selection-end-column="50" />
+          <folding>
+            <marker date="1486046223130" expanded="true" signature="6302:6660" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -972,11 +900,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/data-manager/update-profile.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+        <state relative-caret-position="0">
+          <caret line="0" column="5" selection-start-line="0" selection-start-column="5" selection-end-line="0" selection-end-column="5" />
           <folding>
             <marker date="1486045493626" expanded="true" signature="1799:2117" ph="UPDATE `user... " />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="1" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
