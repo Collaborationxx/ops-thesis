@@ -3,8 +3,9 @@
                     <footer class="type-1">
                         <div class="footer-columns-entry">
                             <div class="row">
-                                <div class="col-md-4">
-                                    <img class="ops-logo" src="assets/images/ops.png" alt="" />
+                                <div class="col-md-5">
+                                    <!--<img class="footerlogo" src="assets/images/opslogo.png" alt="" />-->
+                                    <h3 class="column-title">We would love if you will contact us:</h3>
                                     <div class="footer-address"><i class="fa fa-phone-square"></i> (+63)915-219-6248<br/>
                                         <i class="fa fa-map-marker"></i> &nbsp;&nbsp;Bambang Street, Sta Cruz, Manila<br/>
                                         <i class="fa fa-envelope-o"></i> Email: <a href="https://login.yahoo.com" target="_blank">mjjacobe_traiding2015@yahoo.com</a><br/>
@@ -12,7 +13,7 @@
                                     </div>
                                     <div class="clear"></div>
                                 </div>
-                                <div class="col-md-4 col-sm-4">
+                                <div class="col-md-3 col-sm-4">
                                     <h3 class="column-title">Our Services</h3>
                                     <ul class="column">
                                         <li><a href="about-us.html">About us</a></li>
@@ -28,10 +29,6 @@
                                     <div class="footer-description">Visit our shop and find premium quality of medical supplies you can afford!</div>
                                     <div class="footer-description">
                                         <b>Monday-Sunday:</b> 8:00 a.m. - 5:O0 p.m.<br/>
-                                    </div>
-                                    <div class="footer-description">Online Store cut off for processing delivery:</div>
-                                    <div class="footer-description">
-                                         <b>Monday-Sunday:</b> 3:00 p.m.<br/>
                                     </div>
                                     <div class="clear"></div>
                                 </div>

@@ -1706,8 +1706,8 @@ body:not(.mobile) .promo-banner-box .promo-text .detail-link:hover, body:not(.mo
 .product-header-message{display: table-cell; vertical-align: middle; font-size: 12px; line-height: 16px; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; text-align: center;}
 .product-header-content{display: table-cell; vertical-align: middle; text-align: right; width: 450px;}
 .product-header-content .line-entry{display: inline-block; vertical-align: bottom;}
-header .line-entry{white-space: nowrap;}
-.product-header-content .middle-line{height: 1px; background: #1C8F01;}
+header .line-entry{white-space: nowrap; margin-bottom: -5px; margin-top: -5px;}
+.product-header-content .middle-line{height: 1px; background: #1C8F01; width: 1000px;}
 .header-wrapper.style-10 .line-entry:last-child{padding-top: 20px; padding-bottom: 20px;}
 .header-wrapper.style-10 .header-top-entry:last-child .title{padding-right: 0;}
 @media (min-width: 1200px) {

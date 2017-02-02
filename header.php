@@ -67,7 +67,7 @@ include('authentication/functions.php');
                        
                         <div class="product-header-content">
                             <div class="line-entry">
-                                <div class="menu-button responsive-menu-toggle-class"><i class="fa fa-reorder"></i></div>
+                                <!--<div class="menu-button responsive-menu-toggle-class"><i class="fa fa-reorder"></i></div>-->
                                 <div class="header-top-entry increase-icon-responsive open-search-popup">
                                     <div class="title"><i class="fa fa-search"></i> <span>Search</span></div>
                                 </div>
@@ -98,15 +98,16 @@ include('authentication/functions.php');
                             <div class="middle-line"></div>
 
                             <div class="line-entry">
-                                <a href="home" class="header-functionality-entry"><span>Home</span></a>
-                                <a href="#" class="header-functionality-entry"><span>Products</i></span>
-                                        <!---<div class="submenu">
+                                <a href="index.php" class="header-functionality-entry"><i class="fa fa-home"></i><span>Home</span></a>
+
+                                <a class="header-functionality-entry"><i class="fa fa-bar"></i><span>Products</span>
+                                    <div class="submenu">
                                             <ul class="simple-menu-list-column">
                                                
                                                <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>Always on Hand</a></li>
                                                <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>For Reservation</a></li>
                                             </ul>
-                                        </div>-->
+                                        </div>
                                 </a>
                                 <a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>
                                 <a href="#" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> <b>$255,99</b></a>
@@ -116,46 +117,12 @@ include('authentication/functions.php');
 
                     <div class="close-header-layer"></div>
 
-                    <!--<div class="navigation">
-                        <div class="navigation-header responsive-menu-toggle-class">
-                            <div class="title">Navigation</div>
-                            <div class="close-menu"></div>
-                        </div>-->
-                        
-                        <!--<div class="nav-overflow">
-                            <nav>
-                                <ul>
-                                    <li class="full-width">
-                                        <a href="index.php" class="active" style="text-decoration: none; margin-left: -20px;">Home</a></i>
-                                        
-                                    </li>
-                                  
-                                    <li class="simple-list" style="margin-left: 15px">
-                                        <a style="text-decoration: none;">Products</a><i class="fa fa-chevron-down"></i>
-                                        <div class="submenu">
-                                            <ul class="simple-menu-list-column">
-                                               
-                                               <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>Always on Hand</a></li>
-                                               <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>For Reservation</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                </ul>
 
-                             
-                                <div class="clear"></div>
-
-                                <a class="fixed-header-visible additional-header-logo"><img src="img/ops1.png" alt=""/></a>
-                            </nav>
-                            </div>-->
-
-
-                            <div class="navigation-footer responsive-menu-toggle-class">
+                     <div class=" navigation navigation-footer responsive-menu-toggle-class">
                                 
-                                <div class="navigation-copyright">Copyright &copy; MJ Jacobe Trading. All right reserved</div>
-                            </div>
-                    
-                    <!--</div>-->
+                         <div class="navigation-copyright">Copyright &copy; MJ Jacobe Trading. All right reserved</div>
+                    </div>
+                  
                 </header>
                 <div class="clear"></div>
             </div>
