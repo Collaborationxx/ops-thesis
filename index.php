@@ -50,44 +50,43 @@ include("header.php");
                             </div>
 
                             <div class="row shop-grid grid-view">
-
-                                <div class="col-md-3 col-sm-4 shop-grid-item">
-                                    <div class="product-slide-entry">
-                                        <div class="product-image">
-                                            <img src="assets/images/wheelchair.jpg" alt="" />
-                                            <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
-                                            <div class="bottom-line">
+                                <?php if(isset($arr) AND count($arr) > 0): ?>
+                                    <?php foreach ($arr as $key => $value): ?>
+                                        <div class="col-md-3 col-sm-4 shop-grid-item">
+                                            <div class="product-slide-entry">
+                                                <div class="product-image">
+                                                    <img src="assets/images/<?php echo $value['picture']?>" alt="" />
+                                                    <a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>
+                                                    <div class="bottom-line">
                                                     <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                                 </div>
-                                        </div>
-                                           <a class="tag" href="#">Category</a>
-                                            <a class="title" href="#">Wheel Chair</a>
-                                        <div class="rating-box">
-                                            <div class="star"><i class="fa fa-star"></i></div>
-                                            <div class="star"><i class="fa fa-star"></i></div>
-                                            <div class="star"><i class="fa fa-star"></i></div>
-                                            <div class="star"><i class="fa fa-star"></i></div>
-                                            <div class="star"><i class="fa fa-star"></i></div>
-                                           
-                                        </div>
-                                          <div class="article-container style-1">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
                                             </div>
-                                        <div class="price">
+                                            <a class="tag" href="#"><?php echo category($value['category']); ?></a>
+                                            <a class="title" href="#"><?php echo $value['name']; ?></a>
+                                            <div class="rating-box">
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                                <div class="star"><i class="fa fa-star"></i></div>
+                                            </div>
+                                            <div class="article-container style-1">
+                                                <p><?php echo $value['description']; ?></p>
+                                            </div>
+                                            <div class="price">
                                                 <!-- <div class="prev">$199,99</div> -->
-                                                <div class="current">₱3,000.00</div>
+                                                <div class="current"><?php echo $value['price']; ?></div>
+                                            </div>
+                                            <div class="list-buttons">
+                                                <a class="button style-10">Add to cart</a>
+                                                <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                            </div>
                                         </div>
-                                        <div class="list-buttons">
-                                            <a class="button style-10">Add to cart</a>
-                                            <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
-                                        </div>
-                                    </div>
-                                    <div class="clear"></div>
+                                        <div class="clear"></div>
                                 </div>
-
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
                             </div>
-
-                            
                             <div class="page-selector">
                                 <div class="description">Showing: 1-3 of 16</div>
                                 <div class="pages-box">

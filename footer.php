@@ -180,9 +180,6 @@
                                                     <img src="img/wheel chair1.png" alt="" data-zoom="img/wheel chair1.png" />
                                                 </div>
                                             </div>
-
-
-
                                         </div>
                                         <div class="pagination"></div>
                                         <div class="product-zoom-container">
