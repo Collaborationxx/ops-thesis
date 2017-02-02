@@ -1,6 +1,5 @@
 <?php
-include('../config/db_connection.php');
-//include functions.php to test sql injections
+include(dirname(__FILE__).'/../config/db_connection.php');//include functions.php to test sql injections
 include('../authentication/functions.php');
 
 $username = test_input($_POST['username']);

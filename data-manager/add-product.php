@@ -1,5 +1,5 @@
 <?php
-include('../config/db_connection.php');
+include(dirname(__FILE__).'/../config/db_connection.php');
 
 $name = $_POST['product'];
 $desc = $_POST['desc'];

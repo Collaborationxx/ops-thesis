@@ -1,5 +1,5 @@
 .ops-sidebar-img { width: 100%; max-width: 32px; height: auto; margin-right: 5px;  }
-.ops-sidebar-logo { width: 100%; max-width: 215px; height: auto; }
+.ops-sidebar-logo { width: 100%; max-width: 100px; height: auto; margin-left:40px }
 .ops-nav-logo {width: 100%; max-width: 80px; height: auto; margin-bottom: -18px;}
 .tab-content {background-color: #fcfcfc; padding: 15px; border: 1px #ebebeb solid; }
 .ops-table-img {width: 100%; max-width: 150px; height: auto;}

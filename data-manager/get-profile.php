@@ -1,5 +1,5 @@
 <?php
-include('./config/db_connection.php');
+include(dirname(__FILE__).'/../config/db_connection.php');
 
 $username = $_SESSION['username'];
 $query = "SELECT * FROM user_account WHERE username = '$username' ";

@@ -25,7 +25,7 @@ include('authentication/functions.php');
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
 
-    <link rel="shortcut icon" href="assets/images/smalllogo.png" />
+    <link rel="shortcut icon" href="assets/images/small-logo.png" />
   	<title>OPS | Premium Quality You Can Afford!</title>
 </head>
 <body class="style-10">
