@@ -43,7 +43,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   <![endif]-->
 
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
-  <link rel="shortcut icon" href="assets/images/ops.png" />
+  <link rel="shortcut icon" href="assets/images/small-logo.png" />
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
@@ -110,7 +110,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">
-          <img src="assets/images/ops.png" class="ops-sidebar-logo">
+          <img src="assets/images/small-logo.png" class="ops-sidebar-logo">
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">

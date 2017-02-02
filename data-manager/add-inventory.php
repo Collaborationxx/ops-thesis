@@ -1,6 +1,5 @@
 <?php
-include('../config/db_connection.php');
-
+include(dirname(__FILE__).'/../config/db_connection.php');
 $product = $_POST['product'];
 $qty = $_POST['qty'];
 $error = array(

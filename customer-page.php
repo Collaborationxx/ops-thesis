@@ -37,13 +37,13 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   <![endif]-->
 
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
-  <link rel="shortcut icon" href="assets/images/ops.png" />
+  <link rel="shortcut icon" href="assets/images/small-logo.png" />
 </head>
 <body>
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="index.php"><img src="assets/images/ops.png" class="ops-nav-logo"></a>
+      <a class="navbar-brand" href="index.php"><img src="assets/images/small-logo.png" class="ops-nav-logo"></a>
     </div>
     <div class="">
       <ul class="nav navbar-nav navbar-right">

@@ -1,5 +1,5 @@
 <?php
-include('./config/db_connection.php');
+include(dirname(__FILE__).'/../config/db_connection.php');
 
 $query = "SELECT * FROM `product` ";
 $arr = array();

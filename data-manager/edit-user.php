@@ -1,8 +1,7 @@
 <?php
 session_start();
 //include database file for connection to the server
-include('../config/db_connection.php');
-//include functions.php to test sql injections
+include(dirname(__FILE__).'/../config/db_connection.php');//include functions.php to test sql injections
 include('../authentication/functions.php');
 
 $id = test_input($_POST['id']);

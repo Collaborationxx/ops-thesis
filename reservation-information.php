@@ -91,7 +91,7 @@
       <!-- Sidebar Menu -->
       <ul class="sidebar-menu">
         <li class="header">
-          <img src="assets/images/ops.png" class="ops-sidebar-logo">
+          <img src="assets/images/small-logo.png" class="ops-sidebar-logo">
         </li>
         <!-- Optionally, you can add icons to the links -->
         <li class="active">
