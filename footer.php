@@ -306,6 +306,7 @@
                         </form>
                     </div>
                 </div>
+                <!--sign up form-->
                 <div class="signup-group-content">
                     <div class="panel-body">
                         <form action="authentication/signup.php" method="post">

@@ -279,7 +279,7 @@ ol li:before{counter-increment: number; content: counter(number); color: #fff; f
 
 /* 04.01 - header */
 header{-webkit-backface-visibility: hidden;}
-header{margin-bottom: 25px; position: absolute; z-index: 5; background: #fff; padding: 0 70px; top: 0; left: 0; width: 100%;}
+header{margin-bottom: 25px; position: fixed; z-index: 5; background: #e6ffe6; padding: 0 70px; top: 0; left: 0; width: 100%; border-bottom: 2px solid #1C8F01;}
 .navigation{font-size: 0; position: relative; border-bottom: 2px #f7f7f7 solid; height: 70px;}
 nav{position: relative;}
 nav>ul>li{float: left; padding-right: 20px; padding-left: 20px;}

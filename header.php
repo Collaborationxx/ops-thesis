@@ -25,7 +25,7 @@ include('authentication/functions.php');
     <link href="assets/css/style.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
 
-    <link rel="shortcut icon" href="assets/images/ops.png" />
+    <link rel="shortcut icon" href="assets/images/smalllogo.png" />
   	<title>OPS | Premium Quality You Can Afford!</title>
 </head>
 <body class="style-10">
@@ -59,7 +59,10 @@ include('authentication/functions.php');
 
                     <div class="header-product">
                         <div class="logo-wrapper">
-                            <a href="#" id="logo"><img class="ops-logo" alt="" src="assets/images/ops.png"></a>
+                            <a href="#" id="logo">
+                            
+                            <img class="ops-logo" alt="" src="assets/images/opslogo.png">
+                            </a>
                         </div>
                        
                         <div class="product-header-content">
@@ -86,14 +89,25 @@ include('authentication/functions.php');
                                         <div class="title"><a href="#" data-toggle="modal" data-target="#login-signup-modal"><i class="fa fa-user"></i>
                                                 <span>My Account</span>
                                         </div>
-                                    <?php endif; ?>
+                                         <?php endif; ?>
 
-                                </div>
+                                        </div>
                                
-                                
                             </div>
+
                             <div class="middle-line"></div>
+
                             <div class="line-entry">
+                                <a href="home" class="header-functionality-entry"><span>Home</span></a>
+                                <a href="#" class="header-functionality-entry"><span>Products</i></span>
+                                        <!---<div class="submenu">
+                                            <ul class="simple-menu-list-column">
+                                               
+                                               <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>Always on Hand</a></li>
+                                               <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>For Reservation</a></li>
+                                            </ul>
+                                        </div>-->
+                                </a>
                                 <a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>
                                 <a href="#" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> <b>$255,99</b></a>
                             </div>
@@ -101,12 +115,14 @@ include('authentication/functions.php');
                     </div>
 
                     <div class="close-header-layer"></div>
-                    <div class="navigation">
+
+                    <!--<div class="navigation">
                         <div class="navigation-header responsive-menu-toggle-class">
                             <div class="title">Navigation</div>
                             <div class="close-menu"></div>
-                        </div>
-                        <div class="nav-overflow">
+                        </div>-->
+                        
+                        <!--<div class="nav-overflow">
                             <nav>
                                 <ul>
                                     <li class="full-width">
@@ -126,17 +142,20 @@ include('authentication/functions.php');
                                     </li>
                                 </ul>
 
-                              
+                             
                                 <div class="clear"></div>
 
                                 <a class="fixed-header-visible additional-header-logo"><img src="img/ops1.png" alt=""/></a>
                             </nav>
+                            </div>-->
+
+
                             <div class="navigation-footer responsive-menu-toggle-class">
                                 
                                 <div class="navigation-copyright">Copyright &copy; MJ Jacobe Trading. All right reserved</div>
                             </div>
-                        </div>
-                    </div>
+                    
+                    <!--</div>-->
                 </header>
                 <div class="clear"></div>
             </div>

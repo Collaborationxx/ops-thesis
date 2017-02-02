@@ -37,7 +37,7 @@ if(!empty($fname)){
 }
 
 if(!empty($lname)){
-    if (!preg_match("/^[a-zA-Z ]*$/",$fname)) {
+    if (!preg_match("/^[a-zA-Z ]*$/",$lname)) {
         $error['invalidLname'] = true;
     }
 } else {
