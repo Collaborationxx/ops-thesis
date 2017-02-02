@@ -2,6 +2,7 @@
 session_start();
 
 include('authentication/functions.php');
+include('data-manager/get-products.php');
 
 ?>
 <!DOCTYPE html>
