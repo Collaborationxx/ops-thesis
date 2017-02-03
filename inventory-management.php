@@ -193,7 +193,7 @@ include('authentication/functions.php');
                             <td><?php echo $count++; ?></td>
                             <td name="inventory-id" style="display: none"><?php echo $value['id']; ?></td>
                             <td name="generated-id">OPS-2017-0<?php echo $value['id']; ?></td>
-                            <td name="product-id" data-id="<?php echo $value['prod_id']; ?>"><?php echo $value['prod_name']; ?></td>
+                            <td name="product" data-id="<?php echo $value['prod_id']; ?>"><?php echo $value['prod_name']; ?></td>
                             <td name="quantity"><?php echo $value['quantity']; ?></td>
                             <td name="stock-date"><?php echo $value['stock_date']; ?></td>
                             <td>
@@ -246,21 +246,31 @@ include('authentication/functions.php');
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Inventory</h4>
+        <h4 class="modal-title">OPS</h4>
       </div>
       <div class="modal-body">
+      <div class="alert alert-success alert-dismissable alert-create-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Success!</strong> New Inventory Added.
+      </div>
+      <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Success!</strong> Record Updated.
+      </div>
         <div class="row">
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
                 <div class="box-header with-border">
-                  <h3 class="box-title">Inventory</h3>
+                  <h3 class="box-title">New Inventory</h3>
                 </div>
                 <div class="box-body">
                   <form role="form">
+                    <input type="text" name="invID" style="display: none" value="">
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                          <p class="errMess err-product" style="display: none">No product selected.</p>
                           <label>Product Name:</label>
                           <select class="form-control" id="product-select">
                             <option value="">--Choose Product--</option>
@@ -276,8 +286,10 @@ include('authentication/functions.php');
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
-                          <label>Quantity:</label>
-                          <input type="text" class="form-control" name="quantity" placeholder="Enter..."></textarea> 
+                            <p class="errMess err-qty" style="display: none">Numbers only!</p>
+                            <p class="errMess err-qty-empty" style="display: none">Add quantity.</p>
+                            <label>Quantity:</label>
+                          <input type="number" min="0" class="form-control" name="quantity" placeholder="Enter..."></textarea>
                         </div>
                       </div>
                     </div>
@@ -293,6 +305,7 @@ include('authentication/functions.php');
                 </div>
                 <div class="box-footer">
                   <button type="button" class="btn btn-success pull-right new-inventory">Save</button>
+                  <button type="button" class="btn btn-info pull-right update-inventory">Update</button>
                 </div>
             </div>
           </div>
@@ -317,38 +330,48 @@ include('authentication/functions.php');
 <script>
   $(document).ready(function () {
       var serverURL = <?php echo json_encode($serverURL); ?>;
+      var modal = $('div#inventory-modal');
 
-    $(document).on('click', '.delete-inventory', function(){
-      var data = {
-        id: $(this).closest('tr').find('td[name="inventory-id"]').text(),
-      }
-      console.log(data);
-
-      bootbox.confirm({
-        size: 'small',
-        message: 'Delete record?',
-        callback: function(result){
-          if(result == true){
-            $.ajax({
-              type: 'POST',
-              url: serverURL + '/ops-thesis/data-manager/delete-inventory.php',
-              data: data,
-              dataType: 'json',
-              success: function(rData){
-                if(rData.response){
-                  location.reload();
-                }
-              },
-            });
-          }
-        },
+      $(document).on('click', '.btn-new', function () {
+          $('div#add-product-modal div.box-header').find('h3').html('New Inventory');
+          $('button.update-inventory').css('display','none');
+          $('button.new-inventory').css('display','block');
+          $('p.errMess').css('display','none');
+          $('div#inventory-modal div.form-group').removeClass('has-error');
       });
-    });
 
-     $(document).on('click', '.new-inventory', function (e) {
+      $(document).on('click', '.delete-inventory', function(){
+          var data = {
+            id: $(this).closest('tr').find('td[name="inventory-id"]').text(),
+          }
+          console.log(data);
+
+          bootbox.confirm({
+            size: 'small',
+            message: 'Delete record?',
+            callback: function(result){
+              if(result == true){
+                $.ajax({
+                  type: 'POST',
+                  url: serverURL + '/ops-thesis/data-manager/delete-inventory.php',
+                  data: data,
+                  dataType: 'json',
+                  success: function(rData){
+                    if(rData.response){
+                      location.reload();
+                    }
+                  },
+                });
+              }
+            },
+          });
+      });
+
+      $(document).on('click', '.new-inventory', function (e) {
          e.preventDefault();
 
-         var modal = $('div#inventory-modal');
+         $('div#inventory-modal div.form-group').removeClass('has-error');
+         $('p.errMess').css('display', 'none');
          var product = $(this).closest('div.box').find('div.box-body select#product-select').val();
          var qty = $(this).closest('div.box').find('div.box-body input[name="quantity"]').val();
 
@@ -365,14 +388,87 @@ include('authentication/functions.php');
            data: data,
            dataType: 'json',
            success: function(rData){
-             if(rData.response){
-               location.reload();
+               console.log(rData)
+             if(rData.status){
+                 $('.alert-create-success').css('display', 'block'); //show success alert
+                 $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+                 setTimeout(function(){
+                     $('#add-user-modal').modal('hide');
+                     location.reload();
+                 }, 3200);
+             }
+
+             if(rData.qtyEmpty){
+                     $(modal).find('.err-qty-empty').closest('.form-group').addClass('has-error');
+                     $(modal).find('p.err-qty-empty').css('display', 'block');
+             }
+
+             if(rData.invalidQty){
+                 $(modal).find('.err-qty').closest('.form-group').addClass('has-error');
+                 $(modal).find('p.err-qty').css('display', 'block');
+             }
+
+             if(rData.productEmpty){
+                 $(modal).find('.err-product').closest('.form-group').addClass('has-error');
+                 $(modal).find('p.err-product').css('display', 'block');
              }
            },
          });
 
+      });
 
-     });
+      $(document).on('click', '.edit-inventory', function () {
+          $('div#inventory-modal div.box-header').find('h3').html('Update Inventory');
+          $('button.update-inventory').css('display','block');
+          $('button.new-inventory').css('display','none');
+
+          var id = $(this).closest('tr').find('td[name="inventory-id"]').text();
+          var product = $(this).closest('tr').find('td[name="product"]').attr('data-id');
+          var qty = $(this).closest('tr').find('td[name="quantity"]').text();
+
+
+          $(modal).modal('show');
+          $(modal).on('shown.bs.modal', function () {
+              $(modal).find('.modal-body input[name="invID"]').val(id);
+              $(modal).find('.modal-body select#product-select').prop('disabled', true);
+              $(modal).find('.modal-body select#product-select').val(product);
+              $(modal).find('.modal-body input[name="quantity"]').val(qty);
+          });
+      });
+
+      $(document).on('click', '.update-inventory', function () {
+          var id = $(modal).find('.modal-body input[name="invID"]').val();
+          var qty = $(modal).find('.modal-body input[name="quantity"]').val();
+
+          var data = {
+              id: id,
+              qty: qty,
+          }
+          console.log(data);
+
+          $.ajax({
+              type: 'POST',
+              url: serverURL + '/ops-thesis/data-manager/edit-inventory.php',
+              data: data,
+              dataType: 'json',
+              success: function(rData){
+                  console.log(rData)
+                  if(rData.status){
+                      $('.alert-update-success').css('display', 'block'); //show success alert
+                      $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+                      setTimeout(function(){
+                          $('#add-user-modal').modal('hide');
+                          location.reload();
+                      }, 3200);
+                  }
+
+                  if(rData.qtyEmpty){
+                      $(modal).find('.err-qty-empty').closest('.form-group').addClass('has-error');
+                      $(modal).find('p.err-qty-empty').css('display', 'block');
+                  }
+              },
+          });
+      });
 
   });
 </script>

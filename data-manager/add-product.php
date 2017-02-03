@@ -23,11 +23,14 @@ if(empty($category)){
 if(empty($name)){
     $error['productEmpty'] = true;
 }
-if(!empty($price)){
-    if(filter_var($price, FILTER_VALIDATE_FLOAT) === false){
-        $error['invalidPrice'] = true;
-    }
-} else{
+//if(!empty($price)){
+//    if(filter_var($price, FILTER_VALIDATE_FLOAT) === false){
+//        $error['invalidPrice'] = true;
+//    }
+//} else{
+//    $error['priceEmpty'] = true;
+//}
+if(empty($price)){
     $error['priceEmpty'] = true;
 }
 

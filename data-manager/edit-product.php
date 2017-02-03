@@ -1,5 +1,6 @@
 <?php
-include(dirname(__FILE__).'/../config/db_connection.php');include('../authentication/functions.php');
+include(dirname(__FILE__).'/../config/db_connection.php');
+include('../authentication/functions.php');
 
 $id = $_POST['id'];
 $name = $_POST['product'];

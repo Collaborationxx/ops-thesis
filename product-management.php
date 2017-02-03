@@ -315,8 +315,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
                           <p class="errMess invalidPrice" style="display: none">Numbers Only (e.g 100 or 100.00)</p>
+                          <p class="errMess priceEmpty" style="display: none">* This is a required field</p>
                           <label>Price:</label>
-                          <input type="text" class="form-control" name="price" placeholder="0.00">
+                          <input type="number" min="0" step="any" class="form-control" name="price" placeholder="0.00">
                         </div>
                       </div>
                     </div>
@@ -404,7 +405,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       $('div#add-product-modal div.form-group').removeClass('has-error');
       var category = $(this).closest('div.box').find('.box-body select#prod-category').val();
       var product = $(this).closest('div.box').find('.box-body input[name="product-name"]').val();
-      var price =  parseFloat($(this).closest('div.box').find('.box-body input[name="price"]').val()).toFixed(2);
+      var price =  $(this).closest('div.box').find('.box-body input[name="price"]').val();
       var desc = $(this).closest('div.box').find('.box-body textarea[name="product-description"]').val();
       var photo = $(this).closest('div.box').find('.box-body img#prod-img').attr('src');
       var photo_name = $(this).closest('div.box').find('.box-body .image-name').val();
