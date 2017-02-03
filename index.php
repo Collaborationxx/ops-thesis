@@ -66,7 +66,7 @@ include("header.php");
                                         <div class="col-md-3 col-sm-4 shop-grid-item">
                                             <div class="product-slide-entry">
                                                 <div class="product-image">
-                                                    <img src="assets/images/<?php echo $value['picture']?>" alt="" />
+                                                    <img src="assets/images/products/<?php echo $value['picture']?>" alt="" />
                                                     
                                                     <!--<a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>-->
                                                     
