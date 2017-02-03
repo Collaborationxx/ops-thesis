@@ -15,6 +15,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 include('data-manager/get-inventory.php');
 include('data-manager/get-products.php');
 include('authentication/functions.php');
+include('data-manager/get-product-inventory.php');
 
 //echo '<pre>'; print_r($inventory); exit;
 
@@ -274,8 +275,8 @@ include('authentication/functions.php');
                           <label>Product Name:</label>
                           <select class="form-control" id="product-select">
                             <option value="">--Choose Product--</option>
-                            <?php if(isset($arr) AND count($arr) > 0): ?>
-                                <?php foreach ($arr as $key => $value): ?>
+                            <?php if(isset($itemsLeft) AND count($itemsLeft) > 0): ?>
+                                <?php foreach ($itemsLeft as $key => $value): ?>
                                     <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
                                 <?php endforeach; ?>
                             <?php endif; ?>
