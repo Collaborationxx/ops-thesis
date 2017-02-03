@@ -61,6 +61,21 @@
                 <div class="box-body">
                   <form role="form">
                     <div class="form-group">
+                      <label>Product Category:</label>
+                          <select class="form-control" id="prod-category">
+                          <option value="">*Choose Category</option>
+                          <option value="1">Electronic</option>
+                          <option value="2">Self-Care</option>
+                          <option value="3">Diagnostic</option>
+                          <option value="4">Surgical</option>
+                          <option value="5">Durable Medical Equipment</option>
+                          <option value="6">Acute Care</option>
+                          <option value="7">Emergency and Trauma</option>
+                          <option value="8">Long-Term Care</option>
+                          <option value="9">Storage and Transport</option>
+                          </select>
+                    </div>
+                    <div class="form-group">
                       <label>Product Name:</label>
                       <input type="text" class="form-control" placeholder="Enter ...">
                     </div>
