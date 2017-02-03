@@ -177,7 +177,7 @@ include('authentication/functions.php');
               </div>
               <div class="box-body no-padding">
                 <div class="table-responsive">
-                  <table class="table table-striped">
+                  <table class="table table-striped id="dataTables-example"">
                     <tbody>
                       <tr>
                         <th style="width: 10px">#</th>
@@ -326,6 +326,7 @@ include('authentication/functions.php');
 <script src="plugins/dist/js/app.min.js"></script>
 <!-- bootbox.js -->
 <script src="assets/js/bootbox.min.js"></script>
+<script src="plugins/dataTables/jquery.dataTables.js"></script>
 
 <script>
   $(document).ready(function () {
