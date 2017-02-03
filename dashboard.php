@@ -11,6 +11,8 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
+include('data-manager/get-alert.php');
+$alerts = count($alert);
 ?>
 
 <!DOCTYPE html>
@@ -215,7 +217,7 @@ include('authentication/functions.php');
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>25</h3>
+                            <h3><?php echo $alerts; ?></h3>
 
                             <p>New Alerts</p>
                         </div>

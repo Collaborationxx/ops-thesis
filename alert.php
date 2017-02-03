@@ -1,6 +1,7 @@
 <?php
 session_start(); 
 $role = $_SESSION['user_role'];
+$count = 1;
 
 if($_SESSION["username"] == null) { //if not redirect to login page
   header('location: index.php');
@@ -11,6 +12,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
+include('data-manager/get-alert.php');
 ?>
 
 <!DOCTYPE html>
@@ -176,14 +178,23 @@ include('authentication/functions.php');
                         <th>Quantity Left</th>
                         <th width=25%;>Action</th>
                       </tr>
-                      <tr>
-                        <td>1.</td>
-                        <td>Wheelchair</td>
-                        <td>4</td>
-                        <td>
-                           <a href="inventory-management.php"><i class="fa fa-plus"></i>  <b>Restock</b></a>
-                        </td>
-                      </tr>
+                      <?php if(isset($alert) AND count($alert) > 0):?>
+                          <?php foreach ($alert as $key => $value): ?>
+                              <tr>
+                                  <td><?php echo $count ?></td>
+                                  <td><?php echo $value['prod_name']; ?></td>
+                                  <td><?php echo $value['quantity']; ?></td>
+                                  <td>
+                                      <a href="inventory-management.php"><i class="fa fa-plus"></i>  <b>Restock</b></a>
+                                  </td>
+                              </tr>
+                          <?php endforeach; ?>
+                      <?php else: ?>
+                          <tr>
+                              <td colspan="6" style="text-align: center"><b>Hooray! Everything looks good! Have a nice day!</b></td>
+                          </tr>
+                      <?php endif; ?>
+
                     </tbody>
                   </table>
                 </div>  
