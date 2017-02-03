@@ -1,5 +1,4 @@
 <?php
-//check if user has session
 session_start();
 $role = $_SESSION['user_role'];
 if($_SESSION["username"] == null) { //if not redirect to login page
@@ -249,6 +248,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <!-- Modal -->
 <div id="add-product-modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
+
 
     <!-- Modal content-->
     <div class="modal-content">

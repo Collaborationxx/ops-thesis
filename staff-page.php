@@ -85,20 +85,20 @@
                     </div>
                     <div class="form-group">
                       <label>Product Name:</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
+                      <input type="text" class="form-control" name="prod-name" placeholder="Enter ...">
                     </div>
                     <div class="form-group">
                       <label>Price:</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
+                      <input type="text" class="form-control" name="price" placeholder="Enter ...">
                     </div>
                     <div class="form-group">
                       <label>Quantity:</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
+                      <input type="text" class="form-control" name="quantity" placeholder="Enter ...">
                     </div>
                   </form>
                 </div>
                 <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Place Order</button>
+                  <button type="submit" class="btn btn-success pull-right">Place Order</button>
                 </div>
             </div>
           </div>
