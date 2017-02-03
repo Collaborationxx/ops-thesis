@@ -16,9 +16,9 @@
                                 <div class="col-md-3 col-sm-4">
                                     <h3 class="column-title">Our Services</h3>
                                     <ul class="column">
-                                        <li><a href="about-us.html">About us</a></li>
-                                        <li><a href="tac.html" >Terms &amp; Conditions</a></li>
-                                        <li><a href="#">Mode of Payment</a></li>
+                                        <li><a href="about-us.php">About us</a></li>
+                                        <li><a href="tac.php" >Terms &amp; Conditions</a></li>
+                                        
                                     </ul>
                                     <div class="clear"></div>
                                 </div>
@@ -95,30 +95,18 @@
                 <div class="content">
                     <a class="title" href="#">Wheel Chair</a>
                     <div class="quantity">Quantity: 4</div>
-                    <div class="price">$990,00</div>
+                    <div class="price">PHP 9,00</div>
                 </div>
                 <div class="button-x"><i class="fa fa-close"></i></div>
             </div>
-            <div class="cart-entry">
-                <a class="image"><img src="img/bandage1.png" alt="" /></a>
-                <div class="content">
-                    <a class="title" href="#">Bandage</a>
-                    <div class="quantity">Quantity: 4</div>
-                    <div class="price">$990,00</div>
-                </div>
-                <div class="button-x"><i class="fa fa-close"></i></div>
-            </div>
-            <div class="summary">
-                <div class="subtotal">Subtotal: $990,00</div>
-                <div class="grandtotal">Grand Total <span>$1029,79</span></div>
-            </div>
+
             <div class="cart-buttons">
                 <div class="column">
-                    <a class="button style-3" href="shopping-cart.html">view cart</a>
+                    <a class="button style-3" href="shopping-cart.php">View Cart</a>
                     <div class="clear"></div>
                 </div>
                 <div class="column">
-                    <a class="button style-4">checkout</a>
+                    <a class="button style-4">Checkout</a>
                     <div class="clear"></div>
                 </div>
                 <div class="clear"></div>
@@ -135,7 +123,7 @@
                 <div class="content">
                     <a class="title" href="#">Wheel Chair</a>
                     <div class="quantity">Quantity: 4</div>
-                    <div class="price">$990,00</div>
+                    <div class="price">Php 990,00</div>
                 </div>
                 <div class="button-x"><i class="fa fa-close"></i></div>
             </div>

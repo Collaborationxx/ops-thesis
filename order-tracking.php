@@ -10,6 +10,8 @@ if($_SESSION["username"] == null) { //if not redirect to login page
   }
 }
 
+include('authentication/functions.php');
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -61,40 +63,40 @@ if($_SESSION["username"] == null) { //if not redirect to login page
       </a>
       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
-        <ul class="nav navbar-nav">
-          <!-- User Account Menu -->
-          <li class="dropdown user user-menu">
-            <!-- Menu Toggle Button -->
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <!-- The user image in the navbar-->
-              <img src="assets/img/person-placeholder_opt.jpg" class="user-image" alt="User Image">
-              <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs">Hello Admin</span>&nbsp;&nbsp;
-              <i class="fa fa-caret-down"></i>
-            </a>
-            <ul class="dropdown-menu">
-              <!-- The user image in the menu -->
-              <li class="user-header">
-                <img src="assets/img/person-placeholder_opt.jpg" class="img-circle" alt="User Image">
+                <ul class="nav navbar-nav">
+                    <!-- User Account Menu -->
+                    <li class="dropdown user user-menu">
+                        <!-- Menu Toggle Button -->
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <!-- The user image in the navbar-->
+                            <img src="assets/img/person-placeholder_opt.jpg" class="user-image" alt="User Image">
+                            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                            <span class="hidden-xs">Hello <?php echo $_SESSION['username']; ?></span>&nbsp;&nbsp;
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <!-- The user image in the menu -->
+                            <li class="user-header">
+                                <img src="assets/img/person-placeholder_opt.jpg" class="img-circle" alt="User Image">
 
-                <p>
-                  Alexander Pierce - Web Developer
-                  <small>Member since Nov. 2012</small>
-                </p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+                                <p>
+                                    <?php echo $_SESSION['name']; ?>
+                                    <small><?php echo userRoles($role); ?></small>
+                                </p>
+                            </li>
+                            <!-- Menu Footer-->
+                            <li class="user-footer">
+                                <!--<div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div>-->
+                                <div class="pull-right">
+                                    <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
     </nav>
   </header>
   <!-- Left side column. contains the logo and sidebar -->
@@ -111,7 +113,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
         <li class="active">
           <a href="dashboard.php">
           <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
-          <span>Dashboard</span></a>
+          <span>Admin Dashboard</span></a>
         </li>
         <li>
           <a href="user-management.php">
@@ -124,14 +126,14 @@ if($_SESSION["username"] == null) { //if not redirect to login page
           <span>Product Catalog</span></a>
         </li>
         <li>
-          <a href="#">
-          <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
-          <span>Order Tracking</span></a>
-        </li>
-        <li>
           <a href="inventory-management.php">
           <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
           <span>Inventory</span></a>
+        </li>
+        <li>
+          <a href="#">
+          <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
+          <span>Order Tracking</span></a>
         </li>
         <li>
           <a href="reports.php">
@@ -214,11 +216,8 @@ if($_SESSION["username"] == null) { //if not redirect to login page
               </div>
               <div class="box-footer">
                 <div class="row">
-                  <div class="col-lg-3 col-xs-6">
-                    <span>Lorem ipsum dolor sit amet</span>
-                  </div>
-                  <div class="col-lg-3 col-lg-offset-6 col-xs-6">
-                    <span>Lorem ipsum dolor sit amet</span>
+                  <div class="col-md-12 col-xs-12">
+                    <span class="pull-right">This table contains the record of sent tracking numbers of orders.</span>
                   </div>
                 </div>
               </div>

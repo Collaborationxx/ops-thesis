@@ -12,6 +12,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('authentication/functions.php');
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -45,6 +46,9 @@ include('authentication/functions.php');
 </head>
 <body class="hold-transition skin-green sidebar-mini">
 <div class="wrapper">
+
+
+<!--copy on every page-->
 
     <!-- Main Header -->
     <header class="main-header">
@@ -115,7 +119,7 @@ include('authentication/functions.php');
                 <li class="active">
                     <a href="dashboard.php">
                         <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
-                        <span>Dashboard</span></a>
+                        <span>Admin Dashboard</span></a>
                 </li>
                 <li>
                     <a href="user-management.php">
@@ -128,15 +132,16 @@ include('authentication/functions.php');
                         <span>Product Catalog</span></a>
                 </li>
                 <li>
-                    <a href="order-tracking.php">
-                        <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
-                        <span>Order Tracking</span></a>
-                </li>
-                <li>
                     <a href="inventory-management.php">
                         <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
                         <span>Inventory</span></a>
                 </li>
+                <li>
+                    <a href="order-tracking.php">
+                        <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
+                        <span>Order Tracking</span></a>
+                </li>
+                
                 <li>
                     <a href="reports.php">
                         <img src="assets/images/analytics.png" class="ops-sidebar-img">
@@ -147,6 +152,8 @@ include('authentication/functions.php');
         </section>
         <!-- /.sidebar -->
     </aside>
+
+    <!--end of copy-->
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -242,7 +249,7 @@ include('authentication/functions.php');
                                     <span><b>Sales:</b> 1 January, 2016 - 31 December, 2016</span>
                                 </div>
                                 <div class="col-lg-3 col-lg-offset-6 col-xs-6">
-                                    <span><b>Total Profit:</b> $24,813.53</span>
+                                    <span><b>Total Profit:</b> Php 24,813.53</span>
                                 </div>
                             </div>
 

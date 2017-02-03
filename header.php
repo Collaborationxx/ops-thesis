@@ -115,7 +115,7 @@ include('data-manager/get-products.php');
                                 <!--wishlist-->
                                 <!--<a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>-->
 
-                                <a href="#" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> <b>$255,99</b></a>
+                                <a href="#" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> <b>Php 9,000</b></a>
 
                             </div>
                         </div>

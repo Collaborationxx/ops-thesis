@@ -127,11 +127,8 @@
               </div>
               <div class="box-footer">
                 <div class="row">
-                  <div class="col-lg-3 col-xs-6">
-                    <span>Lorem ipsum dolor sit amet</span>
-                  </div>
-                  <div class="col-lg-3 col-lg-offset-6 col-xs-6">
-                    <span>Lorem ipsum dolor sit amet</span>
+                  <div class="col-md-12 col-xs-12">
+                    <span class="pull-right">This table contains the record of over the counter orders.</span>
                   </div>
                 </div>
               </div>
