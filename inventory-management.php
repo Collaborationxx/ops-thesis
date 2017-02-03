@@ -16,6 +16,8 @@ include('data-manager/get-inventory.php');
 include('data-manager/get-products.php');
 include('authentication/functions.php');
 
+//echo '<pre>'; print_r($inventory); exit;
+
 ?>
 <!DOCTYPE html>
 <html>
@@ -191,7 +193,7 @@ include('authentication/functions.php');
                             <td><?php echo $count++; ?></td>
                             <td name="inventory-id" style="display: none"><?php echo $value['id']; ?></td>
                             <td name="generated-id">OPS-2017-0<?php echo $value['id']; ?></td>
-                            <td name="product-id"><?php echo $value['product_id']; ?></td>
+                            <td name="product-id" data-id="<?php echo $value['prod_id']; ?>"><?php echo $value['prod_name']; ?></td>
                             <td name="quantity"><?php echo $value['quantity']; ?></td>
                             <td name="stock-date"><?php echo $value['stock_date']; ?></td>
                             <td>
@@ -343,34 +345,34 @@ include('authentication/functions.php');
       });
     });
 
-    // $(document).on('click', '.new-inventory', function (e) {
-    //     e.preventDefault();
+     $(document).on('click', '.new-inventory', function (e) {
+         e.preventDefault();
 
-    //     var modal = $('div#inventory-modal');
-    //     var product = $(this).closest('div.box').find('div.box-body select#product-select').val();
-    //     var qty = $(this).closest('div.box').find('div.box-body input[name="quantity"]').val();
+         var modal = $('div#inventory-modal');
+         var product = $(this).closest('div.box').find('div.box-body select#product-select').val();
+         var qty = $(this).closest('div.box').find('div.box-body input[name="quantity"]').val();
 
-    //     var data = {
-    //       product: product,
-    //       qty: qty,
-    //     }
+         var data = {
+           product: product,
+           qty: qty,
+         }
 
-    //     console.log(data)
+         console.log(data)
 
-    //     $.ajax({
-    //       type: 'POST',
-    //       url: serverURL + '/ops-thesis/data-manager/add-inventory.php',
-    //       data: data,
-    //       dataType: 'json',
-    //       success: function(rData){
-    //         if(rData.response){
-    //           location.reload();
-    //         }
-    //       },
-    //     });
+         $.ajax({
+           type: 'POST',
+           url: serverURL + '/ops-thesis/data-manager/add-inventory.php',
+           data: data,
+           dataType: 'json',
+           success: function(rData){
+             if(rData.response){
+               location.reload();
+             }
+           },
+         });
 
 
-    // });
+     });
 
   });
 </script>
