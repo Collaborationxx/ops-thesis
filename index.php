@@ -3,7 +3,18 @@ include("header.php");
 
 ?>
             <div class="content-push">
-
+            <?php if (isset($_GET['message'])): ?>
+                <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    <strong>Oops!</strong> Seems like you have entered a wrong username or password.
+                </div>
+            <?php endif; ?>
+            <?php if (isset($_GET['status'])): ?>
+                <div class="alert alert-success alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                    <strong>Success!</strong> Registration Successful! You can now login to your account.
+                </div>
+            <?php endif; ?>
                 <div class="information-blocks">
                     <div class="row">
                         <div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">

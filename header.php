@@ -39,18 +39,6 @@ include('data-manager/get-products.php');
             <span id="bubble3"></span>
         </div>
     </div>
-    <?php if (isset($_GET['message'])): ?>
-        <div class="alert alert-danger alert-dismissable">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            <strong>Oops!</strong> Seems like you have entered a wrong username or password.
-        </div>
-    <?php endif; ?>
-    <?php if (isset($_GET['status'])): ?>
-        <div class="alert alert-success alert-dismissable">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            <strong>Success!</strong> Registration Successful! You can now login to your account.
-        </div>
-    <?php endif; ?>
     <div id="content-block">
 
         <div class="content-center fixed-header-margin">
