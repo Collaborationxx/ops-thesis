@@ -204,7 +204,7 @@ input:-moz-placeholder { color: #c2c2c2; opacity: 1;}
 .list-type-1 li{padding: 7px 0;}
 .list-type-1 li .fa{display: inline-block; color: #806fc0; margin-right: 7px; vertical-align: middle; position: relative; top: -2px;}
 ol{list-style: none; counter-reset: number;}
-ol li{padding-left: 0; font-size: 13px; line-height: 24px; color: #a3a2a2; margin-bottom: 12px;}
+ol li{padding-left: 0; font-size: 13px; line-height: 24px; color: #a3a2a2;}
 ol li:before{counter-increment: number; content: counter(number); color: #fff; font-size: 13px; margin-right: 9px; margin-left: 3px; width: 20px; height: 20px; display: inline-block; vertical-align: middle; position: relative;top: -2px; line-height: 20px; font-weight: 600; background: #8bab0a; text-align: center; border-radius: 50%; -webkit-border-radius: 50%;}
 /*loader*/
 #loader-wrapper{position: fixed; width: 100%; height: 100%; background: #fff; z-index: 10;}

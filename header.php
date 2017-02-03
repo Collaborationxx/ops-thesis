@@ -103,7 +103,9 @@ include('data-manager/get-products.php');
                                 <a href="index.php" class="header-functionality-entry"><i class="fa fa-home"></i><span>Home</span></a>
 
                                 
-                                <a class="header-functionality-entry"><i class="fa fa-cubes"></i><span>Products</span></a>
+                                <!--<a class="header-functionality-entry"><i class="fa fa-cubes"></i><span>Products</span></a>-->
+
+
                                                 <!--<ul class="dropdown-menu">
                                                     <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>Always on Hand</a></li>
                                                 <li><a href="#" style="color:#fff;"><i class="fa fa-angle-right"></i>For Reservation</a></li>

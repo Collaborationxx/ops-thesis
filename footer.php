@@ -258,7 +258,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">OPS</h4>
+            
           </div>
           <div class="modal-body">
               <div class="tab-content">
@@ -282,7 +282,7 @@
                                 <input type="password" name="password" class="form-control" id="pwd" required>
                             </div>
                             <div class="checkbox">
-                                <label>Forgot Pasword?   <a href="#">Click here</a></label>
+                                <label>Forgot Pasword?   <a href="forgot-password.php">Click here</a></label>
                             </div>
                             <button type="submit" class="btn btn-success pull-right">Sign In</button>
                         </form>
@@ -293,18 +293,27 @@
                     <div class="panel-body">
                         <form action="authentication/signup.php" method="post">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
+                                        
+                                    <div class="row">
+                                        <div class="control-group">
+                                        <div class="col-md-6 col-xs-12">
                                         <label for="fname">First Name:</label>
                                         <input type="text" class="form-control" name="fname" id="fname" required>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
+                                        </div>
+                                        </div>
+
+                                        <div class="control-group">
+                                        <div class="col-md-6 col-xs-12">
                                         <label for="lname">Last Name:</label>
                                         <input type="text" class="form-control" name="lname" id="lname" required>
+                                        </div>
+                                        </div>
+
                                     </div>                                
                                 </div>
+                            </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
@@ -323,7 +332,7 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="contact">Contact No.:</label>
+                                        <label for="contact">Contact Number:</label>
                                         <input type="text" class="form-control" name="contact" id="contact" maxlength="13" required>
                                     </div>
                                 </div>
@@ -349,7 +358,7 @@
                                 </div>
                             </div>
                             <br>
-                            <button type="submit" class="btn btn-success pull-right">Submit</button>
+                            <button type="submit" class="btn btn-success pull-right" style="margin-bottom: -20px;">Submit</button>
                         </form>
                     </div>
                 </div>

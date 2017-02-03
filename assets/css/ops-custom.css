@@ -5,9 +5,9 @@
 .ops-table-img {width: 100%; max-width: 150px; height: auto;}
 .header-top-entry .title a:hover { text-decoration: none; }
 .header-top-entry .title li { list-style: none; }
-.login-group { padding: 20px; background-color: #d2d6de; text-align: center; }
+.login-group { padding: 20px; background-color: #d2d6de; text-align: center; margin-top: -15px; }
 .login-group-content { background-color: #ffffff; }
-.signup-group { padding: 20px; background-color: #d2d6de; text-align: center; }
+.signup-group { padding: 20px; background-color: #d2d6de; text-align: center; margin-top: -15px; }
 .signup-group-content { background-color: #ffffff; }
 .active-group {background-color: #00a65a;}
 .ops-logo {width: 100%; max-width: 250px; height: auto; }
@@ -21,3 +21,16 @@
 .table-pic img { max-width: 100px; width: 100%; height: auto; }
 .modal-content { margin: auto; display: block; width: 80%; max-width: 400px;}
 .break { height: 3px; background: #1C8F01; width: 1140px; margin-bottom: 10px; }
+.page-wrapper {
+    padding: 15px 30px;
+    min-height: 600px;
+    background: #F3F3F3;
+}
+.page-inner {
+    width: 100%;
+    margin: 50px 20px 10px 0px;
+    background-color: #fff !important;
+    padding: 10px;
+}
+
+
