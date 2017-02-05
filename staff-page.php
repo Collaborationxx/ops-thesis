@@ -143,7 +143,7 @@ include('data-manager/get-products.php');
               <div class="box-footer">
                 <div class="row">
                   <div class="col-md-12 col-xs-12">
-                    <span class="pull-right"><b>TOTAL:</b><h4 class="total-price"></h4></span>
+                    <span class="pull-right"><b>TOTAL:</b>  &#8369;<h4 class="total-price">0.00</h4></span>
                   </div>
                 </div>
               </div>
@@ -191,29 +191,26 @@ include('data-manager/get-products.php');
 
 
       $('.place-order').click(function () {
-          console.log('ok')
-          var count = 0;
           var prod_id = $(this).closest('div.box').find('.form-group input[name="prod-name"]').attr('data-id');
           var prod_pic = $(this).closest('div.box').find('.form-group input[name="prod-name"]').attr('data-image');
           var prod_name = $(this).closest('div.box').find('.form-group input[name="prod-name"]').val();
           var price = $(this).closest('div.box').find('.form-group input[name="price"]').val();
           var qty = $(this).closest('div.box').find('.form-group input[name="quantity"]').val();
-
-          console.debug('pid',prod_id,'pname',prod_name,'price',price,'qty',qty);
-
-          //place order in the table
+          var sub_total = parseFloat(parseInt(qty) * parseFloat(price).toFixed(2)).toFixed(2);
+          var total = parseFloat($('h4.total-price').text()).toFixed(2);
           var table = $('.preview-table').find('tbody');
-          $(table).append(
+          var table_content =
               '<tr>' +
-              '<td><img src="assets/images/products/' + prod_pic +'" style="width: 75px; height: auto"></td>' +
-              '<td>' + prod_name + '</td>' +
-              '<td>' + qty  + '</td>' +
-              '<td>' + price + '</td>' +
-              '<td>' + parseFloat(parseInt(qty) * parseFloat(price).toFixed(2)).toFixed(2)+ '</td>' +
-              '</tr>'
-          );
+              '<td name="prod-pic"><img src="assets/images/products/' + prod_pic +'" style="width: 75px; height: auto"></td>' +
+              '<td data-id="' + prod_id+'">' + prod_name + '</td>' +
+              '<td name="qty">' + qty  + '</td>' +
+              '<td name="price">' + price + '</td>' +
+              '<td name=subTotal">' + sub_total + '</td>' +
+              '</tr>';
 
           $(this).closest('div.box').find('.form-group input').val(''); //clear inputs
+          $('h4.total-price').text(parseFloat(parseFloat(total).toFixed(2) + parseFloat(sub_total).toFixed(2)).toFixed(2));
+          $(table).append(table_content); //place order in the table
       });
 
 
