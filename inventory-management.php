@@ -44,7 +44,7 @@ include('data-manager/get-product-inventory.php');
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  <link href="plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
   <link rel="shortcut icon" href="assets/images/small-logo.png" />
 </head>
@@ -247,7 +247,7 @@ include('data-manager/get-product-inventory.php');
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">OPS</h4>
+       
       </div>
       <div class="modal-body">
       <div class="alert alert-success alert-dismissable alert-create-success" style="display: none;">
@@ -294,10 +294,10 @@ include('data-manager/get-product-inventory.php');
                         </div>
                       </div>
                     </div>
-<!--                    <div class="row">-->
-<!--                      <div class="col-md-12 col-xs-12">-->
-<!--                        <div class="form-group">-->
-<!--                          <label>Re-stock Date:</label>-->
+<!--                    <div class="row">
+<!--                      <div class="col-md-12 col-xs-12">
+<!--                        <div class="form-group">
+<!--                          <label>Re-stock Date:</label>
 <!--                          <input type="text" class="form-control" name="date-restock" placeholder="Enter...">-->
 <!--                        </div>-->
 <!--                      </div>-->
@@ -350,7 +350,7 @@ include('data-manager/get-product-inventory.php');
 
           bootbox.confirm({
             size: 'small',
-            message: 'Delete record?',
+            message: 'Are you sure to delete this record?',
             callback: function(result){
               if(result == true){
                 $.ajax({

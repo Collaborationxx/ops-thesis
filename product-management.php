@@ -40,7 +40,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+  
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
   <link rel="shortcut icon" href="assets/images/small-logo.png">
 </head>
@@ -167,14 +167,20 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-list"></i>   Products</h3>
-                <div class="box-tools pull-right">
+                
+                <div class=" row box-tools pull-right">
+                <div class="col-md-6"> 
+                  <input aria-controls="dataTables-example" type="search" size="15" placeholder="search.." style="height: 30px;">
+                </div>
+                <div class="col-md-6">
                   <button type="button" class="btn btn-default btn-sm btn-new" data-toggle="modal" data-target="#add-product-modal"><i class="fa fa-plus"></i>&nbsp;&nbsp;New Product</button>
+                </div>
                 </div>
 
               </div>
               <div class="box-body no-padding">
                 <div class="table-responsive">
-                  <table class="table table-striped">
+                  <table class="table table-striped table-bordered">
                     <tbody>
                     <tr>
                       <th style="width: 10px">#</th>
@@ -370,6 +376,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script src="plugins/dist/js/app.min.js"></script>
 <!-- bootbox.js -->
 <script src="assets/js/bootbox.min.js"></script>
+
 
 <script>
   $(document).ready(function () {
