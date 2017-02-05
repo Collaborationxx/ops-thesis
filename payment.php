@@ -167,7 +167,7 @@ include('authentication/functions.php');
               </div>
               <div class="box-body no-padding">
                 <div class="table-responsive">
-                  <table class="table table-striped">
+                  <table class="table table-striped table-bordered">
                     <tbody>
                       <tr>
                         <th style="width: 10px">#</th>
@@ -188,8 +188,9 @@ include('authentication/functions.php');
                         <td>w96-45</td>
                         <td>01/10/17</td>
                         <td>
-                           <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank"><b>Verify</b>   <i class="fa fa-check-square-o"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                           <a href=""><span class="text-success"><b>Confirm</b>   <i class="fa fa-thumbs-up"></i></span></a>
+                           <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
+                           <a href=""><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+                           <a href=""><span class="text-warning"><i class="fa fa-thumbs-down"></i></span></a>
                         </td>
                       </tr>
                     </tbody>

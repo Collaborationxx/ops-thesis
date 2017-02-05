@@ -201,6 +201,8 @@ include('authentication/functions.php');
                           <option>Product</option>
                           <option>Inventory</option>
                           <option>Sales</option>
+                          <option>Over the Counter Sales</option>
+                          <option>Online Sales</option>
                         </select>
                     </div>
                   </form>

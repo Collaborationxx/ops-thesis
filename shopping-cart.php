@@ -56,8 +56,10 @@
         <span class="pull-right" style="margin-top: 10px; margin-bottom: 10px;">
           <a href="index.php" type="button" class="btn btn-info">Continue Shopping</a>
 
-         
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#login-signup-modal">
+         <button type="button" class="btn btn-success" data-toggle="modal" data-target="#login-signup-modal">
+            Reserve 
+          </button>
+          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#login-signup-modal">
             Checkout 
           </button>
 

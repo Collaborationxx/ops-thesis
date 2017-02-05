@@ -102,14 +102,13 @@
             </div>
 
             <div class="cart-buttons">
-                <div class="column">
-                    <a class="button style-3" href="shopping-cart.php">View Cart</a>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                    <a class="button style- btn-success" href="shopping-cart.php">View Cart</a>
+                    </div>
                     <div class="clear"></div>
                 </div>
-                <div class="column">
-                    <a class="button style-4">Checkout</a>
-                    <div class="clear"></div>
-                </div>
+                
                 <div class="clear"></div>
             </div>
         </div>
