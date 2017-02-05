@@ -17,7 +17,7 @@ include('data-manager/get-products.php');
 include('authentication/functions.php');
 include('data-manager/get-product-inventory.php');
 
-//echo '<pre>'; print_r($inventory); exit;
+//echo '<pre>'; print_r($itemsLeft); exit;
 
 ?>
 <!DOCTYPE html>
@@ -247,7 +247,6 @@ include('data-manager/get-product-inventory.php');
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-       
       </div>
       <div class="modal-body">
       <div class="alert alert-success alert-dismissable alert-create-success" style="display: none;">
@@ -274,26 +273,35 @@ include('data-manager/get-product-inventory.php');
                           <p class="errMess err-product" style="display: none">No product selected.</p>
                           <label>Product Name:</label>
                           <select class="form-control" id="product-select">
-                            <option value="">--Choose Product--</option>
-                            <?php if(isset($itemsLeft) AND count($itemsLeft) > 0): ?>
-                                <?php foreach ($itemsLeft as $key => $value): ?>
-                                    <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                          </select>
+                                <option selected="selected" value="">--Choose Product--</option>
+                                <?php if(isset($itemsLeft) AND count($itemsLeft) > 0): ?>
+                                    <?php foreach ($itemsLeft as $key => $value): ?>
+                                        <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </select>
+                            <input type="text" name="product-input" class="form-control" disabled="disabled">
                         </div>
                       </div>
                     </div>
-                    <div class="row">
-                      <div class="col-md-12 col-xs-12">
-                        <div class="form-group">
-                            <p class="errMess err-qty" style="display: none">Numbers only!</p>
-                            <p class="errMess err-qty-empty" style="display: none">Add quantity.</p>
-                            <label>Quantity:</label>
-                          <input type="number" min="0" class="form-control" name="quantity" placeholder="Enter..."></textarea>
-                        </div>
+                    <div class="row itemsLeft">
+                          <div class="col-md-12 col-xs-12">
+                              <div class="form-group">
+                                  <label>Current Item Count:</label>
+                                  <input type="number" min="0" class="form-control" name="quantity"disabled="disabled">
+                              </div>
+                          </div>
                       </div>
-                    </div>
+                      <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                              <div class="form-group">
+                                  <p class="errMess err-qty" style="display: none">Numbers only!</p>
+                                  <p class="errMess err-qty-empty" style="display: none">Add quantity.</p>
+                                  <label name="qty">Quantity:</label>
+                                  <input type="number" min="0" class="form-control" name="additional-quantity" placeholder="Enter...">
+                              </div>
+                          </div>
+                      </div>
 <!--                    <div class="row">
 <!--                      <div class="col-md-12 col-xs-12">
 <!--                        <div class="form-group">
@@ -335,11 +343,17 @@ include('data-manager/get-product-inventory.php');
       var modal = $('div#inventory-modal');
 
       $(document).on('click', '.btn-new', function () {
-          $('div#add-product-modal div.box-header').find('h3').html('New Inventory');
+          $(modal).find('div.box-header').find('h3').html('New Inventory');
           $('button.update-inventory').css('display','none');
           $('button.new-inventory').css('display','block');
           $('p.errMess').css('display','none');
           $('div#inventory-modal div.form-group').removeClass('has-error');
+          $(modal).find('select#product-select.form-control').prop('disabled', false);
+          $(modal).find('select#product-select').css('display','block');
+          $(modal).find('input[name="product-input"]').css('display','none');
+          $(modal).find('div.itemsLeft').css('display','none');
+          $(modal).find('.form-group label[name="qty"]').text('Quantity');
+
       });
 
       $(document).on('click', '.delete-inventory', function(){
@@ -350,7 +364,7 @@ include('data-manager/get-product-inventory.php');
 
           bootbox.confirm({
             size: 'small',
-            message: 'Are you sure to delete this record?',
+            message: 'Are you sure you want to delete this record?',
             callback: function(result){
               if(result == true){
                 $.ajax({
@@ -423,24 +437,32 @@ include('data-manager/get-product-inventory.php');
           $('div#inventory-modal div.box-header').find('h3').html('Update Inventory');
           $('button.update-inventory').css('display','block');
           $('button.new-inventory').css('display','none');
+          $(modal).find('input[name="product-input"]').css('display','block');
+          $(modal).find('select#product-select.form-control').css('display','none');
+          $(modal).find('div.itemsLeft').css('display','block');
+          $(modal).find('.form-group label[name="qty"]').text('Additional Quantity');
 
           var id = $(this).closest('tr').find('td[name="inventory-id"]').text();
-          var product = $(this).closest('tr').find('td[name="product"]').attr('data-id');
+          var product_id = $(this).closest('tr').find('td[name="product"]').attr('data-id');
+          var product_name = $(this).closest('tr').find('td[name="product"]').text();
           var qty = $(this).closest('tr').find('td[name="quantity"]').text();
-
+          console.debug('product', product_name);
+          console.debug('id', id);
 
           $(modal).modal('show');
           $(modal).on('shown.bs.modal', function () {
               $(modal).find('.modal-body input[name="invID"]').val(id);
-              $(modal).find('.modal-body select#product-select').prop('disabled', true);
-              $(modal).find('.modal-body select#product-select').val(product);
+              $(modal).find('select#product-select.form-control').val(product_id);
               $(modal).find('.modal-body input[name="quantity"]').val(qty);
+              $(modal).find('.modal-body input[name="product-input"]').val(product_name);
           });
       });
 
       $(document).on('click', '.update-inventory', function () {
           var id = $(modal).find('.modal-body input[name="invID"]').val();
-          var qty = $(modal).find('.modal-body input[name="quantity"]').val();
+          var new_qty = $(modal).find('.modal-body input[name="additional-quantity"]').val();
+          var old_qty = $(modal).find('.modal-body input[name="quantity"]').val();
+          var qty = parseInt(old_qty) + parseInt(new_qty);
 
           var data = {
               id: id,

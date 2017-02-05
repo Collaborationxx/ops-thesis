@@ -11,7 +11,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
-
+include('data-manager/get-products.php');
 ?>
 
 
@@ -33,6 +33,8 @@ include('authentication/functions.php');
   <!-- Theme style -->
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
+  <!-- jquery ui -->
+  <link rel="stylesheet" href="plugins/jquery-ui-1.12.1.custom/jquery-ui.min.css">
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -84,32 +86,32 @@ include('authentication/functions.php');
                 </div>
                 <div class="box-body">
                   <form role="form">
-                    <div class="form-group">
-                      <label>Product Category:</label>
-                          <select class="form-control" id="prod-category">
-                          <option value="">*Choose Category</option>
-                          <option value="1">Electronic</option>
-                          <option value="2">Self-Care</option>
-                          <option value="3">Diagnostic</option>
-                          <option value="4">Surgical</option>
-                          <option value="5">Durable Medical Equipment</option>
-                          <option value="6">Acute Care</option>
-                          <option value="7">Emergency and Trauma</option>
-                          <option value="8">Long-Term Care</option>
-                          <option value="9">Storage and Transport</option>
-                          </select>
-                    </div>
+<!--                    <div class="form-group">-->
+<!--                      <label>Product Category:</label>-->
+<!--                          <select class="form-control" id="prod-category">-->
+<!--                          <option value="">*Choose Category</option>-->
+<!--                          <option value="1">Electronic</option>-->
+<!--                          <option value="2">Self-Care</option>-->
+<!--                          <option value="3">Diagnostic</option>-->
+<!--                          <option value="4">Surgical</option>-->
+<!--                          <option value="5">Durable Medical Equipment</option>-->
+<!--                          <option value="6">Acute Care</option>-->
+<!--                          <option value="7">Emergency and Trauma</option>-->
+<!--                          <option value="8">Long-Term Care</option>-->
+<!--                          <option value="9">Storage and Transport</option>-->
+<!--                          </select>-->
+<!--                    </div>-->
                     <div class="form-group">
                       <label>Product Name:</label>
-                      <input type="text" class="form-control" name="prod-name" placeholder="Enter ...">
+                      <input type="text" class="form-control product-name" data-id="" name="prod-name" placeholder="Type at least two characters">
                     </div>
                     <div class="form-group">
                       <label>Price:</label>
-                      <input type="text" class="form-control" name="price" placeholder="Enter ...">
+                      <input type="text" class="form-control price" name="price" placeholder="Enter ..." disabled="disabled">
                     </div>
                     <div class="form-group">
                       <label>Quantity:</label>
-                      <input type="text" class="form-control" name="quantity" placeholder="Enter ...">
+                      <input type="number" min="0" class="form-control" name="quantity" placeholder="Enter ...">
                     </div>
                   </form>
                 </div>
@@ -123,7 +125,7 @@ include('authentication/functions.php');
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-file"></i>   Trading Preview</h3>
-                <button class="btn btn-success btn-sm pull-right" style="margin-bottom: 10px;">Save  <i class="fa fa-arrow-down"></i></button>
+                <button class="btn btn-success btn-sm pull-right" style="margin-bottom: 10px;"><i class="fa fa-arrow-down"></i>   Save</button>
               </div>
               <div class="box-body no-padding">
                 <table class="table table-striped table-bordered">
@@ -163,12 +165,43 @@ include('authentication/functions.php');
   
                    
 
-  <!-- jQuery 2.2.3 -->
+  <!-- jQuery 3.1.1 -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
+<!-- jquery ui -->
+<script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script>
+  $(document).ready(function(){
+    var products = <?php echo json_encode($arr);?> ;
+    console.log(products);
+//    products = $.map(products, function (i) {
+//
+//    })
 
+    var input = $('.product-name');
+    $(input).autocomplete({
+      source: function (request, response) {
+        response($.map(products, function (i) {
+            return {
+              value: i.name,
+              price: i.price,
+              id: i.id,
+            }
+
+        }));
+      },
+      select: function (event, ui) {
+       console.log(ui.item);
+        $('.price').val(ui.item.price);
+        $(input).attr('data-id', ui.item.id);
+      },
+    });
+
+  });
+</script>
 </body>
+
 </html>
