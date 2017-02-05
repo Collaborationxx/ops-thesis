@@ -199,7 +199,8 @@ include('data-manager/get-product-inventory.php');
                             <td name="stock-date"><?php echo $value['stock_date']; ?></td>
                             <td>
                               <a href="#" data-toggle="tooltip" title="Update Inventory" class="edit-inventory"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                              <a href="#" data-toggle="tooltip" title="Delete Inventory" class="delete-inventory"><i class="fa fa-trash-o text-danger"></i></a>
+                              <a href="#" data-toggle="tooltip" title="Delete Inventory" class="delete-inventory"><i class="fa fa-trash-o text-danger"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                              <a href="inventory-history.php?product=<?php echo $value['id'];?>" data-toggle="tooltip" title="View History" class="view-history"><i class="fa fa-history text-warning"></i></a>
                             </td>
                           </tr>
                         <?php endforeach; ?>
@@ -446,8 +447,6 @@ include('data-manager/get-product-inventory.php');
           var product_id = $(this).closest('tr').find('td[name="product"]').attr('data-id');
           var product_name = $(this).closest('tr').find('td[name="product"]').text();
           var qty = $(this).closest('tr').find('td[name="quantity"]').text();
-          console.debug('product', product_name);
-          console.debug('id', id);
 
           $(modal).modal('show');
           $(modal).on('shown.bs.modal', function () {
@@ -467,6 +466,7 @@ include('data-manager/get-product-inventory.php');
           var data = {
               id: id,
               qty: qty,
+              aQty: new_qty
           }
           console.log(data);
 

@@ -3,6 +3,7 @@ include(dirname(__FILE__).'/../config/db_connection.php');
 
 $id = $_POST['id'];
 $qty = $_POST['qty'];
+$aQty = $_POST['aQty'];
 $response = array();
 $error = array('qtyEmpty' => '');
 
@@ -17,6 +18,7 @@ if(empty($error['qtyEmpty'])){
 
     if(mysqli_query($con, $query)){
         $response = array('status'=>'success');
+        mysqli_query($con, "INSERT INTO `inventory_history` (inventory_id, quantity) VALUES ($id, $aQty)");
     }
     header('Content-Type: application/json');
     echo json_encode($response);
