@@ -12,6 +12,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('data-manager/get-inventory-history.php');
+include('authentication/functions.php');
 //echo '<pre>'; print_r($history); exit;
 
 
@@ -83,8 +84,8 @@ include('data-manager/get-inventory-history.php');
                                 <img src="assets/img/person-placeholder_opt.jpg" class="img-circle" alt="User Image">
 
                                 <p>
-                                    <?php //echo $_SESSION['name']; ?>
-                                    <small><?php //echo userRoles($role); ?></small>
+                                    <?php echo $_SESSION['name']; ?>
+                                    <small><?php echo userRoles($role); ?></small>
                                 </p>
                             </li>
                             <!-- Menu Footer-->
