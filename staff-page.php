@@ -103,20 +103,20 @@ include('data-manager/get-products.php');
 <!--                    </div>-->
                     <div class="form-group">
                       <label>Product Name:</label>
-                      <input type="text" class="form-control product-name" data-id="" name="prod-name" placeholder="Type at least two characters">
+                      <input type="text" class="form-control product-name" data-id="" data-image="" name="prod-name" placeholder="Type at least three characters">
                     </div>
                     <div class="form-group">
                       <label>Price:</label>
-                      <input type="text" class="form-control price" name="price" placeholder="Enter ..." disabled="disabled">
+                      <input type="text" class="form-control price" name="price" placeholder="0.00" disabled="disabled">
                     </div>
                     <div class="form-group">
                       <label>Quantity:</label>
-                      <input type="number" min="0" class="form-control" name="quantity" placeholder="Enter ...">
+                      <input type="number" min="0" class="form-control qty" name="quantity" placeholder="0">
                     </div>
                   </form>
                 </div>
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-success pull-right">Place Order</button>
+                  <button type="submit" class="btn btn-success pull-right place-order">Place Order</button>
                 </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ include('data-manager/get-products.php');
                 <button class="btn btn-success btn-sm pull-right" style="margin-bottom: 10px;"><i class="fa fa-arrow-down"></i>   Save</button>
               </div>
               <div class="box-body no-padding">
-                <table class="table table-striped table-bordered">
+                <table class="table table-striped table-bordered preview-table">
                   <tbody>
                     <tr>
                       <th>Product Photo</th>
@@ -137,24 +137,13 @@ include('data-manager/get-products.php');
                       <th>Price</th>
                       <th>Total Price</th>
                     </tr>
-                    <tr>
-                      <td></td>
-                      <td>Wheelchair</td>
-                      <td>2</td>
-                      <td>5,000</td>
-                      <td>10,000</td>
-                    </tr>
-                    <tr>
-                      <td colspan="4"><span class="pull-right"><b>TOTAL:</b></span></td>
-                      <td><span>10,000</span></td>
-                    </tr>
                   </tbody>
                 </table>
               </div>
               <div class="box-footer">
                 <div class="row">
                   <div class="col-md-12 col-xs-12">
-                    <span class="pull-right">This table contains the record of over the counter orders.</span>
+                    <span class="pull-right"><b>TOTAL:</b><h4 class="total-price"></h4></span>
                   </div>
                 </div>
               </div>
@@ -175,30 +164,59 @@ include('data-manager/get-products.php');
 <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script>
   $(document).ready(function(){
-    var products = <?php echo json_encode($arr);?> ;
-    console.log(products);
-//    products = $.map(products, function (i) {
-//
-//    })
+      var products = <?php echo json_encode($arr);?>;
+      var arr = [];
+      $.each(products, function (i,e) {
+          arr.push({
+              label: e.name,
+              value: e.name,
+              id: e.id,
+              price: e.price,
+              picture: e.picture,
+          });
+      });
+      console.log(arr)
 
-    var input = $('.product-name');
-    $(input).autocomplete({
-      source: function (request, response) {
-        response($.map(products, function (i) {
-            return {
-              value: i.name,
-              price: i.price,
-              id: i.id,
-            }
+      var input = $('.product-name');
+      $(input).autocomplete({
+          source: arr,
+          select: function (event, ui) {
+              console.log(ui.item);
+              $('.price').val(ui.item.price);
+              $(input).attr('data-id', ui.item.id);
+              $(input).attr('data-image', ui.item.picture);
+          },
+          minLength: 3,
+      });
 
-        }));
-      },
-      select: function (event, ui) {
-       console.log(ui.item);
-        $('.price').val(ui.item.price);
-        $(input).attr('data-id', ui.item.id);
-      },
-    });
+
+      $('.place-order').click(function () {
+          console.log('ok')
+          var count = 0;
+          var prod_id = $(this).closest('div.box').find('.form-group input[name="prod-name"]').attr('data-id');
+          var prod_pic = $(this).closest('div.box').find('.form-group input[name="prod-name"]').attr('data-image');
+          var prod_name = $(this).closest('div.box').find('.form-group input[name="prod-name"]').val();
+          var price = $(this).closest('div.box').find('.form-group input[name="price"]').val();
+          var qty = $(this).closest('div.box').find('.form-group input[name="quantity"]').val();
+
+          console.debug('pid',prod_id,'pname',prod_name,'price',price,'qty',qty);
+
+          //place order in the table
+          var table = $('.preview-table').find('tbody');
+          $(table).append(
+              '<tr>' +
+              '<td><img src="assets/images/products/' + prod_pic +'" style="width: 75px; height: auto"></td>' +
+              '<td>' + prod_name + '</td>' +
+              '<td>' + qty  + '</td>' +
+              '<td>' + price + '</td>' +
+              '<td>' + parseFloat(parseInt(qty) * parseFloat(price).toFixed(2)).toFixed(2)+ '</td>' +
+              '</tr>'
+          );
+
+          $(this).closest('div.box').find('.form-group input').val(''); //clear inputs
+      });
+
+
 
   });
 </script>
