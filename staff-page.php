@@ -1,6 +1,7 @@
 <?php
 session_start(); 
 $role = $_SESSION['user_role'];
+$userID = $_SESSION['id'];
 
 if($_SESSION["username"] == null) { //if not redirect to login page
   header('location: index.php');
@@ -102,6 +103,7 @@ include('data-manager/get-products.php');
 <!--                          </select>-->
 <!--                    </div>-->
                     <div class="form-group">
+                      <p class="errMess err-prod hidden">No Product Selected</p>
                       <label>Product Name:</label>
                       <input type="text" class="form-control product-name" data-id="" data-image="" name="prod-name" placeholder="Type at least three characters">
                     </div>
@@ -125,7 +127,7 @@ include('data-manager/get-products.php');
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-file"></i>   Trading Preview</h3>
-                <button class="btn btn-success btn-sm pull-right" style="margin-bottom: 10px;"><i class="fa fa-arrow-down"></i>   Save</button>
+                <button class="btn btn-success btn-sm pull-right btn-order" style="margin-bottom: 10px;" disabled="disabled"><i class="fa fa-arrow-down"></i>   Save</button>
               </div>
               <div class="box-body no-padding">
                 <table class="table table-striped table-bordered preview-table">
@@ -143,7 +145,9 @@ include('data-manager/get-products.php');
               <div class="box-footer">
                 <div class="row">
                   <div class="col-md-12 col-xs-12">
-                    <span class="pull-right"><b>TOTAL:</b>  &#8369;<h4 class="total-price">0.00</h4></span>
+                    <span class="pull-right"><b>TOTAL:</b>  &#8369;
+                      <input name="total-price" type="text" value="0.00" disabled="disabled">
+                    </span>
                   </div>
                 </div>
               </div>
@@ -165,6 +169,7 @@ include('data-manager/get-products.php');
 <script>
   $(document).ready(function(){
       var products = <?php echo json_encode($arr);?>;
+      var user_id = <?php echo $userID; ?>;
       var arr = [];
       $.each(products, function (i,e) {
           arr.push({
@@ -190,14 +195,19 @@ include('data-manager/get-products.php');
       });
 
 
-      $('.place-order').click(function () {
+      $('.place-order').click(function (e) {
+          e.preventDefault();
+          $('body').find('.btn-order').removeAttr('disabled');
+          var total_input = $('body').find('input[name="total-price"]');
           var prod_id = $(this).closest('div.box').find('.form-group input[name="prod-name"]').attr('data-id');
           var prod_pic = $(this).closest('div.box').find('.form-group input[name="prod-name"]').attr('data-image');
           var prod_name = $(this).closest('div.box').find('.form-group input[name="prod-name"]').val();
           var price = $(this).closest('div.box').find('.form-group input[name="price"]').val();
           var qty = $(this).closest('div.box').find('.form-group input[name="quantity"]').val();
-          var sub_total = parseFloat(parseInt(qty) * parseFloat(price).toFixed(2)).toFixed(2);
-          var total = parseFloat($('h4.total-price').text()).toFixed(2);
+          var sub_total = parseFloat(parseInt(qty) * parseFloat(price)).toFixed(2);
+          var total = parseFloat($(total_input).val()).toFixed(2);
+          var grand_total = parseFloat(parseFloat(total) + parseFloat(sub_total)).toFixed(2);
+
           var table = $('.preview-table').find('tbody');
           var table_content =
               '<tr>' +
@@ -209,8 +219,13 @@ include('data-manager/get-products.php');
               '</tr>';
 
           $(this).closest('div.box').find('.form-group input').val(''); //clear inputs
-          $('h4.total-price').text(parseFloat(parseFloat(total).toFixed(2) + parseFloat(sub_total).toFixed(2)).toFixed(2));
+          $(total_input).val(grand_total);
           $(table).append(table_content); //place order in the table
+      });
+
+
+      $('.btn-order').click(function () {
+          console.log('ok')
       });
 
 

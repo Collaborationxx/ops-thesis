@@ -34,6 +34,7 @@ if($row) {
     $_SESSION["username"] = $username;
     $_SESSION["password"] = $password;
     $_SESSION['user_role'] = $role;
+    $_SESSION['id'] = $row['id'];
     $_SESSION['name'] = ucfirst($row['first_name'])." ".ucfirst($row['last_name']);
 
     if($role == 1){ //admin role
