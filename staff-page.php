@@ -13,6 +13,8 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('authentication/functions.php');
 include('data-manager/get-products.php');
+$serverURL = "http://$_SERVER[HTTP_HOST]";
+
 ?>
 
 
@@ -138,6 +140,7 @@ include('data-manager/get-products.php');
                       <th>Quantity</th>
                       <th>Price</th>
                       <th>Total Price</th>
+                      <th></th>
                     </tr>
                   </tbody>
                 </table>
@@ -166,11 +169,15 @@ include('data-manager/get-products.php');
 <script src="plugins/dist/js/app.min.js"></script>
 <!-- jquery ui -->
 <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<!-- bootbox.js -->
+<script src="assets/js/bootbox.min.js"></script>
 <script>
   $(document).ready(function(){
+      var serverURL = <?php echo json_encode($serverURL); ?>;
       var products = <?php echo json_encode($arr);?>;
       var user_id = <?php echo $userID; ?>;
       var arr = [];
+
       $.each(products, function (i,e) {
           arr.push({
               label: e.name,
@@ -210,12 +217,13 @@ include('data-manager/get-products.php');
 
           var table = $('.preview-table').find('tbody');
           var table_content =
-              '<tr>' +
+              '<tr class="order-details">' +
               '<td name="prod-pic"><img src="assets/images/products/' + prod_pic +'" style="width: 75px; height: auto"></td>' +
-              '<td data-id="' + prod_id+'">' + prod_name + '</td>' +
+              '<td name="product" data-id="' + prod_id+'">' + prod_name + '</td>' +
               '<td name="qty">' + qty  + '</td>' +
               '<td name="price">' + price + '</td>' +
-              '<td name=subTotal">' + sub_total + '</td>' +
+              '<td name="subTotal">' + sub_total + '</td>' +
+              '<td><a href="#" class="remove-order"><i class="fa fa-times text-danger"></i></a></td>' +
               '</tr>';
 
           $(this).closest('div.box').find('.form-group input').val(''); //clear inputs
@@ -225,7 +233,63 @@ include('data-manager/get-products.php');
 
 
       $('.btn-order').click(function () {
-          console.log('ok')
+          var orders = [];
+          $('.order-details').each(function(){
+              var details = {
+                  prod_id: $(this).closest('tr').find('td[name="product"]').attr('data-id'),
+                  qty: $(this).closest('tr').find('td[name="qty"]').text(),
+                  price: $(this).closest('tr').find('td[name="price"]').text()
+              };
+              orders.push(details);
+
+          });
+          var data = {
+              user_id: user_id,
+              order_details: orders,
+              order_type: 0
+          };
+          console.log(data)
+
+          $.ajax({
+              type: "POST",
+              url: serverURL + '/ops-thesis/data-manager/add-order.php',
+              data: data,
+              dataType: "json",
+              success: function (rData) {
+                  if(rData.status){
+                    bootbox.confirm({
+                      message: "Success! Another Transaction?",
+                      buttons: {
+                          confirm: {
+                              label: 'Yes',
+                              className: 'btn-success'
+                        },
+                      cancel: {
+                            label: 'No',
+                            className: 'btn-danger'
+                      }
+                      },
+                      callback: function (result) {
+                          if(result == true){
+                              location.reload();
+                          } else {
+                              window.location.href = serverURL + '/ops-thesis/index.php';
+                          }
+                      }
+                    });
+                  }
+              },
+          });
+      });
+
+      $(document).on('click', '.remove-order', function (e) {
+          e.preventDefault();
+          var remove_price = parseFloat($(this).closest('tr').find('td[name="subTotal"]').text());
+          var total_input = $('body').find('input[name="total-price"]');
+          var total = $(total_input).val();
+          var grand_total = parseFloat(parseFloat(total) - parseFloat(remove_price)).toFixed(2);
+          $(total_input).val(grand_total);
+          $(this).parent().parent().remove();
       });
 
 
