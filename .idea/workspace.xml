@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4690b1ef-2609-4579-9529-35e1c096591a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data-manager/add-order.php" afterPath="$PROJECT_DIR$/data-manager/add-order.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/staff-page.php" afterPath="$PROJECT_DIR$/staff-page.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/ops_db.sql" afterPath="$PROJECT_DIR$/config/ops_db.sql" />
     </list>
     <ignored path="ops-thesis.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -376,7 +374,7 @@
       <workItem from="1486128663288" duration="16039000" />
       <workItem from="1486277621204" duration="23621000" />
       <workItem from="1486389732791" duration="4893000" />
-      <workItem from="1486474564941" duration="5511000" />
+      <workItem from="1486474564941" duration="5601000" />
     </task>
     <task id="LOCAL-00001" summary="-update files">
       <created>1485265209380</created>
@@ -487,7 +485,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="183293000" />
+    <option name="totallyTimeSpent" value="183383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
