@@ -37,23 +37,25 @@ if(empty($username) || empty($password)){
         $_SESSION['user_role'] = $role;
         $_SESSION['id'] = $row['id'];
         $_SESSION['name'] = ucfirst($row['first_name'])." ".ucfirst($row['last_name']);
+        $redir = '';
 
         if($role == 1){ //admin role
-            header("location: ../dashboard.php");
+            $redir = 'dashboard.php';
         } else if($role == 0) { //staff
-            header('location: ../staff-page.php');
+            $redir = 'staff-page.php';
         } else { //customer
-            header('location: ../customer-page.php');
+            $redir = 'customer-page.php';
         }
 
 
     }
     else {
+        $redir = '';
         $errors['errCreds'] = true;
     }
 }
 
-$response = array('reqField' => $errors['reqField'], 'errCreds' => $errors['errCreds'] );
+$response = array('reqField' => $errors['reqField'], 'errCreds' => $errors['errCreds'], 'redir' => $redir);
 header('Content-Type: application/json');
 echo json_encode($response);
 

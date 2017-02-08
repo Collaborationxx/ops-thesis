@@ -444,6 +444,9 @@
                         if(rData.reqField){
                             $(modal).find('form#login-form').find('p.reqField').css('display', 'block');
                         }
+                        if(rData.redir){
+                            window.location = rData.redir;
+                        }
                     },
                 });
 
