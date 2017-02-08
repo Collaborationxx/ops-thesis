@@ -3,6 +3,7 @@ session_start();
 
 include('authentication/functions.php');
 include('data-manager/get-products.php');
+$serverURL = "http://$_SERVER[HTTP_HOST]";
 
 ?>
 <!DOCTYPE html>
@@ -11,7 +12,8 @@ include('data-manager/get-products.php');
 <!-- Mirrored from 8theme.com/demo/html/mango/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 25 Jan 2017 03:22:23 GMT -->
 <!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
@@ -77,11 +79,11 @@ include('data-manager/get-products.php');
 
                                     <?php else: ?>
                                         <div class="title"><a href="#" data-toggle="modal" data-target="#login-signup-modal"><i class="fa fa-user"></i>
-                                                <span>My Account</span>
+                                            <span>My Account</span>
                                         </div>
                                          <?php endif; ?>
 
-                                        </div>
+                                </div>
                                
                             </div>
 

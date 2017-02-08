@@ -1,6 +1,6 @@
 <?php
 $username = "root";//username ng phpMyAdmin
-$password = "test123`";//pw ng phpMyAdmin
+$password = "";//pw ng phpMyAdmin
 $servername = "localhost";
 $db = "ops_db";//name database sa xampp
 

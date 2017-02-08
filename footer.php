@@ -127,15 +127,6 @@
                 </div>
                 <div class="button-x"><i class="fa fa-close"></i></div>
             </div>
-            <div class="wishlist-entry-entry">
-                <a class="image"><img src="img/bandage1.png" alt="" /></a>
-                <div class="content">
-                    <a class="title" href="#">Bandage</a>
-                    <div class="quantity">Quantity: 4</div>
-                    <div class="price">$990,00</div>
-                </div>
-                <div class="button-x"><i class="fa fa-close"></i></div>
-            </div>
             <div class="summary">
                 <div class="subtotal">Subtotal: $990,00</div>
                 <div class="grandtotal">Grand Total <span>$1029,79</span></div>
@@ -273,6 +264,8 @@
                 <div class="login-group-content">
                     <div class="panel-body">
                         <form id="login-form" method="post" action="authentication/authentication.php">
+                            <p class="errMess errCreds text-danger" style="display: none;"><b>Wrong username or Password</b></p>
+                            <p class="errMess reqField text-danger" style="display: none;"><b>*Fill in your username and password</b></p>
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" name="username" class="form-control" id="username" required>
@@ -284,7 +277,7 @@
                             <div class="checkbox">
                                 <label>Forgot Pasword?   <a href="forgot-password.php">Click here</a></label>
                             </div>
-                            <button type="submit" class="btn btn-success pull-right">Sign In</button>
+                            <button type="submit" class="btn btn-success pull-righ btn-login">Sign In</button>
                         </form>
                     </div>
                 </div>
@@ -389,10 +382,14 @@
 
      <script>
         $(document).ready(function(){
+            var serverURL = <?php echo json_encode($serverURL); ?>;
+            var modal = ('#login-signup-modal');
+
             $('.signup-group-content').css('display', 'none');
             $('.alert').delay(3000).fadeOut('fast');
             var minVal = parseInt($('.min-price span').text());
             var maxVal = parseInt($('.max-price span').text());
+
             $( "#prices-range" ).slider({
                 range: true,
                 min: minVal,
@@ -418,6 +415,40 @@
                 $('.login-group-content').css('display', 'block');
                 $(this).addClass('active-group');
                 $('.signup-group').removeClass('active-group');
+            });
+
+
+            $('.btn-login').click(function(e){
+                e.preventDefault();
+                $('p.errMess').css('display', 'none');
+                var username = $(this).closest('form').find('input[name="username"]').val()
+                var password = $(this).closest('form').find('input[name="password"]').val();
+
+                var data = {
+                    username: username,
+                    password: password
+                };
+
+                console.log(data)
+
+                $.ajax({
+                    type: 'POST',
+                    url: serverURL + '/ops-thesis/authentication/authentication.php',
+                    data: data,
+                    dataType: 'json',
+                    success: function(rData){
+                        console.log(rData)
+                        if(rData.errCreds){
+                            $(modal).find('form#login-form').find('p.errCreds').css('display', 'block');
+                        }
+                        if(rData.reqField){
+                            $(modal).find('form#login-form').find('p.reqField').css('display', 'block');
+                        }
+                    },
+                });
+
+
+
             });
 
         });
