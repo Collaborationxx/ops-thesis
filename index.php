@@ -63,7 +63,7 @@ include("header.php");
                             <div class="row shop-grid grid-view">
                                 <?php if(isset($arr) AND count($arr) > 0): ?>
                                     <?php foreach ($arr as $key => $value): ?>
-                                        <div class="col-md-3 col-sm-4 shop-grid-item">
+                                        <div class="col-md-3 col-sm-4 shop-grid-item product-container">
                                             <div class="product-slide-entry">
                                                 <div class="product-image">
                                                     <img src="assets/images/products/<?php echo $value['picture']?>" alt="" />
@@ -71,11 +71,12 @@ include("header.php");
                                                     <!--<a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>-->
                                                     
                                                     <div class="bottom-line">
-                                                    <a class="bottom-line-a"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                    <a href="#" class="bottom-line-a btn-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                                 </div>
                                             </div>
-                                            <a class="tag" href="#"><?php echo category($value['category']); ?></a>
-                                            <a class="title" href="#"><?php echo $value['name']; ?></a>
+                                            <a class="tag prod-category" href="#"><?php echo category($value['category']); ?></a>
+                                            <a class="title prod-name" href="#"><?php echo $value['name']; ?></a>
+                                            <input name="prod-id" class="hidden" value="<?php echo $value['id']; ?>">
                                             <div class="rating-box">
                                                 <div class="star"><i class="fa fa-star"></i></div>
                                                 <div class="star"><i class="fa fa-star"></i></div>
@@ -83,12 +84,12 @@ include("header.php");
                                                 <div class="star"><i class="fa fa-star"></i></div>
                                                 <div class="star"><i class="fa fa-star"></i></div>
                                             </div>
-                                            <div class="article-container style-1">
+                                            <div class="article-container style-1 prod-desc">
                                                 <p><?php echo $value['description']; ?></p>
                                             </div>
                                             <div class="price">
                                                 <!-- <div class="prev">$199,99</div> -->
-                                                <div class="current"><?php echo $value['price']; ?></div>
+                                                <div class="current prod-price"><?php echo $value['price']; ?></div>
                                             </div>
                                             <div class="list-buttons">
                                                 <a class="button style-10">Add to cart</a>

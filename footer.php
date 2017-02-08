@@ -454,6 +454,27 @@
 
             });
 
+            $(document).on('click', '.btn-cart', function(e){
+                e.preventDefault();
+                var prod_id = $(this).closest('div.product-container').find('input[name="prod-id"]').val();
+                var prod_name = $(this).closest('div.product-container').find('a.prod-name').text();
+                var price = $(this).closest('div.product-container').find('.price .prod-price').text();
+
+                var data = {
+                    id: prod_id,
+                    name: prod_name,
+                    price: price
+                };
+
+                console.log(data)
+
+                cart = JSON.parse(localStorage.getItem('myCart')) || [];
+                cart.push(data);
+                localStorage.setItem('myCart', JSON.stringify(cart));
+                console.debug('webStarage', cart)
+
+            });
+
         });
     </script>
 </body>
