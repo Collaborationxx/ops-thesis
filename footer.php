@@ -472,6 +472,9 @@
                 cart.push(data);
                 localStorage.setItem('myCart', JSON.stringify(cart));
                 console.debug('webStarage', cart)
+                var alert = $(this).closest('div.product-image').find('.alert-cart');
+                $(alert).css('display','block');
+                $(alert).delay(1800).fadeOut('fast');
 
             });
 
