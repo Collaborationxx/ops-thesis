@@ -541,11 +541,11 @@ $(function() {
     });
 
     //open product popup
-    $('.open-product').on('click', function(){
-    	showPopup($('#product-popup'));
-    	initSwiper();
-    	return false;
-    });
+    // $('.open-product').on('click', function(){
+    // 	showPopup($('#product-popup'));
+    // 	initSwiper();
+    // 	return false;
+    // });
 
     //open subscribe popup
     $('.open-subscribe').on('click', function(){

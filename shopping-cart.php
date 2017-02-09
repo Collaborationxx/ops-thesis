@@ -60,6 +60,7 @@
                                     <th>Quantity</th>
                                     <th>Price</th>
                                     <th>Total Price</th>
+                                    <th></th>
                                 </tr>
                             </tbody>
                         </table>
@@ -85,18 +86,20 @@
   $(document).ready(function(){
       var table = $('.cart-table');
       var cart = JSON.parse(localStorage.getItem('myCart'));
-      var item_count = cart.length;
+      var item_count = cart == null ? 0 : cart.length;
+
       console.log(cart);
       $('.item_count').text('[ '+ item_count + ' Item(s) ]');
 
       $(cart).each(function(x,y){
           table.append(
               '<tr>' + 
-                  '<td name="prod-pic"></td>' +
+                  '<td name="prod-pic" class="table-pic"><img src="'+ y.img +'" /></td>' +
                   '<td data-id="'+ y.id +'"name="prod_name">' + y.name +'</td>' +
-                  '<td name="uantity">2</td>' +
+                  '<td name="uantity">'+ y.qty + '</td>' +
                   '<td name="price">'+ y.price +'</td>' +
-                  '<td name="sub_total">10,000</td>' +
+                  '<td name="sub_total">' + parseFloat(parseInt(y.qty) * parseFloat(y.price)).toFixed(2) + '</td>' +
+                  '<td class="remove-item"><i class="fa fa-times text-danger"></i></td>' +
               '</tr>'
           );
       });

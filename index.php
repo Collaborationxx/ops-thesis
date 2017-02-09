@@ -69,24 +69,22 @@ include("header.php");
                                                     <div class="aert alert-success alert-cart">
                                                         <p>Item added to cart</p>
                                                     </div>
-                                                    <img src="assets/images/products/<?php echo $value['picture']?>" alt="" />
-                                                    
+                                                    <img class="prod-img" src="assets/images/products/<?php echo $value['picture']?>" alt="" />
                                                     <!--<a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>-->
-                                                    
                                                     <div class="bottom-line">
-                                                    <a href="#" class="bottom-line-a btn-cart"><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                                    <a href="#" class="bottom-line-a open-product"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                                 </div>
                                             </div>
                                             <a class="tag prod-category" href="#"><?php echo category($value['category']); ?></a>
                                             <a class="title prod-name" href="#"><?php echo $value['name']; ?></a>
                                             <input name="prod-id" class="hidden" value="<?php echo $value['id']; ?>">
-                                            <div class="rating-box">
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                                <div class="star"><i class="fa fa-star"></i></div>
-                                            </div>
+<!--                                            <div class="rating-box">-->
+<!--                                                <div class="star"><i class="fa fa-star"></i></div>-->
+<!--                                                <div class="star"><i class="fa fa-star"></i></div>-->
+<!--                                                <div class="star"><i class="fa fa-star"></i></div>-->
+<!--                                                <div class="star"><i class="fa fa-star"></i></div>-->
+<!--                                                <div class="star"><i class="fa fa-star"></i></div>-->
+<!--                                            </div>-->
                                             <div class="article-container style-1 prod-desc">
                                                 <p><?php echo $value['description']; ?></p>
                                             </div>

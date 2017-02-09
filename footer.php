@@ -92,7 +92,7 @@
     <div class="cart-box popup">
         <div class="popup-container">
             <div class="cart-entry">
-                <a class="image"><img src="img/wheel chair1.png" alt="" /></a>
+                <a class="image"><img src="#" alt="" /></a>
                 <div class="content">
                     <a class="title" href="#">Wheel Chair</a>
                     <div class="quantity">Quantity: 4</div>
@@ -119,7 +119,7 @@
     <div class="wishlist-box popup">
         <div class="popup-container">
             <div class="wishlist-entry">
-                <a class="image"><img src="img/wheel chair1.png" alt="" /></a>
+                <a class="image"><img src="#" alt="" /></a>
                 <div class="content">
                     <a class="title" href="#">Wheel Chair</a>
                     <div class="quantity">Quantity: 4</div>
@@ -156,15 +156,15 @@
                                         <div class="swiper-wrapper">
                                             <div class="swiper-slide">
                                                 <div class="product-zoom-image">
-                                                    <img src="img/wheel chair1.png" alt="" data-zoom="img/wheel chair1.png" />
+                                                    <img src="assets/images/products/wheelchair.jpg" alt="" data-zoom="assets/images/products/wheelchair.jpg" />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="pagination"></div>
                                         <div class="product-zoom-container">
                                             <div class="move-box">
-                                                <img class="default-image" src="img/product-main-1.jpg" alt="" />
-                                                <img class="zoomed-image" src="img/product-main-1-zoom.jpg" alt="" />
+                                                <img class="default-image" src="assets/images/products/wheelchair.jpg" alt="" />
+                                                <img class="zoomed-image" src="assets/images/products/wheelchair.jpg" alt="" />
                                             </div>
                                             <div class="zoom-area"></div>
                                         </div>
@@ -174,12 +174,9 @@
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide selected">
                                                     <div class="paddings-container">
-                                                        <img src="img/wheel chair1.png" alt="" />
+                                                        <img class="prod-pic" src="assets/images/products/wheelchair.jpg" alt="" />
                                                     </div>
                                                 </div>
-
-
-
                                             </div>
                                             <div class="pagination"></div>
                                         </div>
@@ -188,48 +185,47 @@
                             </div>
                             <div class="col-sm-6 information-entry">
                                 <div class="product-detail-box">
-                                    <h1 class="product-title">Wheel Chair</h1>
-                                    <h3 class="product-subtitle">Category</h3>
-                                    <div class="rating-box">
-                                        <div class="star"><i class="fa fa-star"></i></div>
-                                        <div class="star"><i class="fa fa-star"></i></div>
-                                        <div class="star"><i class="fa fa-star"></i></div>
-                                        <div class="star"><i class="fa fa-star-o"></i></div>
-                                        <div class="star"><i class="fa fa-star-o"></i></div>
-
-                                    </div>
-
+                                    <p class="product-id hidden"></p>
+                                    <h1 class="product-title"></h1>
+                                    <h3 class="product-subtitle"></h3>
+<!--                                    <div class="rating-box">-->
+<!--                                        <div class="star"><i class="fa fa-star"></i></div>-->
+<!--                                        <div class="star"><i class="fa fa-star"></i></div>-->
+<!--                                        <div class="star"><i class="fa fa-star"></i></div>-->
+<!--                                        <div class="star"><i class="fa fa-star-o"></i></div>-->
+<!--                                        <div class="star"><i class="fa fa-star-o"></i></div>-->
+<!--                                    </div>-->
                                     <div class="price detail-info-entry">
                                         <!-- <div class="prev">$90,00</div> -->
-                                        <div class="current">$70,00</div>
+                                        <div class="current product-price"></div>
                                     </div>
 
-                                    <!--   <div class="color-selector detail-info-entry">
-                                          <div class="detail-info-entry-title">Color</div>
-                                          <div class="entry active" style="background-color: #d23118;">&nbsp;</div>
-                                          <div class="entry" style="background-color: #2a84c9;">&nbsp;</div>
-                                          <div class="entry" style="background-color: #000;">&nbsp;</div>
-                                          <div class="entry" style="background-color: #d1d1d1;">&nbsp;</div>
-                                          <div class="spacer"></div>
-                                      </div> -->
+<!--                                    <div class="color-selector detail-info-entry">-->
+<!--                                        <div class="detail-info-entry-title">Color</div>-->
+<!--                                        <div class="entry active" style="background-color: #d23118;">&nbsp;</div>-->
+<!--                                        <div class="entry" style="background-color: #2a84c9;">&nbsp;</div>-->
+<!--                                        <div class="entry" style="background-color: #000;">&nbsp;</div>-->
+<!--                                        <div class="entry" style="background-color: #d1d1d1;">&nbsp;</div>-->
+<!--                                        <div class="spacer"></div>-->
+<!--                                    </div>-->
                                     <div class="quantity-selector detail-info-entry">
                                         <div class="detail-info-entry-title">Quantity</div>
                                         <div class="entry number-minus">&nbsp;</div>
-                                        <div class="entry number">10</div>
+                                        <div class="entry number product-quantity">1</div>
                                         <div class="entry number-plus">&nbsp;</div>
                                     </div>
                                     <div class="detail-info-entry">
-                                        <a class="button style-10">Add to cart</a>
-                                        <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>
+                                        <a class="button style-10 btn-cart">Add to cart</a>
+<!--                                        <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>-->
                                         <div class="clear"></div>
                                     </div>
-                                    <!--   <div class="tags-selector detail-info-entry">
-                                          <div class="detail-info-entry-title">Tags:</div>
-                                          <a href="#">bootstrap</a>/
-                                          <a href="#">collections</a>/
-                                          <a href="#">color/</a>
-                                          <a href="#">responsive</a>
-                                      </div> -->
+<!--                                    <div class="tags-selector detail-info-entry">-->
+<!--                                          <div class="detail-info-entry-title">Tags:</div>-->
+<!--                                          <a href="#">bootstrap</a>/-->
+<!--                                          <a href="#">collections</a>/-->
+<!--                                          <a href="#">color/</a>-->
+<!--                                          <a href="#">responsive</a>-->
+<!--                                      </div>-->
                                 </div>
                             </div>
                         </div>
@@ -461,23 +457,58 @@
 
             });
 
-            $(document).on('click', '.btn-cart', function(e){
-                e.preventDefault();
+            $(document).on('click', '.open-product', function(){
+
+                var prod_popup = $('#product-popup');
                 var prod_id = $(this).closest('div.product-container').find('input[name="prod-id"]').val();
                 var prod_name = $(this).closest('div.product-container').find('a.prod-name').text();
+                var prod_img = $(this).closest('div.product-container').find('img.prod-img').attr('src');
                 var price = $(this).closest('div.product-container').find('.price .prod-price').text();
-                var cart_badge = $('span.cart-badge');
-                var item_count = parseInt($(cart_badge).text());
+                var cat = $(this).closest('div.product-container').find('a.prod-category').text();
 
                 var data = {
                     id: prod_id,
                     name: prod_name,
-                    price: price
+                    img: prod_img,
+                    price: price,
+                    cat: cat,
                 };
 
                 console.log(data)
+                $(prod_popup).find('.product-title').text(prod_name);
+                $(prod_popup).find('.product-subtitle').text(cat);
+                $(prod_popup).find('.product-price').text(price);
+                $(prod_popup).find('img').attr('src', prod_img);
+                $(prod_popup).find('img').attr('data-zoom', prod_img);
 
-                cart = JSON.parse(localStorage.getItem('myCart')) || [];
+               if(!showPopup($(prod_popup))){
+                   return false;
+               }
+
+            });
+
+            $(document).on('click', '.btn-cart', function () {
+                console.log('ok')
+                var prod_popup = $('#product-popup');
+                var cart_badge = $('span.cart-badge');
+                var item_count = parseInt($(cart_badge).text());
+                var prod_id = $(prod_popup).find('.product-id').text();
+                var prod_name = $(prod_popup).find('.product-title').text();
+                var cat = $(prod_popup).find('.product-subtitle').text();
+                var price = $(prod_popup).find('.product-price').text();
+                var qty = $(prod_popup).find('.product-quantity').text();
+                var prod_img = $(prod_popup).find('img').attr('src');
+
+                var data = {
+                    id: prod_id,
+                    name: prod_name,
+                    img: prod_img,
+                    price: price,
+                    cat: cat,
+                    qty: qty,
+                };
+
+                var cart = JSON.parse(localStorage.getItem('myCart')) || [];
                 cart.push(data);
                 localStorage.setItem('myCart', JSON.stringify(cart));
                 console.debug('webStarage', cart)
@@ -485,8 +516,11 @@
                 $(alert).css('display','block');
                 $(alert).delay(1800).fadeOut('fast');
                 $(cart_badge).text(parseInt(parseInt(item_count) + 1));
-
             });
+
+            function showPopup(id){
+                id.addClass('visible active');
+            }
 
         });
     </script>
