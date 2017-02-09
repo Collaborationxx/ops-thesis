@@ -384,6 +384,13 @@
         $(document).ready(function(){
             var serverURL = <?php echo json_encode($serverURL); ?>;
             var modal = ('#login-signup-modal');
+            var myCart = JSON.parse(localStorage.getItem('myCart'));
+            if(myCart == null){
+                $('span.cart-badge').text('0');
+            } else {
+                $('span.cart-badge').text(myCart.length);
+            }
+
 
             $('.signup-group-content').css('display', 'none');
             $('.alert').delay(3000).fadeOut('fast');
@@ -459,6 +466,8 @@
                 var prod_id = $(this).closest('div.product-container').find('input[name="prod-id"]').val();
                 var prod_name = $(this).closest('div.product-container').find('a.prod-name').text();
                 var price = $(this).closest('div.product-container').find('.price .prod-price').text();
+                var cart_badge = $('span.cart-badge');
+                var item_count = parseInt($(cart_badge).text());
 
                 var data = {
                     id: prod_id,
@@ -475,6 +484,7 @@
                 var alert = $(this).closest('div.product-image').find('.alert-cart');
                 $(alert).css('display','block');
                 $(alert).delay(1800).fadeOut('fast');
+                $(cart_badge).text(parseInt(parseInt(item_count) + 1));
 
             });
 

@@ -24,5 +24,20 @@
 .page-wrapper {padding: 15px 30px;min-height: 600px; background: #F3F3F3; }
 .page-inner {width: 100%; margin: 50px 20px 10px 0px; background-color: #fff !important; padding: 10px; }
 .alert-cart { position: absolute; z-index: 9999; padding: 20px; width: 100%; margin-top: 30%; display: none;}
-
+.badge-danger { background-color: #b94a48;}
+.badge-danger:hover { background-color: #953b39;}
+.badge-warning { background-color: #f89406;}
+.badge-warning:hover { background-color: #c67605;}
+.badge-success {background-color: #468847;}
+.badge-success:hover {background-color: #356635;}
+.badge-info { background-color: #3a87ad; }
+.badge-info:hover { background-color: #2d6987;}
+.badge-inverse { background-color: #333333;}
+.badge-inverse:hover { background-color: #1a1a1a;}
+.cart-badge {margin-bottom: 25px !important; }
+.open-cart-popup { color: #000000; }
+.open-cart-popup:hover { color: #000000; }
+.shop-nav { height: 70px; background-color: #e6ffe6; }
+.btn-checkout { margin-bottom: 10px; }
+.cont { margin-top: -25px; padding: 20px;}
 

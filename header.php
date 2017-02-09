@@ -50,9 +50,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
                     <div class="header-product">
                         <div class="logo-wrapper">
-                            <a href="#" id="logo">
-                            
-                            <img class="ops-logo" alt="" src="assets/images/opslogo.png">
+                            <a href="index.php" id="logo">                           
+                                <img class="ops-logo" alt="" src="assets/images/opslogo.png">
                             </a>
                         </div>
                        
@@ -90,7 +89,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                             <div class="middle-line"></div>
 
                             <div class="line-entry">
-                                <a href="index.php" class="header-functionality-entry"><i class="fa fa-home"></i><span>Home</span></a>
+                                <!-- <a href="index.php" class="header-functionality-entry"><i class="fa fa-home"></i><span>Home</span></a> -->
 
                                 
                                 <!--<a class="header-functionality-entry"><i class="fa fa-cubes"></i><span>Products</span></a>-->
@@ -107,7 +106,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                                 <!--wishlist-->
                                 <!--<a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>-->
 
-                                <a href="#" class="header-functionality-entry open-cart-popup"><i class="fa fa-shopping-cart"></i><span>My Cart</span> <b>Php 9,000</b></a>
+                                <a href="shopping-cart.php" class="open-cart-popup" data-toggle>
+                                    <i class="fa fa-shopping-cart fa-2x"><span class="badge badge-danger cart-badge">0</span></i>
+                                    <span>My Cart</span>     
+                                </a>
 
                             </div>
                         </div>

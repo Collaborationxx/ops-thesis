@@ -372,9 +372,9 @@ $(function() {
 	// 	closecartTimeout = setTimeout(function(){closePopups();}, 1000);
 	// });
 
-	// function closePopups(){
-	// 	$('.popup.active').animate({'opacity':'0'}, 300, function(){$(this).removeClass('active'); $('.cart-box').removeClass('cart-left cart-right');});
-	// }
+	function closePopups(){
+		$('.popup.active').animate({'opacity':'0'}, 300, function(){$(this).removeClass('active'); $('.cart-box').removeClass('cart-left cart-right');});
+	}
 
 
 	// /*wishlist popup*/
