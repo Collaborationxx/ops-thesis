@@ -104,8 +104,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <!--                          <option value="9">Storage and Transport</option>-->
 <!--                          </select>-->
 <!--                    </div>-->
+
                     <div class="form-group">
-                      <p class="errMess err-prod hidden">No Product Selected</p>
+                      <p class="errMess err-req hidden">Make sure to fill in product Name and Quantity</p>
+                      <p class="errMess no-result hidden">No product matches your search</p>
                       <label>Product Name:</label>
                       <input type="text" class="form-control product-name" data-id="" data-image="" name="prod-name" placeholder="Type at least three characters">
                     </div>
@@ -120,7 +122,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   </form>
                 </div>
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-success pull-right place-order">Place Order</button>
+                  <button type="submit" class="btn btn-success pull-right place-order" disabled="disabled">Place Order</button>
                 </div>
             </div>
           </div>
@@ -190,8 +192,22 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       console.log(arr)
 
       var input = $('.product-name');
+      $(input).keyup(function(){
+          if($(this).val().length == 0){
+              $('p.errMess').addClass('hidden');
+              $('.place-order').attr('disabled', true);
+          } else {
+              $('.place-order').attr('disabled', false);
+          }
+      });
+
       $(input).autocomplete({
           source: arr,
+          response: function(e, ui){
+              if (ui.content.length === 0) {
+                $('p.no-result').removeClass('hidden');
+              }
+          },
           select: function (event, ui) {
               console.log(ui.item);
               $('.price').val(ui.item.price);
@@ -226,9 +242,14 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               '<td><a href="#" class="remove-order"><i class="fa fa-times text-danger"></i></a></td>' +
               '</tr>';
 
-          $(this).closest('div.box').find('.form-group input').val(''); //clear inputs
-          $(total_input).val(grand_total);
-          $(table).append(table_content); //place order in the table
+          if(prod_name.length == 0 || qty.length == 0){
+              $('.err-req').removeClass('hidden');
+          } else {
+              $(this).closest('div.box').find('.form-group input').val(''); //clear inputs
+              $(total_input).val(grand_total);
+              $(table).append(table_content); //place order in the table
+          }
+
       });
 
 
