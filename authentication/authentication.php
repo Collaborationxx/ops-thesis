@@ -11,6 +11,7 @@ $errors = array(
     'reqField' => '',
     'errCreds' => '' 
     );
+$redir = '';
 
 if(empty($username) || empty($password)){
     $errors['reqField'] = true;
