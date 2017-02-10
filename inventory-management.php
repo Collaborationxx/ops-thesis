@@ -365,7 +365,7 @@ include('data-manager/get-product-inventory.php');
 
           bootbox.confirm({
             size: 'small',
-            message: 'Are you sure you want to delete this record?',
+            message: 'Remove item from cart?',
             callback: function(result){
               if(result == true){
                 $.ajax({

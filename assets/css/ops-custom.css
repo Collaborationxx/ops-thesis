@@ -23,7 +23,7 @@
 .break { height: 3px; background: #1C8F01; width: 1140px; margin-bottom: 10px; }
 .page-wrapper {padding: 15px 30px;min-height: 600px; background: #F3F3F3; }
 .page-inner {width: 100%; margin: 50px 20px 10px 0px; background-color: #fff !important; padding: 10px; }
-.alert-cart { position: absolute; z-index: 9999; padding: 20px; width: 100%; margin-top: 30%; display: none;}
+.alert-cart {padding: 20px; width: 100%; z-index: 9999; display: none;}
 .badge-danger { background-color: #b94a48;}
 .badge-danger:hover { background-color: #953b39;}
 .badge-warning { background-color: #f89406;}

@@ -44,6 +44,9 @@
     </div>
     <!-- Main content -->
     <section class="container">
+        <div class="alert alert-success remove-success" role="alert">
+          <p>Item removed from cart</p>
+        </div>
         <div class="content-header">
           <h1> My Cart <small class="item_count"></small><h1>
           <a class="btn btn-danger btn-sm pull-right btn-checkout">Checkout  <i class="fa fa-angle-double-right"></i></a>
@@ -55,12 +58,13 @@
                         <table class="table table-striped table-bordered table-responsive cart-table">
                             <tbody>
                                 <tr>
+                                    <th>#</th>
                                     <th>Product Photo</th>
                                     <th>Product Name</th>
                                     <th>Quantity</th>
                                     <th>Price</th>
                                     <th>Total Price</th>
-                                    <th></th>
+                                    <th style="width: 50px;"></th>
                                 </tr>
                             </tbody>
                         </table>
@@ -82,8 +86,11 @@
 
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="plugins/js/validator.js"></script>
+<script src="assets/js/bootbox.min.js"></script>
 <script>
   $(document).ready(function(){
+
+      $('.alert').css('display','none');
       var table = $('.cart-table');
       var cart = JSON.parse(localStorage.getItem('myCart'));
       var item_count = cart == null ? 0 : cart.length;
@@ -91,19 +98,58 @@
       console.log(cart);
       $('.item_count').text('[ '+ item_count + ' Item(s) ]');
 
-      $(cart).each(function(x,y){
+      if(item_count > 0){
+          var i = 1;
+          $(cart).each(function(x,y){
+              table.append(
+                  '<tr>' + 
+                      '<td>'+ i++ + '</td>' +
+                      '<td name="prod-pic" class="table-pic"><img src="'+ y.img +'" /></td>' +
+                      '<td data-id="'+ y.id +'"name="prod_name">' + y.name +'</td>' +
+                      '<td name="uantity">'+ y.qty + '</td>' +
+                      '<td name="price">'+ y.price +'</td>' +
+                      '<td name="sub_total">' + parseFloat(parseInt(y.qty) * parseFloat(y.price)).toFixed(2) + '</td>' +
+                      '<td style="text-align: center"><a href=#" class="remove-item" data-toggle="tooltip" title="Remove Item"><i class="fa fa-times text-danger"></i></a></td>' +
+                  '</tr>'
+              );
+          });
+      } else {
           table.append(
-              '<tr>' + 
-                  '<td name="prod-pic" class="table-pic"><img src="'+ y.img +'" /></td>' +
-                  '<td data-id="'+ y.id +'"name="prod_name">' + y.name +'</td>' +
-                  '<td name="uantity">'+ y.qty + '</td>' +
-                  '<td name="price">'+ y.price +'</td>' +
-                  '<td name="sub_total">' + parseFloat(parseInt(y.qty) * parseFloat(y.price)).toFixed(2) + '</td>' +
-                  '<td class="remove-item"><i class="fa fa-times text-danger"></i></td>' +
-              '</tr>'
-          );
+            '<tr><td colspan="6" style="text-align:center">No Item in your cart yet. Look around, you might find something you\'ll like.</td>');
+      }
+
+
+      $(document).on('click', '.remove-item', function(){
+          var id = $(this).closest('tr').find('td[name="prod_name"]').attr('data-id');
+          bootbox.confirm({
+              size: 'small',
+              message: 'Remove item from cart?',
+              callback: function(result){
+                  if(result == true){
+                      $.each(cart, function(index, obj){
+                          if (obj.id == id) {
+                              cart.splice(index,1);
+                              console.log(cart);
+                              localStorage.setItem('myCart', JSON.stringify(cart));
+                              return false;
+                          }
+                      });
+                      $(this).closest('tr').remove();
+                      $('.alert').css('display','block');
+                      $('.alert').delay(2000).fadeOut('fast');
+                      setTimeout(function(){
+                        location.reload();
+                      },2010)
+                  }
+              },
+          });
+          console.debug('webStarage', cart)
+
       });
+      
   });
+
+
 </script>
 
 </body>

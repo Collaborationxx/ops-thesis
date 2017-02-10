@@ -148,9 +148,11 @@
                 <div class="cell-view">
                     <div class="close-layer"></div>
                     <div class="popup-container">
-
+                        <div class="aert alert-success alert-cart">
+                            <p>Item added to cart</p>
+                        </div>
                         <div class="row">
-                            <div class="col-sm-6 information-entry">
+                            <div class="col-sm-8 information-entry">
                                 <div class="product-preview-box">
                                     <div class="swiper-container product-preview-swiper" data-autoplay="0" data-loop="1" data-speed="500" data-center="0" data-slides-per-view="1">
                                         <div class="swiper-wrapper">
@@ -183,7 +185,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-6 information-entry">
+                            <div class="col-sm-4 information-entry">
                                 <div class="product-detail-box">
                                     <p class="product-id hidden"></p>
                                     <h1 class="product-title"></h1>
@@ -475,20 +477,19 @@
                 };
 
                 console.log(data)
+                $(prod_popup).find('.product-id').text(prod_id);
                 $(prod_popup).find('.product-title').text(prod_name);
                 $(prod_popup).find('.product-subtitle').text(cat);
                 $(prod_popup).find('.product-price').text(price);
                 $(prod_popup).find('img').attr('src', prod_img);
                 $(prod_popup).find('img').attr('data-zoom', prod_img);
 
-               if(!showPopup($(prod_popup))){
-                   return false;
-               }
+                $(prod_popup).addClass('visible active');
 
             });
 
             $(document).on('click', '.btn-cart', function () {
-                console.log('ok')
+                console.log('added to cart')
                 var prod_popup = $('#product-popup');
                 var cart_badge = $('span.cart-badge');
                 var item_count = parseInt($(cart_badge).text());
@@ -512,15 +513,16 @@
                 cart.push(data);
                 localStorage.setItem('myCart', JSON.stringify(cart));
                 console.debug('webStarage', cart)
-                var alert = $(this).closest('div.product-image').find('.alert-cart');
-                $(alert).css('display','block');
-                $(alert).delay(1800).fadeOut('fast');
                 $(cart_badge).text(parseInt(parseInt(item_count) + 1));
-            });
+                var alert = $('#product-popup').find('.alert-cart');
+                $(alert).css('display','block');
+                $(alert).delay(2000).fadeOut('fast');
+                setTimeout(function(){
+                   $('.overlay-popup.visible').removeClass('active');
+                    setTimeout(function(){$('.overlay-popup.visible').removeClass('visible');}, 500);
+                },2050);
 
-            function showPopup(id){
-                id.addClass('visible active');
-            }
+            });
 
         });
     </script>
