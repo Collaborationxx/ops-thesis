@@ -69,7 +69,9 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                    <div class="box-footer">
+                      <div class="total-price pull-right"></div>
+                    </div>
             </div>
         </div>
     </section>
@@ -100,7 +102,9 @@
 
       if(item_count > 0){
           var i = 1;
+          var total = 0;
           $(cart).each(function(x,y){
+              var sub_total = parseFloat(parseInt(y.qty) * parseFloat(y.price)).toFixed(2);
               table.append(
                   '<tr>' + 
                       '<td>'+ i++ + '</td>' +
@@ -108,11 +112,14 @@
                       '<td data-id="'+ y.id +'"name="prod_name">' + y.name +'</td>' +
                       '<td name="uantity">'+ y.qty + '</td>' +
                       '<td name="price">'+ y.price +'</td>' +
-                      '<td name="sub_total">' + parseFloat(parseInt(y.qty) * parseFloat(y.price)).toFixed(2) + '</td>' +
+                      '<td name="sub_total">' + sub_total + '</td>' +
                       '<td style="text-align: center"><a href=#" class="remove-item" data-toggle="tooltip" title="Remove Item"><i class="fa fa-times text-danger"></i></a></td>' +
                   '</tr>'
               );
+              total = parseFloat(parseFloat(total) + parseFloat(sub_total)).toFixed(2);
           });
+         
+          $('.total-price').html('TOTAL: ' + total);
       } else {
           table.append(
             '<tr><td colspan="6" style="text-align:center">No Item in your cart yet. Look around, you might find something you\'ll like.</td>');
