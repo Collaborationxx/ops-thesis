@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2017 at 04:13 PM
+-- Generation Time: Feb 10, 2017 at 04:52 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -71,7 +71,7 @@ CREATE TABLE IF NOT EXISTS `order` (
   `customer_id` int(11) DEFAULT NULL,
   `customer_name` varchar(255) DEFAULT NULL,
   `order_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
-  `order_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 

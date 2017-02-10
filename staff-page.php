@@ -273,7 +273,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
           $.ajax({
               type: "POST",
-              url: serverURL + '/ops-thesis/data-manager/add-order.php',
+              url: serverURL + '/ops/data-manager/add-order.php',
               data: data,
               dataType: "json",
               success: function (rData) {
@@ -294,7 +294,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                           if(result == true){
                               location.reload();
                           } else {
-                              window.location.href = serverURL + '/ops-thesis/index.php';
+                              window.location.href = serverURL + '/ops/index.php';
                           }
                       }
                     });

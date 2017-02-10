@@ -8,7 +8,7 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/db_connection.php" afterPath="$PROJECT_DIR$/config/db_connection.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/reservation-information.php" afterPath="$PROJECT_DIR$/reservation-information.php" />
     </list>
-    <ignored path="ops-thesis.iws" />
+    <ignored path="ops.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,7 +23,7 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
-    <favorites_list name="ops-thesis" />
+    <favorites_list name="ops" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -250,27 +250,27 @@
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -280,11 +280,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -294,11 +294,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -308,11 +308,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -326,11 +326,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -340,11 +340,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="ops-thesis" />
+              <option name="myItemId" value="ops" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -367,14 +367,14 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\wamp\www\ops-thesis" />
-      <recent name="C:\wamp\www\ops-thesis\vendor" />
-      <recent name="C:\wamp\www\ops-thesis\data-manager" />
+      <recent name="C:\wamp\www\ops" />
+      <recent name="C:\wamp\www\ops\vendor" />
+      <recent name="C:\wamp\www\ops\data-manager" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\wamp\www\ops-thesis\data-manager" />
-      <recent name="C:\wamp\www\ops-thesis\plugins" />
-      <recent name="C:\wamp\www\ops-thesis\vendor\dist\css" />
+      <recent name="C:\wamp\www\ops\data-manager" />
+      <recent name="C:\wamp\www\ops\plugins" />
+      <recent name="C:\wamp\www\ops\vendor\dist\css" />
     </key>
   </component>
   <component name="RunManager">

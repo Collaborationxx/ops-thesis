@@ -370,7 +370,7 @@ include('data-manager/get-product-inventory.php');
               if(result == true){
                 $.ajax({
                   type: 'POST',
-                  url: serverURL + '/ops-thesis/data-manager/delete-inventory.php',
+                  url: serverURL + '/ops/data-manager/delete-inventory.php',
                   data: data,
                   dataType: 'json',
                   success: function(rData){
@@ -401,7 +401,7 @@ include('data-manager/get-product-inventory.php');
 
          $.ajax({
            type: 'POST',
-           url: serverURL + '/ops-thesis/data-manager/add-inventory.php',
+           url: serverURL + '/ops/data-manager/add-inventory.php',
            data: data,
            dataType: 'json',
            success: function(rData){
@@ -472,7 +472,7 @@ include('data-manager/get-product-inventory.php');
 
           $.ajax({
               type: 'POST',
-              url: serverURL + '/ops-thesis/data-manager/edit-inventory.php',
+              url: serverURL + '/ops/data-manager/edit-inventory.php',
               data: data,
               dataType: 'json',
               success: function(rData){

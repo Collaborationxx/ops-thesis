@@ -171,7 +171,7 @@
                                             <div class="zoom-area"></div>
                                         </div>
                                     </div>
-                                    <div class="swiper-hidden-edges">
+                                    <!-- <div class="swiper-hidden-edges">
                                         <div class="swiper-container product-thumbnails-swiper" data-autoplay="0" data-loop="0" data-speed="500" data-center="0" data-slides-per-view="responsive" data-xs-slides="3" data-int-slides="3" data-sm-slides="3" data-md-slides="4" data-lg-slides="4" data-add-slides="4">
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide selected">
@@ -182,7 +182,7 @@
                                             </div>
                                             <div class="pagination"></div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                             <div class="col-sm-4 information-entry">
@@ -430,6 +430,7 @@
 
             $('.btn-login').click(function(e){
                 e.preventDefault();
+                console.log('ok')
                 $('p.errMess').css('display', 'none');
                 var username = $(this).closest('form').find('input[name="username"]').val()
                 var password = $(this).closest('form').find('input[name="password"]').val();
@@ -443,7 +444,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: serverURL + '/ops-thesis/authentication/authentication.php',
+                    url: serverURL + '/ops/authentication/authentication.php',
                     data: data,
                     dataType: 'json',
                     success: function(rData){

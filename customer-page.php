@@ -517,7 +517,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       /** POST request via ajax to send data to /data-manager/update-profile.php **/
       $.ajax({
         type: "POST",
-        url: serverURL + '/ops-thesis/data-manager/update-profile.php',
+        url: serverURL + '/ops/data-manager/update-profile.php',
         data: data,
         dataType: "json",
         success: function (rData) {
@@ -597,7 +597,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
       $.ajax({
         type: "POST",
-        url: serverURL + '/ops-thesis/data-manager/update-settings.php',
+        url: serverURL + '/ops/data-manager/update-settings.php',
         data: data,
         dataType: "json",
         success: function(aData){

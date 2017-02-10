@@ -383,7 +383,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               if(result == true){
                 $.ajax({
                   type: 'POST',
-                  url: serverURL + '/ops-thesis/data-manager/delete-users.php',
+                  url: serverURL + '/ops/data-manager/delete-users.php',
                   data: data,
                   dataType: 'json',
                   success: function(rData){
@@ -424,7 +424,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
         $.ajax({
           type: "POST",
-          url: serverURL + '/ops-thesis/data-manager/add-user.php',
+          url: serverURL + '/ops/data-manager/add-user.php',
           data: data,
           dataType: "json",
           success: function(rData){
@@ -575,7 +575,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
       $.ajax({
         type: "POST",
-        url: serverURL + '/ops-thesis/data-manager/edit-user.php',
+        url: serverURL + '/ops/data-manager/edit-user.php',
         data: data,
         dataType: "json",
         success: function(rData){
