@@ -68,7 +68,7 @@ include("header.php");
                                                 <div class="product-image">
                                                     <img class="prod-img" src="assets/images/products/<?php echo $value['picture']?>" alt="" />
                                                     <!--<a class="top-line-a right open-product"><i class="fa fa-expand"></i> <span>Quick View</span></a>-->
-                                                    <div class="bottom-line">
+                                                    <div class="bottom-line cart-btn">
                                                     <a href="#" class="bottom-line-a open-product"><i class="fa fa-shopping-cart"></i> Add to cart</a>
                                                 </div>
                                             </div>
