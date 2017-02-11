@@ -97,9 +97,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                                 <!--<a href="#" class="header-functionality-entry open-wishlist-popup"><i class="fa fa-heart-o"></i><span>Wishlist</span></a>-->
 
                                 <a href="shopping-cart.php" class="open-cart-popup" data-toggle>
-                                    <span>My Cart</span>   
-                                    <i class="fa fa-shopping-cart fa-1x"><span class="badge badge-danger cart-badge">0</span></i>
                                       
+                                    <i class="fa fa-shopping-cart fa-1x"><span class="badge badge-danger cart-badge">0</span></i>
+                                     <span>My Cart</span>  
                                 </a>
 
                           </div>
