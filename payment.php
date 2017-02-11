@@ -188,9 +188,9 @@ include('authentication/functions.php');
                         <td>w96-45</td>
                         <td>01/10/17</td>
                         <td>
-                           <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                           <a href=""><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-                           <a href=""><span class="text-warning"><i class="fa fa-thumbs-down"></i></span></a>
+                           <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank" data-toggle="tooltip" title="Verify?"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
+                           <a href="" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+                           <a href="" data-toggle="tooltip" title="Reject?"><span class="text-warning"><i class="fa fa-thumbs-down"></i></span></a>
                         </td>
                       </tr>
                     </tbody>

@@ -17,8 +17,8 @@
                                 <div class="col-md-3 col-sm-4">
                                     <h3 class="column-title">Our Services</h3>
                                     <ul class="column">
-                                        <li><a href="about-us.php">About us</a></li>
-                                        <li><a href="tac.php" >Terms &amp; Conditions</a></li>
+                                        <li><a href="legal-pages/about-us.html" target="_blank">About us</a></li>
+                                        <li><a href="legal-pages/terms-and-conditions.html" target="_blank" >Terms &amp; Conditions</a></li>
                                         
                                     </ul>
                                     <div class="clear"></div>
@@ -38,13 +38,13 @@
 
                         <div class="footer-bottom-navigation">
                             <div class="cell-view">
-                                <div class="footer-links">
-                                    <a href="#">Site Map</a>
+                                <!-- <div class="footer-links">
                                     <a href="#">Search</a>
-                                    <a href="#">Terms</a>
-                                    <a href="#">Advanced Search</a>
-                                    <a href="#">Contact Us</a>
-                                </div>
+                                    <a href="#">My Account</a>
+                                    <a href="#">My Cart</a>
+                                    <a href="legal-pages/about-us.html" target="_blank">About Us</a>
+                                    <a href="legal-pages/terms-and-conditions.html" target="_blank">Terms & Conditions</a>
+                                </div> -->
                                 <div class="copyright"><?php echo date('Y'); ?> Copyright &copy; MJ Jacobe Trading. All right reserved</div>
                             </div>
                             
@@ -68,18 +68,6 @@
             <div class="search-button">
                 <i class="fa fa-search"></i>
                 <input type="submit" />
-            </div>
-            <div class="search-drop-down">
-                <div class="title"><span>All categories</span><i class="fa fa-angle-down"></i></div>
-                <div class="list">
-                    <div class="overflow">
-                        <div class="category-entry">Category 1</div>
-                        <div class="category-entry">Category 2</div>
-                        <div class="category-entry">Category 2</div>
-                        <div class="category-entry">Category 4</div>
-                        <div class="category-entry">Category 5</div>
-                    </div>
-                </div>
             </div>
             <div class="search-field">
                 <input type="text" value="" placeholder="Search for product" />
