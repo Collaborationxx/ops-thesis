@@ -390,7 +390,7 @@ include('data-manager/get-product-inventory.php');
          $('div#inventory-modal div.form-group').removeClass('has-error');
          $('p.errMess').css('display', 'none');
          var product = $(this).closest('div.box').find('div.box-body select#product-select').val();
-         var qty = $(this).closest('div.box').find('div.box-body input[name="quantity"]').val();
+         var qty = $(this).closest('div.box').find('div.box-body input[name="additional-quantity"]').val();
 
          var data = {
            product: product,

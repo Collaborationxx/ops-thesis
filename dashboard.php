@@ -305,7 +305,7 @@ $alerts = count($alert);
             // Chart data records -- each entry in this array corresponds to a point on
             // the chart.
             data: [
-                { month: 'Jan', a: 70 },
+                { month: 'Jan', a: 10 },
                 { month: 'Feb', a: 60 },
                 { month: 'Mar', a: 100 },
                 { month: 'Apr', a: 80 },

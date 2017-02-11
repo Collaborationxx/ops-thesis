@@ -113,14 +113,20 @@
                       '<td name="uantity">'+ y.qty + '</td>' +
                       '<td name="price">'+ y.price +'</td>' +
                       '<td name="sub_total">' + sub_total + '</td>' +
-                      '<td style="text-align: center"><a href=#" class="remove-item" data-toggle="tooltip" title="Remove Item"><i class="fa fa-times text-danger"></i></a></td>' +
+                      '<td style="text-align: center">' +
+                      '<a href=#" class="update-item" data-toggle="tooltip" title="Update Item"><i class="fa fa-pencil text-info"></i></a>    |    ' +
+                      '<a href=#" class="remove-item" data-toggle="tooltip" title="Remove Item"><i class="fa fa-times text-danger"></i></a>' +
+                      '</td>' +
                   '</tr>'
               );
               total = parseFloat(parseFloat(total) + parseFloat(sub_total)).toFixed(2);
           });
          
           $('.total-price').html('TOTAL: ' + total);
+//          $('.btn-cart').attr('disabled', false);
+
       } else {
+//          $('.btn-cart').attr('disabled', true);
           table.append(
             '<tr><td colspan="6" style="text-align:center">No Item in your cart yet. Look around, you might find something you\'ll like.</td>');
       }
@@ -152,6 +158,17 @@
           });
           console.debug('webStarage', cart)
 
+      });
+
+      $(document).on('click', '.update-item', function(){
+          console.log('oks')
+          bootbox.prompt({
+              title: 'Update Quantity',
+              inputType: 'text',
+              callback: function(result){
+                  console.log(result)
+              },
+          });
       });
       
   });

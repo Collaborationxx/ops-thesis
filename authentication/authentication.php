@@ -1,23 +1,24 @@
 <?php
-session_start();
+session_start(); //to record session
 //include database file for connection to the server
-include(dirname(__FILE__).'/../config/db_connection.php');//include functions.php to test sql injections
-include('../authentication/functions.php');
+include(dirname(__FILE__).'/../config/db_connection.php');// ex. http://localhost
+include('../authentication/functions.php'); //include functions.php to test sql injections
 
-$username = test_input($_POST['username']);
-$password = test_input(md5($_POST['password']));
-$response =  array();
+$username = test_input($_POST['username']); //kunin yung username sa index
+$password = test_input(md5($_POST['password'])); //kunin yung password sa index
+$response =  array(); //array response (e.g errors)
 $errors = array(
     'reqField' => '',
-    'errCreds' => '' 
+    'errCreds' => '', 
+    'redir' => '',
     );
 $redir = '';
 
-if(empty($username) || empty($password)){
-    $errors['reqField'] = true;
+if(empty($username) || empty($password)){ //pag empty si pw at username
+    $errors['reqField'] = true; //
 } else {
     //query: select username and password from table user_accounts
-    $sql = "SELECT * FROM user_account WHERE username='$username' and password='$password'";
+    $sql = "SELECT * FROM user_account WHERE username='$username' and password='$password'"; 
     $result = mysqli_query($con, $sql);
 
     // check record if exist
@@ -40,6 +41,7 @@ if(empty($username) || empty($password)){
         $_SESSION['name'] = ucfirst($row['first_name'])." ".ucfirst($row['last_name']);
         $redir = '';
 
+        //pipiliin kung san babagsak
         if($role == 1){ //admin role
             $redir = 'dashboard.php';
         } else if($role == 0) { //staff
@@ -56,6 +58,7 @@ if(empty($username) || empty($password)){
     }
 }
 
+//response to post request
 $response = array('reqField' => $errors['reqField'], 'errCreds' => $errors['errCreds'], 'redir' => $redir);
 header('Content-Type: application/json');
 echo json_encode($response);
