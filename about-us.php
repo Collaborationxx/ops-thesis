@@ -30,39 +30,30 @@
 </head>
 
 <body>
-  <div class="page-wrapper">
+  
     <nav class="navbar navbar-default" style="height: 70px; background-color: #e6ffe6;">
       <div class="container-fluid">
-        <div class="row">
-        <div class="col-md-6 col-xs-5">
+        
         <div class="navbar-header">
           <a class="navbar-brand" href="index.php"><img src="assets/images/opslogo.png" class="ops-nav-logo"></a>
         </div>
-        </div>
-        <div class="col-md-6 col-xs-7">
-        <span class="pull-right" style="margin-top: 15px; margin-bottom: -5px;">
-        <ol class="breadcrumb">
-          <li><a href="index.php">Home</a></li>
-          <li class="active">About Us</li>
-        </ol>
-        </span>
-        </div>
+        
+    
       </div>
-      </div>
-  </nav>
+    </nav>
  
 
-    <div class="page-inner">
-    <h4 style="margin-left: 20px;">
+    <div class="container">
+    <h4>
       <b>About Us</b>
     </h4>
     <br>
-      <p style="text-align: justify; margin-left: 20px; margin-right: 20px;">
+      <p style="text-align: justify;">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MJ Jacobe Trading owned by Mrs. Mary Joy T. Jacobe, who was once an employee for nine years of a store that trades medical supplies, at 1623 Bambang Street, Sta. Cruz, Manila allows wholesale trading and delivery of medical supplies. The family business was started at M. Natividad Street, Sta. Cruz, Manila late 2012 when the business is still home-based. From Mrs. Jacobe humble beginnings, Mrs. Jacobe was able to buy the store from his former employer late 2013. Mrs. Jacobe is now owning the MJ Jacobe Trading and manage the company with Mr. Jacobe, a sibling and four staffs.
       </p>
       <br>
       </div>
-  </div>
+
     
   
 

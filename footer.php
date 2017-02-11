@@ -17,8 +17,8 @@
                                 <div class="col-md-3 col-sm-4">
                                     <h3 class="column-title">Our Services</h3>
                                     <ul class="column">
-                                        <li><a href="about-us.php">About us</a></li>
-                                        <li><a href="tac.php" >Terms &amp; Conditions</a></li>
+                                        <li><a href="about-us.php" target="_blank">About us</a></li>
+                                        <li><a href="terms-and-conditions.html" target="_blank" >Terms &amp; Conditions</a></li>
                                         
                                     </ul>
                                     <div class="clear"></div>
