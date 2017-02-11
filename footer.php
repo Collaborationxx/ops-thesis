@@ -432,7 +432,7 @@
                 e.preventDefault();
                 console.log('ok')
                 $('p.errMess').css('display', 'none');
-                var username = $(this).closest('form').find('input[name="username"]').val()
+                var username = $(this).closest('form').find('input[name="username"]').val();
                 var password = $(this).closest('form').find('input[name="password"]').val();
 
                 var data = {

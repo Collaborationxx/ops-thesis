@@ -6,13 +6,14 @@ $userID = $_SESSION['id'];
 if($_SESSION["username"] == null) { //if not redirect to login page
   header('location: index.php');
 } else { 
-    if($role != 0){ //prevent other people other than admin in accessing dashboard
+    if($role == 2){ //prevent other people other than admin in accessing dashboard
         header('location: index.php');
     }
 }
 
 include('authentication/functions.php');
 include('data-manager/get-products.php');
+// echo '<pre>'; print_r($arr); exit;
 $serverURL = "http://$_SERVER[HTTP_HOST]";
 
 ?>
@@ -305,17 +306,27 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
       $(document).on('click', '.remove-order', function (e) {
           e.preventDefault();
-          var remove_price = parseFloat($(this).closest('tr').find('td[name="subTotal"]').text());
-          var total_input = $('body').find('input[name="total-price"]');
-          var total = $(total_input).val();
-          var grand_total = parseFloat(parseFloat(total) - parseFloat(remove_price)).toFixed(2);
-          $(total_input).val(grand_total);
-          $(this).parent().parent().remove();
+//          bootbox.confirm({
+//              size: 'small',
+//              message: "Remove this item?",
+//              callback: function (result) {
+//                  if(result == true){
+                      var remove_price = parseFloat($(this).closest('tr').find('td[name="subTotal"]').text());
+                      var total_input = $('body').find('input[name="total-price"]');
+                      var total = $(total_input).val();
+                      var grand_total = parseFloat(parseFloat(total) - parseFloat(remove_price)).toFixed(2);
+                      $(total_input).val(grand_total);
+                      $(this).parent().parent().remove(); 
+                      //location.reload();
+                      window.location.href = serverURL + '/ops/staff-page.php';
+
+//                  }
+//              },
+//          });
       });
 
-
-
   });
+
 </script>
 </body>
 

@@ -89,10 +89,10 @@ include("header.php");
                                                 <!-- <div class="prev">$199,99</div> -->
                                                 <div class="current prod-price"><?php echo $value['price']; ?></div>
                                             </div>
-                                            <div class="list-buttons">
-                                                <a class="button style-10">Add to cart</a>
-                                                <!--<a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>-->
-                                            </div>
+<!--                                            <div class="list-buttons">-->
+<!--                                                <a class="button style-10">Add to cart</a>-->
+<!--                                                <a class="button style-11"><i class="fa fa-heart"></i> Add to Wishlist</a>-->
+<!--                                            </div>-->
                                         </div>
                                         <div class="clear"></div>
                                 </div>

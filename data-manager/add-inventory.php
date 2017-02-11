@@ -12,7 +12,7 @@ $error = array(
 );
 
 if(empty($product)){
-    $error['productEmpty'] = true;
+    $error['productEmpty'] = true; 
 }
 
 if(empty($qty)){
