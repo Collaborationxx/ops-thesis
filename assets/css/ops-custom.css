@@ -9,7 +9,7 @@
 .login-group-content { background-color: #ffffff; }
 .signup-group { padding: 20px; background-color: #d2d6de; text-align: center; margin-top: -15px; }
 .signup-group-content { background-color: #ffffff; }
-.active-group {background-color: #00a65a;}
+.active-group { background-color: #00a65a; }
 .ops-logo {width: 100%; max-width: 250px; height: auto; }
 .footerlogo {width: 100%;max-width: 250px; height: auto; margin-top: -20px; margin-left: -15px; }
 .error-box p { text-align: center; font-weight: bold; color: red;}
@@ -40,5 +40,10 @@
 .shop-nav { height: 70px; background-color: #e6ffe6; }
 .btn-checkout { margin-bottom: 10px; }
 .cont { margin-top: -25px; padding: 20px;}
-.errMess {color: #b94a48;}
+.errMess { color: #b94a48; }
 .total-price {font-weight: bolder;}
+.order-group { padding: 20px; background-color: #d2d6de; text-align: center; margin-top: -15px; cursor: pointer; }
+.order-group-content { background-color: #ffffff; }
+.reserve-group { padding: 20px; background-color: #d2d6de; text-align: center; margin-top: -15px; cursor: pointer; }
+.reserve-group-content { background-color: #ffffff; }
+.active-tab { background-color: #00a65a; }

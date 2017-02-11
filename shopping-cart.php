@@ -49,7 +49,7 @@
         </div>
         <div class="content-header">
           <h1> My Cart <small class="item_count"></small><h1>
-          <a class="btn btn-danger btn-sm pull-right btn-checkout">Checkout  <i class="fa fa-angle-double-right"></i></a>
+          <a href="check-out.php" class="btn btn-danger btn-sm pull-right btn-checkout">Checkout  <i class="fa fa-angle-double-right"></i></a>
         </div>
         <div class="row">
             <div class="col-lg-12 col-xs-12">
