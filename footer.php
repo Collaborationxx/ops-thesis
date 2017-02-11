@@ -210,11 +210,16 @@
 <!--                                        <div class="entry" style="background-color: #d1d1d1;">&nbsp;</div>-->
 <!--                                        <div class="spacer"></div>-->
 <!--                                    </div>-->
+                                    <div class="stock-input detail-info-entry">
+                                        <p class="stock-left"><strong>Stock Left: </strong>9</p>
+                                    </div>
                                     <div class="quantity-selector detail-info-entry">
-                                        <div class="detail-info-entry-title">Quantity</div>
-                                        <div class="entry number-minus">&nbsp;</div>
-                                        <div class="entry number product-quantity">1</div>
-                                        <div class="entry number-plus">&nbsp;</div>
+<!--                                        <div class="detail-info-entry-title">Quantity</div>-->
+<!--                                        <div class="entry number-minus">&nbsp;</div>-->
+<!--                                        <div class="entry number product-quantity">1</div>-->
+<!--                                        <div class="entry number-plus">&nbsp;</div>-->
+                                        <label>Quantity:</label>
+                                        <input class="form-control half-col product-quantity" value="" placeholder="0">
                                     </div>
                                     <div class="detail-info-entry">
                                         <a class="button style-10 btn-cart">Add to cart</a>
@@ -503,7 +508,7 @@
                 var prod_name = $(prod_popup).find('.product-title').text();
                 var cat = $(prod_popup).find('.product-subtitle').text();
                 var price = $(prod_popup).find('.product-price').text();
-                var qty = $(prod_popup).find('.product-quantity').text();
+                var qty = $(prod_popup).find('.product-quantity').val();
                 var prod_img = $(prod_popup).find('img').attr('src');
 
                 var data = {

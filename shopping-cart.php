@@ -39,17 +39,18 @@
             </div>
         </div>
     </nav>
-    <div class="cont">
-      <a href="index.php"><i class="fa fa-angle-left"></i> Continue Shopping</a>
-    </div>
     <!-- Main content -->
     <section class="container">
+        <div class="cont">
+            <a href="index.php"><i class="fa fa-angle-left"></i> Continue Shopping</a>
+        </div>
         <div class="alert alert-success remove-success" role="alert">
           <p>Item removed from cart</p>
         </div>
         <div class="content-header">
           <h1> My Cart <small class="item_count"></small><h1>
-          <a href="check-out.php" class="btn btn-danger btn-sm pull-right btn-checkout">Checkout  <i class="fa fa-angle-double-right"></i></a>
+          <a href="check-out.php" class="btn btn-danger btn-sm pull-right btn-checkout"><i class="fa fa-angle-double-right"></i>  Checkout</a>
+          <a href="check-out.php" class="btn btn-warning btn-sm pull-right btn-reserve" style="margin-right: 10px;"><i class="fa fa-archive"></i>  Reserved</a>
         </div>
         <div class="row">
             <div class="col-lg-12 col-xs-12">
