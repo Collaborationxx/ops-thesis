@@ -82,14 +82,12 @@
     
   
 
-  <!-- jQuery 2.2.3 -->
-<script src="vendor/jQuery/jquery-3.1.1.min.js"></script>
+  <!-- jQuery 3.1.1 -->
+<script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
-<script src="vendor/dist/js/app.min.js"></script>
-
-<script src="vendor/js/jquery-3.1.1.min.js"></script>
+<script src="plugins/dist/js/app.min.js"></script>
 
 <script>
   $(function(){
