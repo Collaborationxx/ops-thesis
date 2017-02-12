@@ -75,6 +75,14 @@ include("header.php");
                                             <a class="tag prod-category" href="#"><?php echo category($value['category']); ?></a>
                                             <a class="title prod-name" href="#"><?php echo $value['name']; ?></a>
                                             <input name="prod-id" class="hidden" value="<?php echo $value['id']; ?>">
+                                                <?php if(isset($inventory) AND count($inventory) > 0): ?>
+                                                    <?php foreach ($inventory as $ikey => $iValue): ?>
+                                                        <?php if($value['id'] == $iValue['prod_id']): ?>
+                                                            <input name="stock-left" class="hidden" value="<?php echo $iValue['quantity']; ?>">
+                                                        <?php endif; ?>
+                                                    <?php endforeach; ?>
+                                                <?php endif; ?>
+
 <!--                                            <div class="rating-box">-->
 <!--                                                <div class="star"><i class="fa fa-star"></i></div>-->
 <!--                                                <div class="star"><i class="fa fa-star"></i></div>-->

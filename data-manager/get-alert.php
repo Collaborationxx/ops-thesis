@@ -7,7 +7,8 @@ $query = "
             i.product_id as prod_id,
             i.id,
             i.quantity,
-            i.stock_date
+            i.stock_date,
+            p.availability
         FROM
             product p,
             inventory i
@@ -15,6 +16,9 @@ $query = "
             i.product_id = p.id
         AND
             i.quantity <= 5
+        AND
+            p.availability = 0
+            
 ";
 $alert = array();
 if ($result = mysqli_query($con, $query)) {

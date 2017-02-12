@@ -3,7 +3,10 @@ session_start();
 
 include('authentication/functions.php');
 include('data-manager/get-products.php');
+include('data-manager/get-inventory.php');
 $serverURL = "http://$_SERVER[HTTP_HOST]";
+
+//echo '<pre>'; print_r($inventory); exit;
 
 ?>
 <!DOCTYPE html>

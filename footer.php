@@ -199,7 +199,7 @@
 <!--                                        <div class="spacer"></div>-->
 <!--                                    </div>-->
                                     <div class="stock-input detail-info-entry">
-                                        <p class="stock-left"><strong>Stock Left: </strong>9</p>
+                                        <span class="stock-left"></span>
                                     </div>
                                     <div class="quantity-selector detail-info-entry">
 <!--                                        <div class="detail-info-entry-title">Quantity</div>-->
@@ -466,6 +466,10 @@
                 var prod_img = $(this).closest('div.product-container').find('img.prod-img').attr('src');
                 var price = $(this).closest('div.product-container').find('.price .prod-price').text();
                 var cat = $(this).closest('div.product-container').find('a.prod-category').text();
+                var stock = $(this).closest('div.product-container').find('input[name="stock-left"]').val();
+                if(stock == undefined){
+                    stock = 0;
+                }
 
                 var data = {
                     id: prod_id,
@@ -473,6 +477,7 @@
                     img: prod_img,
                     price: price,
                     cat: cat,
+                    stock: stock,
                 };
 
                 console.log(data)
@@ -482,6 +487,7 @@
                 $(prod_popup).find('.product-price').text(price);
                 $(prod_popup).find('img').attr('src', prod_img);
                 $(prod_popup).find('img').attr('data-zoom', prod_img);
+                $(prod_popup).find('.stock-left').text('Stock Left: ' + stock);
 
                 $(prod_popup).addClass('visible active');
 

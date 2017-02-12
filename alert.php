@@ -183,7 +183,7 @@ include('data-manager/get-alert.php');
                               <tr>
                                   <td><?php echo $count ?></td>
                                   <td><?php echo $value['prod_name']; ?></td>
-                                  <td><?php echo $value['quantity']; ?></td>
+                                  <td><p class="text-danger"><?php echo $value['quantity']; ?></p></td>
                                   <td>
                                       <a href="inventory-management.php"><i class="fa fa-plus"></i>  <b>Restock</b></a>
                                   </td>
