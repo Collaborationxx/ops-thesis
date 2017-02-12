@@ -13,6 +13,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('authentication/functions.php');
 include('data-manager/get-products.php');
+include('data-manager/get-inventory.php');
 // echo '<pre>'; print_r($arr); exit;
 $serverURL = "http://$_SERVER[HTTP_HOST]";
 
@@ -116,8 +117,13 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       <label>Price:</label>
                       <input type="text" class="form-control price" name="price" placeholder="0.00" disabled="disabled">
                     </div>
+                    <form-group>
+                        <label>Stock Left:</label>
+                        <input type="text" class="form-control" name="stock-left" disabled="disabled" value="">
+                    </form-group>
                     <div class="form-group">
                       <label>Quantity:</label>
+                      <p class="errMess err-stock hidden">Quantity is higher than stock available.</p>
                       <input type="number" min="0" class="form-control qty" name="quantity" placeholder="0">
                     </div>
                   </form>
@@ -178,19 +184,27 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   $(document).ready(function(){
       var serverURL = <?php echo json_encode($serverURL); ?>;
       var products = <?php echo json_encode($arr);?>;
+      var inventory = <?php echo json_encode($inventory); ?>; console.debug('inventory', inventory);
       var user_id = <?php echo $userID; ?>;
       var arr = [];
+      var stock = '';
 
       $.each(products, function (i,e) {
+          $.each(inventory, function (index, obj) {
+              if(e.id == obj.prod_id){
+                stock = obj.quantity;
+              }
+          });
           arr.push({
               label: e.name,
               value: e.name,
               id: e.id,
               price: e.price,
               picture: e.picture,
+              stock: stock,
           });
       });
-      console.log(arr)
+      console.log('products', arr)
 
       var input = $('.product-name');
       $(input).keyup(function(){
@@ -214,6 +228,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               $('.price').val(ui.item.price);
               $(input).attr('data-id', ui.item.id);
               $(input).attr('data-image', ui.item.picture);
+              $('input[name="stock-left"]').val(ui.item.stock);
           },
           minLength: 3,
       });
@@ -223,10 +238,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           e.preventDefault();
           $('body').find('.btn-order').removeAttr('disabled');
           var total_input = $('body').find('input[name="total-price"]');
-          var prod_id = $(this).closest('div.box').find('.form-group input[name="prod-name"]').attr('data-id');
-          var prod_pic = $(this).closest('div.box').find('.form-group input[name="prod-name"]').attr('data-image');
-          var prod_name = $(this).closest('div.box').find('.form-group input[name="prod-name"]').val();
-          var price = $(this).closest('div.box').find('.form-group input[name="price"]').val();
+          var prod_id = $(this).closest('div.box').find('input[name="prod-name"]').attr('data-id');
+          var prod_pic = $(this).closest('div.box').find('input[name="prod-name"]').attr('data-image');
+          var prod_name = $(this).closest('div.box').find('input[name="prod-name"]').val();
+          var price = $(this).closest('div.box').find('input[name="price"]').val();
+          var stock = $(this).closest('div.box').find('input[name="stock-left"]').val(); console.debug('stock', stock)
           var qty = $(this).closest('div.box').find('.form-group input[name="quantity"]').val();
           var sub_total = parseFloat(parseInt(qty) * parseFloat(price)).toFixed(2);
           var total = parseFloat($(total_input).val()).toFixed(2);
@@ -246,9 +262,15 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           if(prod_name.length == 0 || qty.length == 0){
               $('.err-req').removeClass('hidden');
           } else {
-              $(this).closest('div.box').find('.form-group input').val(''); //clear inputs
-              $(total_input).val(grand_total);
-              $(table).append(table_content); //place order in the table
+              if(qty > stock){
+                  $('.err-stock').removeClass('hidden');
+              } else {
+                  $('.err-stock').addClass('hidden');
+                  $(this).closest('div.box').find('input').val(''); //clear inputs
+                  $(total_input).val(grand_total);
+                  $(table).append(table_content); //place order in the table
+              }
+
           }
 
       });
