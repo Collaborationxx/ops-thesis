@@ -10,7 +10,8 @@ $query = "
                 od.order_id,
                 od.product_id,
                 od.quantity,
-                od.price
+                od.price,
+                od.quantity * od.price as total
             FROM
                 product p,
                 order_details od
@@ -27,4 +28,9 @@ if ($result = mysqli_query($con, $query)) {
     }
     /* free result set */
     mysqli_free_result($result);
+}
+
+if(isset($_POST['fcp'])){
+    header('Content-Type: application/json');
+    echo json_encode(array('orders' => $ordersByID));
 }

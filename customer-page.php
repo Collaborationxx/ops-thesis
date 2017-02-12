@@ -12,8 +12,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 $i = 1;
 
 $distinct = array();
+$order_details = array();
 foreach ($orders as $key => $value){
-    $distinct[$value['id']]['order_date'] = $value['order_date']; ;
+    $distinct[$value['id']]['order_date'] = $value['order_date'];
+
 }
 
 //echo '<pre>'; print_r($distinct); exit;
@@ -220,7 +222,7 @@ foreach ($orders as $key => $value){
                                         <?php foreach ($distinct as $okey => $oVal): ?>
                                             <tr>
                                                 <td><?php echo $i++; ?></td>
-                                                <td><a href="#" class="order-id"><?php echo "OPS-".date('Y').'-O-'.$okey; ?></a></td>
+                                                <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y').'-O-'.$okey; ?></a></td>
                                                 <td><?php echo date('F/j/Y',$oVal['order_date']); ?></td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -245,7 +247,7 @@ foreach ($orders as $key => $value){
                                 <form role="form">
                                     <div class="form-group">
                                         <p>Good day! Thank you for ordering medical supplies at OPS! The following is the list of your orders:</p>
-                                        <textarea class="form-control" rows="5" style="width:100%"></textarea>
+                                        <textarea class="form-control order-details" rows="5" style="width:100%"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <p>Please deposit your full payment in the bank account provided below within 7 days to process your order.</p>
@@ -656,6 +658,41 @@ foreach ($orders as $key => $value){
 
         },
       });
+    });
+
+    $(document).on('click', '.order-id', function () {
+        var oid = $(this).attr('data-id');
+        console.debug('oid', oid);
+        var data = {
+          fcp: 1
+        }
+      $.ajax({
+          type: 'POST',
+          url: serverURL + '/ops/data-manager/get-orders-by-orderID.php?oid=' + oid,
+          data: data,
+          dataType: 'json',
+          success: function (rData) {
+              console.log(rData)
+              var ord = '';
+              var tot = 0;
+              var res = rData.orders;
+              console.log(res)
+              console.debug('len', res.length)
+              for(var i=0; i < res.length; i++){
+                  ord += res[i].name + '\n' +
+                        'Qty: ' + res[i].quantity + '\n' +
+                        'Price: ' + res[i].price + '\n' ;
+
+                  tot += parseFloat(res[i].total);
+              }
+            //var ord = res.join('\n');
+
+              console.log(ord);
+              console.log(tot);
+            $('.order-details').val(ord + '\n' + 'Total: ' + tot);
+
+          },
+      })
     });
 
   });
