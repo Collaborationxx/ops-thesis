@@ -16,7 +16,10 @@ if(mysqli_query($con, $query)){
         $qty = $value['qty'];
         $subQuery = "INSERT INTO `order_details` (order_id, product_id, price, quantity) VALUES ($order_id, $product, $price, $qty)";
         if(mysqli_query($con, $subQuery)){
-            $response = array('status' => 'success');
+            $sql = "UPDATE `inventory` SET quantity = quantity - $qty WHERE product_id = $product";
+            if(mysqli_query($con, $sql)){
+                $response = array('status' => 'success');
+            }
         }
     }
     header('Content-Type: application/json');

@@ -207,7 +207,7 @@
 <!--                                        <div class="entry number product-quantity">1</div>-->
 <!--                                        <div class="entry number-plus">&nbsp;</div>-->
                                         <label>Quantity:</label>
-                                        <input class="form-control half-col product-quantity" value="" placeholder="0">
+                                        <input type="number" min="0" class="form-control half-col product-quantity" value="" placeholder="0">
                                     </div>
                                     <div class="detail-info-entry">
                                         <a class="button style-10 btn-cart">Add to cart</a>
@@ -468,7 +468,7 @@
                 var cat = $(this).closest('div.product-container').find('a.prod-category').text();
                 var stock = $(this).closest('div.product-container').find('input[name="stock-left"]').val();
                 if(stock == undefined){
-                    stock = 0;
+                    stock = '<br><small>This product is not available at the moment but you can still add it to your cart for reservation.</small>';
                 }
 
                 var data = {
@@ -487,7 +487,7 @@
                 $(prod_popup).find('.product-price').text(price);
                 $(prod_popup).find('img').attr('src', prod_img);
                 $(prod_popup).find('img').attr('data-zoom', prod_img);
-                $(prod_popup).find('.stock-left').text('Stock Left: ' + stock);
+                $(prod_popup).find('.stock-left').html('Stock Left: ' + stock);
 
                 $(prod_popup).addClass('visible active');
 
