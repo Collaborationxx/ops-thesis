@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2017 at 04:18 AM
+-- Generation Time: Feb 12, 2017 at 03:57 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -63,21 +63,6 @@ CREATE TABLE IF NOT EXISTS `logs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
---
-
-CREATE TABLE IF NOT EXISTS `order` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `customer_id` int(11) DEFAULT NULL,
-  `customer_name` varchar(255) DEFAULT NULL,
-  `order_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
-  `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `order_details`
 --
 
@@ -88,7 +73,23 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `price` float(11,2) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_tbl`
+--
+
+CREATE TABLE IF NOT EXISTS `order_tbl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) DEFAULT NULL,
+  `customer_name` varchar(255) DEFAULT NULL,
+  `order_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
+  `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `payment_status` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
