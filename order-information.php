@@ -11,9 +11,14 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
-include('data-manager/get-all-orders.php');
+include('data-manager/get-orders-by-orderID.php');
+include('data-manager/get-customer-by-id.php');
 $customerID = isset($_GET['cid']) ? $_GET['cid'] : '';
 $orderID = isset($_GET['oid']) ? $_GET['oid'] : '';
+$i = 1; //table row counter
+$total = 0;
+
+//echo '<pre>'; print_r($ordersByID); exit;
 
 ?>
 
@@ -186,7 +191,7 @@ $orderID = isset($_GET['oid']) ? $_GET['oid'] : '';
                       <div class="col-md-6 col-xs-6">
                         <div class="form-group">
                           <label>Customer Name</label>
-                          <input type="text" class="form-control" value="" disabled="disabled">
+                          <input type="text" class="form-control" value="<?php echo strtoupper($customers[0]['last_name']).", ".ucfirst($customers[0]['first_name']); ?>" disabled="disabled">
                         </div>  
                       </div>
                     </div> 
@@ -202,19 +207,24 @@ $orderID = isset($_GET['oid']) ? $_GET['oid'] : '';
                               <th width="10%;">Price</th>
                               <th width="10%">Total Price</th>
                             </tr>
-                            <tr>
-                              <td>1.</td>
-                              <td>
-                                <img src="assets/images/wheelchair.jpg" class="ops-table-img">
-                              </td>
-                              <td>Wheelchair</td>
-                              <td>1</td>
-                              <td>6,000</td>
-                              <td>6,000</td>
-                            </tr>
+                            <?php if(isset($ordersByID) AND count($ordersByID) > 0): ?>
+                                <?php foreach ($ordersByID as $key => $value): ?>
+                                    <tr>
+                                        <td><?php echo $i++; ?></td>
+                                        <td>
+                                            <img src="assets/images/products/<?php echo $value['picture']; ?>" class="ops-table-img">
+                                        </td>
+                                        <td><?php echo $value['name'];?></td>
+                                        <td><?php echo $value['quantity'];?></td>
+                                        <td><?php echo $value['price'];?></td>
+                                        <td><?php $subTotal = $value['quantity'] * $value['price']; echo $subTotal;?></td>
+                                    </tr>
+                                    <?php $total += $subTotal; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
                             <tr>
                               <td colspan="5"><span class="pull-right"><b>TOTAL:</b></span></td>
-                              <td>6,000</td>
+                              <td><?php echo $total; ?></td>
                             </tr>
                           </tbody>
                          </table>

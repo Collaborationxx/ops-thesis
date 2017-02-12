@@ -17,7 +17,7 @@ $alerts = count($alert);
 include('data-manager/get-all-orders.php');
 
 $distinct = array();
-foreach ($orders as $key => $value){
+foreach ($allOrders as $key => $value){
     $distinct[$value['id']] = $value;
 }
 $orderCount = count($distinct);
