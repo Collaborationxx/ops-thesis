@@ -1,14 +1,22 @@
 <?php
 //check if user has session
 session_start();
+
 if($_SESSION["username"] == null) { //if not redirect to login page
   header('location: index.php');
 }
 
 include('data-manager/get-profile.php');
+include('data-manager/get-orders-by-customer.php');
 $serverURL = "http://$_SERVER[HTTP_HOST]";
+$i = 1;
 
-//echo '<pre>'; print_r($arr); exit;
+$distinct = array();
+foreach ($orders as $key => $value){
+    $distinct[$value['id']]['order_date'] = $value['order_date']; ;
+}
+
+//echo '<pre>'; print_r($distinct); exit;
 ?>
 <!DOCTYPE html>
 <html>
@@ -193,88 +201,82 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
     </div>-->
 
     <div id="order-tab-content" class="tab-pane fade in">
-      <div class="panel-body">
-        <div class="row">
-          <div class="col-lg-4 col-xs-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-inbox"></i>   Orders</h3>
-              </div>
-              <div class="box-body no-padding">
-                <table class="table table-striped">
-                  <tbody>
-                  <tr>
-                    <th>Order ID</th>
-                    <th>Date</th>
-                  </tr>
-                  <tr>
-                    <td>OPS-1-2</td>
-                    <td>01/06/17</td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-lg-4 col-xs-12">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"><i class="fa fa-inbox"></i>   Orders</h3>
+                        </div>
+                        <div class="box-body no-padding">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <th>#</th>
+                                        <th>Order ID</th>
+                                        <th>Date</th>
+                                    </tr>
+                                    <?php if(isset($distinct) AND count($distinct) > 0): ?>
+                                        <?php foreach ($distinct as $okey => $oVal): ?>
+                                            <tr>
+                                                <td><?php echo $i++; ?></td>
+                                                <td><a href="#" class="order-id"><?php echo "OPS-".date('Y').'-O-'.$okey; ?></a></td>
+                                                <td><?php echo date('F/j/Y',$oVal['order_date']); ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="3">You have no orders yet.</td>
+                                        </tr>
+                                    <?php endif; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
 
-          <div class="col-lg-8 col-xs-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <div class="box-header with-border">
-                  <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
+                <div class="col-lg-8 col-xs-12">
+                    <div class="box box-success">
+                        <div class="box-header with-border">
+                            <div class="box-header with-border">
+                                <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
+                            </div>
+                            <div class="box-body">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <p>Good day! Thank you for ordering medical supplies at OPS! The following is the list of your orders:</p>
+                                        <textarea class="form-control" rows="5" style="width:100%"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <p>Please deposit your full payment in the bank account provided below within 7 days to process your order.</p>
+                                        <p>Reply with the deposit number when you paid your order:</p>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Deposit No:</label>
+                                        <input type="text" class="form-control" name="deposit-number">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Amount Deposited:</label>
+                                        <input type="text" class="form-control" name="amount-deposited">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" class="btn btn-success pull-right">Send <i class="fa fa-share-square-o"></i></button>
+                                    </div>
+                                </form>
+                            </div>
+                            </div>
+                            <div class="box-footer">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                    <label><strong>ACCOUNT NAME:</strong>  MJ Jacobe Trading | <strong>ACCOUNT NUMBER:</strong>  0932-4587</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="box-body">
-                  <form role="form">
-                    <div class="form-group">
-                      <p>
-                        Good day! Thank you for ordering medical supplies at OPS! The following is the list of your orders:
-                      </p>
-                      <textarea rows="2" style="width:200px;"></textarea>
-                    </div>
-                    <div class="form-group">
-                      <p>Please deposit your full payment in the bank account provided below within 7 days to process your order.</p>
-                      <p>Reply with the deposit number when you paid your order:</p>
-                    </div>
-                    <div class="form-group">
-                      <div class="row">
-                        <div class="col-md-6 col-xs-12">
-                          <label>Deposit No:</label>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                          <input type="text" name="deposit-number">
-                        </div>
-                      </div>
-                      <br>
-                      <div class="row">
-                        <div class="col-md-6 col-xs-12">
-                          <label>Amount Deposited:</label>
-                        </div>
-                        <div class="col-md-6 col-xs-12">
-                          <input type="text" name="amount-deposited">
-                        </div>
-                      </div>
-                      <div class="row">
-                        <div class="col-md-12 col-xs-12">
-                          <button type="submit" class="btn btn-success btn-sm pull-right">Send <i class="fa fa-share-square-o"></i></button>
-                        </div>
-                      </div>
-                    </div>
-                  </form>
-                </div>
-                <div class="box-footer">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <label><strong>ACCOUNT NAME:</strong>  MJ Jacobe Trading | <strong>ACCOUNT NUMBER:</strong>  0932-4587</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-
     <div id="reservation-tab-content" class="tab-pane fade in">
       <div class="panel-body">
         <div class="row">

@@ -13,6 +13,15 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 include('authentication/functions.php');
 include('data-manager/get-alert.php');
 $alerts = count($alert);
+
+include('data-manager/get-all-orders.php');
+
+$distinct = array();
+foreach ($orders as $key => $value){
+    $distinct[$value['id']] = $value;
+}
+$orderCount = count($distinct);
+//echo '<pre>'; print_r($distinct); exit;
 ?>
 
 <!DOCTYPE html>
@@ -173,8 +182,7 @@ $alerts = count($alert);
                     <!-- small box -->
                     <div class="small-box bg-aqua">
                         <div class="inner">
-                            <h3>150</h3>
-
+                            <h3><?php echo $orderCount; ?></h3>
                             <p>New Orders</p>
                         </div>
                         <div class="icon">

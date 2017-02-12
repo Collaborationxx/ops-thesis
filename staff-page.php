@@ -208,8 +208,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
       var input = $('.product-name');
       $(input).keyup(function(){
+          $('p.errMess').addClass('hidden');
           if($(this).val().length == 0){
-              $('p.errMess').addClass('hidden');
               $('.place-order').attr('disabled', true);
           } else {
               $('.place-order').attr('disabled', false);
@@ -262,7 +262,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           if(prod_name.length == 0 || qty.length == 0){
               $('.err-req').removeClass('hidden');
           } else {
-              if(qty > stock){
+              if(Number(qty) > Number(stock)){
+                  console.log('error')
                   $('.err-stock').removeClass('hidden');
               } else {
                   $('.err-stock').addClass('hidden');
@@ -340,7 +341,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       $(total_input).val(grand_total);
                       $(this).parent().parent().remove(); 
                       //location.reload();
-                      window.location.href = serverURL + '/ops/staff-page.php';
+                      //window.location.href = serverURL + '/ops/staff-page.php';
 
 //                  }
 //              },

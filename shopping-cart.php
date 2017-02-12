@@ -1,3 +1,6 @@
+<?php
+    $serverURL = "http://$_SERVER[HTTP_HOST]";
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -49,8 +52,8 @@
         </div>
         <div class="content-header">
           <h1> My Cart <small class="item_count"></small><h1>
-          <a href="check-out.php" class="btn btn-danger btn-sm pull-right btn-checkout"><i class="fa fa-angle-double-right"></i>  Checkout</a>
-          <a href="check-out.php" class="btn btn-warning btn-sm pull-right btn-reserve" style="margin-right: 10px;"><i class="fa fa-archive"></i>  Reserved</a>
+          <a href="#" data-toggle="modal" data-target="#login-signup-modal" class="btn btn-danger btn-sm pull-right btn-checkout"><i class="fa fa-angle-double-right"></i>  Checkout</a>
+          <a href="#" data-toggle="modal" data-target="#login-signup-modal" class="btn btn-warning btn-sm pull-right btn-reserve" style="margin-right: 10px;"><i class="fa fa-archive"></i>  Reserved</a>
         </div>
         <div class="row">
             <div class="col-lg-12 col-xs-12">
@@ -77,6 +80,127 @@
         </div>
     </section>
 
+    <!-- login && sign up popup -->
+    <div id="login-signup-modal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <p class="header-title"></p>
+                </div>
+                <div class="modal-body">
+                    <div class="tab-content">
+                        <div class="row">
+                            <div class="col-md-6 col-xs-6 login-group active-group">
+                                Login
+                            </div>
+                            <div class="col-md-6 col-xs-6 signup-group">
+                                Sign Up
+                            </div>
+                        </div>
+                        <div class="login-group-content">
+                            <div class="panel-body">
+                                <form id="login-form" method="post" action="authentication/authentication.php">
+                                    <p class="errMess errCreds text-danger" style="display: none;"><b>Wrong username or Password</b></p>
+                                    <p class="errMess reqField text-danger" style="display: none;"><b>*Fill in your username and password</b></p>
+                                    <div class="form-group">
+                                        <label for="username">Username</label>
+                                        <input type="text" name="username" class="form-control" id="username" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="pwd">Password:</label>
+                                        <input type="password" name="password" class="form-control" id="pwd" required>
+                                    </div>
+                                    <div class="checkbox">
+                                        <label>Forgot Pasword?   <a href="forgot-password.php">Click here</a></label>
+                                    </div>
+                                    <button type="submit" class="btn btn-success pull-righ btn-login">Sign In</button>
+                                </form>
+                            </div>
+                        </div>
+                        <!--sign up form-->
+                        <div class="signup-group-content">
+                            <div class="panel-body">
+                                <form action="authentication/signup.php?fromCart=1" method="post">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+
+                                                <div class="row">
+                                                    <div class="control-group">
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <label for="fname">First Name:</label>
+                                                            <input type="text" class="form-control" name="fname" id="fname" required>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="control-group">
+                                                        <div class="col-md-6 col-xs-12">
+                                                            <label for="lname">Last Name:</label>
+                                                            <input type="text" class="form-control" name="lname" id="lname" required>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="address">Home Address:</label>
+                                                <textarea rows="2" class="form-control" name="address" id="address" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="ship-address">Shipping Address:</label>
+                                                <textarea rows="2" class="form-control" name="ship-address" id="ship-address"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="contact">Contact Number:</label>
+                                                <input type="text" class="form-control" name="contact" id="contact" maxlength="13" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="email">Email:</label>
+                                                <input type="email" class="form-control" name="email" id="email" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="signup-username">Username:</label>
+                                                <input type="text" class="form-control" name="username" id="signup-username" placeholder="Set a username" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="psw">Password</label>
+                                                <input type="password" class="form-control" name="password" id="psw" placeholder="Set a password" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="btn btn-success pull-right" style="margin-bottom: -20px;">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- end login && sign up modal -->
+
 
 <!--script for modal-->
 <script src="assets/js/jquery-2.1.3.min.js"></script>
@@ -93,7 +217,10 @@
 <script>
   $(document).ready(function(){
 
+      $('.signup-group-content').css('display', 'none');
       $('.alert').css('display','none');
+      var modal = ('#login-signup-modal');
+      var serverURL = <?php echo json_encode($serverURL); ?>;
       var table = $('.cart-table');
       var cart = JSON.parse(localStorage.getItem('myCart'));
       var item_count = cart == null ? 0 : cart.length;
@@ -111,7 +238,7 @@
                       '<td>'+ i++ + '</td>' +
                       '<td name="prod-pic" class="table-pic"><img src="'+ y.img +'" /></td>' +
                       '<td data-id="'+ y.id +'"name="prod_name">' + y.name +'</td>' +
-                      '<td name="uantity">'+ y.qty + '</td>' +
+                      '<td name="quantity">'+ y.qty + '</td>' +
                       '<td name="price">'+ y.price +'</td>' +
                       '<td name="sub_total">' + sub_total + '</td>' +
                       '<td style="text-align: center">' +
@@ -163,15 +290,108 @@
 
       $(document).on('click', '.update-item', function(){
           console.log('oks')
+          var td = $(this).closest('tr').find('td[name="quantity"]');
+          var pid = $(this).closest('tr').find('td[name="prod_name"]').attr('data-id');
+          var qty = td.text();
+          console.log(td)
           bootbox.prompt({
               title: 'Update Quantity',
-              inputType: 'text',
+              inputType: 'number',
               callback: function(result){
-                  console.log(result)
+                  console.log(result);
+                  if(result == null){
+                      td.text(qty);
+                  } else {
+                      td.val(result);
+                      for (var i = 0; i < cart.length; i++) {
+                          if(pid == cart[i].id){  //look for match with nid
+                              cart[i].qty = result;  //update quantity
+                              break;  //exit loop since you found the product
+                          }
+                      }
+                      localStorage.setItem("myCart", JSON.stringify(cart));
+                      console.log(cart);
+                      location.reload();
+                  }
               },
           });
       });
-      
+
+
+      $('.btn-checkout').click(function (e) {
+          $('#login-signup-modal').find('.header-title').text('To checkout items:');
+
+      });
+
+      $('.btn-reserve').click(function(e){
+          $('#login-signup-modal').find('.header-title').text('To reserve items:');
+      });
+
+      $('.signup-group').click(function(){
+          $('.signup-group-content').css('display', 'block');
+          $('.login-group-content').css('display', 'none');
+          $(this).addClass('active-group');
+          $('.login-group').removeClass('active-group');
+      });
+
+      $('.login-group').click(function(){
+          $('.signup-group-content').css('display', 'none');
+          $('.login-group-content').css('display', 'block');
+          $(this).addClass('active-group');
+          $('.signup-group').removeClass('active-group');
+      });
+
+      $('.btn-login').click(function(e){
+          e.preventDefault();
+          console.log('ok')
+          $('p.errMess').css('display', 'none');
+          var username = $(this).closest('form').find('input[name="username"]').val();
+          var password = $(this).closest('form').find('input[name="password"]').val();
+
+          var data = {
+              username: username,
+              password: password
+          };
+
+          console.log(data)
+
+          $.ajax({
+              type: 'POST',
+              url: serverURL + '/ops/authentication/authentication.php?fromCart=1',
+              data: data,
+              dataType: 'json',
+              success: function(rData){
+                  console.log(rData)
+                  if(rData.errCreds){
+                      $(modal).find('form#login-form').find('p.errCreds').css('display', 'block');
+                  }
+                  if(rData.reqField){
+                      $(modal).find('form#login-form').find('p.reqField').css('display', 'block');
+                  }
+                  if(rData.redir){
+                      var orders = {
+                          userID: rData.userID,
+                          items: cart,
+                      }
+                      $.ajax({
+                          type: 'POST',
+                          url: serverURL + '/ops/data-manager/check-out.php',
+                          data: orders,
+                          dataType: 'json',
+                          success: function (oData) {
+                              if(oData.status){
+                                  localStorage.removeItem('myCart');
+                                  window.location = rData.redir + '?fromCart=1';
+                              }
+                          },
+                      });
+                  }
+              },
+          });
+
+
+
+      });
   });
 
 

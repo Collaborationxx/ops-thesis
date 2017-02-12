@@ -11,6 +11,10 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
+include('data-manager/get-all-orders.php');
+$customerID = isset($_GET['cid']) ? $_GET['cid'] : '';
+$orderID = isset($_GET['oid']) ? $_GET['oid'] : '';
+
 ?>
 
 <!DOCTYPE html>
@@ -176,13 +180,13 @@ include('authentication/functions.php');
                       <div class="col-md-6 col-xs-6">
                         <div class="form-group">
                           <label>Order ID</label>
-                          <input type="text" class="form-control" placeholder="Enter ...">
-                        </div>  
+                          <input type="text" class="form-control" value="<?php echo "OPS-".date('Y').'-O-'.$orderID; ?>" disabled="disabled">
+                        </div>
                       </div>
                       <div class="col-md-6 col-xs-6">
                         <div class="form-group">
                           <label>Customer Name</label>
-                          <input type="text" class="form-control" placeholder="Enter ...">
+                          <input type="text" class="form-control" value="" disabled="disabled">
                         </div>  
                       </div>
                     </div> 

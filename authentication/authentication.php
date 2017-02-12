@@ -13,6 +13,7 @@ $errors = array(
     'redir' => '',
     );
 $redir = '';
+$userID = '';
 
 if(empty($username) || empty($password)){ //pag empty si pw at username
     $errors['reqField'] = true; //
@@ -40,6 +41,7 @@ if(empty($username) || empty($password)){ //pag empty si pw at username
         $_SESSION['id'] = $row['id'];
         $_SESSION['name'] = ucfirst($row['first_name'])." ".ucfirst($row['last_name']);
         $redir = '';
+        $userID = $_SESSION['id'];
 
         //pipiliin kung san babagsak
         if($role == 1){ //admin role
@@ -53,13 +55,14 @@ if(empty($username) || empty($password)){ //pag empty si pw at username
 
     }
     else {
+        $userID = '';
         $redir = '';
         $errors['errCreds'] = true;
     }
 }
 
 //response to post request
-$response = array('reqField' => $errors['reqField'], 'errCreds' => $errors['errCreds'], 'redir' => $redir);
+$response = array('reqField' => $errors['reqField'], 'errCreds' => $errors['errCreds'], 'redir' => $redir, 'userID' => $userID);
 header('Content-Type: application/json');
 echo json_encode($response);
 

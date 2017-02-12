@@ -11,6 +11,15 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
+include('data-manager/get-all-orders.php');
+//echo '<pre>'; print_r($allOrders); exit;
+$distinct = array();
+foreach ($allOrders as $key => $value){
+    $distinct[$value['id']]['order_date'] = $value['order_date'];
+    $distinct[$value['id']]['payment_status'] = $value['payment_status'];
+    $distinct[$value['id']]['customer_id'] = $value['customer_id'];
+}
+$i = 1; //for table row counting
 ?>
 
 <!DOCTYPE html>
@@ -181,12 +190,16 @@ include('authentication/functions.php');
                         <th>Date Ordered</th>
                         <th>Payment Status</th>
                       </tr>
-                      <tr>
-                        <td>1.</td>
-                        <td><a href="order-information.php">OPS-43-34</a></td>
-                        <td>01/10/17</td>
-                        <td>Paid</td>
-                      </tr>
+                      <?php if(isset($distinct) AND count($distinct) > 0): ?>
+                          <?php foreach ($distinct as $key => $value): ?>
+                              <tr>
+                                  <td><?php echo $i++; ?></td>
+                                  <td><a href="order-information.php?oid=<?php echo $key;?>&cid=<?php echo $value['customer_id']; ?>"><?php echo "OPS-".date('Y').'-O-'.$key; ?></a></td>
+                                  <td><?php echo date('F/j/Y',$value['order_date']); ?></td>
+                                  <td><?php  echo $value['payment_status'] == 0 ? 'Pending' : 'Paid'; ?> </td>
+                              </tr>
+                          <?php endforeach; ?>
+                      <?php endif; ?>
                     </tbody>
                   </table>
                 </div>  
