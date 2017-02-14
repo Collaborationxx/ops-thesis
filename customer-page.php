@@ -247,7 +247,8 @@ foreach ($orders as $key => $value){
                                 <form role="form">
                                     <div class="form-group">
                                         <p>Good day! Thank you for ordering medical supplies at OPS! The following is the list of your orders:</p>
-                                        <textarea class="form-control order-details" rows="5" style="width:100%"></textarea>
+                                        <textarea class="form-control order-details" rows="5" style="width:100%" disabled="disabled"></textarea>
+                                        <input type="text" class="hidden current_orderID" value="">
                                     </div>
                                     <div class="form-group">
                                         <p>Please deposit your full payment in the bank account provided below within 7 days to process your order.</p>
@@ -259,10 +260,10 @@ foreach ($orders as $key => $value){
                                     </div>
                                     <div class="form-group">
                                         <label>Amount Deposited:</label>
-                                        <input type="text" class="form-control" name="amount-deposited">
+                                        <input type="text" class="form-control" name="deposit-amount">
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success pull-right">Send <i class="fa fa-share-square-o"></i></button>
+                                        <button type="submit" class="btn btn-success pull-right btn-send">Send <i class="fa fa-share-square-o"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -690,9 +691,26 @@ foreach ($orders as $key => $value){
               console.log(ord);
               console.log(tot);
             $('.order-details').val(ord + '\n' + 'Total: ' + tot);
+            $('.current_orderID').val(oid);
 
           },
       })
+    });
+
+    $('.btn-send').click(function(e){
+        e.preventDefault();
+        console.log('clicked')
+        var deposit_number = $(this).closest('form').find('input[name="deposit-number"]').val();
+        var deposit_amount = $(this).closest('form').find('input[name="deposit-amount"]').val();
+        var orderID = $(this).closest('form').find('input.current_orderID').val();
+
+        var payment = {
+          dp_number: deposit_number,
+          dp_amount: deposit_amount,
+          oid: orderID,
+        }
+
+        console.log(payment)
     });
 
   });
