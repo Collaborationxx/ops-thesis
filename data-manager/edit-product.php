@@ -48,6 +48,11 @@ if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($err
 
     if(mysqli_query($con, $query)){
         $response = array('status'=>'success');
+
+        if(substr($photo, 0, 6) == 'assets'){
+            $photo = dirname(__FILE__).'/../'.$photo;
+        } 
+        
         file_put_contents($dir.$photo_name, file_get_contents($photo));
     }
     header('Content-Type: application/json');
