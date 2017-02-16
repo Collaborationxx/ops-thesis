@@ -12,10 +12,11 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('authentication/functions.php');
 include('data-manager/get-alert.php');
-$alerts = count($alert);
-
 include('data-manager/get-all-orders.php');
+include('data-manager/get-all-payment.php');
 
+$alerts = count($alert);
+$paymentCount = count($payments);
 $distinct = array();
 foreach ($allOrders as $key => $value){
     $distinct[$value['id']] = $value;
@@ -210,8 +211,7 @@ $orderCount = count($distinct);
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>10</h3>
-
+                            <h3><?php echo $paymentCount; ?></h3>
                             <p>New Payment</p>
                         </div>
                         <div class="icon">

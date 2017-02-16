@@ -705,13 +705,15 @@ foreach ($orders as $key => $value){
                 dp_number: deposit_number,
                 dp_amount: deposit_amount,
                 oid: orderID,
+                pf: 0,
+                pm: 1
             }
 
             console.log(payment)
 
             $.ajax({
                 type: 'POST',
-                url: serverURL + 'ops/data-manager/add-payment.php',
+                url: serverURL + '/ops/data-manager/add-payment.php',
                 data: payment,
                 dataType: 'json',
                 success: function(rData){
