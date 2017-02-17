@@ -1,4 +1,7 @@
 <?php
+    session_start();
+    $username = isset($_SESSION['username']) ? $_SESSION['username'] : '';
+    $usr_id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
     $serverURL = "http://$_SERVER[HTTP_HOST]";
 ?>
 <!DOCTYPE html>
@@ -52,8 +55,8 @@
         </div>
         <div class="content-header">
           <h1> My Cart <small class="item_count"></small><h1>
-          <a href="#" data-toggle="modal" data-target="#login-signup-modal" class="btn btn-danger btn-sm pull-right btn-checkout"><i class="fa fa-angle-double-right"></i>  Checkout</a>
-          <a href="#" data-toggle="modal" data-target="#login-signup-modal" class="btn btn-warning btn-sm pull-right btn-reserve" style="margin-right: 10px;"><i class="fa fa-archive"></i>  Reserved</a>
+          <a href="#" class="btn btn-danger btn-sm pull-right btn-checkout"><i class="fa fa-angle-double-right"></i>  Checkout</a>
+          <a href="#" class="btn btn-warning btn-sm pull-right btn-reserve" style="margin-right: 10px;"><i class="fa fa-archive"></i>  Reserved</a>
         </div>
         <div class="row">
             <div class="col-lg-12 col-xs-12">
@@ -217,6 +220,9 @@
 <script>
   $(document).ready(function(){
 
+      var username = <?php echo json_encode($username); ?>;
+      var usr_id = <?php echo json_encode($usr_id); ?>;
+      console.log(username)
       $('.signup-group-content').css('display', 'none');
       $('.alert').css('display','none');
       var modal = ('#login-signup-modal');
@@ -319,8 +325,28 @@
 
 
       $('.btn-checkout').click(function (e) {
-          $('#login-signup-modal').find('.header-title').text('To checkout items:');
-
+          if(username.length == 0){
+              $('#login-signup-modal').find('.header-title').text('To checkout items:');
+              $(modal).modal('show');
+          } else {
+              var data = {
+                  userID: usr_id,
+                  items: cart,
+              }
+              $.ajax({
+                  type: 'POST',
+                  url: serverURL + '/ops/data-manager/check-out.php',
+                  data: data,
+                  dataType: 'json',
+                  success: function (oData) {
+                      if(oData.status){
+                          localStorage.removeItem('myCart');
+                          window.location = 'customer-page.php?fromCart=1';
+                      }
+                  },
+              });
+          }
+          
       });
 
       $('.btn-reserve').click(function(e){

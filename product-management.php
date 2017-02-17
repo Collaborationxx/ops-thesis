@@ -274,7 +274,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   <h3 class="box-title">New Product</h3>
                 </div>
                 <div class="box-body">
-                  <form role="form" method="post" action="data-manager/add-product.php">
+                  <form role="form" method="post" action="data-manager/add-product.php" enctype="multipart/form-data">
                     <input name="prod-id" style="display: none" value="">
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
@@ -326,10 +326,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
-                          <p class="errMess invalid Photo" style="display: none">Image only (.jpg, .jpeg, .png)</p>
+                          <p class="errMess invalidPhoto" style="display: none">Image only (.jpg, .jpeg, .png)</p>
                           <div class="row">
                             <div class="col-md-12 col-xs-12">
-                              <input type="file" name="product-img" class="file">
+                              <input type="file" name="product-img" class="file" accept="image/*">
                               <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-picture"></i></span>
                                 <input type="text" class="form-control input-lg image-name" disabled placeholder="Upload Image">
@@ -460,6 +460,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           if(rData.invalidPrice){
             $(modal).find('.invalidPrice').closest('.form-group').addClass('has-error');
             $(modal).find('p.invalidPrice').css('display', 'block');
+          }
+
+          if(rData.invalidPhoto){
+            $(modal).find('.invalidPhoto').closest('.form-group').addClass('has-error');
+            $(modal).find('p.invalidPhoto').css('display', 'block');
           }
 
         },

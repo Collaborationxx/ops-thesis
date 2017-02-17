@@ -11,6 +11,9 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
+include('data-manager/get-all-payment.php');
+$counter = 1;
+// echo '<pre>'; print_r($payments); exit;
 ?>
 
 <!DOCTYPE html>
@@ -171,28 +174,40 @@ include('authentication/functions.php');
                     <tbody>
                       <tr>
                         <th style="width: 10px">#</th>
-                        <th>Customer</th>
-                        <th>Order ID</th>
-                        <th>Bill</th>
+                        <th>Transaction ID</th>
                         <th>Payment</th>
                         <th>Deposit No.</th>
                         <th>Date Deposit</th>
                         <th width=15%;>Action</th>
                       </tr>
-                      <tr>
-                        <td>1.</td>
-                        <td>Ana Reyes</td>
-                        <td>OPS-43-34</a></td>
-                        <td>5,000</td>
-                        <td>5,000</td>
-                        <td>w96-45</td>
-                        <td>01/10/17</td>
-                        <td>
-                           <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank" data-toggle="tooltip" title="Verify?"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                           <a href="" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-                           <a href="" data-toggle="tooltip" title="Reject?"><span class="text-warning"><i class="fa fa-thumbs-down"></i></span></a>
-                        </td>
-                      </tr>
+                      <?php if(isset($payments) AND count($payments) > 0): ?>
+                          <?php foreach ($payments as $key => $value): ?>
+                               <tr>
+                                <td><?php echo $counter++ ?></td>
+                                <td><a href="#" class="transacID">
+                                  <?php 
+                                    if($value['payment_for'] == 0){
+                                        echo "OPS-".date('Y').'-O-'.$value['order_id'];
+                                    } else {
+                                        echo "OPS-".date('Y').'-R-'.$value['reservation_id'];
+                                    }
+                                  ?>
+                                </a></td>
+                                <td><?php echo $value['deposit_amount']; ?></td>
+                                <td><?php echo $value['deposit_number']; ?></td>
+                                <td><?php echo date('F/j/Y',$value['pay_date']); ?></td>
+                                <td>
+                                   <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank" data-toggle="tooltip" title="Verify?"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
+                                   <a href="" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+                                   <a href="" data-toggle="tooltip" title="Reject?"><span class="text-warning"><i class="fa fa-thumbs-down"></i></span></a>
+                                </td>
+                              </tr>  
+                          <?php endforeach; ?>
+                      <?php else: ?>
+                          <tr>
+                              <td colspan="5" style="text-align: center"><b>No payment was made on your account.</b></td>
+                          </tr>      
+                      <?php endif; ?>      
                     </tbody>
                   </table>
                 </div>  

@@ -247,7 +247,8 @@ foreach ($orders as $key => $value){
                                 <form role="form">
                                     <div class="form-group">
                                         <p>Good day! Thank you for ordering medical supplies at OPS! The following is the list of your orders:</p>
-                                        <textarea class="form-control order-details" rows="5" style="width:100%"></textarea>
+                                        <textarea class="form-control order-details" rows="5" style="width:100%" disabled="disabled"></textarea>
+                                        <input type="text" class="hidden current_orderID" value="">
                                     </div>
                                     <div class="form-group">
                                         <p>Please deposit your full payment in the bank account provided below within 7 days to process your order.</p>
@@ -259,10 +260,10 @@ foreach ($orders as $key => $value){
                                     </div>
                                     <div class="form-group">
                                         <label>Amount Deposited:</label>
-                                        <input type="text" class="form-control" name="amount-deposited">
+                                        <input type="number" min="0" step="any" class="form-control" name="deposit-amount">
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success pull-right">Send <i class="fa fa-share-square-o"></i></button>
+                                        <button type="submit" class="btn btn-success pull-right btn-send">Send <i class="fa fa-share-square-o"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -491,8 +492,8 @@ foreach ($orders as $key => $value){
 <script src="plugins/js/validator.js"></script>
 
 <script>
-  $(function () {
-    var serverURL = <?php echo json_encode($serverURL)?> // get server url (localhost/webserver)
+    $(function () {
+        var serverURL = <?php echo json_encode($serverURL)?> // get server url (localhost/webserver)
 
         /** Edit button Functionality **/
         $('.edit-profile-btn').click(function (e) {
@@ -502,198 +503,226 @@ foreach ($orders as $key => $value){
         });
 
     /** Save button functionality  **/
-    $('.update-profile-btn').click(function (e) {
-      e.preventDefault();
+        $('.update-profile-btn').click(function (e) {
+            e.preventDefault();
 
-      $('div#profile-tab-content div.form-group').removeClass('has-error');
-      $('p.error-mess').css('display', 'none');
+            $('div#profile-tab-content div.form-group').removeClass('has-error');
+            $('p.error-mess').css('display', 'none');
 
-      var data = { //get the values of inputs
-        firstName: $(this).closest('div.box').find('input[name="fname"]').val(),
-        lastName: $(this).closest('div.box').find('input[name="lname"]').val(),
-        address: $(this).closest('div.box').find('textarea[name="address"]').val(),
-        shippingAddress: $(this).closest('div.box').find('textarea[name="shipAddress"]').val(),
-        contact: $(this).closest('div.box').find('input[name="contact"]').val(),
-        email: $(this).closest('div.box').find('input[name="email"]').val(),
-        username : '<?php echo $_SESSION['username']; ?>'
+            var data = { //get the values of inputs
+                firstName: $(this).closest('div.box').find('input[name="fname"]').val(),
+                lastName: $(this).closest('div.box').find('input[name="lname"]').val(),
+                address: $(this).closest('div.box').find('textarea[name="address"]').val(),
+                shippingAddress: $(this).closest('div.box').find('textarea[name="shipAddress"]').val(),
+                contact: $(this).closest('div.box').find('input[name="contact"]').val(),
+                email: $(this).closest('div.box').find('input[name="email"]').val(),
+                username : '<?php echo $_SESSION['username']; ?>'
 
-      }
-      /** POST request via ajax to send data to /data-manager/update-profile.php **/
-      $.ajax({
-        type: "POST",
-        url: serverURL + '/ops/data-manager/update-profile.php',
-        data: data,
-        dataType: "json",
-        success: function (rData) {
-          if(rData.status){
-            $('.profile-section').find(':input').prop('disabled', true); //on update success disables inputs
-            $('.alert-update-success').css('display', 'block'); //show success alert
-            $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
-            $(this).addClass('disabled'); //disable save button
-          }
+            }
+          /** POST request via ajax to send data to /data-manager/update-profile.php **/
+             $.ajax({
+                type: "POST",
+                url: serverURL + '/ops/data-manager/update-profile.php',
+                data: data,
+                dataType: "json",
+                success: function (rData) {
+                    if(rData.status){
+                        $('.profile-section').find(':input').prop('disabled', true); //on update success disables inputs
+                        $('.alert-update-success').css('display', 'block'); //show success alert
+                        $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+                        $(this).addClass('disabled'); //disable save button
+                    }
 
-          if(rData.errFname){
-            $('div#profile-tab-content').find('.errFname').closest('.form-group').addClass('has-error');
-            $('div#profile-tab-content').find('p.errFname').css('display', 'block');
+                    if(rData.errFname){
+                        $('div#profile-tab-content').find('.errFname').closest('.form-group').addClass('has-error');
+                        $('div#profile-tab-content').find('p.errFname').css('display', 'block');
 
-          }
+                    }
 
-          if(rData.errFnameReq){
-            $('div#profile-tab-content').find('.errFnameReq').closest('.form-group').addClass('has-error');
-            $('div#profile-tab-content').find('p.errFnameReq').css('display', 'block');
+                    if(rData.errFnameReq){
+                        $('div#profile-tab-content').find('.errFnameReq').closest('.form-group').addClass('has-error');
+                        $('div#profile-tab-content').find('p.errFnameReq').css('display', 'block');
 
-          }
+                    }
 
-          if(rData.errLname){
-            $('div#profile-tab-content').find('.errLname').closest('.form-group').addClass('has-error');
-            $('div#profile-tab-content').find('p.errLname').css('display', 'block');
+                    if(rData.errLname){
+                        $('div#profile-tab-content').find('.errLname').closest('.form-group').addClass('has-error');
+                        $('div#profile-tab-content').find('p.errLname').css('display', 'block');
 
-          }
+                    }
 
-          if(rData.errLnameReq){
-            $('div#profile-tab-content').find('.errLnameReq').closest('.form-group').addClass('has-error');
-            $('div#profile-tab-content').find('p.errLnameReq').css('display', 'block');
+                    if(rData.errLnameReq){
+                        $('div#profile-tab-content').find('.errLnameReq').closest('.form-group').addClass('has-error');
+                        $('div#profile-tab-content').find('p.errLnameReq').css('display', 'block');
 
-          }
+                    }
 
-          if(rData.errAddReq){
-            $('div#profile-tab-content').find('.errAddReq').closest('.form-group').addClass('has-error');
-            $('div#profile-tab-content').find('p.errAddReq').css('display', 'block');
-          }
+                    if(rData.errAddReq){
+                        $('div#profile-tab-content').find('.errAddReq').closest('.form-group').addClass('has-error');
+                        $('div#profile-tab-content').find('p.errAddReq').css('display', 'block');
+                    }
 
-          if(rData.errContact){
-            $('div#profile-tab-content').find('.errContact').closest('.form-group').addClass('has-error');
-            $('div#profile-tab-content').find('p.errContact').css('display', 'block');
-          }
+                    if(rData.errContact){
+                        $('div#profile-tab-content').find('.errContact').closest('.form-group').addClass('has-error');
+                        $('div#profile-tab-content').find('p.errContact').css('display', 'block');
+                    }
 
-          if(rData.errContactReq){
-            $('div#profile-tab-content').find('.errContactReq').closest('.form-group').addClass('has-error');
-            $('div#profile-tab-content').find('p.errContactReq').css('display', 'block');
-          }
+                    if(rData.errContactReq){
+                        $('div#profile-tab-content').find('.errContactReq').closest('.form-group').addClass('has-error');
+                        $('div#profile-tab-content').find('p.errContactReq').css('display', 'block');
+                    }
 
-          if(rData.errEmail){
-            $('div#profile-tab-content').find('.errEmail').closest('.form-group').addClass('has-error');
-            $('div#profile-tab-content').find('p.errEmail').css('display', 'block');
-          }
+                    if(rData.errEmail){
+                        $('div#profile-tab-content').find('.errEmail').closest('.form-group').addClass('has-error');
+                        $('div#profile-tab-content').find('p.errEmail').css('display', 'block');
+                    }
 
-          if(rData.errEmailReq){
-            $('div#profile-tab-content').find('.errEmailReq').closest('.form-group').addClass('has-error');
-            $('div#profile-tab-content').find('p.errEmailReq').css('display', 'block');
-          }
+                    if(rData.errEmailReq){
+                        $('div#profile-tab-content').find('.errEmailReq').closest('.form-group').addClass('has-error');
+                        $('div#profile-tab-content').find('p.errEmailReq').css('display', 'block');
+                    }
 
-        },
-      });
-    });
+                },
+            });
+        });
 
-    /** update password **/
-    $('.update-password').click(function(){
-      $('div#accountSettings-tab-content div.form-group').removeClass('has-error');
-      $('div.error-box p').css('display', 'none');
-      $('p.error-mess').css('display', 'none');
+        /** update password **/
+        $('.update-password').click(function(){
+            $('div#accountSettings-tab-content div.form-group').removeClass('has-error');
+            $('div.error-box p').css('display', 'none');
+            $('p.error-mess').css('display', 'none');
 
-      var data = {
-        current_username: '<?php echo $_SESSION['username']; ?>',
-        username: $(this).closest('div.box').find('input[name="username"]').val(),
-        current_password: $(this).closest('div.box').find('input[name="current_password"]').val(),
-        new_password: $(this).closest('div.box').find('input[name="new_password"]').val(),
-        retype_password: $(this).closest('div.box').find('input[name="retype_password"]').val(),
-      }
+            var data = {
+                current_username: '<?php echo $_SESSION['username']; ?>',
+                username: $(this).closest('div.box').find('input[name="username"]').val(),
+                current_password: $(this).closest('div.box').find('input[name="current_password"]').val(),
+                new_password: $(this).closest('div.box').find('input[name="new_password"]').val(),
+                retype_password: $(this).closest('div.box').find('input[name="retype_password"]').val(),
+            }
 
-      $.ajax({
-        type: "POST",
-        url: serverURL + '/ops/data-manager/update-settings.php',
-        data: data,
-        dataType: "json",
-        success: function(aData){
-          console.log(aData)
+            $.ajax({
+                type: "POST",
+                url: serverURL + '/ops/data-manager/update-settings.php',
+                data: data,
+                dataType: "json",
+                success: function(aData){
+                    console.log(aData)
 
-          if(aData.status){
-            console.log('success')
-            $('.alert-update-settings-success').css('display', 'block'); //show success alert
-            $('.alert').delay(3000).fadeOut('fast');
-            $('div#accountSettings-tab-content').find('div.box').find('input[name="current_password"]').val('');
-            $('div#accountSettings-tab-content').find('div.box').find('input[name="new_password"]').val('');
-            $('div#accountSettings-tab-content').find('div.box').find('input[name="retype_password"]').val('');
+                    if(aData.status){
+                        console.log('success')
+                        $('.alert-update-settings-success').css('display', 'block'); //show success alert
+                        $('.alert').delay(3000).fadeOut('fast');
+                        $('div#accountSettings-tab-content').find('div.box').find('input[name="current_password"]').val('');
+                        $('div#accountSettings-tab-content').find('div.box').find('input[name="new_password"]').val('');
+                        $('div#accountSettings-tab-content').find('div.box').find('input[name="retype_password"]').val('');
 
-          }
+                    }
 
-          if(aData.errMess2) {
-            $('div#accountSettings-tab-content div.password-group').addClass('has-error');
-            $('div.error-box .errMess2').css('display', 'block');
+                    if(aData.errMess2) {
+                        $('div#accountSettings-tab-content div.password-group').addClass('has-error');
+                        $('div.error-box .errMess2').css('display', 'block');
+                    }
 
-          }
+                    if(aData.errMess){
+                        $('div#accountSettings-tab-content div.pass-group').addClass('has-error');
+                        $('div.error-box .errMess').css('display', 'block');
+                    }
 
-          if(aData.errMess){
-            $('div#accountSettings-tab-content div.pass-group').addClass('has-error');
-            $('div.error-box .errMess').css('display', 'block');
-          }
+                    if(aData.errNewPass){
+                        $('div#accountSettings-tab-content').find('.errNewPassReq').closest('.form-group').addClass('has-error');
+                        $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'block');
+                        $('div#accountSettings-tab-content').find('.errRePassReq').closest('.form-group').addClass('has-error');
+                        $('div#accountSettings-tab-content').find('p.errRePassReq').css('display', 'block');
+                    }
 
-          if(aData.errNewPass){
-            $('div#accountSettings-tab-content').find('.errNewPassReq').closest('.form-group').addClass('has-error');
-            $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'block');
-            $('div#accountSettings-tab-content').find('.errRePassReq').closest('.form-group').addClass('has-error');
-            $('div#accountSettings-tab-content').find('p.errRePassReq').css('display', 'block');
-          }
+                    if(aData.errCurrPass){
+                        $('div#accountSettings-tab-content').find('.errOldPassReq').closest('.form-group').addClass('has-error');
+                        $('div#accountSettings-tab-content').find('p.errOldPassReq').css('display', 'block');
+                    }
 
-          if(aData.errCurrPass){
-            $('div#accountSettings-tab-content').find('.errOldPassReq').closest('.form-group').addClass('has-error');
-            $('div#accountSettings-tab-content').find('p.errOldPassReq').css('display', 'block');
-          }
+                    if(aData.errUsername) {
+                        $('div#accountSettings-tab-content').find('.errUsernameReq').closest('.form-group').addClass('has-error');
+                        $('div#accountSettings-tab-content').find('p.errUsernameReq').css('display', 'block');
+                    }
 
-          if(aData.errUsername) {
-            $('div#accountSettings-tab-content').find('.errUsernameReq').closest('.form-group').addClass('has-error');
-            $('div#accountSettings-tab-content').find('p.errUsernameReq').css('display', 'block');
-          }
+                    if(aData.errPassLen){
+                        $('div#accountSettings-tab-content').find('.errPassLen').closest('.form-group').addClass('has-error');
+                        $('div#accountSettings-tab-content').find('p.errPassLen').css('display', 'block');
+                        $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'none');
+                    }
 
-          if(aData.errPassLen){
-            $('div#accountSettings-tab-content').find('.errPassLen').closest('.form-group').addClass('has-error');
-            $('div#accountSettings-tab-content').find('p.errPassLen').css('display', 'block');
-            $('div#accountSettings-tab-content').find('p.errNewPassReq').css('display', 'none');
-          }
+                    //              setTimeout(function(){
+                    //                $('div#accountSettings-tab-content div.form-group').removeClass('has-error');
+                    //                $('div.error-box p').css('display', 'none');
+                    //              }, 3000);
 
-//              setTimeout(function(){
-//                $('div#accountSettings-tab-content div.form-group').removeClass('has-error');
-//                $('div.error-box p').css('display', 'none');
-//              }, 3000);
+                },
+            });
+        });
 
-        },
-      });
-    });
+        $(document).on('click', '.order-id', function () {
+            var oid = $(this).attr('data-id');
+            console.debug('oid', oid);
+            
+            var data = {
+              fcp: 1
+            }
+            $.ajax({
+                type: 'POST',
+                url: serverURL + '/ops/data-manager/get-orders-by-orderID.php?oid=' + oid,
+                data: data,
+                dataType: 'json',
+                success: function (rData) {
+                    console.log(rData)
+                    var ord = '';
+                    var tot = 0;
+                    var res = rData.orders;
+                    for(var i=0; i < res.length; i++){
+                        ord += res[i].name + '\n' +
+                                'Qty: ' + res[i].quantity + '\n' +
+                                'Price: ' + res[i].price + '\n' ;
 
-    $(document).on('click', '.order-id', function () {
-        var oid = $(this).attr('data-id');
-        console.debug('oid', oid);
-        var data = {
-          fcp: 1
-        }
-      $.ajax({
-          type: 'POST',
-          url: serverURL + '/ops/data-manager/get-orders-by-orderID.php?oid=' + oid,
-          data: data,
-          dataType: 'json',
-          success: function (rData) {
-              console.log(rData)
-              var ord = '';
-              var tot = 0;
-              var res = rData.orders;
-              console.log(res)
-              console.debug('len', res.length)
-              for(var i=0; i < res.length; i++){
-                  ord += res[i].name + '\n' +
-                        'Quantity: ' + res[i].quantity + '\n' +
-                        'Price: ' + res[i].price + '\n' ;
+                        tot += parseFloat(res[i].total);
+                    }
 
-                  tot += parseFloat(res[i].total);
-              }
-            //var ord = res.join('\n');
+                    $('.order-details').val(ord + '\n' + 'Total: ' + tot);
+                    $('.current_orderID').val(oid);
 
-              console.log(ord);
-              console.log(tot);
-            $('.order-details').val(ord + '\n' + 'Total: ' + tot);
+                    console.debug('orders', ord)
 
-          },
-      })
-    });
+                  },
+          })
+        });
+
+        $('.btn-send').click(function(e){
+            e.preventDefault();
+            console.log('clicked')
+            var deposit_number = $(this).closest('form').find('input[name="deposit-number"]').val();
+            var deposit_amount = $(this).closest('form').find('input[name="deposit-amount"]').val();
+            var orderID = $(this).closest('form').find('input.current_orderID').val();
+
+            var payment = {
+                dp_number: deposit_number,
+                dp_amount: deposit_amount,
+                oid: orderID,
+                pf: 0,
+                pm: 1
+            }
+
+            console.log(payment)
+
+            $.ajax({
+                type: 'POST',
+                url: serverURL + '/ops/data-manager/add-payment.php',
+                data: payment,
+                dataType: 'json',
+                success: function(rData){
+                    console.log(rData)
+            },
+
+            });
+        });
+>>>>>>> 2e0ad069d31b7f47a0b623e816812449f53fcfe4
 
   });
 </script>
