@@ -680,7 +680,7 @@ foreach ($orders as $key => $value){
               console.debug('len', res.length)
               for(var i=0; i < res.length; i++){
                   ord += res[i].name + '\n' +
-                        'Qty: ' + res[i].quantity + '\n' +
+                        'Quantity: ' + res[i].quantity + '\n' +
                         'Price: ' + res[i].price + '\n' ;
 
                   tot += parseFloat(res[i].total);

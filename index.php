@@ -34,7 +34,6 @@ include("header.php");
                                             <select>
                                                 <option>Price</option>
                                                 <option>Category</option>
-                                                <option>Rating</option>
                                             </select>
                                         </div>
                                         <div class="sort-button"></div>
