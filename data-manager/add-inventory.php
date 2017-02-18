@@ -23,8 +23,9 @@ if(empty($qty)){
 if(empty($error['productEmpty']) && empty($error['invalidQty']) && empty($error['qtyEmpty'])){
 
     $query = "INSERT INTO `inventory` (product_id, quantity) VALUES ($product, $qty)";
-
     if(mysqli_query($con, $query)){
+        $invID = mysqli_insert_id($con);
+        mysqli_query($con, "INSERT INTO `inventory_history` (inventory_id, quantity) VALUES ($invID, $qty)");
         $response = array('status'=>'success');
     }
     header('Content-Type: application/json');

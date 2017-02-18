@@ -12,7 +12,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
-include('data-manager/get-products.php');
+include('data-manager/get-available-products.php');
 include('data-manager/get-inventory.php');
 // echo '<pre>'; print_r($arr); exit;
 $serverURL = "http://$_SERVER[HTTP_HOST]";
@@ -135,6 +135,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           </div>
         </div>
           <div class="col-lg-8 col-xs-12">
+          <div class="alert alert-success remove-success" role="alert" style="display: none">
+              <p>Item removed from Orders</p>
+          </div>
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-file"></i>   Trading Preview</h3>
@@ -182,12 +185,42 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script src="assets/js/bootbox.min.js"></script>
 <script>
   $(document).ready(function(){
+      $('.alert').css('display','none');
       var serverURL = <?php echo json_encode($serverURL); ?>;
-      var products = <?php echo json_encode($arr);?>;
+      var products = <?php echo json_encode($availableProducts);?>;
       var inventory = <?php echo json_encode($inventory); ?>; console.debug('inventory', inventory);
       var user_id = <?php echo $userID; ?>;
       var arr = [];
       var stock = '';
+      var table = $('.preview-table').find('tbody');
+      var total_input = $('body').find('input[name="total-price"]');
+      var myTrans = JSON.parse(localStorage.getItem('myTransaction'));
+      var item_count = myTrans == null ? 0 : myTrans.length; 
+      console.debug('myTrans',myTrans)
+      console.log('item_count', item_count)
+      
+
+      if(item_count > 0){
+          var tot = 0;
+          $('body').find('.btn-order').removeAttr('disabled');
+          $(myTrans).each(function(x,y){
+              table.append(
+              '<tr class="order-details">' +
+              '<td name="prod-pic"><img src="assets/images/products/' + y.prod_pic +'" style="width: 75px; height: auto"></td>' +
+              '<td name="product" data-id="' + y.prod_id+'">' + y.prod_name + '</td>' +
+              '<td name="qty">' + y.qty  + '</td>' +
+              '<td name="price">' + y.price + '</td>' +
+              '<td name="subTotal">' + y.sub_total + '</td>' +
+              '<td><a href="#" class="edit-order" data-toggle="tooltip" title="edit order?"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;' +
+              '<a href="#" class="remove-order" data-toggle="tooltip" title="remove order?"><i class="fa fa-times text-danger"></i></a>'+
+              '</td></tr>');
+
+              total_input.val(parseFloat(tot += parseFloat(y.sub_total)).toFixed(2)); 
+          });
+
+            
+      }
+
 
       $.each(products, function (i,e) {
           $.each(inventory, function (index, obj) {
@@ -237,7 +270,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       $('.place-order').click(function (e) {
           e.preventDefault();
           $('body').find('.btn-order').removeAttr('disabled');
-          var total_input = $('body').find('input[name="total-price"]');
           var prod_id = $(this).closest('div.box').find('input[name="prod-name"]').attr('data-id');
           var prod_pic = $(this).closest('div.box').find('input[name="prod-name"]').attr('data-image');
           var prod_name = $(this).closest('div.box').find('input[name="prod-name"]').val();
@@ -248,16 +280,14 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           var total = parseFloat($(total_input).val()).toFixed(2);
           var grand_total = parseFloat(parseFloat(total) + parseFloat(sub_total)).toFixed(2);
 
-          var table = $('.preview-table').find('tbody');
-          var table_content =
-              '<tr class="order-details">' +
-              '<td name="prod-pic"><img src="assets/images/products/' + prod_pic +'" style="width: 75px; height: auto"></td>' +
-              '<td name="product" data-id="' + prod_id+'">' + prod_name + '</td>' +
-              '<td name="qty">' + qty  + '</td>' +
-              '<td name="price">' + price + '</td>' +
-              '<td name="subTotal">' + sub_total + '</td>' +
-              '<td><a href="#" class="remove-order"><i class="fa fa-times text-danger"></i></a></td>' +
-              '</tr>';
+          var transaction = {
+              prod_id: prod_id,
+              prod_pic: prod_pic,
+              prod_name: prod_name,
+              price: price,
+              qty: qty,
+              sub_total: sub_total
+          }
 
           if(prod_name.length == 0 || qty.length == 0){
               $('.err-req').removeClass('hidden');
@@ -266,6 +296,25 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   console.log('error')
                   $('.err-stock').removeClass('hidden');
               } else {
+                  var myTransaction = JSON.parse(localStorage.getItem('myTransaction')) || [];
+                  myTransaction.push(transaction);
+                  localStorage.setItem('myTransaction', JSON.stringify(myTransaction));
+                  console.debug('webStarage', myTransaction);
+                  var table_content = '';
+
+                  $(myTransaction).each(function(i,e){
+                      table_content =
+                      '<tr class="order-details">' +
+                      '<td name="prod-pic"><img src="assets/images/products/' + e.prod_pic +'" style="width: 75px; height: auto"></td>' +
+                      '<td name="product" data-id="' + e.prod_id+'">' + e.prod_name + '</td>' +
+                      '<td name="qty">' + e.qty  + '</td>' +
+                      '<td name="price">' + e.price + '</td>' +
+                      '<td name="subTotal">' + e.sub_total + '</td>' +
+                      '<td><a href="#" class="edit-order" data-toggle="tooltip" title="edit order?"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;' +
+                      '<a href="#" class="remove-order" data-toggle="tooltip" title="remove order?"><i class="fa fa-times text-danger"></i></a>'+
+                      '</td></tr>';
+                  });
+
                   $('.err-stock').addClass('hidden');
                   $(this).closest('div.box').find('input').val(''); //clear inputs
                   $(total_input).val(grand_total);
@@ -278,21 +327,13 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
 
       $('.btn-order').click(function () {
-          var orders = [];
-          $('.order-details').each(function(){
-              var details = {
-                  prod_id: $(this).closest('tr').find('td[name="product"]').attr('data-id'),
-                  qty: $(this).closest('tr').find('td[name="qty"]').text(),
-                  price: $(this).closest('tr').find('td[name="price"]').text()
-              };
-              orders.push(details);
-
-          });
+        var orders = JSON.parse(localStorage.getItem('myTransaction'));
           var data = {
               user_id: user_id,
               order_details: orders,
               order_type: 0
           };
+
           console.log(data)
 
           $.ajax({
@@ -302,6 +343,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               dataType: "json",
               success: function (rData) {
                   if(rData.status){
+                    localStorage.removeItem('myTransaction');
                     bootbox.confirm({
                       message: "Success! Another Transaction?",
                       buttons: {
@@ -329,23 +371,67 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
       $(document).on('click', '.remove-order', function (e) {
           e.preventDefault();
-//          bootbox.confirm({
-//              size: 'small',
-//              message: "Remove this item?",
-//              callback: function (result) {
-//                  if(result == true){
+          var id = $(this).closest('tr').find('td[name="product"]').attr('data-id');
+          bootbox.confirm({
+              size: 'small',
+              message: "Remove this item?",
+              callback: function (result) {
+                  console.log(result)
+                  if(result == true){
+                      $(this).closest('tr').remove(); 
+                      $.each(myTrans, function(index, obj){
+                          if (obj.prod_id == id) {
+                              myTrans.splice(index,1);
+                              console.log(myTrans);
+                              localStorage.setItem('myTransaction', JSON.stringify(myTrans));
+                              return false;
+                          }
+                      });
+                      
                       var remove_price = parseFloat($(this).closest('tr').find('td[name="subTotal"]').text());
-                      var total_input = $('body').find('input[name="total-price"]');
                       var total = $(total_input).val();
                       var grand_total = parseFloat(parseFloat(total) - parseFloat(remove_price)).toFixed(2);
                       $(total_input).val(grand_total);
-                      $(this).parent().parent().remove(); 
-                      //location.reload();
-                      //window.location.href = serverURL + '/ops/staff-page.php';
+                      $('.alert').css('display','block');
+                      $('.alert').delay(2000).fadeOut('fast');
+                      setTimeout(function(){
+                        location.reload();
+                      },2010);
 
-//                  }
-//              },
-//          });
+                 }
+             },
+         });
+      });
+
+      $(document).on('click', '.edit-order', function(){
+          console.log('edit?')
+          var orders = JSON.parse(localStorage.getItem('myTransaction'));
+          var pid = $(this).closest('tr').find('td[name="product"]').attr('data-id');
+          var td = $(this).closest('tr').find('td[name="qty"]');
+          var qty = td.text();
+
+          bootbox.prompt({
+              title: 'Update Quantity',
+              inputType: 'number',
+              callback: function(result){
+                  console.log(result);
+                  if(result == null){
+                      td.text(qty);
+                  } else {
+                      td.val(result);
+                      for (var i = 0; i < orders.length; i++) {
+                          if(pid == orders[i].prod_id){  //look for match with nid
+                              orders[i].qty = result;  //update quantity
+                              break;  //exit loop since you found the product
+                          }
+                      }
+                      localStorage.setItem("myTransaction", JSON.stringify(orders));
+                      console.log(orders);
+                      location.reload();
+                  }
+              },
+          });
+
       });
 
   });

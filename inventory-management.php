@@ -271,6 +271,7 @@ include('data-manager/get-product-inventory.php');
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
+                          <p class="errMess err-invnetory" style="display: none">All products is in inventory. Cannot do this action.</p>
                           <p class="errMess err-product" style="display: none">No product selected.</p>
                           <label>Product Name:</label>
                           <select class="form-control" id="product-select">
@@ -279,6 +280,8 @@ include('data-manager/get-product-inventory.php');
                                     <?php foreach ($itemsLeft as $key => $value): ?>
                                         <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
                                     <?php endforeach; ?>
+                                <?php else: ?>
+                                    <option value="null">All products is in inventory</option>        
                                 <?php endif; ?>
                             </select>
                             <input type="text" name="product-input" class="form-control" disabled="disabled">
@@ -399,38 +402,43 @@ include('data-manager/get-product-inventory.php');
 
          console.log(data)
 
-         $.ajax({
-           type: 'POST',
-           url: serverURL + '/ops/data-manager/add-inventory.php',
-           data: data,
-           dataType: 'json',
-           success: function(rData){
-               console.log(rData)
-             if(rData.status){
-                 $('.alert-create-success').css('display', 'block'); //show success alert
-                 $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
-                 setTimeout(function(){
-                     $('#add-user-modal').modal('hide');
-                     location.reload();
-                 }, 3200);
-             }
+         if(data.product != 'null'){
+            $.ajax({
+               type: 'POST',
+               url: serverURL + '/ops/data-manager/add-inventory.php',
+               data: data,
+               dataType: 'json',
+               success: function(rData){
+                   console.log(rData)
+                 if(rData.status){
+                     $('.alert-create-success').css('display', 'block'); //show success alert
+                     $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+                     setTimeout(function(){
+                         $('#add-user-modal').modal('hide');
+                         location.reload();
+                     }, 3200);
+                 }
 
-             if(rData.qtyEmpty){
-                     $(modal).find('.err-qty-empty').closest('.form-group').addClass('has-error');
-                     $(modal).find('p.err-qty-empty').css('display', 'block');
-             }
+                 if(rData.qtyEmpty){
+                         $(modal).find('.err-qty-empty').closest('.form-group').addClass('has-error');
+                         $(modal).find('p.err-qty-empty').css('display', 'block');
+                 }
 
-             if(rData.invalidQty){
-                 $(modal).find('.err-qty').closest('.form-group').addClass('has-error');
-                 $(modal).find('p.err-qty').css('display', 'block');
-             }
+                 if(rData.invalidQty){
+                     $(modal).find('.err-qty').closest('.form-group').addClass('has-error');
+                     $(modal).find('p.err-qty').css('display', 'block');
+                 }
 
-             if(rData.productEmpty){
-                 $(modal).find('.err-product').closest('.form-group').addClass('has-error');
-                 $(modal).find('p.err-product').css('display', 'block');
-             }
-           },
-         });
+                 if(rData.productEmpty){
+                     $(modal).find('.err-product').closest('.form-group').addClass('has-error');
+                     $(modal).find('p.err-product').css('display', 'block');
+                 }
+               },
+            }); 
+         } else {
+             $(modal).find('p.err-invnetory').css('display', 'block');
+         }
+         
 
       });
 
