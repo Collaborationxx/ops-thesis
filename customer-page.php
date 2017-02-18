@@ -722,7 +722,6 @@ foreach ($orders as $key => $value){
 
             });
         });
->>>>>>> 2e0ad069d31b7f47a0b623e816812449f53fcfe4
 
   });
 </script>
