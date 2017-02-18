@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2017 at 03:57 PM
+-- Generation Time: Feb 18, 2017 at 01:41 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `inventory` (
   `stock_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `product_id` (`product_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `price` float(11,2) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
@@ -87,9 +87,28 @@ CREATE TABLE IF NOT EXISTS `order_tbl` (
   `customer_name` varchar(255) DEFAULT NULL,
   `order_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `payment_status` tinyint(1) NOT NULL DEFAULT '0',
+  `payment_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=pending;1=paid',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `payment`
+--
+
+CREATE TABLE IF NOT EXISTS `payment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `order_id` int(11) DEFAULT NULL,
+  `reservation_id` int(11) DEFAULT NULL,
+  `deposit_number` int(11) NOT NULL,
+  `deposit_amount` float(11,2) NOT NULL,
+  `payment_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `payment_mode` tinyint(1) NOT NULL COMMENT '0=partial;1=payment',
+  `payment_for` tinyint(1) NOT NULL COMMENT '0=order;1=reservation',
+  PRIMARY KEY (`id`),
+  KEY `order_id` (`order_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
@@ -104,10 +123,11 @@ CREATE TABLE IF NOT EXISTS `product` (
   `price` float(255,2) NOT NULL,
   `picture` text NOT NULL,
   `category` int(2) NOT NULL,
-  `availability` tinyint(1) NOT NULL COMMENT '0=on hand; 2= for reservation',
+  `availability` tinyint(1) DEFAULT '0' COMMENT '0=on hand; 2= for reservation',
+  `phase_out` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=No; 1=Yes',
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
