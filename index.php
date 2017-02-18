@@ -60,8 +60,8 @@ include("header.php");
                             </div>
 
                             <div class="row shop-grid grid-view">
-                                <?php if(isset($arr) AND count($arr) > 0): ?>
-                                    <?php foreach ($arr as $key => $value): ?>
+                                <?php if(isset($availableProducts) AND count($availableProducts) > 0): ?>
+                                    <?php foreach ($availableProducts as $key => $value): ?>
                                         <div class="col-md-3 col-sm-4 shop-grid-item product-container">
                                             <div class="product-slide-entry">
                                                 <div class="product-image">

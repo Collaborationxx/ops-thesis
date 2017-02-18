@@ -12,7 +12,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
-include('data-manager/get-products.php');
+include('data-manager/get-available-products.php');
 include('data-manager/get-inventory.php');
 // echo '<pre>'; print_r($arr); exit;
 $serverURL = "http://$_SERVER[HTTP_HOST]";
@@ -187,7 +187,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   $(document).ready(function(){
       $('.alert').css('display','none');
       var serverURL = <?php echo json_encode($serverURL); ?>;
-      var products = <?php echo json_encode($arr);?>;
+      var products = <?php echo json_encode($availableProducts);?>;
       var inventory = <?php echo json_encode($inventory); ?>; console.debug('inventory', inventory);
       var user_id = <?php echo $userID; ?>;
       var arr = [];
