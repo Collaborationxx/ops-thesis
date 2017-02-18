@@ -723,6 +723,7 @@ foreach ($orders as $key => $value){
             });
         });
 
+
   });
 </script>
 
