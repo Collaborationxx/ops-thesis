@@ -30,6 +30,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
+  <!-- dataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
@@ -174,34 +176,32 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                
 
               </div>
-              <div class="box-body no-padding">
+              <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped table-bordered">
+                  <table class="table table-striped table-bordered" id="product-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 10px">#</th>
+                        <th>Item</th>
+                        <th>Description</th>
+                        <th>Price (&#x20B1;)</th>
+                        <th>Category</th>
+                        <th>Photo</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
                     <tbody>
-                    <tr>
-                      <th style="width: 10px">#</th>
-                      <th>Item</th>
-                      <th>Description</th>
-                      <th>Price (&#x20B1;)</th>
-                      <th>Category</th>
-                      <th>Photo</th>
-                      <th>Action</th>
-                    </tr>
                     <!-- &#x20B1; //peso sign-->
                     <?php if(isset($arr) AND count($arr) > 0): ?>
                       <?php foreach ($arr as $key => $value): ?>
                         <tr>
                           <td><?php echo $count++ ?></td>
-                          <td name ="prod-id" style="display: none"><?php echo $value['id']; ?></td>
-                          <td name ="prod-avail" style="display: none"><?php echo $value['availability']; ?></td>
-                          <td name ="prod-po" style="display: none"><?php echo $value['phase_out']; ?></td>
                           <?php $textClass = $value['phase_out'] == 0 ? 'text-success' : 'text-danger'; ?>  
-                          <td name="prod-name"><i class="fa fa-check-square <?php echo $textClass; ?>"></i>&nbsp;&nbsp;&nbsp;<?php echo $value['name']; ?></td>
+                          <td name="prod-name" data-id="<?php echo $value['id']; ?>" data-avail="<?php echo $value['availability']; ?>" data-po="<?php echo $value['phase_out']; ?>"><i class="fa fa-check-square <?php echo $textClass; ?>"></i>&nbsp;&nbsp;&nbsp;<?php echo $value['name']; ?></td>
                           <td name="prod-desc"><?php echo $value['description']; ?></td>
                           <td name="prod-price"><?php echo $value['price']; ?></td>
                           <td name="prod-category" data-id="<?php echo $value['category']; ?>"><?php echo category($value['category']); ?></td>
-                          <td name="prod-photo" class="table-pic"><img id="prod-pic" src="assets/images/products/<?php echo $value['picture'];?>"></td>
-                          <td name="photo_name" style="display: none"><?php echo $value['picture'];?></td>
+                          <td name="prod-photo" data-img="<?php echo $value['picture'];?>" class="table-pic"><img id="prod-pic" src="assets/images/products/<?php echo $value['picture'];?>"></td>
                           <td>
                             <a href="#" data-toggle="tooltip" title="Edit Product" class="edit-product"><i class="fa fa-pencil text-info"></i></a>
 <!--                             <a href="#" data-toggle="tooltip" title="Delete Product" class="delete-product"><i class="fa fa-trash-o text-danger"></i></a> -->
@@ -210,7 +210,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       <?php endforeach; ?>
                     <?php else: ?>
                         <tr>
-                          <td colspan="6" style="text-align: center"><b>No Results Found</b></td>
+                          <td colspan="7" style="text-align: center"><b>No Results Found</b></td>
                         </tr>
                     <?php endif; ?>
                     </tbody>
@@ -385,19 +385,32 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
 <!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 2.2.3 -->
-<script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!-- jQuery-->
+<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
 <!-- bootbox.js -->
 <script src="assets/js/bootbox.min.js"></script>
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
 
 <script>
   $(document).ready(function () {
     var serverURL = <?php echo json_encode($serverURL); ?>;
+
+    $('#product-table').dataTable({
+        "paging": true,
+        "lengthChange": true,
+        "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "autoWidth": true
+    });
 
     $(document).on('click', '.browse', function(){
       var file = $(this).parent().parent().parent().find('.file');
@@ -532,15 +545,15 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       $('p.errMess').css('display','none');
       $('button.update-product').css('display','block');
       $('button.new-product').css('display','none');
-      var id = $(this).closest('tr').find('td[name="prod-id"]').text();
+      var id = $(this).closest('tr').find('td[name="prod-name"]').attr('data-id');
       var category = $(this).closest('tr').find('td[name="prod-category"]').attr('data-id');
       var product = $(this).closest('tr').find('td[name="prod-name"]').text();
       var price =  parseFloat($(this).closest('tr').find('td[name="prod-price"]').text()).toFixed(2);
       var desc = $(this).closest('tr').find('td[name="prod-desc"]').text();
       var photo = $(this).closest('tr').find('img#prod-pic').attr('src');
-      var photo_name = $(this).closest('tr').find('td[name="photo_name"]').text();
-      var avail =  $(this).closest('tr').find('td[name="prod-avail"]').text();
-      var po = $(this).closest('tr').find('td[name="prod-po"]').text();
+      var photo_name = $(this).closest('tr').find('td[name="prod-photo"]').attr('data-img');
+      var avail =  $(this).closest('tr').find('td[name="prod-name"]').attr('data-avail');
+      var po = $(this).closest('tr').find('td[name="prod-name"]').attr('data-po');
       var modal = $('div#add-product-modal.fade');
 
       $(modal).modal('show');
