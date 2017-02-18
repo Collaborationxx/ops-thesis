@@ -211,8 +211,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               '<td name="qty">' + y.qty  + '</td>' +
               '<td name="price">' + y.price + '</td>' +
               '<td name="subTotal">' + y.sub_total + '</td>' +
-              '<td><a href="#" class="remove-order"><i class="fa fa-times text-danger"></i></a></td>' +
-              '</tr>');
+              '<td><a href="#" class="edit-order" data-toggle="tooltip" title="edit order?"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;' +
+              '<a href="#" class="remove-order" data-toggle="tooltip" title="remove order?"><i class="fa fa-times text-danger"></i></a>'+
+              '</td></tr>');
 
               total_input.val(parseFloat(tot += parseFloat(y.sub_total)).toFixed(2)); 
           });
@@ -309,8 +310,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       '<td name="qty">' + e.qty  + '</td>' +
                       '<td name="price">' + e.price + '</td>' +
                       '<td name="subTotal">' + e.sub_total + '</td>' +
-                      '<td><a href="#" class="remove-order"><i class="fa fa-times text-danger"></i></a></td>' +
-                      '</tr>';
+                      '<td><a href="#" class="edit-order" data-toggle="tooltip" title="edit order?"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;' +
+                      '<a href="#" class="remove-order" data-toggle="tooltip" title="remove order?"><i class="fa fa-times text-danger"></i></a>'+
+                      '</td></tr>';
                   });
 
                   $('.err-stock').addClass('hidden');
@@ -399,6 +401,37 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                  }
              },
          });
+      });
+
+      $(document).on('click', '.edit-order', function(){
+          console.log('edit?')
+          var orders = JSON.parse(localStorage.getItem('myTransaction'));
+          var pid = $(this).closest('tr').find('td[name="product"]').attr('data-id');
+          var td = $(this).closest('tr').find('td[name="qty"]');
+          var qty = td.text();
+
+          bootbox.prompt({
+              title: 'Update Quantity',
+              inputType: 'number',
+              callback: function(result){
+                  console.log(result);
+                  if(result == null){
+                      td.text(qty);
+                  } else {
+                      td.val(result);
+                      for (var i = 0; i < orders.length; i++) {
+                          if(pid == orders[i].prod_id){  //look for match with nid
+                              orders[i].qty = result;  //update quantity
+                              break;  //exit loop since you found the product
+                          }
+                      }
+                      localStorage.setItem("myTransaction", JSON.stringify(orders));
+                      console.log(orders);
+                      location.reload();
+                  }
+              },
+          });
+
       });
 
   });
