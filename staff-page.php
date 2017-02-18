@@ -325,21 +325,13 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
 
       $('.btn-order').click(function () {
-          var orders = [];
-          $('.order-details').each(function(){
-              var details = {
-                  prod_id: $(this).closest('tr').find('td[name="product"]').attr('data-id'),
-                  qty: $(this).closest('tr').find('td[name="qty"]').text(),
-                  price: $(this).closest('tr').find('td[name="price"]').text()
-              };
-              orders.push(details);
-
-          });
+        var orders = JSON.parse(localStorage.getItem('myTransaction'));
           var data = {
               user_id: user_id,
-              order_details: myTrans,
+              order_details: orders,
               order_type: 0
           };
+
           console.log(data)
 
           $.ajax({
