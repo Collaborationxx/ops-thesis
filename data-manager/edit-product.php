@@ -9,6 +9,8 @@ $price = $_POST['price'];
 $category = $_POST['category'];
 $photo = $_POST['photo'];
 $photo_name = $_POST['photo_name'];
+$available = $_POST['available'];
+$phase_out = $_POST['phase_out'];
 $response = array();
 $error = array(
     'categoryEmpty' => '',
@@ -41,20 +43,20 @@ if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($err
                   description = '$desc',
                   price = $price,
                   picture = '$photo_name',
-                  category = $category
+                  category = $category,
+                  availability = $available,
+                  phase_out = $phase_out
               WHERE
                   id = $id
               ";
-
+              
     if(mysqli_query($con, $query)){
-        $response = array('status'=>'success');
-
-
         if(substr($photo, 0, 6) == 'assets'){
             $photo = dirname(__FILE__).'/../'.$photo;
         } 
         
         file_put_contents($dir.$photo_name, file_get_contents($photo));
+        $response = array('status'=>'success');
 
     }
     header('Content-Type: application/json');

@@ -193,15 +193,18 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         <tr>
                           <td><?php echo $count++ ?></td>
                           <td name ="prod-id" style="display: none"><?php echo $value['id']; ?></td>
-                          <td name="prod-name"><?php echo $value['name']; ?></td>
+                          <td name ="prod-avail" style="display: none"><?php echo $value['availability']; ?></td>
+                          <td name ="prod-po" style="display: none"><?php echo $value['phase_out']; ?></td>
+                          <?php $textClass = $value['phase_out'] == 0 ? 'text-success' : 'text-danger'; ?>  
+                          <td name="prod-name"><i class="fa fa-check-square <?php echo $textClass; ?>"></i>&nbsp;&nbsp;&nbsp;<?php echo $value['name']; ?></td>
                           <td name="prod-desc"><?php echo $value['description']; ?></td>
                           <td name="prod-price"><?php echo $value['price']; ?></td>
                           <td name="prod-category" data-id="<?php echo $value['category']; ?>"><?php echo category($value['category']); ?></td>
                           <td name="prod-photo" class="table-pic"><img id="prod-pic" src="assets/images/products/<?php echo $value['picture'];?>"></td>
                           <td name="photo_name" style="display: none"><?php echo $value['picture'];?></td>
                           <td>
-                            <a href="#" data-toggle="tooltip" title="Edit Product" class="edit-product"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
-                            <a href="#" data-toggle="tooltip" title="Delete Product" class="delete-product"><i class="fa fa-trash-o text-danger"></i></a>
+                            <a href="#" data-toggle="tooltip" title="Edit Product" class="edit-product"><i class="fa fa-pencil text-info"></i></a>
+<!--                             <a href="#" data-toggle="tooltip" title="Delete Product" class="delete-product"><i class="fa fa-trash-o text-danger"></i></a> -->
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -278,6 +281,15 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <input name="prod-id" style="display: none" value="">
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
+                        <label>Available:</label>
+                          <select class="form-control" id="prod-availability">
+                            <option value="0">On-hand</option>
+                            <option value="1"> For Reservation</option>   
+                          </select>  
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
                         <div class="form-group">
                           <p class="errMess categoryEmpty" style="display: none">Choose at least 1 category.</p>
                           <label>Product Category:</label>
@@ -348,6 +360,15 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         </div>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <label>Phase Out</label>
+                          <select class="form-control" id="prod-phase-out">
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>   
+                          </select>  
+                      </div>
+                    </div>
                   </form>
                 </div>
                 <div class="box-footer">
@@ -412,6 +433,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       var desc = $(this).closest('div.box').find('.box-body textarea[name="product-description"]').val();
       var photo = $(this).closest('div.box').find('.box-body img#prod-img').attr('src');
       var photo_name = $(this).closest('div.box').find('.box-body .image-name').val();
+      var available = $(this).closest('div.box').find('.box-body select#prod-availability').val();
+      var phase_out = $(this).closest('div.box').find('.box-body select#prod-phase-out').val();
       var modal = $('div#add-product-modal');
 
 
@@ -422,6 +445,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         desc: desc,
         photo: photo,
         photo_name: photo_name,
+        available: available,
+        phase_out: phase_out
       }
 
       console.log(data);
@@ -514,6 +539,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       var desc = $(this).closest('tr').find('td[name="prod-desc"]').text();
       var photo = $(this).closest('tr').find('img#prod-pic').attr('src');
       var photo_name = $(this).closest('tr').find('td[name="photo_name"]').text();
+      var avail =  $(this).closest('tr').find('td[name="prod-avail"]').text();
+      var po = $(this).closest('tr').find('td[name="prod-po"]').text();
       var modal = $('div#add-product-modal.fade');
 
       $(modal).modal('show');
@@ -526,6 +553,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         $(modal).find('.modal-body .image-name').val(photo_name);
         $(modal).find('.modal-body img#prod-img').css('display','block');
         $(modal).find('.modal-body img#prod-img').attr('src', photo);
+        $(modal).find('.modal-body select#prod-availability').val(avail);
+        $(modal).find('.modal-body select#prod-phase-out').val(po);
 
 
       });
@@ -551,6 +580,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       var desc = $(this).closest('div.box').find('.box-body textarea[name="product-description"]').val();
       var photo = $(this).closest('div.box').find('.box-body img#prod-img').attr('src');
       var photo_name = $(this).closest('div.box').find('.box-body .image-name').val();
+      var available = $(this).closest('div.box').find('.box-body select#prod-availability').val();
+      var phase_out = $(this).closest('div.box').find('.box-body select#prod-phase-out').val();
       var modal = $('div#add-product-modal');
 
       var data = {
@@ -561,6 +592,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         desc: desc,
         photo: photo,
         photo_name: photo_name,
+        available: available,
+        phase_out: phase_out
       }
 
       console.log(data)

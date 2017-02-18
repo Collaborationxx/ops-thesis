@@ -5,6 +5,8 @@ $name = $_POST['product'];
 $desc = $_POST['desc'];
 $price = $_POST['price'];
 $category =$_POST['category'];
+$available = $_POST['available'];
+$phase_out = $_POST['phase_out'];
 $photo = $_POST['photo'];
 $photo_name = $_POST['photo_name'];
 $mimeType = mime_content_type($photo);
@@ -36,7 +38,7 @@ if(!in_array($mimeType, $allowedImgType)){
 
 
 if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($error['priceEmpty']) && empty($error['invalidPrice']) && empty($error['invalidPhoto']) ){
-    $query = "INSERT INTO `product` (name, description, price, picture, category) VALUES ('$name', '$desc', $price, '$photo_name', $category)";
+    $query = "INSERT INTO `product` (name, description, price, picture, category, availability, phase_out) VALUES ('$name', '$desc', $price, '$photo_name', $category, $available, $phase_out)";
     if(mysqli_query($con, $query)){
         $response = array('status'=>'success');
         $data = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $photo));
