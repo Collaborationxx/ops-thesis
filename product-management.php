@@ -178,7 +178,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               </div>
               <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped table-bordered" id="product-table">
+                  <table class="table table-striped" id="product-table">
                     <thead>
                       <tr>
                         <th style="width: 10px">#</th>
@@ -386,7 +386,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <!-- REQUIRED JS SCRIPTS -->
 
 <!-- jQuery-->
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
+<script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->

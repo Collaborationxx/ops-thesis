@@ -31,6 +31,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
+  <!-- dataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
@@ -177,10 +179,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                 </div>
 
               </div>
-              <div class="box-body no-padding">
+              <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped">
-                    <tbody>
+                  <table class="table table-striped" id="users-table">
+                    <thead>
                       <tr>
                         <th style="width: 10px">#</th>
                         <th>Username</th>
@@ -191,15 +193,14 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         <th>Role</th>
                         <th>Action</th>
                       </tr>
+                    </thead>
+                    <tbody>
                       <?php if(isset($arr) AND count($arr) > 0): ?>
                         <?php foreach ($arr as $key => $value): ?>
                           <tr class="word-wrapper">
-                            <td name="user-id" style="display: none"><?php echo $value['id']; ?></td>
                             <td><?php echo $count++; ?></td>
-                            <td name="username"><?php echo $value['username']; ?></td>
-                            <td><?php echo strtoupper($value['last_name']).", ".$value['first_name']; ?></td>
-                            <td name="fname" style="display: none"><?php echo $value['first_name']; ?></td>
-                            <td name="lname" style="display: none"><?php echo $value['last_name']; ?></td>
+                            <td data-id="<?php echo $value['id']; ?>" name="username"><?php echo $value['username']; ?></td>
+                            <td name="full-name" data-fname="<?php echo $value['first_name']; ?>" data-lname="<?php echo $value['last_name']; ?>"><?php echo strtoupper($value['last_name']).", ".$value['first_name']; ?></td>
                             <td name="address"><?php echo $value['address']; ?></td>
                             <td name="contact"><?php echo $value['contact_number']; ?></td>
                             <td name="email"><?php echo $value['email']; ?></td>
@@ -358,7 +359,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
 <!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 2.2.3 -->
+<!-- jQuery -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -366,10 +367,23 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script src="plugins/dist/js/app.min.js"></script>
 <!-- bootbox.js -->
 <script src="assets/js/bootbox.min.js"></script>
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
 <script>
   $(document).ready(function () {
       var serverURL = <?php echo json_encode($serverURL); ?>;
+
+      $('#users-table').dataTable({
+          "paging": true,
+          "lengthChange": true,
+          "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": true
+      });
 
       $(document).on('click', 'a.delete-user', function(){
           var data = {
@@ -504,9 +518,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           $('.new-user').css('display', 'none');
           var modal = $('div#add-user-modal.modal.fade');
           $('div#add-user-modal div.box-header').find('h3').html('Edit Account');
-          var id =  $(this).closest('tr').find('td[name="user-id"]').text();
-          var fname = $(this).closest('tr').find('td[name="fname"]').text();
-          var lname = $(this).closest('tr').find('td[name="lname"]').text();
+          var id =  $(this).closest('tr').find('td[name="username"]').attr('data-id');
+          var fname = $(this).closest('tr').find('td[name="full-name"]').attr('data-fname');
+          var lname = $(this).closest('tr').find('td[name="full-name"]').attr('data-lname');
           var address = $(this).closest('tr').find('td[name="address"]').text();
           var contact = $(this).closest('tr').find('td[name="contact"]').text();
           var email = $(this).closest('tr').find('td[name="email"]').text();

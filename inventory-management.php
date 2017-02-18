@@ -34,6 +34,8 @@ include('data-manager/get-product-inventory.php');
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
+  <!-- dataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
@@ -176,24 +178,26 @@ include('data-manager/get-product-inventory.php');
                 </div>
 
               </div>
-              <div class="box-body no-padding">
+              <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped id="dataTables-example"">
-                    <tbody>
-                      <tr>
-                        <th style="width: 10px">#</th>
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Quantity
-                        <th>Last Re-stock Date</th>
-                        <th>Action</th>
-                      </tr>
+                  <table class="table table-striped" id="inventory-table">
+                      <thead>
+                        <tr>
+                          <th style="width: 10px">#</th>
+                          <th>Product ID</th>
+                          <th>Product Name</th>
+                          <th>Quantity
+                          <th>Last Re-stock Date</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
                       <?php if(isset($inventory) AND count($inventory) > 0): ?>
                         <?php foreach ($inventory as $key => $value): ?>
                           <tr>
                             <td><?php echo $count++; ?></td>
-                            <td name="inventory-id" style="display: none"><?php echo $value['id']; ?></td>
-                            <td name="generated-id">OPS-2017-0<?php echo $value['id']; ?></td>
+                            <!-- <td name="inventory-id" style="display: none"><?php echo $value['id']; ?></td> -->
+                            <td name="generated-id" data-id="<?php echo $value['id']; ?>">OPS-2017-0<?php echo $value['id']; ?></td>
                             <td name="product" data-id="<?php echo $value['prod_id']; ?>"><?php echo $value['prod_name']; ?></td>
                             <td name="quantity"><?php echo $value['quantity']; ?></td>
                             <td name="stock-date"><?php echo $value['stock_date']; ?></td>
@@ -331,7 +335,7 @@ include('data-manager/get-product-inventory.php');
 <!--end pop up content-->
 <!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 2.2.3 -->
+<!-- jQuery -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -339,12 +343,24 @@ include('data-manager/get-product-inventory.php');
 <script src="plugins/dist/js/app.min.js"></script>
 <!-- bootbox.js -->
 <script src="assets/js/bootbox.min.js"></script>
-<script src="plugins/dataTables/jquery.dataTables.js"></script>
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
 <script>
   $(document).ready(function () {
       var serverURL = <?php echo json_encode($serverURL); ?>;
       var modal = $('div#inventory-modal');
+
+        $('#inventory-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true
+        });
 
       $(document).on('click', '.btn-new', function () {
           $(modal).find('div.box-header').find('h3').html('New Inventory');
@@ -451,7 +467,7 @@ include('data-manager/get-product-inventory.php');
           $(modal).find('div.itemsLeft').css('display','block');
           $(modal).find('.form-group label[name="qty"]').text('Additional Quantity');
 
-          var id = $(this).closest('tr').find('td[name="inventory-id"]').text();
+          var id = $(this).closest('tr').find('td[name="generated-id"]').attr('data-id');
           var product_id = $(this).closest('tr').find('td[name="product"]').attr('data-id');
           var product_name = $(this).closest('tr').find('td[name="product"]').text();
           var qty = $(this).closest('tr').find('td[name="quantity"]').text();

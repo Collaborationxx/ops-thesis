@@ -31,6 +31,8 @@ include('authentication/functions.php');
     <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
     <!-- Ionicons -->
     <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
+    <!-- dataTables -->
+    <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
     <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
@@ -41,7 +43,6 @@ include('authentication/functions.php');
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-    <link href="plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
     <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
     <link rel="shortcut icon" href="assets/images/small-logo.png" />
 </head>
@@ -173,29 +174,30 @@ include('authentication/functions.php');
                         <div class="box-header with-border">
                             <h3 class="box-title"><i class="fa fa-history"></i>  History</h3>
                         </div>
-                        <div class="box-body no-padding">
+                        <div class="box-body">
                             <div class="table-responsive">
-                                <table class="table table-striped id="dataTables-example"">
-                                <tbody>
-                                <tr>
-                                    <th style="width: 5%">#</th>
-                                    <th>Additional Quantity</th>
-                                    <th>Re-stock On</th>
-
-                                </tr>
-                                <?php if(isset($history) AND count($history) > 0): ?>
-                                    <?php foreach ($history as $key => $value): ?>
-                                        <tr>
-                                            <td><?php echo $count++; ?></td>
-                                            <td name="quantity"><?php echo $value['quantity']; ?></td>
-                                            <td name="stock-date"><?php echo $value['stock_date']; ?></td>
-                                        </tr>
-                                    <?php endforeach; ?>
-                                <?php else: ?>
+                                <table class="table table-striped" id="history-table">
+                                <thead>
                                     <tr>
-                                        <td colspan="3" style="text-align: center">This product has no inventory history yet.</td>
-                                    </tr>
-                                <?php endif; ?>
+                                        <th style="width: 5%">#</th>
+                                        <th>Additional Quantity</th>
+                                        <th>Re-stock On</th>
+                                    </tr> 
+                                </thead>
+                                <tbody>
+                                    <?php if(isset($history) AND count($history) > 0): ?>
+                                        <?php foreach ($history as $key => $value): ?>
+                                            <tr>
+                                                <td><?php echo $count++; ?></td>
+                                                <td name="quantity"><?php echo $value['quantity']; ?></td>
+                                                <td name="stock-date"><?php echo $value['stock_date']; ?></td>
+                                            </tr>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <tr>
+                                            <td colspan="3" style="text-align: center">This product has no inventory history yet.</td>
+                                        </tr>
+                                    <?php endif; ?>
                                 </tbody>
                                 </table>
                             </div>
@@ -229,7 +231,7 @@ include('authentication/functions.php');
 
 <!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 2.2.3 -->
+<!-- jQuery -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -237,4 +239,18 @@ include('authentication/functions.php');
 <script src="plugins/dist/js/app.min.js"></script>
 <!-- bootbox.js -->
 <script src="assets/js/bootbox.min.js"></script>
-<script src="plugins/dataTables/jquery.dataTables.js"></script>
+<!-- dataTables-->
+<script src="plugins/datatables/jquery.dataTables.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#history-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true
+        });
+    });
+</script>
