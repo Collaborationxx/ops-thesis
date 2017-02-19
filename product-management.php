@@ -312,6 +312,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       <div class="col-md-12 col-xs-12">
                         <div class="form-group">
                           <p class="errMess productEmpty" style="display: none">*This is a Required Field</p>
+                          <p class="errMess productExist" style="display: none">Product Exist!</p>
                           <label>Product Name:</label>
                           <input type="text" class="form-control" name="product-name" placeholder="Enter ...">
                         </div>
@@ -512,6 +513,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           if(rData.invalidPhoto){
             $(modal).find('.invalidPhoto').closest('.form-group').addClass('has-error');
             $(modal).find('p.invalidPhoto').css('display', 'block');
+          }
+
+          if(rData.productExist){
+            $(modal).find('.productExist').closest('.form-group').addClass('has-error');
+            $(modal).find('p.productExist').css('display', 'block');
           }
 
         },

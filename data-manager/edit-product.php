@@ -2,15 +2,15 @@
 include(dirname(__FILE__).'/../config/db_connection.php');
 include('../authentication/functions.php');
 
-$id = $_POST['id'];
-$name = $_POST['product'];
-$desc = $_POST['desc'];
-$price = $_POST['price'];
-$category = $_POST['category'];
-$photo = $_POST['photo'];
+$id = test_input($_POST['id']);
+$name = test_input($_POST['product']);
+$desc = test_input($_POST['desc']);
+$price = test_input($_POST['price']);
+$category =test_input($_POST['category']);
+$available = test_input($_POST['available']);
+$phase_out = test_input($_POST['phase_out']);
+$photo = $_POST['photo'] == '#' ? $photo = '../placeholder.txt' : $_POST['photo'];
 $photo_name = $_POST['photo_name'];
-$available = $_POST['available'];
-$phase_out = $_POST['phase_out'];
 $finfo = finfo_open(FILEINFO_MIME_TYPE); // return mime type ala mimetype extension
 $allowedImgType = array('image/jpeg', 'image/png');
 $response = array();
