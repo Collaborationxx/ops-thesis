@@ -75,7 +75,7 @@ include('authentication/functions.php');
                             <!-- The user image in the navbar-->
                             <img src="assets/img/person-placeholder_opt.jpg" class="user-image" alt="User Image">
                             <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                            <span class="hidden-xs">Hello <?php //echo $_SESSION['username']; ?></span>&nbsp;&nbsp;
+                            <span class="hidden-xs">Hello <?php echo $_SESSION['username']; ?></span>&nbsp;&nbsp;
                             <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu">
@@ -253,8 +253,9 @@ include('authentication/functions.php');
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true
-            
+            "autoWidth": true,
+
+
         });
     });
 </script>
