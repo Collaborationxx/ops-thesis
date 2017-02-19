@@ -185,13 +185,15 @@ $i = 1; //for table row counting
               <div class="box-body no-padding">
                 <div class="table-responsive">
                   <table class="table table-striped" id="new-order-table">
-                    <tbody>
+                    <thead>
                       <tr>
                         <th style="width: 10px">#</th>
                         <th>Order ID</th>
                         <th>Date Ordered</th>
                         <th>Payment Status</th>
-                      </tr>
+                      </tr> 
+                    </thead>
+                      <tbody>
                       <?php if(isset($distinct) AND count($distinct) > 0): ?>
                           <?php foreach ($distinct as $key => $value): ?>
                               <tr>
