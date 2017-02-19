@@ -46,7 +46,7 @@ include('data-manager/get-product-inventory.php');
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-  <link href="plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+ 
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
   <link rel="shortcut icon" href="assets/images/small-logo.png" />
 </head>
@@ -207,11 +207,9 @@ include('data-manager/get-product-inventory.php');
                               <a href="inventory-history.php?product=<?php echo $value['id'];?>" data-toggle="tooltip" title="View History" class="view-history"><i class="fa fa-history text-warning"></i></a>
                             </td>
                           </tr>
+
                         <?php endforeach; ?>
-                      <?php else: ?>
-                          <tr>
-                            <td colspan="6" style="text-align: center"><b>No Records Found.</b></td>
-                          </tr>
+                      
                       <?php endif; ?>
                     </tbody>
                   </table>

@@ -208,10 +208,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                           </td>
                         </tr>
                       <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                          <td colspan="7" style="text-align: center"><b>No Results Found</b></td>
-                        </tr>
+                    
                     <?php endif; ?>
                     </tbody>
                   </table>

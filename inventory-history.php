@@ -177,7 +177,7 @@ include('authentication/functions.php');
                             <div class="table-responsive">
                                 <table class="table table-striped" id="history-table">
                                     <thead>
-                                        <tr>
+                                        <tr style="background-color: #e6ffe6;">
                                             <th style="width: 5%">#</th>
                                             <th>Additional Quantity</th>
                                             <th>Re-stock On</th>
@@ -253,9 +253,12 @@ include('authentication/functions.php');
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true,
+            "autoWidth": true
 
 
         });
     });
+
 </script>
+</body>
+</html>
