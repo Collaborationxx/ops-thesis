@@ -382,7 +382,17 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           "searching": true,
           "ordering": true,
           "info": true,
-          "autoWidth": true
+          "autoWidth": true,
+          "columns": [
+            {"name":"first", "orderable":true},
+            {"name":"second", "orderable":true},
+            {"name":"third", "orderable":true},
+            {"name":"fourth", "orderable":true},
+            {"name":"fifth", "orderable":true},
+            {"name":"sixth", "orderable":true},
+            {"name":"seventh", "orderable":true},
+            {"name":"eighth", "orderable":false},
+        ]
       });
 
       $(document).on('click', 'a.delete-user', function(){

@@ -254,6 +254,7 @@ include('authentication/functions.php');
             "ordering": true,
             "info": true,
             "autoWidth": true
+            
         });
     });
 </script>
