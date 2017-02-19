@@ -387,8 +387,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
       $(document).on('click', 'a.delete-user', function(){
           var data = {
-            id: $(this).closest('tr').find('td[name="user-id"]').text(),
+            id: $(this).closest('tr').find('td[name="username"]').attr('data-id'),
           } 
+
+          console.log(data)
 
           bootbox.confirm({
             size: 'small',
