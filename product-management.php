@@ -647,6 +647,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
             $(modal).find('p.invalidPrice').css('display', 'block');
           }
 
+          if(rData.invalidPhoto){
+            $(modal).find('.invalidPhoto').closest('.form-group').addClass('has-error');
+            $(modal).find('p.invalidPhoto').css('display', 'block');
+          }
+
         },
       });
     });

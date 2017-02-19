@@ -15,7 +15,6 @@ include('data-manager/get-inventory-history.php');
 include('authentication/functions.php');
 //echo '<pre>'; print_r($history); exit;
 
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -177,28 +176,28 @@ include('authentication/functions.php');
                         <div class="box-body">
                             <div class="table-responsive">
                                 <table class="table table-striped" id="history-table">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 5%">#</th>
-                                        <th>Additional Quantity</th>
-                                        <th>Re-stock On</th>
-                                    </tr> 
-                                </thead>
-                                <tbody>
-                                    <?php if(isset($history) AND count($history) > 0): ?>
-                                        <?php foreach ($history as $key => $value): ?>
-                                            <tr>
-                                                <td><?php echo $count++; ?></td>
-                                                <td name="quantity"><?php echo $value['quantity']; ?></td>
-                                                <td name="stock-date"><?php echo $value['stock_date']; ?></td>
-                                            </tr>
-                                        <?php endforeach; ?>
-                                    <?php else: ?>
+                                    <thead>
                                         <tr>
-                                            <td colspan="3" style="text-align: center">This product has no inventory history yet.</td>
-                                        </tr>
-                                    <?php endif; ?>
-                                </tbody>
+                                            <th style="width: 5%">#</th>
+                                            <th>Additional Quantity</th>
+                                            <th>Re-stock On</th>
+                                        </tr> 
+                                    </thead>
+                                    <tbody>
+                                        <?php if(isset($history) AND count($history) > 0): ?>
+                                            <?php foreach ($history as $key => $value): ?>
+                                                <tr>
+                                                    <td><?php echo $count++; ?></td>
+                                                    <td name="quantity"><?php echo $value['quantity']; ?></td>
+                                                    <td name="stock-date"><?php echo $value['stock_date']; ?></td>
+                                                </tr>
+                                            <?php endforeach; ?>
+                                        <?php else: ?>
+                                            <tr>
+                                                <td colspan="3" style="text-align: center">This product has no inventory history yet.</td>
+                                            </tr>
+                                        <?php endif; ?>
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -242,7 +241,7 @@ include('authentication/functions.php');
 <!-- dataTables-->
 <script src="plugins/datatables/jquery.dataTables.js"></script>
 <script>
-    $(document).ready(function(){
+    $(document).ready(function() {
         $('#history-table').dataTable({
             "paging": true,
             "lengthChange": true,
