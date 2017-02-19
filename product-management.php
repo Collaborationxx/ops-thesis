@@ -1,3 +1,4 @@
+
 <?php
 session_start();
 $role = $_SESSION['user_role'];
@@ -178,9 +179,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               </div>
               <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="product-table">
+                  <table class="table table-striped table-bordered" id="product-table">
                     <thead>
-                      <tr>
+                      <tr style="background-color: #e6ffe6;">
                         <th style="width: 10px">#</th>
                         <th>Item</th>
                         <th>Description</th>

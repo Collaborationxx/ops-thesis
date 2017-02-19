@@ -189,7 +189,7 @@ include('authentication/functions.php');
                     <div class="row">
                       <div class="col-md-12 col-xs-12">
                         <table class="table table-striped table-responsive">
-                          <tbody>
+                          <thead>
                             <tr>
                               <th width="10%">#</th>
                               <th width="30%;">Product Photo</th>
@@ -198,6 +198,8 @@ include('authentication/functions.php');
                               <th width="10%;">Price</th>
                               <th width="10%">Required Payment</th>
                             </tr>
+                          </thead>
+                          <tbody>
                             <tr>
                               <td>1.</td>
                               <td>
@@ -217,7 +219,7 @@ include('authentication/functions.php');
                       </div>
                     </div>
                   </form>
-
+s
               <div class="box-footer">
                 <div class="row">
                   <div class="col-md-12 col-xs-12">

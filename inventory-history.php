@@ -175,7 +175,7 @@ include('authentication/functions.php');
                         </div>
                         <div class="box-body">
                             <div class="table-responsive">
-                                <table class="table table-striped" id="history-table">
+                                <table class="table table-striped table-bordered" id="history-table">
                                     <thead>
                                         <tr style="background-color: #e6ffe6;">
                                             <th style="width: 5%">#</th>
@@ -192,10 +192,7 @@ include('authentication/functions.php');
                                                     <td name="stock-date"><?php echo $value['stock_date']; ?></td>
                                                 </tr>
                                             <?php endforeach; ?>
-                                        <?php else: ?>
-                                            <tr>
-                                                <td colspan="3" style="text-align: center">This product has no inventory history yet.</td>
-                                            </tr>
+                                        
                                         <?php endif; ?>
                                     </tbody>
                                 </table>
