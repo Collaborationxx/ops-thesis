@@ -238,8 +238,12 @@ include('authentication/functions.php');
 <script src="plugins/dist/js/app.min.js"></script>
 <!-- bootbox.js -->
 <script src="assets/js/bootbox.min.js"></script>
-<!-- dataTables-->
-<script src="plugins/datatables/jquery.dataTables.js"></script>
+
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+
 <script>
     $(document).ready(function() {
         $('#history-table').dataTable({
