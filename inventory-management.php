@@ -378,7 +378,7 @@ include('data-manager/get-product-inventory.php');
 
       $(document).on('click', '.delete-inventory', function(){
           var data = {
-            id: $(this).closest('tr').find('td[name="inventory-id"]').text(),
+            id: $(this).closest('tr').find('td[name="generated-id"]').attr('data-id'),
           }
           console.log(data);
 
