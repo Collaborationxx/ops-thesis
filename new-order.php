@@ -254,7 +254,13 @@ $i = 1; //for table row counting
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true
+            "autoWidth": true,
+            "columns": [
+            {"name":"first", "orderable":true},
+            {"name":"second", "orderable":true},
+            {"name":"third", "orderable":true},
+            {"name":"fourth", "orderable":true},
+        ]
         });
     });
 </script>
