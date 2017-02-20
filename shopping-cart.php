@@ -325,32 +325,26 @@
 
 
       $('.btn-checkout').click(function (e) {
+          e.preventDefault();
           if(username.length == 0){
               $('#login-signup-modal').find('.header-title').text('To checkout items:');
               $(modal).modal('show');
           } else {
-              var data = {
-                  userID: usr_id,
-                  items: cart,
-              }
-              $.ajax({
-                  type: 'POST',
-                  url: serverURL + '/ops/data-manager/check-out.php',
-                  data: data,
-                  dataType: 'json',
-                  success: function (oData) {
-                      if(oData.status){
-                          localStorage.removeItem('myCart');
-                          window.location = 'customer-page.php?fromCart=1';
-                      }
-                  },
-              });
+              getCart(0); 
           }
           
       });
 
       $('.btn-reserve').click(function(e){
+          e.preventDefault();
           $('#login-signup-modal').find('.header-title').text('To reserve items:');
+          if(username.length == 0){
+              $('#login-signup-modal').find('.header-title').text('To checkout items:');
+              $(modal).modal('show');
+          } else {
+              getCart(1); 
+          }
+
       });
 
       $('.signup-group').click(function(){
@@ -414,10 +408,27 @@
                   }
               },
           });
-
-
-
       });
+
+      function getCart(param){
+          var data = {
+              userID: usr_id,
+              items: cart,
+              param: param,
+          }
+          $.ajax({
+              type: 'POST',
+              url: serverURL + '/ops/data-manager/check-out.php',
+              data: data,
+              dataType: 'json',
+              success: function (oData) {
+                  if(oData.status){
+                      localStorage.removeItem('myCart');
+                      window.location = 'customer-page.php?fromCart=1';
+                  }
+              },
+          });
+        };
   });
 
 

@@ -3,24 +3,31 @@ include(dirname(__FILE__).'/../config/db_connection.php');
 
 $orders = $_POST['items'];
 $userID = $_POST['userID'];
+$param = isset($_POST['param']) ? $_POST['param'] : '';
 $response = array();
 
+if($param == 0){ //click from checkout button
+    $query = "INSERT INTO `order_tbl` (customer_id, order_type) VALUES ($userID, 1)";
+    $table = 'order_details';
+    $col = 'order_id';
+    
 
-$query = "INSERT INTO `order_tbl` (customer_id, order_type) VALUES ($userID, 1)";
+} else { //click form reserved
+    $query = "INSERT INTO `reservation_tbl` (customer_id, reservation_type) VALUES ($userID, 1)";
+    $table = 'reservation_details';
+    $col = 'reservation_id';
+}
+
 if(mysqli_query($con, $query)){
-    $order_id = mysqli_insert_id($con);
+    $id = mysqli_insert_id($con);
     foreach ($orders as $key => $value){
         $product = $value['id'];
         $price = $value['price'];
         $qty = $value['qty'];
-        $subQuery = "INSERT INTO `order_details` (order_id, product_id, price, quantity) VALUES ($order_id, $product, $price, $qty)";
-        if(mysqli_query($con, $subQuery)){
-            $sql = "UPDATE `inventory` SET quantity = quantity - $qty WHERE product_id = $product";
-            if(mysqli_query($con, $sql)){
-                $response = array('status' => 'success');
-            }
-        }
+        $subQuery = "INSERT INTO `$table` ($col, product_id, price, quantity) VALUES ($id, $product, $price, $qty)";
+        mysqli_query($con, $subQuery);
     }
-    header('Content-Type: application/json');
-    echo json_encode($response);
+    $response = array('status' => 'success');
 }
+header('Content-Type: application/json');
+echo json_encode($response);

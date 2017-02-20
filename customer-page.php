@@ -15,10 +15,10 @@ $distinct = array();
 $order_details = array();
 foreach ($orders as $key => $value){
     $distinct[$value['id']]['order_date'] = $value['order_date'];
-
+    $distinct[$value['id']]['payment_status'] = $value['payment_status'];
 }
 
-//echo '<pre>'; print_r($distinct); exit;
+// echo '<pre>'; print_r($orders); exit;
 ?>
 <!DOCTYPE html>
 <html>
@@ -212,23 +212,27 @@ foreach ($orders as $key => $value){
                         </div>
                         <div class="box-body no-padding">
                             <table class="table table-striped">
-                                <tbody>
+                                  <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Order ID</th>
+                                        <th>Reservation ID</th>
                                         <th>Date</th>
+                                        <th>Payment Status</th>
                                     </tr>
+                                    </thead>
+                                    <tbody>
                                     <?php if(isset($distinct) AND count($distinct) > 0): ?>
                                         <?php foreach ($distinct as $okey => $oVal): ?>
                                             <tr>
                                                 <td><?php echo $i++; ?></td>
                                                 <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y').'-O-'.$okey; ?></a></td>
                                                 <td><?php echo date('F/j/Y',$oVal['order_date']); ?></td>
+                                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 1 ? 'Payment sent. Waiting for confirmation' : 'Waiting for Payment'; ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php else: ?>
                                         <tr>
-                                            <td colspan="3">You have no orders yet.</td>
+                                            <td colspan="4" style="text-align: center">You have no orders yet.</td>
                                         </tr>
                                     <?php endif; ?>
                                 </tbody>
@@ -245,25 +249,34 @@ foreach ($orders as $key => $value){
                             </div>
                             <div class="box-body">
                                 <form role="form">
+                                    <div class="alert alert-success sucess-payment" role="alert" style="display: none;">
+                                        <strong>Sucess!</strong> Payment sent! Please wait for the confirmation of your payment. We will notify you as soon as we are fdone checking it. Thank you!
+                                    </div>
                                     <div class="form-group">
                                         <p>Good day! Thank you for ordering medical supplies at OPS! The following is the list of your orders:</p>
                                         <textarea class="form-control order-details" rows="5" style="width:100%" disabled="disabled"></textarea>
                                         <input type="text" class="hidden current_orderID" value="">
+                                        <input type="text" class="hidden total_amount" value="">
                                     </div>
                                     <div class="form-group">
                                         <p>Please deposit your full payment in the bank account provided below within 7 days to process your order.</p>
                                         <p>Reply with the deposit number when you paid your order:</p>
                                     </div>
                                     <div class="form-group">
+                                        <p class="errMess dpNumEmpty" style="display: none;">*This is a required Field.</p>
                                         <label>Deposit No:</label>
                                         <input type="text" class="form-control" name="deposit-number">
                                     </div>
                                     <div class="form-group">
+                                        <p class="errMess err-deposit" style="display: none;"></p>
+                                        <p class="errMess dpAmEmpty" style="display: none;">*This is a required Field.</p>
+                                        <p class="errMess dpAmInvalid" style="display: none;">Numbers Only</p>
                                         <label>Amount Deposited:</label>
                                         <input type="number" min="0" step="any" class="form-control" name="deposit-amount">
                                     </div>
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-success pull-right btn-send">Send <i class="fa fa-share-square-o"></i></button>
+                                        <button type="submit" class="btn btn-success pull-right btn-send" disabled="disabled">Send <i class="fa fa-share-square-o"></i></button>
+                                        <button type="submit" class="btn btn-success pull-right btn-resend" style="display: none;" disabled="disabled">Re-send  <i class="fa fa-share-square-o"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -290,16 +303,30 @@ foreach ($orders as $key => $value){
               </div>
               <div class="box-body no-padding">
                 <table class="table table-striped">
-                  <tbody>
-                  <tr>
-                    <th>Reservation ID</th>
-                    <th>Date</th>
-                  </tr>
-                  <tr>
-                    <td>OPS-11-22</td>
-                    <td>01/06/17</td>
-                  </tr>
-                  </tbody>
+                  <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Payment Status</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php if(isset($distinct) AND count($distinct) > 0): ?>
+                        <?php foreach ($distinct as $okey => $oVal): ?>
+                            <tr>
+                                <td><?php echo $i++; ?></td>
+                                <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y').'-O-'.$okey; ?></a></td>
+                                <td><?php echo date('F/j/Y',$oVal['order_date']); ?></td>
+                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 1 ? 'Payment sent. Waiting for confirmation' : 'Waiting for Payment'; ?></td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="4">You have no reservations yet.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
                 </table>
               </div>
             </div>
@@ -494,6 +521,8 @@ foreach ($orders as $key => $value){
 <script>
     $(function () {
         var serverURL = <?php echo json_encode($serverURL)?> // get server url (localhost/webserver)
+        $('.alert').css('display', 'none');
+        $('p.errMess').css('display', 'none');
 
         /** Edit button Functionality **/
         $('.edit-profile-btn').click(function (e) {
@@ -661,7 +690,12 @@ foreach ($orders as $key => $value){
         });
 
         $(document).on('click', '.order-id', function () {
+            $('.btn-resend').css('display','none');
+            $('.btn-send').css('display','block');
+            $('.btn-resend').prop('disabled',false);
+            $('.btn-send').prop('disabled', false);
             var oid = $(this).attr('data-id');
+            var status = $(this).closest('tr').find('td[name="pay_stat"]').attr('data-id');
             console.debug('oid', oid);
             
             var data = {
@@ -685,21 +719,56 @@ foreach ($orders as $key => $value){
                         tot += parseFloat(res[i].total);
                     }
 
-                    $('.order-details').val(ord + '\n' + 'Total: ' + tot);
-                    $('.current_orderID').val(oid);
 
+                    $('.order-details').val(ord + '\n' + 'Total: ' + parseFloat(tot).toFixed(2));
+                    $('.current_orderID').val(oid);
+                    $('.total_amount').val(tot);
+                    console.debug('total', tot)
                     console.debug('orders', ord)
 
                   },
-          })
+              });
+
+              if(status == 1){
+                  $('.btn-resend').css('display','block');
+                  $('.btn-send').css('display','none');
+
+                  $.ajax({
+                      type: 'POST',
+                      url: serverURL + '/ops/data-manager/get-payment-by-orderID.php',
+                      data: {oid: oid},
+                      dataType: 'json',
+                      success: function (rData) {
+                          var res = rData.payment_details;
+                          $(res).each(function(i,e){
+                              console.log(e)
+                              $('input[name="deposit-number"]').val(e.deposit_number);
+                              $('input[name="deposit-amount"]').val(e.deposit_amount);   
+                          });
+                      }, 
+                  });
+              }
+              
         });
 
-        $('.btn-send').click(function(e){
+        $(document).on('click','.btn-send', function(e){
             e.preventDefault();
+            sendPayment($(this));  
+        });
+
+        $(document).on('click', '.btn-resend', function(e){
+            e.preventDefault();
+            sendPayment($(this));  
+        });
+
+        function sendPayment(button)
+        {
+            $('p.errMess').css('display', 'none');
             console.log('clicked')
-            var deposit_number = $(this).closest('form').find('input[name="deposit-number"]').val();
-            var deposit_amount = $(this).closest('form').find('input[name="deposit-amount"]').val();
-            var orderID = $(this).closest('form').find('input.current_orderID').val();
+            var deposit_number = $(button).closest('form').find('input[name="deposit-number"]').val();
+            var deposit_amount = $(button).closest('form').find('input[name="deposit-amount"]').val();
+            var orderID = $(button).closest('form').find('input.current_orderID').val();
+            var total = $(button).closest('form').find('input.total_amount').val();
 
             var payment = {
                 dp_number: deposit_number,
@@ -711,17 +780,46 @@ foreach ($orders as $key => $value){
 
             console.log(payment)
 
-            $.ajax({
-                type: 'POST',
-                url: serverURL + '/ops/data-manager/add-payment.php',
-                data: payment,
-                dataType: 'json',
-                success: function(rData){
-                    console.log(rData)
-            },
+            if(deposit_amount >= total){
+                console.log('paid')
+                $.ajax({
+                  type: 'POST',
+                  url: serverURL + '/ops/data-manager/add-payment.php',
+                  data: payment,
+                  dataType: 'json',
+                  success: function(rData){
+                      console.log(rData)
+                      if(rData.status){
+                          $('.sucess-payment').css('display', 'block'); //show success alert
+                          $('.alert').delay(3000).fadeOut('fast');
+                          $('div#order-tab-content').find('.box-body').find('.form-control').val('');
+                      }
 
-            });
-        });
+                      if(rData.dpNumEmpty){
+                          $('div#order-tab-content').find('.dpNumEmpty').closest('.form-group').addClass('has-error');
+                          $('div#order-tab-content').find('p.dpNumEmpty').css('display', 'block');
+                      }
+
+                      if(rData.dpAmEmpty){
+                          $('div#order-tab-content').find('.dpAmEmpty').closest('.form-group').addClass('has-error');
+                          $('div#order-tab-content').find('p.dpAmEmpty').css('display', 'block');  
+                      }
+
+                      if(rData.dpAmInvalid){
+                          $('div#order-tab-content').find('.dpAmInvalid').closest('.form-group').addClass('has-error');
+                          $('div#order-tab-content').find('p.dpAmInvalid').css('display', 'block');    
+                      }
+
+                  },
+              });
+            } else {
+                console.log('kulang pera mo')
+                $('p.err-deposit').css('display', 'block');
+                $('p.err-deposit').html('Please pay your total bill of: Php ' + parseFloat(total).toFixed(2));
+                $('p.err-deposit').closest('.form-group').addClass('has-error');
+            }
+
+        };
 
 
   });

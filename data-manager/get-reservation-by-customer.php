@@ -5,27 +5,27 @@ $id = isset($_SESSION['id']) ? $_SESSION['id'] : '';
 
 $query = "  
             SELECT
-                o.id,
-                o.payment_status,
+                r.id,
+                r.payment_status,
                 UNIX_TIMESTAMP(o.order_date) as order_date,
-                od.product_id,
-                od.price,
-                od.quantity
+                rd.product_id,
+                rd.price,
+                rd.quantity
             FROM
-                order_tbl o,
-                order_details od
+                reservation_tbl r,
+                reservation_details rd
             WHERE
-                o.id = od.order_id
+                r.id = rd.reservation_id
             AND
-                o.customer_id = $id
+                r.customer_id = $id
             ORDER BY
-                o.order_date DESC   
+                r.order_date DESC   
 ";
-$orders = array();
+$reservationsByCustomer = array();
 if ($result = mysqli_query($con, $query)) {
     /* fetch associative array */
     while ($row = mysqli_fetch_assoc($result)) {
-        $orders[] = $row;
+        $reservationsByCustomer[] = $row;
     }
     /* free result set */
     mysqli_free_result($result);
