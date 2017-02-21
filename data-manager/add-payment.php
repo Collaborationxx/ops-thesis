@@ -2,7 +2,7 @@
 include(dirname(__FILE__).'/../config/db_connection.php');
 include('../authentication/functions.php');
 
-$order_id = test_input($_POST['oid']);
+$id= test_input($_POST['tid']);
 $deposit_number = test_input($_POST['dp_number']);
 $deposit_amount = test_input($_POST['dp_amount']);
 $pf = $_POST['pf']; //payment for 0=order; 1=reservation
@@ -26,9 +26,17 @@ if(empty($deposit_amount)){
 	}
 }
 
+if($pf == 0){
+	$col = 'order_id';
+	$tbl = 'order_tbl';
+} else {
+	$col = 'reservation_id';
+	$tbl = 'reservation_tbl';
+}
+
 
 if(empty($error['dpNumEmpty']) && empty($error['dpAmEmpty']) && empty($error['dpAmInvalid']) ){
-	$query = "INSERT INTO `payment` (order_id, deposit_number, deposit_amount, payment_for, payment_mode) VALUES ($order_id, '$deposit_number', $deposit_amount, $pf, $pm)";
+	$query = "INSERT INTO `payment` ($col, deposit_number, deposit_amount, payment_for, payment_mode) VALUES ($order_id, '$deposit_number', $deposit_amount, $pf, $pm)";
 	if(mysqli_query($con, $query)){
         $subQuery = "UPDATE `order_tbl` SET payment_status = 1 WHERE id = $order_id";
         if(mysqli_query($con, $subQuery)){

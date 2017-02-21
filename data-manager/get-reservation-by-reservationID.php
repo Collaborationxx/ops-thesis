@@ -2,6 +2,7 @@
 include(dirname(__FILE__).'/../config/db_connection.php');
 
 $rid = $_GET['rid'];
+
 $query = "  
            SELECT
                 p.id,
@@ -11,12 +12,12 @@ $query = "
                 rd.product_id,
                 rd.quantity,
                 rd.price,
-                rd.quantity * od.price as total
+                rd.quantity * rd.price as total
             FROM
                 product p,
                 reservation_details rd
             WHERE
-                p.id = od.product_id
+                p.id = rd.product_id
             AND    
                 rd.reservation_id = $rid 
 ";
