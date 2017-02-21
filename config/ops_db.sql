@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 19, 2017 at 12:24 PM
+-- Generation Time: Feb 21, 2017 at 11:32 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `order_details` (
   `price` float(11,2) NOT NULL,
   `quantity` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `order_tbl` (
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `payment_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=pending;1=paid',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS `payment` (
   `payment_for` tinyint(1) NOT NULL COMMENT '0=order;1=reservation',
   PRIMARY KEY (`id`),
   KEY `order_id` (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -153,6 +153,37 @@ CREATE TABLE IF NOT EXISTS `receipt` (
   `customer_id` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation_details`
+--
+
+CREATE TABLE IF NOT EXISTS `reservation_details` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `reservation_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `price` float(11,2) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reservation_tbl`
+--
+
+CREATE TABLE IF NOT EXISTS `reservation_tbl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `customer_id` int(11) DEFAULT NULL,
+  `customer_name` varchar(255) DEFAULT NULL,
+  `reservation_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
+  `reserved_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `payment_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=pending;1=partial;2=full',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
 
