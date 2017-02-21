@@ -180,9 +180,9 @@ include('data-manager/get-product-inventory.php');
               </div>
               <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="inventory-table">
+                  <table class="table table-striped table-bordered" id="inventory-table">
                       <thead>
-                        <tr>
+                        <tr style="background-color: #e6ffe6;">
                           <th style="width: 10px">#</th>
                           <th>Product ID</th>
                           <th>Product Name</th>

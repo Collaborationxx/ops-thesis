@@ -27,6 +27,8 @@ include('authentication/functions.php');
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
+  <!-- dataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
@@ -171,16 +173,18 @@ include('authentication/functions.php');
                  <a href="print-reservation.php" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
                 </div>
               </div>
-              <div class="box-body no-padding">
+              <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped">
-                    <tbody>
-                      <tr>
+                  <table class="table table-striped table-bordered" id="new-reservation-table">
+                    <thead>
+                      <tr style="background-color: #e6ffe6;">
                         <th style="width: 10px">#</th>
                         <th>Reservation ID</th>
                         <th>Date Ordered</th>
                         <th>Payment Status</th>
                       </tr>
+                    </thead>
+                    <tbody>
                       <tr>
                         <td>1.</td>
                         <td><a href="reservation-information.php">OPS-43-34</a></td>
@@ -226,10 +230,32 @@ include('authentication/functions.php');
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+
+<script>
+    $(document).ready(function() {
+        $('#new-reservation-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "columns": [
+            {"name":"first", "orderable":true},
+            {"name":"second", "orderable":true},
+            {"name":"third", "orderable":true},
+            {"name":"fourth", "orderable":false},
+            ]
+        });
+    });
+
+</script>
+
+
 </body>
 </html>

@@ -182,11 +182,11 @@ $i = 1; //for table row counting
                  <a href="print-order.php" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
                 </div>
               </div>
-              <div class="box-body no-padding">
+              <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="new-order-table">
-                    <thead>
-                      <tr>
+                  <table class="table table-striped table-bordered" id="new-order-table">
+                  <thead>
+                      <tr style="background-color: #e6ffe6;">
                         <th style="width: 10px">#</th>
                         <th>Order ID</th>
                         <th>Date Ordered</th>
@@ -247,6 +247,7 @@ $i = 1; //for table row counting
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
+
 <script>
     $(document).ready(function() {
         $('#new-order-table').dataTable({
@@ -256,9 +257,16 @@ $i = 1; //for table row counting
             "searching": true,
             "ordering": true,
             "info": true,
-            "autoWidth": true
+            "autoWidth": true,
+            "columns": [
+            {"name":"first", "orderable":true},
+            {"name":"second", "orderable":true},
+            {"name":"third", "orderable":true},
+            {"name":"fourth", "orderable":false},
+            ]
         });
     });
+
 </script>
 
 </body>

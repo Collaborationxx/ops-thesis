@@ -29,6 +29,8 @@ include('data-manager/get-alert.php');
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
+   <!-- dataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
@@ -168,16 +170,18 @@ include('data-manager/get-alert.php');
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-bell"></i>   Alert</h3>
               </div>
-              <div class="box-body no-padding">
+              <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped">
-                    <tbody>
-                      <tr>
+                  <table class="table table-striped table-bordered" id="alert-table">
+                    <thead>
+                      <tr style="background-color: #e6ffe6;">
                         <th style="width: 10px">#</th>
                         <th>Product Name</th>
                         <th>Quantity Left</th>
                         <th width=25%;>Action</th>
                       </tr>
+                    </thead>
+                    <tbody>
                       <?php if(isset($alert) AND count($alert) > 0):?>
                           <?php foreach ($alert as $key => $value): ?>
                               <tr>
@@ -189,10 +193,7 @@ include('data-manager/get-alert.php');
                                   </td>
                               </tr>
                           <?php endforeach; ?>
-                      <?php else: ?>
-                          <tr>
-                              <td colspan="6" style="text-align: center"><b>Hooray! Everything looks good! Have a nice day!</b></td>
-                          </tr>
+                      
                       <?php endif; ?>
 
                     </tbody>
@@ -236,10 +237,31 @@ include('data-manager/get-alert.php');
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+
+<script>
+    $(document).ready(function() {
+        $('#alert-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "columns": [
+            {"name":"first", "orderable":true},
+            {"name":"second", "orderable":true},
+            {"name":"third", "orderable":true},
+            {"name":"fourth", "orderable":true},
+            ]
+        });
+    });
+
+</script>
+
 </body>
 </html>

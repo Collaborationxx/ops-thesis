@@ -181,9 +181,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               </div>
               <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped" id="users-table">
+                  <table class="table table-striped table-bordered" id="users-table">
                     <thead>
-                      <tr>
+                      <tr style="background-color: #e6ffe6;">
                         <th style="width: 10px">#</th>
                         <th>Username</th>
                         <th>Name</th>

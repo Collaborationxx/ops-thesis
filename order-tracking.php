@@ -27,6 +27,8 @@ include('authentication/functions.php');
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
+  <!-- dataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
@@ -194,16 +196,18 @@ include('authentication/functions.php');
                 
 
               </div>
-              <div class="box-body no-padding">
+              <div class="box-body ">
                 <div class="table-responsive">
-                  <table class="table table-striped">
-                    <tbody>
-                      <tr>
+                  <table class="table table-striped table-bordered" id="track-order-table">
+                    <thead>
+                      <tr style="background-color: #e6ffe6;">
                         <th>Order ID</th>
                         <th>Tracking Number</th>
                         <th>Customer Name</th>
                         <th>Date Sent</th>
                       </tr>
+                    </thead>
+                    <tbody>
                       <tr>
                         <td>OPS-45-345</td>
                         <td>OPS-S4-34</td>
@@ -251,9 +255,26 @@ include('authentication/functions.php');
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+        $('#track-order-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true
+
+
+        });
+    });
+
+</script>
+
 </body>
 </html>

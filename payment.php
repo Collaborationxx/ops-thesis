@@ -30,6 +30,8 @@ $counter = 1;
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
+  <!-- dataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
@@ -168,11 +170,11 @@ $counter = 1;
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-credit-card-alt"></i>   Payment</h3>
               </div>
-              <div class="box-body no-padding">
+              <div class="box-body">
                 <div class="table-responsive">
-                  <table class="table table-striped table-bordered">
-                    <tbody>
-                      <tr>
+                  <table class="table table-striped table-bordered" id="payment-table">
+                    <thead>
+                      <tr style="background-color: #e6ffe6;">
                         <th style="width: 10px">#</th>
                         <th>Transaction ID</th>
                         <th>Payment</th>
@@ -180,6 +182,8 @@ $counter = 1;
                         <th>Date Deposit</th>
                         <th width=15%;>Action</th>
                       </tr>
+                      </thead>
+                      <tbody>
                       <?php if(isset($payments) AND count($payments) > 0): ?>
                           <?php foreach ($payments as $key => $value): ?>
                                <tr>
@@ -203,10 +207,7 @@ $counter = 1;
                                 </td>
                               </tr>  
                           <?php endforeach; ?>
-                      <?php else: ?>
-                          <tr>
-                              <td colspan="5" style="text-align: center"><b>No payment was made on your account.</b></td>
-                          </tr>      
+                          
                       <?php endif; ?>      
                     </tbody>
                   </table>
@@ -249,10 +250,32 @@ $counter = 1;
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+
+<script>
+    $(document).ready(function() {
+        $('#payment-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": true,
+            "columns": [
+            {"name":"first", "orderable":true},
+            {"name":"second", "orderable":true},
+            {"name":"third", "orderable":true},
+            {"name":"fourth", "orderable":true},
+            {"name":"fifth", "orderable":true},
+            {"name":"sixth", "orderable":false},
+            ]
+        });
+    });
+
+</script>
 </body>
 </html>
