@@ -86,12 +86,12 @@ foreach ($reservationsByCustomer as $key => $value){
   <h3 style="margin-top: -5px; margin-bottom: 5px; font-weight: bold;">My Account</h3>
   <div class="break"></div>
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#profile-tab-content">Profile</a></li>
+    <li class="active"><a data-toggle="tab" href="#profile-tab-content" id="profile-tab">Profile</a></li>
     <!--<li><a data-toggle="tab" href="#wishlist-tab-content">Wish List</a></li>-->
-    <li><a data-toggle="tab" href="#order-tab-content">Orders</a></li>
-    <li><a data-toggle="tab" href="#reservation-tab-content">Reservations</a></li>
-    <li><a data-toggle="tab" href="#notification-tab-content">Notification</a></li>
-    <li><a data-toggle="tab" href="#accountSettings-tab-content">Settings</a></li>
+    <li><a data-toggle="tab" href="#order-tab-content" id="order-tab">Orders</a></li>
+    <li><a data-toggle="tab" href="#reservation-tab-content" id="reservation-tab">Reservations</a></li>
+    <li><a data-toggle="tab" href="#notification-tab-content" id="notif-tab">Notification</a></li>
+    <li><a data-toggle="tab" href="#accountSettings-tab-content" id="account-tab">Settings</a></li>
   </ul>
 
   <div class="tab-content">
@@ -265,7 +265,7 @@ foreach ($reservationsByCustomer as $key => $value){
                                     <div class="form-group">
                                         <p>Good day! Thank you for ordering medical supplies at OPS! The following is the list of your orders:</p>
                                         <textarea class="form-control order-details" rows="5" style="width:100%" disabled="disabled"></textarea>
-                                        <input type="text" class="hidden current_orderID" value="">
+                                        <input type="text" class="hidden current_ID" value="">
                                         <input type="text" class="hidden total_amount" value="">
                                     </div>
                                     <div class="form-group">
@@ -286,7 +286,6 @@ foreach ($reservationsByCustomer as $key => $value){
                                     </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn btn-success pull-right btn-send" disabled="disabled">Send <i class="fa fa-share-square-o"></i></button>
-                                        <button type="submit" class="btn btn-success pull-right btn-resend" style="display: none;" disabled="disabled">Re-send  <i class="fa fa-share-square-o"></i></button>
                                     </div>
                                 </form>
                             </div>
@@ -356,34 +355,34 @@ foreach ($reservationsByCustomer as $key => $value){
                       <div class="form-group">
                           <p>Good day! Thank you for ordering medical supplies at OPS! The following is the list of your orders:</p>
                           <textarea class="form-control reservation-details" rows="5" style="width:100%" disabled="disabled"></textarea>
-                          <input type="text" class="hidden current_reserveID" value="">
-                          <input type="text" class="hidden r-total_amount" value="">
+                          <input type="text" class="hidden current_ID" value="">
+                          <input type="text" class="hidden total_amount" value="">
                       </div>
                       <div class="form-group">
                           <p>Please deposit your full payment in the bank account provided below within 7 days to process your order.</p>
                           <p>Reply with the deposit number when you paid your order:</p>
                       </div>
                       <div class="form-group">
-                          <p class="errMess r-dpNumEmpty" style="display: none;">*This is a required Field.</p>
+                          <p class="errMess dpNumEmpty" style="display: none;">*This is a required Field.</p>
                           <label>Deposit No:</label>
-                          <input type="text" class="form-control" name="r-deposit-number">
+                          <input type="text" class="form-control" name="deposit-number">
                       </div>
                       <div class="form-group">
-                          <select class="form-control" id="payment_mode">
-                              <option value="0">Partial Payment</option>
-                              <option value="1">Full Payment</option>  
-                          </select>
+                        <label>Mode:</label>
+                        <select class="form-control" id="payment-mode">
+                            <option value="0">Partial Payment</option>
+                            <option value="1">Full Payment</option>  
+                        </select>
                       </div>
                       <div class="form-group">
-                          <p class="errMess r-err-deposit" style="display: none;"></p>
-                          <p class="errMess r-dpAmEmpty" style="display: none;">*This is a required Field.</p>
-                          <p class="errMess r-dpAmInvalid" style="display: none;">Numbers Only</p>
+                          <p class="errMess err-deposit" style="display: none;"></p>
+                          <p class="errMess dpAmEmpty" style="display: none;">*This is a required Field.</p>
+                          <p class="errMess dpAmInvalid" style="display: none;">Numbers Only</p>
                           <label>Amount Deposited:</label>
-                          <input type="number" min="0" step="any" class="form-control" name="r-deposit-amount">
+                          <input type="number" min="0" step="any" class="form-control" name="deposit-amount">
                       </div>
                       <div class="form-group">
                           <button type="submit" class="btn btn-success pull-right btn-send-r" disabled="disabled">Send <i class="fa fa-share-square-o"></i></button>
-                          <button type="submit" class="btn btn-success pull-right btn-resend-r" style="display: none;" disabled="disabled">Re-send  <i class="fa fa-share-square-o"></i></button>
                       </div>
                   </form>
                 </div>
@@ -702,15 +701,13 @@ foreach ($reservationsByCustomer as $key => $value){
         
 
         //order form 
-        $(document).on('click', '.order-id', function () {
-            $('.btn-resend').css('display','none');
-            $('.btn-send').css('display','block');
-            $('.btn-resend').prop('disabled',false);
+        $(document).on('click', 'a.order-id', function () {
             $('.btn-send').prop('disabled', false);
             var oid = $(this).attr('data-id');
             var status = $(this).closest('tr').find('td[name="pay_stat"]').attr('data-id');
             console.debug('status'. status)
             console.debug('oid', oid);
+
             
             var data = {
               fcp: 1
@@ -735,7 +732,7 @@ foreach ($reservationsByCustomer as $key => $value){
 
 
                     $('.order-details').val(ord + '\n' + 'Total: ' + parseFloat(tot).toFixed(2));
-                    $('.current_orderID').val(oid);
+                    $('.current_ID').val(oid);
                     $('.total_amount').val(tot);
                     console.debug('total', tot)
                     console.debug('orders', ord)
@@ -744,8 +741,6 @@ foreach ($reservationsByCustomer as $key => $value){
               });
 
               if(status == 1){
-                  $('.btn-resend').css('display','block');
-                  $('.btn-send').css('display','none');
 
                   $.ajax({
                       type: 'POST',
@@ -768,24 +763,15 @@ foreach ($reservationsByCustomer as $key => $value){
 
         $(document).on('click','.btn-send', function(e){
             e.preventDefault();
-            sendPayment($(this), 1, 0);  
+            sendPayment($(this), 0, 1, 'div#order-tab-content');  
         });
-
-        $(document).on('click', '.btn-resend', function(e){
-            e.preventDefault();
-            sendPayment($(this), 1, 0);  
-        });
-
-
 
         //reservation form
         $(document).on('click', '.reservation-id', function () {
-            $('.btn-resend-r').css('display','none');
-            $('.btn-send-r').css('display','block');
-            $('.btn-resend-r').prop('disabled',false);
+
             $('.btn-send-r').prop('disabled', false);
             var rid = $(this).attr('data-id');
-            var status = $(this).closest('tr').find('td[name="r_pay_stat"]').attr('data-id');
+            var status = $(this).closest('tr').find('td[name="pay_stat"]').attr('data-id');
             console.debug('status', status)
             console.debug('rid', rid);
             
@@ -812,17 +798,15 @@ foreach ($reservationsByCustomer as $key => $value){
 
 
                     $('.reservation-details').val(resd + '\n' + 'Total: ' + parseFloat(tot).toFixed(2));
-                    $('.current_reserveID').val(rid);
-                    $('.r-total_amount').val(tot);
+                    $('.current_ID').val(rid);
+                    $('.total_amount').val(tot);
                     console.debug('total', tot)
                     console.debug('res', resd)
 
                   },
               });
 
-              if(status != 0){
-                  $('.btn-resend-r').css('display','block');
-                  $('.btn-send-r').css('display','none');
+              if(status > 0){
 
                   $.ajax({
                       type: 'POST',
@@ -833,8 +817,8 @@ foreach ($reservationsByCustomer as $key => $value){
                           var res = rData.payment_details;
                           $(res).each(function(i,e){
                               console.log(e)
-                              $('input[name="r-deposit-number"]').val(e.deposit_number);
-                              $('input[name="r-deposit-amount"]').val(e.deposit_amount);   
+                              $('input[name="deposit-number"]').val(e.deposit_number);
+                              $('input[name="deposit-amount"]').val(e.deposit_amount);   
                           });
                       }, 
                   });
@@ -844,38 +828,37 @@ foreach ($reservationsByCustomer as $key => $value){
 
         $(document).on('click','.btn-send-r', function(e){
             e.preventDefault();
-            var pm = $('select#payment_mode').val()
-            sendResPayment($(this), pm, 1);  
-        });
+            var pm = $('select#payment-mode').val();
+            console.log(pm)
+            sendPayment($(this), 1, pm, 'div#reservation-tab-content'); 
 
-        $(document).on('click', '.btn-resend-r', function(e){
-            e.preventDefault();
-            var pm = $('select#payment_mode').val();
-            sendResPayment($(this), pm, 1);  
         });
 
 
 
-        function sendPayment(button, pf, pm)
+        function sendPayment(button, pf, pm, tab)
         {
-            $('p.errMess').css('display', 'none');
-            console.log('clicked')
+            $('p.errMess').hide();
+            $('.form-group').removeClass('has-error');
+
             var deposit_number = $(button).closest('form').find('input[name="deposit-number"]').val();
             var deposit_amount = $(button).closest('form').find('input[name="deposit-amount"]').val();
-            var orderID = $(button).closest('form').find('input.current_orderID').val();
+            var current_id = $(button).closest('form').find('input.current_ID').val();
             var total = $(button).closest('form').find('input.total_amount').val();
+            var partial = parseFloat(total) / 2;
+            var due = pf == 1 ? partial : total;
 
             var payment = {
                 dp_number: deposit_number,
                 dp_amount: deposit_amount,
-                tid: orderID,
+                tid: current_id,
                 pf: pf,
                 pm: pm,
             }
 
-            console.log(payment)
+            console.log(due)
 
-            if(deposit_amount >= total){
+            if(deposit_amount >= due){
                 console.log('paid')
                 $.ajax({
                   type: 'POST',
@@ -887,22 +870,22 @@ foreach ($reservationsByCustomer as $key => $value){
                       if(rData.status){
                           $('.sucess-payment').css('display', 'block'); //show success alert
                           $('.alert').delay(3000).fadeOut('fast');
-                          $('div#order-tab-content').find('.box-body').find('.form-control').val('');
+                          $(tab).find('.box-body').find('.form-control').val('');
                       }
 
                       if(rData.dpNumEmpty){
-                          $('div#order-tab-content').find('.dpNumEmpty').closest('.form-group').addClass('has-error');
-                          $('div#order-tab-content').find('p.dpNumEmpty').css('display', 'block');
+                          $(tab).find('.dpNumEmpty').closest('.form-group').addClass('has-error');
+                          $(tab).find('p.dpNumEmpty').css('display', 'block');
                       }
 
                       if(rData.dpAmEmpty){
-                          $('div#order-tab-content').find('.dpAmEmpty').closest('.form-group').addClass('has-error');
-                          $('div#order-tab-content').find('p.dpAmEmpty').css('display', 'block');  
+                          $(tab).find('.dpAmEmpty').closest('.form-group').addClass('has-error');
+                          $(tab).find('p.dpAmEmpty').css('display', 'block');  
                       }
 
                       if(rData.dpAmInvalid){
-                          $('div#order-tab-content').find('.dpAmInvalid').closest('.form-group').addClass('has-error');
-                          $('div#order-tab-content').find('p.dpAmInvalid').css('display', 'block');    
+                          $(tab).find('.dpAmInvalid').closest('.form-group').addClass('has-error');
+                          $(tab).find('p.dpAmInvalid').css('display', 'block');    
                       }
 
                   },
@@ -910,75 +893,29 @@ foreach ($reservationsByCustomer as $key => $value){
             } else {
                 console.log('kulang pera mo')
                 $('p.err-deposit').css('display', 'block');
-                $('p.err-deposit').html('Please pay your total bill of: ' + parseFloat(total).toFixed(2) + ' to continue this order.');
+                if(pm == 1){
+                    $('p.err-deposit').html('Please pay your total bill of: ' + parseFloat(total).toFixed(2) + ' to continue this transaction.');
+                } else {
+                    $('p.err-deposit').html('Please pay half amount of your bill: ' + parseFloat(total).toFixed(2) + ' to continue this transaction.');
+                }    
                 $('p.err-deposit').closest('.form-group').addClass('has-error');
             }
 
         };
 
+        $('#reservation-tab').click(function(){
+            $('#reservation-tab-content').find('input').val('');  
+            $('#reservation-tab-content').find('textarea').val('');
+            $('p.errMess').hide();
+            $('.form-group').removeClass('has-error');  
+        });
 
-        function sendResPayment(button, pf, pm)
-        {
-            $('p.errMess').css('display', 'none');
-            console.log('clicked')
-            var deposit_number = $(button).closest('form').find('input[name="r-deposit-number"]').val();
-            var deposit_amount = $(button).closest('form').find('input[name="r-deposit-amount"]').val();
-            var reservationID = $(button).closest('form').find('input.current_reserveID').val();
-            var total = $(button).closest('form').find('input.r-total_amount').val();
-            var partial = parseFloat(total) / 2;
-            console.debug('partial', partial)
-
-            var payment = {
-                dp_number: deposit_number,
-                dp_amount: deposit_amount,
-                tid: reservationID,
-                pf: pf,
-                pm: pm,
-            }
-
-            console.log(payment)
-            
-            if(deposit_amount >= partial){
-                console.log('paid')
-                $.ajax({
-                  type: 'POST',
-                  url: serverURL + '/ops/data-manager/add-payment.php',
-                  data: payment,
-                  dataType: 'json',
-                  success: function(rData){
-                      console.log(rData)
-                      if(rData.status){
-                          $('.sucess-payment').css('display', 'block'); //show success alert
-                          $('.alert').delay(3000).fadeOut('fast');
-                          $('div#reservation-tab-content').find('.box-body').find('.form-control').val('');
-                      }
-
-                      if(rData.dpNumEmpty){
-                          $('div#reservation-tab-content').find('.r-dpNumEmpty').closest('.form-group').addClass('has-error');
-                          $('div#reservation-tab-content').find('p.r-dpNumEmpty').css('display', 'block');
-                      }
-
-                      if(rData.dpAmEmpty){
-                          $('div#reservation-tab-content').find('.r-dpAmEmpty').closest('.form-group').addClass('has-error');
-                          $('div#reservation-tab-content').find('p.r-dpAmEmpty').css('display', 'block');  
-                      }
-
-                      if(rData.dpAmInvalid){
-                          $('div#reservation-tab-content').find('.r-dpAmInvalid').closest('.form-group').addClass('has-error');
-                          $('div#reservation-tab-content').find('p.r-dpAmInvalid').css('display', 'block');    
-                      }
-
-                  },
-              });
-            } else {
-                console.log('kulang pera mo')
-                $('p.r-err-deposit').css('display', 'block');
-                $('p.r-err-deposit').html('Please pay at least half of your total bill of ' + parseFloat(total).toFixed(2) + ' to continue this reservation');
-                $('p.r-err-deposit').closest('.form-group').addClass('has-error');
-            }
-
-        };
-
+        $('#order-tab').click(function(){
+            $('#order-tab-content').find('input').val('');  
+            $('#order-tab-content').find('textarea').val('');  
+            $('p.errMess').hide();
+            $('.form-group').removeClass('has-error'); 
+        });
 
   });
 </script>

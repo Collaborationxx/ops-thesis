@@ -29,16 +29,22 @@ if(empty($deposit_amount)){
 if($pf == 0){
 	$col = 'order_id';
 	$tbl = 'order_tbl';
+	$mode = 1;
 } else {
 	$col = 'reservation_id';
 	$tbl = 'reservation_tbl';
+	if($pm == 0){
+		$mode = 1;
+	} else{
+		$mode = 2;
+	}
 }
 
 
 if(empty($error['dpNumEmpty']) && empty($error['dpAmEmpty']) && empty($error['dpAmInvalid']) ){
 	$query = "INSERT INTO `payment` ($col, deposit_number, deposit_amount, payment_for, payment_mode) VALUES ($id, '$deposit_number', $deposit_amount, $pf, $pm)";
 	if(mysqli_query($con, $query)){
-        $subQuery = "UPDATE `$tbl` SET payment_status = $pm WHERE id = $id";
+        $subQuery = "UPDATE `$tbl` SET payment_status = $mode WHERE id = $id";
         if(mysqli_query($con, $subQuery)){
            $response = array('status' => 'success');
     	}
