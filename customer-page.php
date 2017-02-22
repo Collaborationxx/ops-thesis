@@ -6,6 +6,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
   header('location: index.php');
 }
 
+include('authentication/functions.php');
 include('data-manager/get-profile.php');
 include('data-manager/get-orders-by-customer.php');
 include('data-manager/get-reservation-by-customer.php');
@@ -236,7 +237,7 @@ foreach ($reservationsByCustomer as $key => $value){
                                                 <td><?php echo $i++; ?></td>
                                                 <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y').'-O-'.$okey; ?></a></td>
                                                 <td><?php echo date('F/j/Y',$oVal['order_date']); ?></td>
-                                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 1 ? 'Payment sent. Waiting for confirmation' : 'Waiting for Payment'; ?></td>
+                                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 0 ? 'Waiting for payment' : 'Paid' ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                     <?php else: ?>
@@ -327,7 +328,7 @@ foreach ($reservationsByCustomer as $key => $value){
                                 <td><?php echo $i++; ?></td>
                                 <td><a href="#" class="reservation-id" data-id="<?php echo $rkey; ?>"><?php echo "OPS-".date('Y').'-R-'.$rkey; ?></a></td>
                                 <td><?php echo date('F/j/Y',$rVal['reserved_date']); ?></td>
-                                <td name="r_pay_stat" data-id="<?php echo $rVal['payment_status']; ?>"><?php echo $rVal['payment_status'] == 1 ? 'Payment sent. Waiting for confirmation' : 'Waiting for Payment'; ?></td>
+                                <td name="r_pay_stat" data-id="<?php echo $rVal['payment_status']; ?>"><?php echo paymentStatus($rVal['payment_status']); ?> </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php else: ?>
@@ -708,6 +709,7 @@ foreach ($reservationsByCustomer as $key => $value){
             $('.btn-send').prop('disabled', false);
             var oid = $(this).attr('data-id');
             var status = $(this).closest('tr').find('td[name="pay_stat"]').attr('data-id');
+            console.debug('status'. status)
             console.debug('oid', oid);
             
             var data = {
@@ -784,6 +786,7 @@ foreach ($reservationsByCustomer as $key => $value){
             $('.btn-send-r').prop('disabled', false);
             var rid = $(this).attr('data-id');
             var status = $(this).closest('tr').find('td[name="r_pay_stat"]').attr('data-id');
+            console.debug('status', status)
             console.debug('rid', rid);
             
             var data = {
@@ -817,7 +820,7 @@ foreach ($reservationsByCustomer as $key => $value){
                   },
               });
 
-              if(status == 1){
+              if(status != 0){
                   $('.btn-resend-r').css('display','block');
                   $('.btn-send-r').css('display','none');
 
