@@ -143,7 +143,16 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                 <h3 class="box-title"><i class="fa fa-file"></i>   Trading Preview</h3>
                 <button class="btn btn-success btn-sm pull-right btn-order" style="margin-bottom: 10px;" disabled="disabled"><i class="fa fa-arrow-down"></i>   Save</button>
               </div>
-              <div class="box-body no-padding">
+              <br>
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-md-12 col-xs-12">
+                    <label style="padding-left: 15px;">Customer Name:</label>
+                    <input type="text" name="customer-name" style="border-color: gray; border-radius: 5px; width: 80%;">
+                  </div>
+                </div>
+              </div>
+              <div class="box-body">
                 <table class="table table-striped table-bordered preview-table">
                   <tbody>
                     <tr>
@@ -152,7 +161,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       <th>Quantity</th>
                       <th>Price</th>
                       <th>Total Price</th>
-                      <th></th>
                     </tr>
                   </tbody>
                 </table>
@@ -183,6 +191,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script src="plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <!-- bootbox.js -->
 <script src="assets/js/bootbox.min.js"></script>
+
 <script>
   $(document).ready(function(){
       $('.alert').css('display','none');

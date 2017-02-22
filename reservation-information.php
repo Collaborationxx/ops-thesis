@@ -156,7 +156,7 @@ include('authentication/functions.php');
       </h1>
       <ol class="breadcrumb">
        <li><a href="dashboard.php">Home</a></li>
-       <li><a href="new-order.php">New Reservations</a></li>
+       <li><a href="new-reservation.php">New Reservations</a></li>
        <li class="active">Reservation Information</li>
      </ol>
     </section>
