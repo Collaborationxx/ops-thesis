@@ -88,3 +88,21 @@ function category($id)
     return $name;
 
 }
+
+function paymentStatus($param)
+{
+    $status = '';
+    switch ($param) {
+        case 0:
+            $status = 'Waiting for payment';
+            break;
+        case 1:
+            $status = 'Partially Paid';
+            break;
+        case 2 : 
+            $status = 'Fully Paid';  
+            break;
+    }
+
+    return $status;
+}

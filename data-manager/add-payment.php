@@ -36,9 +36,9 @@ if($pf == 0){
 
 
 if(empty($error['dpNumEmpty']) && empty($error['dpAmEmpty']) && empty($error['dpAmInvalid']) ){
-	$query = "INSERT INTO `payment` ($col, deposit_number, deposit_amount, payment_for, payment_mode) VALUES ($order_id, '$deposit_number', $deposit_amount, $pf, $pm)";
+	$query = "INSERT INTO `payment` ($col, deposit_number, deposit_amount, payment_for, payment_mode) VALUES ($id, '$deposit_number', $deposit_amount, $pf, $pm)";
 	if(mysqli_query($con, $query)){
-        $subQuery = "UPDATE `order_tbl` SET payment_status = 1 WHERE id = $order_id";
+        $subQuery = "UPDATE `$tbl` SET payment_status = $pm WHERE id = $id";
         if(mysqli_query($con, $subQuery)){
            $response = array('status' => 'success');
     	}
