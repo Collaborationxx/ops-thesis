@@ -129,7 +129,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   </form>
                 </div>
                 <div class="box-footer">
-                  <button type="submit" class="btn btn-success pull-right place-order" disabled="disabled">Place Order</button>
+                  <button type="submit" class="btn btn-success pull-right place-order" disabled="disabled">Record</button>
                 </div>
             </div>
           </div>
@@ -141,9 +141,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-file"></i>   Trading Preview</h3>
-                <button class="btn btn-success btn-sm pull-right btn-order" style="margin-bottom: 10px;" disabled="disabled"><i class="fa fa-arrow-down"></i>   Save</button>
+                <button class="btn btn-success btn-sm pull-right btn-order" style="margin-bottom: 10px;" disabled="disabled"> Place Order</button>
               </div>
-              <br>
+              <!-- <br>
               <div class="row">
                 <div class="form-group">
                   <div class="col-md-12 col-xs-12">
@@ -151,9 +151,17 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <input type="text" name="customer-name" style="border-color: gray; border-radius: 5px; width: 80%;">
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="box-body">
                 <table class="table table-striped table-bordered preview-table">
+                  <thead>
+                    <tr>
+                      <td colspan="5">
+                        <label>Customer Name:</label>
+                        <input type="text" name="customer-name-otc" style="width: 70%; margin-left: 15px;">
+                      </td>
+                    </tr>
+                  </thead>
                   <tbody>
                     <tr>
                       <th>Product Photo</th>
@@ -167,7 +175,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               </div>
               <div class="box-footer">
                 <div class="row">
-                  <div class="col-md-12 col-xs-12">
+                  <div class="col-md-12 col-xs-12" style="width: 89%;">
                     <span class="pull-right"><b>TOTAL:</b>  &#8369;
                       <input name="total-price" type="text" value="0.00" disabled="disabled">
                     </span>

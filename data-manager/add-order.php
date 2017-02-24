@@ -11,6 +11,7 @@ $query = "INSERT INTO `order_tbl` (order_type) VALUES ($orderType)";
 if(mysqli_query($con, $query)){
     $order_id = mysqli_insert_id($con);
     foreach ($orders as $key => $value){
+        
         $product = $value['prod_id'];
         $price = $value['price'];
         $qty = $value['qty'];
@@ -25,3 +26,6 @@ if(mysqli_query($con, $query)){
     header('Content-Type: application/json');
     echo json_encode($response);
 }
+
+
+
