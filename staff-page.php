@@ -109,7 +109,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
                     <div class="form-group">
                       <p class="errMess err-req hidden">Make sure to fill in product Name and Quantity</p>
-                      <p class="errMess no-result hidden">No product matches your search</p>
+                      <p class="errMess no-result hidden">No product matches your search. Maybe the product is already phase out.</p>
                       <label>Product Name:</label>
                       <input type="text" class="form-control product-name" data-id="" data-image="" name="prod-name" placeholder="Type at least three characters">
                     </div>

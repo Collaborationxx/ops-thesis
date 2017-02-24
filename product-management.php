@@ -359,7 +359,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         </div>
                       </div>
                     </div>
-                    <div class="row">
+                    <div class="row phase-out-div" style="display: none;">
                       <div class="col-md-12 col-xs-12">
                         <label>Phase Out</label>
                           <select class="form-control" id="prod-phase-out">
@@ -552,7 +552,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
     $(document).on('click', '.edit-product', function (e) {
       e.preventDefault();
-
+      $('div.phase-out-div').css('display','block');
       $('div#add-product-modal div.box-header').find('h3').html('Update Product');
       $('div#add-product-modal div.form-group').removeClass('has-error');
       $('p.errMess').css('display','none');
