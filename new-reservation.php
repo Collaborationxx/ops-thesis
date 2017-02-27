@@ -180,6 +180,7 @@ include('authentication/functions.php');
                       <tr style="background-color: #e6ffe6;">
                         <th style="width: 10px">#</th>
                         <th>Reservation ID</th>
+                        <th>Customer Name</th>
                         <th>Date Ordered</th>
                         <th>Payment Status</th>
                       </tr>
@@ -188,6 +189,7 @@ include('authentication/functions.php');
                       <tr>
                         <td>1.</td>
                         <td><a href="reservation-information.php">OPS-43-34</a></td>
+                        <td> *further development</td>
                         <td>01/10/17</td>
                         <td>Full</td>
                       </tr>
@@ -249,7 +251,8 @@ include('authentication/functions.php');
             {"name":"first", "orderable":true},
             {"name":"second", "orderable":true},
             {"name":"third", "orderable":true},
-            {"name":"fourth", "orderable":false},
+            {"name":"fourth", "orderable":true},
+            {"name":"fifth", "orderable":false},
             ]
         });
     });

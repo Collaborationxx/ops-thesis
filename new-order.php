@@ -189,6 +189,7 @@ $i = 1; //for table row counting
                       <tr style="background-color: #e6ffe6;">
                         <th style="width: 10px">#</th>
                         <th>Order ID</th>
+                        <th>Customer Name</th>
                         <th>Date Ordered</th>
                         <th>Payment Status</th>
                       </tr> 
@@ -197,8 +198,9 @@ $i = 1; //for table row counting
                       <?php if(isset($distinct) AND count($distinct) > 0): ?>
                           <?php foreach ($distinct as $key => $value): ?>
                               <tr>
-                                  <td><?php echo $i++; ?></td>
+                                  <td><?php echo $i++; ?></td> 
                                   <td><a href="order-information.php?oid=<?php echo $key;?>&cid=<?php echo $value['customer_id']; ?>"><?php echo "OPS-".date('Y').'-O-'.$key; ?></a></td>
+                                  <td> *further development</td>
                                   <td><?php echo date('F/j/Y',$value['order_date']); ?></td>
                                   <td><?php  echo $value['payment_status'] == 0 ? 'Pending' : 'Paid'; ?> </td>
                               </tr>
@@ -262,7 +264,8 @@ $i = 1; //for table row counting
             {"name":"first", "orderable":true},
             {"name":"second", "orderable":true},
             {"name":"third", "orderable":true},
-            {"name":"fourth", "orderable":false},
+            {"name":"fourth", "orderable":true},
+            {"name":"fifth", "orderable":false},
             ]
         });
     });

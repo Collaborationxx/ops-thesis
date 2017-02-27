@@ -49,12 +49,9 @@ foreach ($reservationsByCustomer as $key => $value){
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="plugins/dist/css/skins/skin-green.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
+  <!-- dataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
+
 
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
   <link rel="shortcut icon" href="assets/images/small-logo.png" />
@@ -184,50 +181,23 @@ foreach ($reservationsByCustomer as $key => $value){
       </div>
     </div>
 
-    <!--
-    <div id="wishlist-tab-content" class="tab-pane fade in">
-      <div class="panel-body">
-        <table class="table table-striped table-bordered table-responsive">
-          <tbody>
-          <tr>
-            <th style="width: 10px">#</th>
-            <th>Item</th>
-            <th>Quatity</th>
-            <th>Preview</th>
-            <th style="text-align: center;">Action</th>
-          </tr>
-          <tr>
-            <td>1.</td>
-            <td>Wheelchair</td>
-            <td>1</td>
-            <td>
-              <img src="assets/images/wheelchair.jpg" class="ops-table-img">
-            </td>
-            <td style="text-align: center;">
-              <a href="#" data-toggle="tooltip" title="Remove this item from Wishlist"><i class="fa fa-times text-danger"></i></a>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>-->
 
     <div id="order-tab-content" class="tab-pane fade in">
         <div class="panel-body">
             <div class="row">
-                <div class="col-lg-4 col-xs-12">
+                <div class="col-lg-6 col-xs-12">
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <h3 class="box-title"><i class="fa fa-inbox"></i>   Orders</h3>
                         </div>
-                        <div class="box-body no-padding">
-                            <table class="table table-striped">
+                        <div class="box-body">
+                            <table class="table table-striped table-bordered" id="order-table">
                                   <thead>
-                                    <tr>
+                                    <tr style="background-color: #e6ffe6;">
                                         <th>#</th>
                                         <th>Order ID</th>
                                         <th>Date</th>
-                                        <th>Payment Status</th>
+                                        <th>Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -251,7 +221,7 @@ foreach ($reservationsByCustomer as $key => $value){
                     </div>
                 </div>
 
-                <div class="col-lg-8 col-xs-12">
+                <div class="col-lg-6 col-xs-12">
                     <div class="box box-success">
                         <div class="box-header with-border">
                             <div class="box-header with-border">
@@ -306,19 +276,19 @@ foreach ($reservationsByCustomer as $key => $value){
     <div id="reservation-tab-content" class="tab-pane fade in">
       <div class="panel-body">
         <div class="row">
-          <div class="col-lg-4 col-xs-12">
+          <div class="col-lg-6 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-inbox"></i>   Reservation</h3>
               </div>
-              <div class="box-body no-padding">
-                <table class="table table-striped">
+              <div class="box-body">
+                <table class="table table-striped table-bordered" id="reservation-table">
                   <thead>
-                    <tr>
+                    <tr style="background-color: #e6ffe6;">
                         <th>#</th>
                         <th>Reservation ID</th>
                         <th>Date</th>
-                        <th>Payment Status</th>
+                        <th>Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -342,7 +312,7 @@ foreach ($reservationsByCustomer as $key => $value){
             </div>
           </div>
 
-          <div class="col-lg-8 col-xs-12">
+          <div class="col-lg-6 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
                 <div class="box-header with-border">
@@ -403,29 +373,31 @@ foreach ($reservationsByCustomer as $key => $value){
     <div id="notification-tab-content" class="tab-pane fade in">
       <div class="panel-body">
         <div class="row">
-          <div class="col-lg-4 col-xs-12">
+          <div class="col-lg-6 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-inbox"></i>   Tracking Orders</h3>
               </div>
-              <div class="box-body no-padding">
-                <table class="table table-striped">
+              <div class="box-body">
+                <table class="table table-striped table-bordered" id="notification-table">
+                  <thead>
+                    <tr style="background-color: #e6ffe6;">
+                      <th>Message</th>
+                      <th>Date</th>
+                    </tr>
+                  </thead>
                   <tbody>
-                  <tr>
-                    <th>Message</th>
-                    <th>Date</th>
-                  </tr>
-                  <tr>
-                    <td>Tracking Number</td>
-                    <td>01/06/17</td>
-                  </tr>
+                    <tr>
+                      <td>Tracking Number</td>
+                      <td>01/06/17</td>
+                    </tr>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
 
-          <div class="col-lg-8 col-xs-12">
+          <div class="col-lg-6 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
@@ -528,6 +500,56 @@ foreach ($reservationsByCustomer as $key => $value){
 <script src="plugins/dist/js/app.min.js"></script>
 
 <script src="plugins/js/validator.js"></script>
+
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#order-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": true,
+        });
+    });
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#reservation-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": true,
+        });
+    });
+
+</script>
+
+<script>
+    $(document).ready(function() {
+        $('#notification-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": true,
+          });
+    });
+
+</script>
 
 <script>
     $(function () {
