@@ -152,13 +152,13 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   </div>
                 </div>
               </div> -->
+
               <div class="box-body">
                 <table class="table table-striped table-bordered preview-table">
                   <thead>
                     <tr>
                       <td colspan="5">
-                        <label>Customer Name:</label>
-                        <input type="text" name="customer-name-otc" style="width: 70%; margin-left: 15px;">
+                        <input type="text" class="form-control customer-name" placeholder="Customer Name">
                       </td>
                     </tr>
                   </thead>

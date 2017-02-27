@@ -223,7 +223,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               </div>
               <div class="box-footer">
                 <div class="row">
-                  <div class="col-md-12 col-xs-12">
+                  <div class="col-md-6 col-xs-12">
+                    <span><i class="fa fa-check-square text-success"></i> Available | <i class="fa fa-check-square text-danger"></i> Phase Out</span>
+                  </div>
+                  <div class="col-md-6 col-xs-12">
                     <span class="pull-right">This table contains the record of products available for trading.</span>
                   </div>
                 </div>
