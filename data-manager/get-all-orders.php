@@ -7,6 +7,7 @@ $query = "
             SELECT
                 o.id,
                 o.customer_id,
+                o.customer_name,
                 UNIX_TIMESTAMP(o.order_date) as order_date,
                 od.product_id,
                 od.price,
