@@ -2,7 +2,8 @@
 include(dirname(__FILE__).'/../config/db_connection.php');
 include('../authentication/functions.php');
 
-$id= test_input($_POST['tid']);
+$id = test_input($_POST['tid']);
+$pid = isset($_POST['pid']) ? test_input($_POST['pid']) : '';
 $deposit_number = test_input($_POST['dp_number']);
 $deposit_amount = test_input($_POST['dp_amount']);
 $pf = $_POST['pf']; //payment for 0=order; 1=reservation
@@ -42,11 +43,18 @@ if($pf == 0){
 
 
 if(empty($error['dpNumEmpty']) && empty($error['dpAmEmpty']) && empty($error['dpAmInvalid']) ){
-	$query = "INSERT INTO `payment` ($col, deposit_number, deposit_amount, payment_for, payment_mode) VALUES ($id, '$deposit_number', $deposit_amount, $pf, $pm)";
+	$query = '';
+	if(!empty($pid)){ //edit mode (update payment)
+		$query = "UPDATE `payment` SET deposit_number = $deposit_number, deposit_amount = deposit_amount + $deposit_amount, payment_mode = $pm WHERE id = $pid ";
+	} else { //insert mode (new payment)
+		$query = "INSERT INTO `payment` ($col, deposit_number, deposit_amount, payment_for, payment_mode) VALUES ($id, '$deposit_number', $deposit_amount, $pf, $pm)";
+	}
 	if(mysqli_query($con, $query)){
         $subQuery = "UPDATE `$tbl` SET payment_status = $mode WHERE id = $id";
         if(mysqli_query($con, $subQuery)){
            $response = array('status' => 'success');
+    	} else {
+    		echo("Error description: " . mysqli_error($con));
     	}
     	header('Content-Type: application/json');
 		echo json_encode($response);

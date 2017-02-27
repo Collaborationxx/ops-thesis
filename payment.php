@@ -202,8 +202,8 @@ $counter = 1;
                                 <td><?php echo date('F/j/Y',$value['pay_date']); ?></td>
                                 <td>
                                    <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank" data-toggle="tooltip" title="Verify?"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                                   <a href="" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-                                   <a href="" data-toggle="tooltip" title="Reject?"><span class="text-warning"><i class="fa fa-thumbs-down"></i></span></a>
+                                   <a href="#" class="confirm-payment" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+                                   <a href="#" class="reject-payment" data-toggle="tooltip" title="Reject?"><span class="text-warning"><i class="fa fa-thumbs-down"></i></span></a>
                                 </td>
                               </tr>  
                           <?php endforeach; ?>
@@ -273,6 +273,17 @@ $counter = 1;
             {"name":"fifth", "orderable":true},
             {"name":"sixth", "orderable":false},
             ]
+        });
+
+
+        $(document).on('click', '.confirm-payment', function(e){
+            e.preventDefault();
+
+        });
+
+        $(document).on('click', '.reject-payment', function(e){
+            e.preventDefault();
+
         });
     });
 
