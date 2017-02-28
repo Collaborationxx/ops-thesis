@@ -12,6 +12,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('authentication/functions.php');
 include('data-manager/get-all-payment.php');
+$serverURL = "http://$_SERVER[HTTP_HOST]";
 $counter = 1;
 // echo '<pre>'; print_r($payments); exit;
 ?>
@@ -169,6 +170,7 @@ $counter = 1;
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-credit-card-alt"></i>   Payment</h3>
+                <span class="pull-right">Green background in number means payment is confirmed and red if its rejected.</span>
               </div>
               <div class="box-body">
                 <div class="table-responsive">
@@ -187,8 +189,8 @@ $counter = 1;
                       <?php if(isset($payments) AND count($payments) > 0): ?>
                           <?php foreach ($payments as $key => $value): ?>
                                <tr>
-                                <td><?php echo $counter++ ?></td>
-                                <td><a href="#" class="transacID">
+                                <td class="number-counter <?php if($value['status'] == 2) echo'bg-danger'; elseif($value['status'] == 1) echo 'bg-success'; else echo ''; ?>"><?php echo $counter++ ?></td>
+                                <td><a href="#" data-id="<?php echo $value['id']; ?>" class="transacID">
                                   <?php 
                                     if($value['payment_for'] == 0){
                                         echo "OPS-".date('Y').'-O-'.$value['order_id'];
@@ -203,7 +205,7 @@ $counter = 1;
                                 <td>
                                    <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank" data-toggle="tooltip" title="Verify?"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
                                    <a href="#" class="confirm-payment" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-                                   <a href="#" class="reject-payment" data-toggle="tooltip" title="Reject?"><span class="text-warning"><i class="fa fa-thumbs-down"></i></span></a>
+                                   <a href="#" class="reject-payment" data-toggle="tooltip" title="Reject?"><span class="text-danger"><i class="fa fa-thumbs-down"></i></span></a>
                                 </td>
                               </tr>  
                           <?php endforeach; ?>
@@ -253,10 +255,14 @@ $counter = 1;
 <!-- dataTables -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+<!-- bootbox.js -->
+<script src="assets/js/bootbox.min.js"></script>
 
 
 <script>
     $(document).ready(function() {
+
+        var serverURL = <?php echo json_encode($serverURL); ?>;
         $('#payment-table').dataTable({
             "paging": true,
             "lengthChange": true,
@@ -271,7 +277,7 @@ $counter = 1;
             {"name":"third", "orderable":true},
             {"name":"fourth", "orderable":true},
             {"name":"fifth", "orderable":true},
-            {"name":"sixth", "orderable":false},
+            {"name":"sixth", "orderable":false}
             ]
         });
 
@@ -279,10 +285,70 @@ $counter = 1;
         $(document).on('click', '.confirm-payment', function(e){
             e.preventDefault();
 
+            var id = $(this).closest('tr').find('.transacID').attr('data-id');
+
+            var data = {
+              id: id,
+              status: 1
+            }
+
+            console.log(data)
+
+            $.ajax({
+                type: 'POST',
+                url: serverURL + '/ops/data-manager/edit-payment-status.php',
+                data: data,
+                dataType: 'json',
+                success: function(rData){
+                    console.log(rData)
+                    if(rData.status){
+                        $(this).closest('tr').find('.number-counter').removeClass('bg-danger').addClass('bg-success');
+                        bootbox.alert({
+                            message: "Payment Confirmed!",
+                            callback: function () {
+                                console.log('This was logged in the callback!');
+                                location.reload();
+                            }
+                        })
+                    }    
+                },
+
+            });
+
         });
 
         $(document).on('click', '.reject-payment', function(e){
             e.preventDefault();
+
+            var id = $(this).closest('tr').find('.transacID').attr('data-id');
+
+            var data = {
+              id: id,
+              status: 2
+            }
+
+            console.log(data)
+
+            $.ajax({
+                type: 'POST',
+                url: serverURL + '/ops/data-manager/edit-payment-status.php',
+                data: data,
+                dataType: 'json',
+                success: function(rData){
+                    console.log(rData)
+                    if(rData.status){
+                        $(this).closest('tr').find('.number-counter').removeClass('bg-success').addClass('bg-danger');
+                        bootbox.alert({
+                            message: "Payment Rejected!",
+                            callback: function () {
+                                console.log('This was logged in the callback!');
+                                location.reload();
+                            }
+                        });
+                    }
+                },
+
+            });
 
         });
     });

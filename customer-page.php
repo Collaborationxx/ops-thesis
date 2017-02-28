@@ -504,56 +504,9 @@ foreach ($reservationsByCustomer as $key => $value){
 <!-- dataTables -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
-
-
-<script>
-    $(document).ready(function() {
-        $('#order-table').dataTable({
-            "paging": true,
-            "lengthChange": true,
-            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
-            "searching": true,
-            "ordering": false,
-            "info": true,
-            "autoWidth": true,
-        });
-    });
-
-</script>
-
-<script>
-    $(document).ready(function() {
-        $('#reservation-table').dataTable({
-            "paging": true,
-            "lengthChange": true,
-            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
-            "searching": true,
-            "ordering": false,
-            "info": true,
-            "autoWidth": true,
-        });
-    });
-
-</script>
-
-<script>
-    $(document).ready(function() {
-        $('#notification-table').dataTable({
-            "paging": true,
-            "lengthChange": true,
-            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
-            "searching": true,
-            "ordering": false,
-            "info": true,
-            "autoWidth": true,
-          });
-    });
-
-</script>
-
 <script>
     $(function () {
-        var serverURL = <?php echo json_encode($serverURL)?> // get server url (localhost/webserver)
+        var serverURL = <?php echo json_encode($serverURL)?>; // get server url (localhost/webserver)
         var partial = '';
         $('.alert').css('display', 'none');
         $('p.errMess').css('display', 'none');
@@ -970,6 +923,43 @@ foreach ($reservationsByCustomer as $key => $value){
             $('.btn-send').prop('disabled', false);
 
         });
+
+
+        //dataTables pagination scripts
+        $('#order-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": true,
+        });
+
+        $('#reservation-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": true,
+        });
+
+        $('#notification-table').dataTable({
+            "paging": true,
+            "lengthChange": true,
+            "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+            "searching": true,
+            "ordering": false,
+            "info": true,
+            "autoWidth": true,
+        });
+
+
+
+
+
 
   });
 </script>
