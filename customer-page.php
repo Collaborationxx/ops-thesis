@@ -6,10 +6,16 @@ if($_SESSION["username"] == null) { //if not redirect to login page
   header('location: index.php');
 }
 
+$userID = $_SESSION['id'];
+
 include('authentication/functions.php');
 include('data-manager/get-profile.php');
 include('data-manager/get-orders-by-customer.php');
 include('data-manager/get-reservation-by-customer.php');
+include('data-manager/get-notifications.php');
+
+echo "<pre>"; print_r($notifications); exit;
+
 
 $serverURL = "http://$_SERVER[HTTP_HOST]";
 $i = 1;
@@ -373,16 +379,16 @@ foreach ($reservationsByCustomer as $key => $value){
     <div id="notification-tab-content" class="tab-pane fade in">
       <div class="panel-body">
         <div class="row">
-          <div class="col-lg-6 col-xs-12">
+          <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-inbox"></i>   Tracking Orders</h3>
+                <h3 class="box-title"><i class="fa fa-envelope"></i>   My Messages</h3>
               </div>
               <div class="box-body">
                 <table class="table table-striped table-bordered" id="notification-table">
                   <thead>
                     <tr style="background-color: #e6ffe6;">
-                      <th>Message</th>
+                      <th>Subject</th>
                       <th>Date</th>
                     </tr>
                   </thead>
@@ -397,7 +403,7 @@ foreach ($reservationsByCustomer as $key => $value){
             </div>
           </div>
 
-          <div class="col-lg-6 col-xs-12">
+<!--           <div class="col-lg-6 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
@@ -434,11 +440,10 @@ foreach ($reservationsByCustomer as $key => $value){
               </div>
 
             </div>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
-  </div>
   <div id="accountSettings-tab-content" class="tab-pane fade in">
     <div class="panel-body">
       <div class="alert alert-success alert-dismissable alert-update-settings-success" style="display: none;">
@@ -507,6 +512,7 @@ foreach ($reservationsByCustomer as $key => $value){
 <script>
     $(function () {
         var serverURL = <?php echo json_encode($serverURL)?>; // get server url (localhost/webserver)
+        var userID = <?php echo json_encode($userID) ?>; 
         var partial = '';
         $('.alert').css('display', 'none');
         $('p.errMess').css('display', 'none');
@@ -899,6 +905,19 @@ foreach ($reservationsByCustomer as $key => $value){
             }
 
         };
+
+        setInterval(function(){
+            $.ajax({
+                type: 'POST',
+                url: serverURL + '/ops/data-manager/get-notifications-by-customer.php',
+                data: {id: userID},
+                dataType: 'json',
+                success: function(rData){
+                    console.log(rData);
+                },
+
+            });
+        }, 10000);
 
         $('#reservation-tab').click(function(){
             $('#reservation-tab-content').find('input').val('');  
