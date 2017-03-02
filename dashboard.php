@@ -22,6 +22,7 @@ foreach ($allOrders as $key => $value){
     $distinct[$value['id']] = $value;
 }
 $orderCount = count($distinct);
+//echo '<pre>'; print_r($distinc
 //echo '<pre>'; print_r($distinct); exit;
 ?>
 
@@ -197,7 +198,7 @@ $orderCount = count($distinct);
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>53</h3>
+                            <h3>5</h3>
                             <p>New Reservation</p>
                         </div>
                         <div class="icon">
