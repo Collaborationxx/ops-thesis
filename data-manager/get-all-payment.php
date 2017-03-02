@@ -9,7 +9,8 @@ $query = "
             deposit_number,
             deposit_amount,
             UNIX_TIMESTAMP(payment_date) as pay_date,
-            payment_for
+            payment_for,
+            status
         FROM
             payment
         ORDER BY 
