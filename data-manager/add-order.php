@@ -4,10 +4,11 @@ include(dirname(__FILE__).'/../config/db_connection.php');
 $orders = $_POST['order_details'];
 $orderType = $_POST['order_type'];
 $userID = $_POST['user_id'];
+$customerName = $_POST['customer'];
 $response = array();
 
 
-$query = "INSERT INTO `order_tbl` (order_type) VALUES ($orderType)";
+$query = "INSERT INTO `order_tbl` (customer_name, order_type) VALUES ('$customerName', $orderType)";
 if(mysqli_query($con, $query)){
     $order_id = mysqli_insert_id($con);
     foreach ($orders as $key => $value){

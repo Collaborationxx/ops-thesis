@@ -348,7 +348,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           var data = {
               user_id: user_id,
               order_details: orders,
-              order_type: 0
+              order_type: 0,
+              customer : $('.customer-name').val()
           };
 
           console.log(data)
