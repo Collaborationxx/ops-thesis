@@ -14,9 +14,6 @@ include('data-manager/get-orders-by-customer.php');
 include('data-manager/get-reservation-by-customer.php');
 include('data-manager/get-notifications.php');
 
-echo "<pre>"; print_r($notifications); exit;
-
-
 $serverURL = "http://$_SERVER[HTTP_HOST]";
 $i = 1;
 
@@ -34,7 +31,7 @@ foreach ($reservationsByCustomer as $key => $value){
     $rDistinct[$value['id']]['payment_status'] = $value['payment_status'];
 }
 
-// echo '<pre>'; print_r($rDistinct); exit;
+// echo '<pre>'; print_r($notifications); exit;
 ?>
 <!DOCTYPE html>
 <html>
@@ -393,10 +390,18 @@ foreach ($reservationsByCustomer as $key => $value){
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Tracking Number</td>
-                      <td>01/06/17</td>
-                    </tr>
+                    <?php if(isset($notifications) AND count($notifications) > 0): ?>
+                      <?php foreach ($notifications as $nkey => $nValue): ?>
+                        <tr>
+                          <?php if($nValue['type'] == 'b'): ?>
+                            <td data-id="<?php echo empty($nValue['order_id']) ? $nValue['order_id'] : $nValue['reservation_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'Order' : 'Reservation'; ?>" data-status="<?php echo $nValue['payment_status']; ?>"><a href="#" class="notification-subject">Payment Status</a></td>
+                          <?php else: ?>
+                            <td data-id="<?php echo $nValue['tracking_id']; ?>"><a href="#" class="notification-subject">Tracking Number</a></td>
+                          <?php endif; ?>    
+                          <td><?php echo date('F/j/Y',$nValue['insert_date']); ?></td>
+                        </tr>
+                      <?php endforeach; ?>
+                    <?php endif; ?>    
                   </tbody>
                 </table>
               </div>

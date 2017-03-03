@@ -4,7 +4,13 @@ include(dirname(__FILE__).'/../config/db_connection.php');
 $cid = $_SESSION['id'];
 $notifications = array();
 
-$select = " SELECT * 
+$select = " SELECT 
+				id,
+				type,
+				tracking_id,
+				customer_id,
+				payment_id,
+				UNIX_TIMESTAMP(insert_date) as insert_date
 			FROM
 				 `notifications`
 			WHERE
@@ -13,20 +19,25 @@ $select = " SELECT *
 				insert_date DESC
 			";
 
-if($result = mysqli_query($con, $select)){
+if($result = mysqli_query($con, $select)){ 
 	while($row = mysqli_fetch_assoc($result)){
 		$notifications[] = $row; 
 	}
 
 	foreach ($notifications as $key => $value) {
-		$sql = "SELECT * FROM `payment` WHERE id = $value['payment_id']";
-		if($res = mysqli_query($con, $query){
-			$row = mysqli_fetch_assoc();
-			array_push($notifications[$key]['reservation_id'], $row['reservation_id']);
+		$id = $value['payment_id'];
+		$sql = "SELECT * FROM `payment` WHERE id = $id ";
+		if($res = mysqli_query($con, $sql)){
+			$row = mysqli_fetch_assoc($res);
+
+			$rid = isset($row['reservation_id']) ? $row['reservation_id'] : '';
+			$oid = isset($row['order_id']) ? $row['order_id'] : '';
+
+			$notifications[$key]['reservation_id'] = $rid;
+			$notifications[$key]['order_id'] = $oid;
+			$notifications[$key]['payment_status'] = $row['status'];
 		}
 	}
-
-
 
 	mysqli_free_result($result);
 
