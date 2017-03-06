@@ -11,6 +11,12 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
+include('data-manager/tracking.php');
+
+echo '<pre>'; print_r($oData);
+echo '<pre>'; print_r($rData);
+echo '<pre>'; print_r($options); exit;
+
 
 ?>
 <!DOCTYPE html>
@@ -171,7 +177,14 @@ include('authentication/functions.php');
                   <form role="form">
                     <div class="form-group">
                       <label>Order ID</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
+                      <!-- <input type="text" class="form-control order-id" placeholder="Enter ..."> -->
+                      <select id="orderIdSelect" class="form-control">
+                        <?php if(isset($oData) AND count($oData) > 0): ?>
+                          <?php foreach ($oData as $oKey => $oValue): ?>
+                            <option value="<?php echo $oValue['id']; ?>"><?php echo date('Y', $oValue['oDate']); ?></option>
+                          <?php endforeach; ?>
+                        <?php endif; ?>
+                      </select>      
                     </div>
                     <div class="form-group">
                       <label>Order Information</label>
@@ -179,12 +192,12 @@ include('authentication/functions.php');
                     </div>
                     <div class="form-group">
                       <label>Tracking Number</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
+                      <input type="text" class="form-control tracking-number" placeholder="Enter ...">
                     </div>
                   </form>
                 </div>
                 <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Send</button>
+                  <button type="button" class="btn btn-success pull-right btn-send">Send</button>
                 </div>
             </div>
           </div>
@@ -208,12 +221,16 @@ include('authentication/functions.php');
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>OPS-45-345</td>
-                        <td>OPS-S4-34</td>
-                        <td>Rubie Domingo</td>
-                        <td>December 18, 2016</td>
-                      </tr>
+                      <!-- <?php if(isset($tData) AND count($tData) > 0): ?>
+                        <?php foreach ($tData as $tKey => $tValue): ?>
+                          <tr>
+                            <td><?php echo $tValue['order_id']; ?></td>
+                            <td><?php echo $tValue['customer_name']; ?></td>
+                            <td><?php echo $tValue['tracking_number']; ?></td>
+                            <td><?php echo date('F/j/Y',$tValue['date_sent']); ?></td>
+                          </tr>
+                        <?php endforeach; ?>
+                      <?php endif; ?>  -->   
                     </tbody>
                   </table>
                 </div>
@@ -259,8 +276,26 @@ include('authentication/functions.php');
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
+<!-- bootbox.js -->
+<script src="assets/js/bootbox.min.js"></script>
+
 <script>
     $(document).ready(function() {
+
+        $('.btn-send').click(function(){
+            var oid = $('.order-id').val();
+            var tn = $('.tracking-number').val();
+
+            var data = {
+                oid: oid,
+                tn: tn,
+                action: 'c',
+            }
+
+            console.log(data)
+        });      
+
+
         $('#track-order-table').dataTable({
             "paging": true,
             "lengthChange": true,

@@ -380,6 +380,7 @@ foreach ($reservationsByCustomer as $key => $value){
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-envelope"></i>   My Messages</h3>
+                <a href="#" class="btn-refresh pull-right"><i class="fa fa-refresh"></i>  Refresh</a>
               </div>
               <div class="box-body">
                 <table class="table table-striped table-bordered" id="notification-table">
@@ -394,11 +395,14 @@ foreach ($reservationsByCustomer as $key => $value){
                       <?php foreach ($notifications as $nkey => $nValue): ?>
                         <tr>
                           <?php if($nValue['type'] == 'b'): ?>
-                            <td data-id="<?php echo empty($nValue['order_id']) ? $nValue['order_id'] : $nValue['reservation_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'Order' : 'Reservation'; ?>" data-status="<?php echo $nValue['payment_status']; ?>"><a href="#" class="notification-subject">Payment Status</a></td>
+                            <td>
+                              <a class="notification-subject" data-id="<?php echo empty($nValue['order_id']) ? $nValue['reservation_id'] : $nValue['order_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'reservation' : 'order'; ?>" data-status="<?php echo $nValue['payment_status']; ?>" href="#" data-toggle="modal" data-target="#notification-modal">Payment Status</a>
+                            </td>
+<!--                             <td class="notification-subject" data-id="<?php echo empty($nValue['order_id']) ? $nValue['reservation_id'] : $nValue['order_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'reservation' : 'order'; ?>" data-status="<?php echo $nValue['payment_status']; ?>"><a href="#" data-toggle="modal" data-target="#notification-modal">Payment Status</a></td> -->
                           <?php else: ?>
                             <td data-id="<?php echo $nValue['tracking_id']; ?>"><a href="#" class="notification-subject">Tracking Number</a></td>
                           <?php endif; ?>    
-                          <td><?php echo date('F/j/Y',$nValue['insert_date']); ?></td>
+                          <td class="transDate"><?php echo date('F/j/Y',$nValue['insert_date']); ?></td>
                         </tr>
                       <?php endforeach; ?>
                     <?php endif; ?>    
@@ -501,6 +505,28 @@ foreach ($reservationsByCustomer as $key => $value){
 </div>
 </div>
 </div>
+<!-- Notification modal -->
+<div id="notification-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"></h4>
+      </div>
+      <div class="modal-body">
+        <p></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- end notification -->
+
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -514,6 +540,13 @@ foreach ($reservationsByCustomer as $key => $value){
 <!-- dataTables -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+
+<!-- bootbox.js -->
+<script src="assets/js/bootbox.min.js"></script>
+
+<!-- moment.js -->
+<script src="assets/js/moment.js"></script>
+
 <script>
     $(function () {
         var serverURL = <?php echo json_encode($serverURL)?>; // get server url (localhost/webserver)
@@ -911,18 +944,105 @@ foreach ($reservationsByCustomer as $key => $value){
 
         };
 
-        setInterval(function(){
+        $(document).on('click', '.notification-subject', function(e){
+            var notifModal = $('#notification-modal');
+            $(notifModal).find('modal-body .p').html('');
+            var content = '';
+            var transID = $(this).attr('data-id');
+            var subject = $(this).text();
+            var type =  $(this).attr('data-type');
+            var status = $(this).attr('data-status');
+            var transDate = $(this).closest('tr').find('.transDate').text();
+            var currentTime = new Date()
+            var year = currentTime.getFullYear();
+            var char = 'R';
+            if(type == 'order') char = 'O';
+
+            var data = {
+              transID: transID,
+              subject: subject,
+              type: type,
+              status: status,
+              transDate: transDate
+            }
+            console.log(data)
+            
+
+            if(status == 1){
+                content = 'Your ' + type + ' ' + 'OPS-'+ year + '-' + char + '-' + transID + ' was confirmed! Please wait for another message about the tracking information of your ' + type + '.</br>Thank you for shopping with OPS!';
+            } else {
+                content = 'Your ' + type + ' ' + 'OPS-'+ year + '-' + char + '-' + transID  + ' was rejected. This happened because blah blah blah';
+            }
+
+            $(notifModal).on('shown.bs.modal', function(){
+                $(this).find('.modal-title').text(subject);
+                $(this).find('.modal-body p').html(content);
+            });
+
+        })
+
+        $('.btn-refresh').click(function(e){
+            e.preventDefault();
+            $('#notification-table').dataTable() .fnAddData( [
+              'col1',
+              'col2',
+            ], false);
+
+        });
+
+        function getNotification(){
+            var currentTime = new Date()
+            var year = currentTime.getFullYear();
+            var transId = '';
+            var type = '';
+            var subject = '';
+            var status = '';
+            var table = $('#notification-table');
+
             $.ajax({
                 type: 'POST',
                 url: serverURL + '/ops/data-manager/get-notifications-by-customer.php',
                 data: {id: userID},
                 dataType: 'json',
                 success: function(rData){
-                    console.log(rData);
+                    console.log(rData)
+                    if(rData.length > 0){
+                        $(rData).each(function(i,e){
+                          var oid = e.order_id;
+                          var dateString = moment.unix(e.insert_date).format("MMMM/DD/YYYY");
+                          console.log(oid)
+
+                          if(e.type == 'b'){
+                              subject = 'Payment Status';
+                          } else {
+                              subject = 'Tracking Number';
+                          }
+
+                          if(oid.length > 0 && oid != undefined){
+                              transId = 'OPS-'+ year + '-O-' + e.order_id;
+                              type = 'order';
+                          } else {
+                              transId = 'OPS-'+ year + '-R-' + e.reservation_id;
+                              type = 'reservation';
+                          }
+
+                          var td1 = '<a class="notification-subject" data-id="'+ transId +'" data-type="'+ type +'" data-status="' + e.payment_status + '" href="#" data-toggle="modal" data-target="#notification-modal">' + subject +'</a>';
+
+                          var td2 = '<span class="transDate">'+ dateString +'</span>';
+
+                          $('#notification-table').dataTable() .fnAddData( [
+                            td1,
+                            td2,
+                          ]);
+
+                        });
+                    }
                 },
 
             });
-        }, 10000);
+        }
+
+        setInterval(getNotification, 30000);
 
         $('#reservation-tab').click(function(){
             $('#reservation-tab-content').find('input').val('');  
@@ -979,6 +1099,21 @@ foreach ($reservationsByCustomer as $key => $value){
             "info": true,
             "autoWidth": true,
         });
+
+        function reDraw(){
+            var index = 0, //0 sets the index as the first row
+            rowCount = DataTableVAR.data().length-1,
+            insertedRow = DataTableVAR.row(rowCount).data(),
+            tempRow;
+
+            for (var i=rowCount;i>index;i--) {
+                tempRow = DataTableVAR.row(i-1).data();
+                DataTableVAR.row(i).data(tempRow);
+                DataTableVAR.row(i-1).data(insertedRow);
+            }     
+            //refresh the page
+            DataTableVAR.page(currentPage).draw(false);
+        }
 
 
 
