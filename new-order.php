@@ -18,6 +18,7 @@ foreach ($allOrders as $key => $value){
     $distinct[$value['id']]['order_date'] = $value['order_date'];
     $distinct[$value['id']]['payment_status'] = $value['payment_status'];
     $distinct[$value['id']]['customer_id'] = $value['customer_id'];
+    $distinct[$value['id']]['customer_name'] = $value['customer_name'];
 }
 $i = 1; //for table row counting
 ?>
@@ -200,7 +201,7 @@ $i = 1; //for table row counting
                               <tr>
                                   <td><?php echo $i++; ?></td> 
                                   <td><a href="order-information.php?oid=<?php echo $key;?>&cid=<?php echo $value['customer_id']; ?>"><?php echo "OPS-".date('Y').'-O-'.$key; ?></a></td>
-                                  <td> *further development</td>
+                                  <td><?php  echo $value['customer_name']; ?> </td>
                                   <td><?php echo date('F/j/Y',$value['order_date']); ?></td>
                                   <td><?php  echo $value['payment_status'] == 0 ? 'Pending' : 'Paid'; ?> </td>
                               </tr>

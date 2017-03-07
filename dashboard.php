@@ -13,6 +13,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 include('authentication/functions.php');
 include('data-manager/get-alert.php');
 include('data-manager/get-all-orders.php');
+include('data-manager/get-all-reservations.php');
 include('data-manager/get-all-payment.php');
 
 $alerts = count($alert);
@@ -22,6 +23,13 @@ foreach ($allOrders as $key => $value){
     $distinct[$value['id']] = $value;
 }
 $orderCount = count($distinct);
+
+$distinct = array();
+foreach ($allReservations as $key => $value){
+    $distinct[$value['id']] = $value;
+}
+$reservationCount = count($distinct);
+
 //echo '<pre>'; print_r($distinc
 //echo '<pre>'; print_r($distinct); exit;
 ?>
@@ -198,7 +206,7 @@ $orderCount = count($distinct);
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>5</h3>
+                            <h3><?php echo $reservationCount; ?></h3>
                             <p>New Reservation</p>
                         </div>
                         <div class="icon">

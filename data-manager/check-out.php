@@ -1,6 +1,7 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
 
+$customerName = $
 $orders = $_POST['items'];
 $userID = $_POST['userID'];
 $param = isset($_POST['param']) ? $_POST['param'] : '';
