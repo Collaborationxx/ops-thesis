@@ -106,17 +106,6 @@ include("header.php");
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </div>
-                            <div class="page-selector">
-                                <div class="description">Showing: 1-3 of 16</div>
-                                <div class="pages-box">
-                                    <a href="#" class="square-button active">1</a>
-                                    <a href="#" class="square-button">2</a>
-                                    <a href="#" class="square-button">3</a>
-                                    <div class="divider">...</div>
-                                    <a href="#" class="square-button"><i class="fa fa-angle-right"></i></a>
-                                </div>
-                                <div class="clear"></div>
-                            </div>
                         </div>
                         <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8 blog-sidebar">
                             <div class="information-blocks categories-border-wrapper">

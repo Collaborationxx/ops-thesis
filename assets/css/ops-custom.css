@@ -49,3 +49,6 @@
 .active-tab { background-color: #00a65a; }
 .form-control .half-col { width: 50%; }
 .ch-label {margin-right: 20px;}
+.easyPaginateNav { padding:20px; border-top: 1px #1C8F01 solid; border-bottom: 1px #1C8F01}
+.easyPaginateNav a { width: 28px; line-height: 28px; border: 1px #e3e3e3 solid; display: inline-block; font-size: 12px; color: #666666; font-weight: 500; text-align: center; margin-right: 4px;}
+.easyPaginateNav a.current {font-weight:bold;text-decoration:none; background: #1C8F01; border-color: #1C8F01; color: #fff;}
