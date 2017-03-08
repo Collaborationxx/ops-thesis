@@ -199,7 +199,7 @@ $i = 1; //for table row counting
                           <?php foreach ($distinct as $key => $value): ?>
                               <tr>
                                   <td><?php echo $i++; ?></td> 
-                                  <td><a href="reservation-information.php?oid=<?php echo $key;?>&cid=<?php echo $value['customer_id']; ?>"><?php echo "OPS-".date('Y').'-O-'.$key; ?></a></td>
+                                  <td><a href="reservation-information.php?rid=<?php echo $key;?>&cid=<?php echo $value['customer_id']; ?>"><?php echo "OPS-".date('Y').'-R-'.$key; ?></a></td>
                                   <td><?php  echo $value['customer_name']; ?> </td>
                                   <td><?php echo date('F/j/Y',$value['reserved_date']); ?></td>
                                   <td><?php  echo $value['payment_status'] == 0 ? 'Pending' : 'Paid'; ?> </td>

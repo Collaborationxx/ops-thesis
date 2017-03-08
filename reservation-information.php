@@ -11,6 +11,12 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
+include('data-manager/get-reservation-by-reservationID.php');
+include('data-manager/get-customer-by-id.php');
+$customerID = isset($_GET['cid']) ? $_GET['cid'] : '';
+$reservationID = isset($_GET['rid']) ? $_GET['rid'] : '';
+$i = 1; //table row counter
+$total = 0;
 ?>
 
 <!DOCTYPE html>
@@ -176,13 +182,13 @@ include('authentication/functions.php');
                       <div class="col-md-6 col-xs-6">
                         <div class="form-group">
                           <label>Reservation ID</label>
-                          <input type="text" class="form-control" placeholder="Enter ...">
+                          <input type="text" class="form-control" value="<?php echo "OPS-".date('Y').'-R-'.$reservationID; ?>" disabled="disabled">
                         </div>  
                       </div>
                       <div class="col-md-6 col-xs-6">
                         <div class="form-group">
                           <label>Customer Name</label>
-                          <input type="text" class="form-control" placeholder="Enter ...">
+                          <input type="text" class="form-control" value="<?php echo strtoupper($customers[0]['last_name']).", ".ucfirst($customers[0]['first_name']); ?>" disabled="disabled">
                         </div>  
                       </div>
                     </div> 
@@ -200,18 +206,23 @@ include('authentication/functions.php');
                             </tr>
                           </thead>
                           <tbody>
+                            <?php if(isset($reservationsByID) AND count($reservationsByID) > 0): ?>
+                              <?php foreach ($reservationsByID as $key => $value): ?>
+                                <tr>
+                                  <td><?php echo $i++; ?></td>
+                                  <td>
+                                    <img src="assets/images/products/<?php echo $value['picture']; ?>" class="ops-table-img">
+                                  </td>
+                                  <td><?php echo $value['name'];?></td>
+                                  <td><?php echo $value['quantity'];?></td>
+                                  <td><?php echo $value['price'];?></td>
+                                  <td><?php $subTotal = $value['quantity'] * $value['price']; echo $subTotal;?></td>
+                                </tr>
+                                <?php $total += $subTotal; ?>
+                              <?php endforeach; ?>
+                            <?php endif; ?>    
                             <tr>
-                              <td>1.</td>
-                              <td>
-                                <img src="assets/images/wheelchair.jpg" class="ops-table-img">
-                              </td>
-                              <td>Wheelchair</td>
-                              <td>1</td>
-                              <td>6,000</td>
-                              <td>3,000</td>
-                            </tr>
-                            <tr>
-                              <td colspan="6"><span class="pull-right" style="padding-right: 75px;"><b>TOTAL:</b> 6,000</span></td>
+                              <td colspan="6"><span class="pull-right" style="padding-right: 75px;"><b>TOTAL:</b> <?php echo $total; ?></span></td>
                               
                             </tr>
                           </tbody>
@@ -219,7 +230,6 @@ include('authentication/functions.php');
                       </div>
                     </div>
                   </form>
-s
               <div class="box-footer">
                 <div class="row">
                   <div class="col-md-12 col-xs-12">
