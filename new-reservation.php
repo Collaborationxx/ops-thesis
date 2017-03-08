@@ -11,6 +11,15 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
+include('data-manager/get-all-reservations.php');
+$distinct = array();
+foreach ($allReservations as $key => $value){
+    $distinct[$value['id']]['reserved_date'] = $value['reserved_date'];
+    $distinct[$value['id']]['payment_status'] = $value['payment_status'];
+    $distinct[$value['id']]['customer_id'] = $value['customer_id'];
+    $distinct[$value['id']]['customer_name'] = $value['customer_name'];
+}
+$i = 1; //for table row counting
 ?>
 
 <!DOCTYPE html>
@@ -181,18 +190,22 @@ include('authentication/functions.php');
                         <th style="width: 10px">#</th>
                         <th>Reservation ID</th>
                         <th>Customer Name</th>
-                        <th>Date Ordered</th>
+                        <th>Date Reserved</th>
                         <th>Payment Status</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>1.</td>
-                        <td><a href="reservation-information.php">OPS-43-34</a></td>
-                        <td> *further development</td>
-                        <td>01/10/17</td>
-                        <td>Full</td>
-                      </tr>
+                      <?php if(isset($distinct) AND count($distinct) > 0): ?>
+                          <?php foreach ($distinct as $key => $value): ?>
+                              <tr>
+                                  <td><?php echo $i++; ?></td> 
+                                  <td><a href="reservation-information.php?oid=<?php echo $key;?>&cid=<?php echo $value['customer_id']; ?>"><?php echo "OPS-".date('Y').'-O-'.$key; ?></a></td>
+                                  <td><?php  echo $value['customer_name']; ?> </td>
+                                  <td><?php echo date('F/j/Y',$value['reserved_date']); ?></td>
+                                  <td><?php  echo $value['payment_status'] == 0 ? 'Pending' : 'Paid'; ?> </td>
+                              </tr>
+                          <?php endforeach; ?>
+                      <?php endif; ?>
                     </tbody>
                   </table>
                 </div>  

@@ -365,6 +365,7 @@
 
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="plugins/js/validator.js"></script>
+    <script src="assets/js/jquery.easyPaginate.js"></script>
 
      <script>
         $(document).ready(function(){
@@ -526,6 +527,12 @@
                 },2050);
 
 
+            });
+
+            $('.shop-grid').easyPaginate({
+                paginateElement: '.shop-grid-item',
+                elementsPerPage: 1,
+                effect: 'slide'
             });
 
         });

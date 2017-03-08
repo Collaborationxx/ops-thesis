@@ -297,12 +297,7 @@ CREATE TABLE IF NOT EXISTS `user_account` (
 -- Dumping data for table `user_account`
 --
 
-INSERT INTO `user_account` (`id`, `username`, `password`, `first_name`, `last_name`, `address`, `shipping_address`, `contact_number`, `email`, `user_role`) VALUES
-(9, 'juan', '25d55ad283aa400af464c76d713c07ad', 'Juan', 'Dela Cruz', 'sa bahay namin...', 'sa batangas', '3252352352', 'juandelacruz@email.com', 1),
-(25, 'test', '25d55ad283aa400af464c76d713c07ad', 'test', 'test', 'test', '', '09178025551', 'jozellriili@gmail.com', 0),
-(29, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Inoue', 'Kurosaki', 'Karakura town', '', '09175647893', 'email@email.com', 1),
-(30, 'root', 'ac9a61ef2cabc111fa31131b2baebc42', 'jozell', 'rili', 'cainta', 'cainta', '09178025558', 'jozell@email.com', 2),
-(32, 'jho', '635b6d89912a0c52da2d953ccc468aad', 'jho', 'Rili', 'hdskfh', '', '0912456784', 'jho@email.com', 1);
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

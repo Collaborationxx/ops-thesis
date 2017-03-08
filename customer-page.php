@@ -213,11 +213,7 @@ foreach ($reservationsByCustomer as $key => $value){
                                                 <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 0 ? 'Waiting for payment' : 'Paid' ?></td>
                                             </tr>
                                         <?php endforeach; ?>
-                                    <?php else: ?>
-                                        <tr>
-                                            <td colspan="4" style="text-align: center">You have no orders yet.</td>
-                                        </tr>
-                                    <?php endif; ?>
+                                   <?php endif; ?>
                                 </tbody>
                             </table>
                         </div>
@@ -304,10 +300,6 @@ foreach ($reservationsByCustomer as $key => $value){
                                 <td name="r_pay_stat" data-id="<?php echo $rVal['payment_status']; ?>"><?php echo paymentStatus($rVal['payment_status']); ?> </td>
                             </tr>
                         <?php endforeach; ?>
-                    <?php else: ?>
-                        <tr>
-                            <td colspan="4">You have no reservations yet.</td>
-                        </tr>
                     <?php endif; ?>
                 </tbody>
                 </table>
