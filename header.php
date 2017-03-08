@@ -33,6 +33,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
     <link rel="shortcut icon" href="assets/images/small-logo.png" />
   	<title>OPS | Premium Quality You Can Afford!</title>
+
 </head>
 <body class="style-10">
     <!-- LOADER -->
