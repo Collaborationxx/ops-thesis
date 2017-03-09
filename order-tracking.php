@@ -13,9 +13,9 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 include('authentication/functions.php');
 include('data-manager/tracking.php');
 
-echo '<pre>'; print_r($oData);
-echo '<pre>'; print_r($rData);
-echo '<pre>'; print_r($options); exit;
+$serverURL = "http://$_SERVER[HTTP_HOST]";
+
+// echo '<pre>'; print_r($options); exit;
 
 
 ?>
@@ -179,17 +179,17 @@ echo '<pre>'; print_r($options); exit;
                       <label>Order ID</label>
                       <!-- <input type="text" class="form-control order-id" placeholder="Enter ..."> -->
                       <select id="orderIdSelect" class="form-control">
-                        <?php if(isset($oData) AND count($oData) > 0): ?>
-                          <?php foreach ($oData as $oKey => $oValue): ?>
-                            <option value="<?php echo $oValue['id']; ?>"><?php echo date('Y', $oValue['oDate']); ?></option>
+                        <?php if(isset($options) AND count($options) > 0): ?>
+                          <?php foreach ($options as $key => $value): ?>
+                            <option data-pid="<?php echo $value['pid']; ?>" data-cid="<?php echo $value['cid']; ?>" value="<?php echo $value['id']; ?>"><?php echo 'OPS-'.date('Y', $value['date']).'-'.$value['char'].'-'.$value['id']; ?></option>
                           <?php endforeach; ?>
                         <?php endif; ?>
                       </select>      
                     </div>
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <label>Order Information</label>
                       <input type="text" class="form-control" placeholder="Enter ...">
-                    </div>
+                    </div> -->
                     <div class="form-group">
                       <label>Tracking Number</label>
                       <input type="text" class="form-control tracking-number" placeholder="Enter ...">
@@ -281,18 +281,34 @@ echo '<pre>'; print_r($options); exit;
 
 <script>
     $(document).ready(function() {
+        var serverURL = <?php echo json_encode($serverURL); ?>;
 
         $('.btn-send').click(function(){
-            var oid = $('.order-id').val();
+            var oid = $('#orderIdSelect').val();
             var tn = $('.tracking-number').val();
+            var cid = $('option:selected', '#orderIdSelect').attr('data-cid');
+            var pid = $('option:selected', '#orderIdSelect').attr('data-pid');
+
 
             var data = {
                 oid: oid,
+                cid: cid,
+                pid: pid,
                 tn: tn,
                 action: 'c',
             }
 
             console.log(data)
+
+            $.ajax({
+                type: 'POST',
+                url: serverURL + '/ops/data-manager/tracking.php',
+                data: data,
+                dataType: 'json',
+                success: function(rData){
+                    console.log(rData)
+                },
+            });
         });      
 
 
