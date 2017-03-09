@@ -13,9 +13,9 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 include('authentication/functions.php');
 include('data-manager/tracking.php');
 
-echo '<pre>'; print_r($oData);
-echo '<pre>'; print_r($rData);
-echo '<pre>'; print_r($options); exit;
+// echo '<pre>'; print_r($oData);
+// echo '<pre>'; print_r($rData);
+// echo '<pre>'; print_r($options); exit;
 
 
 ?>

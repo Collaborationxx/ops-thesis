@@ -46,6 +46,16 @@ if(!in_array($mimeType, $allowedImgType)){
     $error['invalidPhoto'] = true;
 }
 
+/** check if product is existing in the database **/
+$sql = "SELECT * FROM `product` WHERE name = '$name' ";
+if($result = mysqli_query($con, $sql)){
+    while($row = mysqli_fetch_assoc($result)){
+        if(strtolower($row['name']) == strtolower($name)){ //this will check for exact match; case-insensitive.
+             $error['productExist'] = true;
+        }
+    }
+}
+
 if(empty($error['categoryEmpty']) && empty($error['pruductEmpty']) && empty($error['priceEmpty']) && empty($error['invalidPrice']) && empty($error['invalidPhoto']) ){
     $query = "UPDATE
                 `product`
