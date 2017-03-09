@@ -668,6 +668,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
             $(modal).find('p.invalidPhoto').css('display', 'block');
           }
 
+          if(rData.productExist){
+            $(modal).find('.productExist').closest('.form-group').addClass('has-error');
+            $(modal).find('p.productExist').css('display', 'block');
+          }
         },
       });
     });

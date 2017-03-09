@@ -244,8 +244,9 @@ foreach ($reservationsByCustomer as $key => $value){
                                     </div>
                                     <div class="form-group">
                                         <p class="errMess dpNumEmpty" style="display: none;">*This is a required Field.</p>
-                                        <label>Deposit No:</label>
-                                        <input type="text" class="form-control" name="deposit-number">
+                                        <p class="errMess dpNumInvalid" style="display: none;">Numbers Only</p>
+                                        <label>Account No:</label>
+                                        <input type="number" min="0" step="any" class="form-control" name="deposit-number">
                                     </div>
                                     <div class="form-group">
                                         <p class="errMess err-deposit" style="display: none;"></p>
@@ -329,9 +330,10 @@ foreach ($reservationsByCustomer as $key => $value){
                           <p>Reply with the deposit number when you paid your order:</p>
                       </div>
                       <div class="form-group">
-                          <p class="errMess dpNumEmpty" style="display: none;">*This is a required Field.</p>
-                          <label>Deposit No:</label>
-                          <input type="text" class="form-control" name="deposit-number">
+                          <p class="errMess dpNumEmpty" style="display: none;">*Please input Numbers Only.</p>
+                         <!--   <p class="errMess dpNumInvalid" style="display: none;">Numbers Only</p> -->
+                          <label>Account No:</label>
+                          <input type="number" min="0" step="any" class="form-control" name="deposit-number">
                       </div>
                       <div class="form-group">
                         <label>Mode:</label>
@@ -914,7 +916,10 @@ foreach ($reservationsByCustomer as $key => $value){
                           $(tab).find('.dpNumEmpty').closest('.form-group').addClass('has-error');
                           $(tab).find('p.dpNumEmpty').css('display', 'block');
                       }
-
+                      if(rData.dpNumInvalid){
+                          $(tab).find('.dpNumInvalid').closest('.form-group').addClass('has-error');
+                          $(tab).find('p.dpNumInvalid').css('display', 'block');    
+                      }
                       if(rData.dpAmEmpty){
                           $(tab).find('.dpAmEmpty').closest('.form-group').addClass('has-error');
                           $(tab).find('p.dpAmEmpty').css('display', 'block');  

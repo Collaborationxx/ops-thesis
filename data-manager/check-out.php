@@ -1,7 +1,6 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
 
-$customerName = $
 $orders = $_POST['items'];
 $userID = $_POST['userID'];
 $param = isset($_POST['param']) ? $_POST['param'] : '';
@@ -30,5 +29,13 @@ if(mysqli_query($con, $query)){
     }
     $response = array('status' => 'success');
 }
+
+if(mysqli_query($con, $subQuery)){
+            $sql = "UPDATE `inventory` SET quantity = quantity - $qty WHERE product_id = $product";
+            if(mysqli_query($con, $sql)){
+                $response = array('status' => 'success');
+            }
+        }
+        
 header('Content-Type: application/json');
 echo json_encode($response);

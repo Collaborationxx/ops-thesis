@@ -190,7 +190,7 @@ $counter = 1;
                           <?php foreach ($payments as $key => $value): ?>
                                <tr>
                                 <td class="number-counter <?php if($value['status'] == 2) echo'bg-danger'; elseif($value['status'] == 1) echo 'bg-success'; else echo ''; ?>"><?php echo $counter++ ?></td>
-                                <td><a href="#" data-id="<?php echo $value['id']; ?>" class="transacID">
+                                <td><p data-id="<?php echo $value['id']; ?>" class="transacID">
                                   <?php 
                                     if($value['payment_for'] == 0){
                                         echo "OPS-".date('Y').'-O-'.$value['order_id'];
@@ -198,7 +198,7 @@ $counter = 1;
                                         echo "OPS-".date('Y').'-R-'.$value['reservation_id'];
                                     }
                                   ?>
-                                </a></td>
+                                </p></td>
                                 <td><?php echo $value['deposit_amount']; ?></td>
                                 <td><?php echo $value['deposit_number']; ?></td>
                                 <td><?php echo date('F/j/Y',$value['pay_date']); ?></td>

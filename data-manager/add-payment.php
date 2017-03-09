@@ -11,14 +11,18 @@ $pm = $_POST['pm']; //payment mode 0=partial 1=full
 $response = array();
 $error = array(
 	'dpNumEmpty' => '',
+	'dpNumInvalid' => '',
 	'dpAmEmpty' => '',
 	'dpAmInvalid' => ''
 	);
 
 if(empty($deposit_number)){
 	$error['dpNumEmpty'] =  true;
+} else {
+	if(!is_numeric($deposit_number)){
+		$error['dpNumInvalid'] = true;
+	}
 }
-
 if(empty($deposit_amount)){
 	$error['dpAmEmpty'] = true;
 } else {
@@ -42,7 +46,7 @@ if($pf == 0){
 }
 
 
-if(empty($error['dpNumEmpty']) && empty($error['dpAmEmpty']) && empty($error['dpAmInvalid']) ){
+if(empty($error['dpNumEmpty']) && empty($error['dpNumInvalid']) && empty($error['dpAmEmpty']) && empty($error['dpAmInvalid']) ){
 	$query = '';
 	if(!empty($pid)){ //edit mode (update payment)
 		$query = "UPDATE `payment` SET deposit_number = $deposit_number, deposit_amount = deposit_amount + $deposit_amount, payment_mode = $pm WHERE id = $pid ";
@@ -62,6 +66,7 @@ if(empty($error['dpNumEmpty']) && empty($error['dpAmEmpty']) && empty($error['dp
 } else {
 	$response = array(
 		'dpNumEmpty' => $error['dpNumEmpty'],
+		'dpNumInvalid' => $error['dpNumInvalid'],
 		'dpAmEmpty' => $error['dpAmEmpty'],
 		'dpAmInvalid' => $error['dpAmInvalid']
 	);
