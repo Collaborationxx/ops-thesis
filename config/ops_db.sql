@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 08, 2017 at 04:14 PM
+-- Generation Time: Mar 10, 2017 at 02:29 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -205,12 +205,13 @@ CREATE TABLE IF NOT EXISTS `reservation_tbl` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `track_order`
+-- Table structure for table `track_logs`
 --
 
-CREATE TABLE IF NOT EXISTS `track_order` (
+CREATE TABLE IF NOT EXISTS `track_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `order_id` int(11) NOT NULL,
+  `order_id` int(11) DEFAULT NULL,
+  `reservation_id` int(11) DEFAULT NULL,
   `customer_id` int(11) NOT NULL,
   `tracking_number` varchar(50) NOT NULL,
   `date_sent` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
