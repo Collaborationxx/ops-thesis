@@ -296,7 +296,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           var type = $('option:selected', 'select#categorySelect').attr('data-type');
           var start = $('#datepicker-from').val();
           var end = $('#datepicker-to').val();
-          var reportsTable = $('')
+          var reportsTable = $('#reports-table');
+          var tbody = $(reportsTable).find('tbody');
+          var thead = $(reportsTable).find('thead');
+          var theadContent = '';
+          var tbodyContent = '';
 
           var data = {
               table: table,
@@ -314,9 +318,16 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               dataType: 'json',
               success: function(rData){
                   console.log(rData)
-                  if(rData){
-
+                  console.log(rData.category)
+                  if(rData.category == 'order_tbl'){
+                      $(rData.reports).each(function(ind, obj){
+                          $(thead).append('<th>ID</th>'
+                          );
+                      });
                   }
+
+                  if(theadContent.length > 0) $(thead).append(theadContent);
+                  if(tbodyContent.length > 0) $(tbody).append(tbodyContent);
               },
           });
       });

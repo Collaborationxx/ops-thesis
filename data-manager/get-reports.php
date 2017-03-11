@@ -52,7 +52,7 @@ if($tbl == 'reservation_tbl'){
 				t.payment_status,
 				t.type
 			FROM
-				order_tbl as t,
+				reservation_tbl as t,
 				user_account as u,
 				track_logs as l
 			WHERE
@@ -66,11 +66,17 @@ if($tbl == 'reservation_tbl'){
 		";
 }
 
-if($tbl == 'product'){
-	$select = "SELECT *
-				FROM
-				`$tbl`
-
+if($tbl == 'inventory'){
+	$select = "SELECT
+				i.id,
+				p.name,
+				i.quantity,
+				i.stock_date
+			FROM
+				inventory as i,
+				product as p
+			WHERE
+				i.product_id = p.id	 
 			";
 }
 
@@ -80,7 +86,7 @@ if($result = mysqli_query($con, $select)){
 	}
 
 	header('Content-Type: application/json');
-	echo json_encode($reports);
+	echo json_encode(array('reports' => $reports, 'category' => $tbl));
 } else {
 	echo 'Error: '.mysqli_error($con);
 }
