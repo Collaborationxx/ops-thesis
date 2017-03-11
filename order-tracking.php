@@ -168,7 +168,12 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
     <section class="content">
         <div class="row">
           <div class="col-lg-4 col-xs-12">
+          <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+            <strong>Success!</strong> Tracking Number Sent!
+          </div>
             <div class="box box-success">
+                <div class="clearfix"></div>
               <div class="box-header with-border">
                 <div class="box-header with-border">
                   <h3 class="box-title"><i class="fa fa-envelope-o"></i>   Sending Tracking Number</h3>
@@ -177,22 +182,26 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   <form role="form">
                     <div class="form-group">
                       <label>Order ID</label>
+                      <p class="error-mess errTransactionID" style="display: none;">* Select one Transaction</p>
                       <!-- <input type="text" class="form-control order-id" placeholder="Enter ..."> -->
                       <select id="orderIdSelect" class="form-control">
+                        <option value="">-- select transaction --</option>
                         <?php if(isset($options) AND count($options) > 0): ?>
                           <?php foreach ($options as $key => $value): ?>
-                            <option data-pid="<?php echo $value['pid']; ?>" data-cid="<?php echo $value['cid']; ?>" value="<?php echo $value['id']; ?>"><?php echo 'OPS-'.date('Y', $value['date']).'-'.$value['char'].'-'.$value['id']; ?></option>
+                            <option data-pid="<?php echo $value['pid']; ?>" data-cid="<?php echo $value['cid']; ?>" data-char="<?php echo $value['char']; ?>" value="<?php echo $value['id']; ?>"><?php echo 'OPS-'.date('Y', $value['date']).'-'.$value['char'].'-'.$value['id']; ?></option>
                           <?php endforeach; ?>
                         <?php endif; ?>
                       </select>      
                     </div>
-                    <!-- <div class="form-group">
-                      <label>Order Information</label>
-                      <input type="text" class="form-control" placeholder="Enter ...">
-                    </div> -->
                     <div class="form-group">
+                      <p class="error-mess errTrackignNumber" style="display: none;">* This is a required Field</p>
                       <label>Tracking Number</label>
-                      <input type="text" class="form-control tracking-number" placeholder="Enter ...">
+                      <input type="text" class="form-control tracking-number">
+                    </div>
+                     <div class="form-group">
+                      <p class="error-mess errCourier" style="display: none;">* This is a required Field</p>
+                      <label>Courier</label>
+                      <input type="text" class="form-control courier">
                     </div>
                   </form>
                 </div>
@@ -214,23 +223,29 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   <table class="table table-striped table-bordered" id="track-order-table">
                     <thead>
                       <tr style="background-color: #e6ffe6;">
-                        <th>Order ID</th>
+                        <th>Transaction ID</th>
+                        <th>Courier</th>
                         <th>Tracking Number</th>
                         <th>Customer Name</th>
                         <th>Date Sent</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <!-- <?php if(isset($tData) AND count($tData) > 0): ?>
-                        <?php foreach ($tData as $tKey => $tValue): ?>
+                    <?php if(isset($trackers) AND count($trackers) > 0): ?>
+                        <?php foreach ($trackers as $tKey => $tValue): ?>
                           <tr>
-                            <td><?php echo $tValue['order_id']; ?></td>
-                            <td><?php echo $tValue['customer_name']; ?></td>
+                            <td>
+                              <?php echo isset($tValue['order_id']) ? 
+                              'OPS-'.date('Y', $tValue['tdate']).'-'.$tValue['type'].'-'.$tValue['order_id'] : 
+                              'OPS-'.date('Y', $tValue['tdate']).'-'.$tValue['type'].'-'.$tValue['reservation_id'] ?>
+                            </td>
+                            <td><?php echo $tValue['courier']; ?></td>
                             <td><?php echo $tValue['tracking_number']; ?></td>
-                            <td><?php echo date('F/j/Y',$tValue['date_sent']); ?></td>
+                            <td><?php echo ucfirst($tValue['lname']).', '.ucfirst($tValue['fname']); ?></td>
+                            <td><?php echo date('F/j/Y h:i A',$tValue['date_sent']); ?></td>
                           </tr>
                         <?php endforeach; ?>
-                      <?php endif; ?>  -->   
+                      <?php endif; ?>
                     </tbody>
                   </table>
                 </div>
@@ -282,12 +297,44 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script>
     $(document).ready(function() {
         var serverURL = <?php echo json_encode($serverURL); ?>;
+        var error = 0;
+
+        function validateData(){
+            error = 0;
+            var oid = $('#orderIdSelect').val();
+            var tn = $('.tracking-number').val();
+            var courier = $('.courier').val();
+            $('.error-mess').hide();
+            $('.form-group').removeClass('has-error');
+
+            if(oid == ''){
+                error++;
+                $('#orderIdSelect').closest('.form-group').addClass('has-error');
+                $('.errTransactionID').show();
+            }
+
+            if(tn == ''){
+                error++;
+                $('.tracking-number').closest('.form-group').addClass('has-error');
+                $('.errTrackignNumber').show();
+            }
+
+            if(courier == ''){
+                error++;
+                $('.courier').closest('.form-group').addClass('has-error');
+                $('.errCourier').show();
+            } 
+        }    
+
 
         $('.btn-send').click(function(){
             var oid = $('#orderIdSelect').val();
             var tn = $('.tracking-number').val();
             var cid = $('option:selected', '#orderIdSelect').attr('data-cid');
             var pid = $('option:selected', '#orderIdSelect').attr('data-pid');
+            var char = $('option:selected', '#orderIdSelect').attr('data-char');
+            var courier = $('.courier').val();
+
 
 
             var data = {
@@ -295,21 +342,34 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                 cid: cid,
                 pid: pid,
                 tn: tn,
+                courier: courier,
+                char: char,
                 action: 'c',
             }
 
             console.log(data)
 
-            $.ajax({
-                type: 'POST',
-                url: serverURL + '/ops/data-manager/tracking.php',
-                data: data,
-                dataType: 'json',
-                success: function(rData){
-                    console.log(rData)
-                },
-            });
-        });      
+            validateData();
+            console.debug('errors', error)
+
+            if(error == 0){
+                $.ajax({
+                    type: 'POST',
+                    url: serverURL + '/ops/data-manager/tracking.php',
+                    data: data,
+                    dataType: 'json',
+                    success: function(rData){
+                        console.log(rData)
+                        if(rData.status){
+                            $('.alert').show();
+                            setTimeout(function(){
+                                location.reload();
+                            },2000);
+                        }
+                    },
+                });
+            } 
+        }); 
 
 
         $('#track-order-table').dataTable({
