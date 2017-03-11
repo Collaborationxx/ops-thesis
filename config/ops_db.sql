@@ -197,7 +197,6 @@ CREATE TABLE IF NOT EXISTS `reservation_details` (
 CREATE TABLE IF NOT EXISTS `reservation_tbl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) DEFAULT NULL,
-  `customer_name` varchar(255) DEFAULT NULL,
   `reservation_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
   `reserved_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `payment_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=pending;1=partial;2=full',
