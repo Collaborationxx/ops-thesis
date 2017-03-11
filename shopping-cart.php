@@ -324,11 +324,14 @@
       });
 
 
+     
+
       $('.btn-checkout').click(function (e) {
           e.preventDefault();
           if(username.length == 0){
               $('#login-signup-modal').find('.header-title').text('To checkout items:');
               $(modal).modal('show');
+
           } else {
               getCart(0); 
           }
