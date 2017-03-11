@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 10, 2017 at 02:29 PM
+-- Generation Time: Mar 11, 2017 at 04:31 AM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -70,11 +70,12 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `type` char(1) DEFAULT NULL COMMENT 'a=tracking;b=payment',
   `tracking_id` varchar(60) DEFAULT NULL,
+  `courier` varchar(60) DEFAULT NULL,
   `payment_id` int(11) DEFAULT NULL,
   `customer_id` int(11) NOT NULL,
   `insert_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
@@ -104,6 +105,7 @@ CREATE TABLE IF NOT EXISTS `order_tbl` (
   `order_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
   `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `payment_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=pending;1=paid',
+  `delivery_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '1=sent; 0=not',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -199,6 +201,7 @@ CREATE TABLE IF NOT EXISTS `reservation_tbl` (
   `reservation_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
   `reserved_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `payment_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=pending;1=partial;2=full',
+  `delivery_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1=sent; 0=not',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -214,9 +217,10 @@ CREATE TABLE IF NOT EXISTS `track_logs` (
   `reservation_id` int(11) DEFAULT NULL,
   `customer_id` int(11) NOT NULL,
   `tracking_number` varchar(50) NOT NULL,
+  `courier` varchar(60) DEFAULT NULL,
   `date_sent` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 -- --------------------------------------------------------
 
