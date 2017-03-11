@@ -9,7 +9,7 @@ $oData = array();
 $oSelect = "SELECT
 				o.id,
 				o.customer_id,
-				UNIX_TIMESTAMP(o.order_date) as oDate,
+				o.order_date as oDate,
 				p.id as pid
 			FROM
 				order_tbl o,

@@ -11,7 +11,7 @@ $select = " SELECT
 				courier,
 				customer_id,
 				payment_id,
-				UNIX_TIMESTAMP(insert_date) as insert_date
+				(insert_date) as insert_date
 			FROM
 				 `notifications`
 			WHERE

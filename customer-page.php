@@ -31,7 +31,7 @@ foreach ($reservationsByCustomer as $key => $value){
     $rDistinct[$value['id']]['payment_status'] = $value['payment_status'];
 }
 
-// echo '<pre>'; print_r($notifications); exit;
+//echo '<pre>'; print_r($notifications); exit;
 ?>
 <!DOCTYPE html>
 <html>
@@ -395,7 +395,7 @@ foreach ($reservationsByCustomer as $key => $value){
                           <?php else: ?>
                             <td><a href="#" class="notification-tracking" data-id="<?php echo empty($nValue['order_id']) ? $nValue['reservation_id'] : $nValue['order_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'reservation' : 'order'; ?>" data-tid="<?php echo $nValue['tracking_id']; ?>" data-courier="<?php echo $nValue['courier']; ?>" data-toggle="modal" data-target="#notification-modal">Tracking Number</a></td>
                           <?php endif; ?>    
-                          <td class="transDate"><?php echo date('F/j/Y h:i A',$nValue['insert_date']); ?></td>
+                          <td class="transDate"> <?php echo date_format(date_create($nValue['insert_date']), 'F/j/Y h:i A')?></td>
                         </tr>
                       <?php endforeach; ?>
                     <?php endif; ?>    
@@ -967,7 +967,7 @@ foreach ($reservationsByCustomer as $key => $value){
             if(status == 1){
                 content = 'Your ' + type + ' ' + 'OPS-'+ year + '-' + char + '-' + transID + ' was confirmed! Please wait for another message about the tracking information of your ' + type + '.</br>Thank you for shopping with OPS!';
             } else {
-                content = 'Your ' + type + ' ' + 'OPS-'+ year + '-' + char + '-' + transID  + ' was rejected. This happened because blah blah blah';
+                content = 'Your ' + type + ' ' + 'OPS -'+ year  + '-' + char + '-' + transID  + ' was rejected. <br> This happened because of either of the following: <br> (1) Deposit does not exist. <br> (2) Insufficient payment. <br> Please check the payment details you have sent then send it again to process the transaction. Thank you!';
             }
 
             $(notifModal).on('shown.bs.modal', function(){
