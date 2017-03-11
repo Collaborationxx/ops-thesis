@@ -11,6 +11,8 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('authentication/functions.php');
+$serverURL = "http://$_SERVER[HTTP_HOST]";
+
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +29,8 @@ include('authentication/functions.php');
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
+  <!-- dataTables -->
+  <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- date picker -->
   <link rel="stylesheet" type="text/css" href="plugins/datepicker/datepicker3.css">
   <!-- Theme style -->
@@ -196,19 +200,19 @@ include('authentication/functions.php');
                     </div>
                     <div class="form-group">
                         <label>Category</label>
-                        <select class="form-control">
-                          <option>Orders</option>
-                          <option>Product</option>
-                          <option>Inventory</option>
-                          <option>Sales</option>
-                          <option>Over the Counter Sales</option>
-                          <option>Online Sales</option>
+                        <select id="categorySelect" class="form-control">
+                          <option value="">-- select category --</option>
+                          <option data-table="order_tbl" data-col="transaction_date" data-type="0">OC Orders</option>
+                          <option data-table="order_tbl" data-col="transaction_date" data-type="1">OL Orders</option>
+                          <option data-table="reservation_tbl" data-col="transaction_date" data-type="1">Reservations</option>
+                          <option data-table="product" data-col="insert_date" data-type="">Product</option>
+                          <option data-table="inventory" data-col="stock_date" data-type="">Inventory</option>
                         </select>
                     </div>
                   </form>
                 </div>
                 <div class="box-footer">
-                  <button type="button" class="btn btn-success pull-right">Generate</button>
+                  <button type="button" class="btn btn-success pull-right btn-generate">Generate</button>
                 </div>
             </div>
           </div>
@@ -222,7 +226,13 @@ include('authentication/functions.php');
                 </div>
 
               </div>
-              <div class="box-body no-padding">
+              <div class="box-body">
+              <table class="table table-striped table-bordered" id="reports-table">
+                <thead>
+                  <th>#</th>
+                </thead>
+                <tbody></tbody>
+              </table>
               </div>
               <div class="box-footer">
                 <div class="row">
@@ -253,7 +263,7 @@ include('authentication/functions.php');
 
 <!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 2.2.3 -->
+<!-- jQuery 3.1.1 -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -262,21 +272,66 @@ include('authentication/functions.php');
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
 
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
-     fixed layout. -->
+<!-- dataTables -->
+<script src="plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
+
 <script>
-  $(function(){
-    //Date picker
-    //from
+  $(document).ready(function(){
+
+      var serverURL = <?php echo json_encode($serverURL); ?>;
+      //Date picker
+      //from
       $('#datepicker-from').datepicker({
         autoclose: true
       });
-    //to
-    $('#datepicker-to').datepicker({
-      autoclose: true
-    });
+      //to
+      $('#datepicker-to').datepicker({
+        autoclose: true
+      });
+
+      $('.btn-generate').click(function(){
+          var table = $('option:selected', 'select#categorySelect').attr('data-table');
+          var column = $('option:selected', 'select#categorySelect').attr('data-col');
+          var type = $('option:selected', 'select#categorySelect').attr('data-type');
+          var start = $('#datepicker-from').val();
+          var end = $('#datepicker-to').val();
+          var reportsTable = $('')
+
+          var data = {
+              table: table,
+              column: column,
+              type: type,
+              start: start,
+              end: end
+          }
+          console.log(data)
+
+          $.ajax({
+              type: 'POST',
+              url: serverURL + '/ops/data-manager/get-reports.php',
+              data: data,
+              dataType: 'json',
+              success: function(rData){
+                  console.log(rData)
+                  if(rData){
+
+                  }
+              },
+          });
+      });
+
+      $('#reports-table').dataTable({
+          "paging": true,
+          "lengthChange": true,
+          "lengthMenu": [ 5, 10, 25, 50, 75, 100],
+          "searching": true,
+          "ordering": true,
+          "info": true,
+          "autoWidth": true
+      });
+
+
   });
 </script>
 </body>

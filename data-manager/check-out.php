@@ -7,13 +7,13 @@ $param = isset($_POST['param']) ? $_POST['param'] : '';
 $response = array();
 
 if($param == 0){ //click from checkout button
-    $query = "INSERT INTO `order_tbl` (customer_id, order_type) VALUES ($userID, 1)";
+    $query = "INSERT INTO `order_tbl` (customer_id, type) VALUES ($userID, 1)";
     $table = 'order_details';
     $col = 'order_id';
     
 
 } else { //click form reserved
-    $query = "INSERT INTO `reservation_tbl` (customer_id, reservation_type) VALUES ($userID, 1)";
+    $query = "INSERT INTO `reservation_tbl` (customer_id, type) VALUES ($userID, 1)";
     $table = 'reservation_details';
     $col = 'reservation_id';
 }

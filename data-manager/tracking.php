@@ -9,7 +9,7 @@ $oData = array();
 $oSelect = "SELECT
 				o.id,
 				o.customer_id,
-				UNIX_TIMESTAMP(o.order_date) as oDate,
+				UNIX_TIMESTAMP(o.transaction_date) as oDate,
 				p.id as pid
 			FROM
 				order_tbl o,
@@ -41,7 +41,7 @@ $rData = array();
 $rSelect = "SELECT
 				r.id,
 				r.customer_id,
-				UNIX_TIMESTAMP(r.reserved_date) as rDate,
+				UNIX_TIMESTAMP(r.transaction_date) as rDate,
 				p.id as pid
 			FROM
 				reservation_tbl r,
@@ -97,7 +97,7 @@ if(isset($_POST['action']) AND $_POST['action'] == 'c'){
 
 	if(mysqli_query($con, $query)){
 		//update delivery status of order/reservation
-		$deliveryQuery = "UPDATE `order_tbl` SET delivery_status = 1 WHERE id = $orderID";
+		$deliveryQuery = "UPDATE `$tbl` SET delivery_status = 1 WHERE id = $orderID";
 		mysqli_query($con, $deliveryQuery);
 
 		//add to notification table
@@ -122,7 +122,7 @@ $i = 0;
 $selectOrders = "SELECT
 				t.id,
 			    t.order_id,
-                UNIX_TIMESTAMP(o.order_date) as tdate,
+                UNIX_TIMESTAMP(o.transaction_date) as tdate,
 			    t.tracking_number,
 			    t.courier,
 			    UNIX_TIMESTAMP(t.date_sent) as date_sent,
@@ -151,7 +151,7 @@ $rTrackers = array();
 $selectReservations = "SELECT
 				t.id,
 			    t.reservation_id,
-                UNIX_TIMESTAMP(r.reserved_date) as tdate,
+                UNIX_TIMESTAMP(r.transaction_date) as tdate,
 			    t.tracking_number,
 			    t.courier,
 			    UNIX_TIMESTAMP(t.date_sent) as date_sent,

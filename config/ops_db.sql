@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 11, 2017 at 04:31 AM
+-- Generation Time: Mar 11, 2017 at 03:23 PM
 -- Server version: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -75,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `notifications` (
   `customer_id` int(11) NOT NULL,
   `insert_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=11 ;
 
 -- --------------------------------------------------------
 
@@ -102,8 +102,8 @@ CREATE TABLE IF NOT EXISTS `order_tbl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) DEFAULT NULL,
   `customer_name` varchar(255) DEFAULT NULL,
-  `order_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
-  `order_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
+  `transaction_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `payment_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=pending;1=paid',
   `delivery_status` tinyint(4) NOT NULL DEFAULT '0' COMMENT '1=sent; 0=not',
   PRIMARY KEY (`id`)
@@ -144,6 +144,7 @@ CREATE TABLE IF NOT EXISTS `product` (
   `category` int(2) NOT NULL,
   `availability` tinyint(1) DEFAULT '0' COMMENT '0=on hand; 2= for reservation',
   `phase_out` tinyint(4) NOT NULL DEFAULT '0' COMMENT '0=No; 1=Yes',
+  `insert_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   KEY `id` (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=16 ;
@@ -197,8 +198,9 @@ CREATE TABLE IF NOT EXISTS `reservation_details` (
 CREATE TABLE IF NOT EXISTS `reservation_tbl` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `customer_id` int(11) DEFAULT NULL,
-  `reservation_type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
-  `reserved_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `customer_name` varchar(255) DEFAULT NULL,
+  `type` tinyint(1) NOT NULL COMMENT '0=counter;1=online',
+  `transaction_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `payment_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '0=pending;1=partial;2=full',
   `delivery_status` tinyint(1) NOT NULL DEFAULT '0' COMMENT '1=sent; 0=not',
   PRIMARY KEY (`id`)
@@ -219,7 +221,7 @@ CREATE TABLE IF NOT EXISTS `track_logs` (
   `courier` varchar(60) DEFAULT NULL,
   `date_sent` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 

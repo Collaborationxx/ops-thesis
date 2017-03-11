@@ -7,7 +7,7 @@ $query = "
             SELECT
                 o.id,
                 o.payment_status,
-                UNIX_TIMESTAMP(o.order_date) as order_date,
+                UNIX_TIMESTAMP(o.transaction_date) as transaction_date,
                 od.product_id,
                 od.price,
                 od.quantity
@@ -19,7 +19,7 @@ $query = "
             AND
                 o.customer_id = $id
             ORDER BY
-                o.order_date DESC   
+                o.transaction_date DESC   
 ";
 $orders = array();
 if ($result = mysqli_query($con, $query)) {

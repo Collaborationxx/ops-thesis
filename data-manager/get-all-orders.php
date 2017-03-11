@@ -8,7 +8,7 @@ $query = "
                 o.id,
                 o.customer_id,
                 o.customer_name,
-                UNIX_TIMESTAMP(o.order_date) as order_date,
+                UNIX_TIMESTAMP(o.transaction_date) as transaction_date,
                 od.product_id,
                 od.price,
                 od.quantity,
@@ -21,7 +21,7 @@ $query = "
             AND
                 o.order_type = 1
             ORDER BY
-                o.order_date DESC   
+                o.transaction_date DESC   
 ";
 $allOrders = array();
 if ($result = mysqli_query($con, $query)) {

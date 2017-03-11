@@ -7,7 +7,7 @@ $query = "
             SELECT
                 r.id,
                 r.payment_status,
-                UNIX_TIMESTAMP(r.reserved_date) as reserved_date,
+                UNIX_TIMESTAMP(r.transaction_date) as transaction_date,
                 rd.product_id,
                 rd.price,
                 rd.quantity
@@ -19,7 +19,7 @@ $query = "
             AND
                 r.customer_id = $id
             ORDER BY
-                r.reserved_date DESC   
+                r.transaction_date DESC   
 ";
 $reservationsByCustomer = array();
 if ($result = mysqli_query($con, $query)) {

@@ -14,7 +14,7 @@ include('authentication/functions.php');
 include('data-manager/get-all-reservations.php');
 $distinct = array();
 foreach ($allReservations as $key => $value){
-    $distinct[$value['id']]['reserved_date'] = $value['reserved_date'];
+    $distinct[$value['id']]['transaction_date'] = $value['transaction_date'];
     $distinct[$value['id']]['payment_status'] = $value['payment_status'];
     $distinct[$value['id']]['customer_id'] = $value['customer_id'];
     $distinct[$value['id']]['customer_name'] = $value['customer_name'];
@@ -201,7 +201,7 @@ $i = 1; //for table row counting
                                   <td><?php echo $i++; ?></td> 
                                   <td><a href="reservation-information.php?rid=<?php echo $key;?>&cid=<?php echo $value['customer_id']; ?>"><?php echo "OPS-".date('Y').'-R-'.$key; ?></a></td>
                                   <td><?php  echo $value['customer_name']; ?> </td>
-                                  <td><?php echo date('F/j/Y',$value['reserved_date']); ?></td>
+                                  <td><?php echo date('F/j/Y',$value['transaction_date']); ?></td>
                                   <td><?php  echo $value['payment_status'] == 0 ? 'Pending' : 'Paid'; ?> </td>
                               </tr>
                           <?php endforeach; ?>
