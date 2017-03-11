@@ -208,8 +208,8 @@ foreach ($reservationsByCustomer as $key => $value){
                                         <?php foreach ($oDistinct as $okey => $oVal): ?>
                                             <tr>
                                                 <td><?php echo $i++; ?></td>
-                                                <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y').'-O-'.$okey; ?></a></td>
-                                                <td><?php echo date('F/j/Y',$oVal['order_date']); ?></td>
+                                                <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y', $oVal['order_date']).'-O-'.$okey; ?></a></td>
+                                                <td><?php echo date('F/j/Y h:i A',$oVal['order_date']); ?></td>
                                                 <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 0 ? 'Waiting for payment' : 'Paid' ?></td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -296,8 +296,8 @@ foreach ($reservationsByCustomer as $key => $value){
                         <?php foreach ($rDistinct as $rkey => $rVal): ?>
                             <tr>
                                 <td><?php echo $i++; ?></td>
-                                <td><a href="#" class="reservation-id" data-id="<?php echo $rkey; ?>"><?php echo "OPS-".date('Y').'-R-'.$rkey; ?></a></td>
-                                <td><?php echo date('F/j/Y',$rVal['reserved_date']); ?></td>
+                                <td><a href="#" class="reservation-id" data-id="<?php echo $rkey; ?>"><?php echo "OPS-".date('Y', $rVal['reserved_date']).'-R-'.$rkey; ?></a></td>
+                                <td><?php echo date('F/j/Y h:i A',$rVal['reserved_date']); ?></td>
                                 <td name="r_pay_stat" data-id="<?php echo $rVal['payment_status']; ?>"><?php echo paymentStatus($rVal['payment_status']); ?> </td>
                             </tr>
                         <?php endforeach; ?>
@@ -390,13 +390,12 @@ foreach ($reservationsByCustomer as $key => $value){
                         <tr>
                           <?php if($nValue['type'] == 'b'): ?>
                             <td>
-                              <a class="notification-subject" data-id="<?php echo empty($nValue['order_id']) ? $nValue['reservation_id'] : $nValue['order_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'reservation' : 'order'; ?>" data-status="<?php echo $nValue['payment_status']; ?>" href="#" data-toggle="modal" data-target="#notification-modal">Payment Status</a>
+                              <a class="notification-payment" data-id="<?php echo empty($nValue['order_id']) ? $nValue['reservation_id'] : $nValue['order_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'reservation' : 'order'; ?>" data-status="<?php echo $nValue['payment_status']; ?>" href="#" data-toggle="modal" data-target="#notification-modal">Payment Status</a>
                             </td>
-<!--                             <td class="notification-subject" data-id="<?php echo empty($nValue['order_id']) ? $nValue['reservation_id'] : $nValue['order_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'reservation' : 'order'; ?>" data-status="<?php echo $nValue['payment_status']; ?>"><a href="#" data-toggle="modal" data-target="#notification-modal">Payment Status</a></td> -->
                           <?php else: ?>
-                            <td data-id="<?php echo $nValue['tracking_id']; ?>"><a href="#" class="notification-subject">Tracking Number</a></td>
+                            <td><a href="#" class="notification-tracking" data-id="<?php echo empty($nValue['order_id']) ? $nValue['reservation_id'] : $nValue['order_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'reservation' : 'order'; ?>" data-tid="<?php echo $nValue['tracking_id']; ?>" data-courier="<?php echo $nValue['courier']; ?>" data-toggle="modal" data-target="#notification-modal">Tracking Number</a></td>
                           <?php endif; ?>    
-                          <td class="transDate"><?php echo date('F/j/Y',$nValue['insert_date']); ?></td>
+                          <td class="transDate"><?php echo date('F/j/Y h:i A',$nValue['insert_date']); ?></td>
                         </tr>
                       <?php endforeach; ?>
                     <?php endif; ?>    
@@ -941,7 +940,7 @@ foreach ($reservationsByCustomer as $key => $value){
 
         };
 
-        $(document).on('click', '.notification-subject', function(e){
+        $(document).on('click', '.notification-payment', function(e){
             var notifModal = $('#notification-modal');
             $(notifModal).find('modal-body .p').html('');
             var content = '';
@@ -977,6 +976,41 @@ foreach ($reservationsByCustomer as $key => $value){
             });
 
         })
+
+        $(document).on('click', '.notification-tracking', function(e){
+            var notifModal = $('#notification-modal');
+            $(notifModal).find('modal-body .p').html('');
+            var content = '';
+            var transID = $(this).attr('data-id');
+            var subject = $(this).text();
+            var type =  $(this).attr('data-type');
+            var courier = $(this).attr('data-courier');
+            var trackingNumber = $(this).attr('data-tid');
+            var transDate = $(this).closest('tr').find('.transDate').text();
+            var currentTime = new Date()
+            var year = currentTime.getFullYear();
+            var char = 'R';
+            if(type == 'order') char = 'O';
+
+            var data = {
+              transID: transID,
+              subject: subject,
+              type: type,
+              courier: courier,
+              trackingNumber: trackingNumber,
+              status: status,
+              transDate: transDate
+            }
+            console.log(data)
+            
+            content = 'Your ' + type + ' ' + 'OPS-'+ year + '-' + char + '-' + transID + ' was sent via ' + courier +'. Here is your tracking number: '+ trackingNumber +'. Expect your item between 1-2 business days.</br>Thank you for shopping with OPS!';
+
+            $(notifModal).on('shown.bs.modal', function(){
+                $(this).find('.modal-title').text(subject);
+                $(this).find('.modal-body p').html(content);
+            });
+
+        });
 
         $('.btn-refresh').click(function(e){
             e.preventDefault();
@@ -1092,7 +1126,8 @@ foreach ($reservationsByCustomer as $key => $value){
             "lengthChange": true,
             "lengthMenu": [ 5, 10, 25, 50, 75, 100],
             "searching": true,
-            "ordering": false,
+            "ordering": true,
+            "order": [[ 1, "desc" ]],
             "info": true,
             "autoWidth": true,
         });
