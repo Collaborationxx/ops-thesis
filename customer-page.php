@@ -374,7 +374,6 @@ foreach ($reservationsByCustomer as $key => $value){
             <div class="box box-success">
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-envelope"></i>   My Messages</h3>
-                <a href="#" class="btn-refresh pull-right"><i class="fa fa-refresh"></i>  Refresh</a>
               </div>
               <div class="box-body">
                 <table class="table table-striped table-bordered" id="notification-table">
@@ -395,7 +394,7 @@ foreach ($reservationsByCustomer as $key => $value){
                           <?php else: ?>
                             <td><a href="#" class="notification-tracking" data-id="<?php echo empty($nValue['order_id']) ? $nValue['reservation_id'] : $nValue['order_id']; ?>" data-type="<?php echo empty($nValue['order_id']) ? 'reservation' : 'order'; ?>" data-tid="<?php echo $nValue['tracking_id']; ?>" data-courier="<?php echo $nValue['courier']; ?>" data-toggle="modal" data-target="#notification-modal">Tracking Number</a></td>
                           <?php endif; ?>    
-                          <td class="transDate"><?php echo date('F/j/Y h:i A',$nValue['insert_date']); ?></td>
+                          <td class="transDate"><?php echo date_format(date_create($nValue['insert_date']), 'F/j/Y h:i A')?></td>
                         </tr>
                       <?php endforeach; ?>
                     <?php endif; ?>    
@@ -539,6 +538,7 @@ foreach ($reservationsByCustomer as $key => $value){
 
 <!-- moment.js -->
 <script src="assets/js/moment.js"></script>
+
 
 <script>
     $(function () {
@@ -1012,15 +1012,6 @@ foreach ($reservationsByCustomer as $key => $value){
 
         });
 
-        $('.btn-refresh').click(function(e){
-            e.preventDefault();
-            $('#notification-table').dataTable() .fnAddData( [
-              'col1',
-              'col2',
-            ], false);
-
-        });
-
         function getNotification(){
             var currentTime = new Date()
             var year = currentTime.getFullYear();
@@ -1040,7 +1031,7 @@ foreach ($reservationsByCustomer as $key => $value){
                     if(rData.length > 0){
                         $(rData).each(function(i,e){
                           var oid = e.order_id;
-                          var dateString = moment.unix(e.insert_date).format("MMMM/DD/YYYY");
+                          var dateString = moment.unix(e.insert_date).format("MMMM/DD/YYYY h:mm A");
                           console.log(oid)
 
                           if(e.type == 'b'){
@@ -1061,10 +1052,7 @@ foreach ($reservationsByCustomer as $key => $value){
 
                           var td2 = '<span class="transDate">'+ dateString +'</span>';
 
-                          $('#notification-table').dataTable() .fnAddData( [
-                            td1,
-                            td2,
-                          ]);
+                          $('#notification-table tbody').prepend('<tr><td>'+ td1 +'</td><td>'+ td2 +'</td></tr>');
 
                         });
                     }
@@ -1128,7 +1116,7 @@ foreach ($reservationsByCustomer as $key => $value){
             "searching": true,
             "ordering": true,
             "order": [[ 1, "desc" ]],
-            "info": true,
+            "info": false,
             "autoWidth": true,
         });
 
@@ -1145,6 +1133,14 @@ foreach ($reservationsByCustomer as $key => $value){
             }     
             //refresh the page
             DataTableVAR.page(currentPage).draw(false);
+        }
+
+        function printReport(table){
+            var tableToPrint = document.getElementById(table);
+            newWin= window.open("");
+            newWin.document.write(divToPrint.outerHTML);
+            newWin.print();
+            newWin.close();
         }
 
 
