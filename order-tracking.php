@@ -242,7 +242,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                             <td><?php echo $tValue['courier']; ?></td>
                             <td><?php echo $tValue['tracking_number']; ?></td>
                             <td><?php echo ucfirst($tValue['lname']).', '.ucfirst($tValue['fname']); ?></td>
-                            <td><?php echo date('F/j/Y h:i A',$tValue['date_sent']); ?></td>
+                            <td><?php echo date_format(date_create($tValue['date_sent']), 'F/j/Y h:i A') ?></td>
+                             
                           </tr>
                         <?php endforeach; ?>
                       <?php endif; ?>

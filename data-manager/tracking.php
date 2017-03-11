@@ -9,7 +9,11 @@ $oData = array();
 $oSelect = "SELECT
 				o.id,
 				o.customer_id,
+<<<<<<< HEAD
 				UNIX_TIMESTAMP(o.transaction_date) as oDate,
+=======
+				o.order_date as oDate,
+>>>>>>> 0802e1e5745b66f180dc6f9dcab446a83359ae82
 				p.id as pid
 			FROM
 				order_tbl o,
