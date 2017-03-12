@@ -80,6 +80,7 @@ if($tbl == 'inventory'){
 			";
 }
 
+
 if($result = mysqli_query($con, $select)){
 	while($row = mysqli_fetch_assoc($result)){
 		$reports[] = $row;

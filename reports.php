@@ -171,6 +171,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               <div class="box-header with-border">
                 <div class="box-header with-border">
                   <h3 class="box-title"><i class="fa fa-file-text-o"></i>   Generate Report</h3>
+                  <button class="btn btn-default pull-right clear-selection"><i class="fa fa-refresh"></i>   Clear Selection</button>
                 </div>
                 <div class="box-body">
                   <form role="form">
@@ -222,17 +223,45 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-file-excel-o"></i>   Preview</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                  <button class="btn btn-default print-report"><i class="fa fa-print"></i>   Print Report</button>
+                  <!-- <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button> -->
                 </div>
 
               </div>
-              <div class="box-body">
-              <table class="table table-striped table-bordered" id="reports-table">
-                <thead>
-                  <th>#</th>
-                </thead>
-                <tbody></tbody>
-              </table>
+              <div class="box-body reports-table">
+                <table class="table table-striped table-bordered" id="reports-purchase" style="display: none">
+                  <thead>
+                    <th>#</th>
+                    <th>ID</th>
+                    <th>Customer Name</th>
+                    <th>Delivery Status</th>
+                    <th>Courier</th>
+                    <th>Date</th>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+                 <table class="table table-striped table-bordered" id="reports-products" style="display: none">
+                  <thead>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                    <th>Phase Out</th>
+                    <th>Added On</th>
+                    </thead>
+                  <tbody></tbody>
+                </table>
+                <table class="table table-striped table-bordered" id="reports-inventory" style="display: none">
+                  <thead>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Quantiy</th>
+                    <th>Stock On</th>
+                  </thead>
+                  <tbody></tbody>
+                </table>
               </div>
               <div class="box-footer">
                 <div class="row">
@@ -277,30 +306,67 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
 <script>
-  $(document).ready(function(){
+(function($){
+    var serverURL = <?php echo json_encode($serverURL); ?>;
 
-      var serverURL = <?php echo json_encode($serverURL); ?>;
-      //Date picker
-      //from
-      $('#datepicker-from').datepicker({
-        autoclose: true
-      });
-      //to
-      $('#datepicker-to').datepicker({
-        autoclose: true
-      });
+    //Date picker
+    //from
+    $('#datepicker-from').datepicker({
+      autoclose: true
+    });
+    //to
+    $('#datepicker-to').datepicker({
+      autoclose: true
+    });
+
+
+    function hideDataTableElements(){
+        $('.dataTables_info').hide();
+        $('.dataTables_paginate').hide();
+        $('.dataTables_filter').hide();
+        $('.dataTables_length').hide();
+    }
+
+    function showDataTableElements(){
+        $('.dataTables_info').show();
+        $('.dataTables_paginate').show();
+        $('.dataTables_filter').show();
+        $('.dataTables_length').hide();
+    }
+
+    function validateData(){
+        $('select, input[type=text]').on("keyup", function(){
+            if($(this).val() != '' && $('#datepicker-to').val() != '' && $('#categorySelect').val() != ''){
+                $('.btn-generate').prop('disabled', false);
+            } else {
+                $('.btn-generate').prop('disabled', true);
+            }
+        });
+
+        $('select, input[type=text]').on("change", function(){
+            if($(this).val() != '' && $('#datepicker-to').val() != '' && $('#categorySelect').val() != ''){
+                $('.btn-generate').prop('disabled', false);
+            } else {
+                $('.btn-generate').prop('disabled', true);
+            }
+        });
+    }
+
+
+  $(document).ready(function(){
+      $('.btn-generate').prop('disabled', true);
+      validateData();
 
       $('.btn-generate').click(function(){
+          $('table').hide();
+          hideDataTableElements();
+
           var table = $('option:selected', 'select#categorySelect').attr('data-table');
           var column = $('option:selected', 'select#categorySelect').attr('data-col');
           var type = $('option:selected', 'select#categorySelect').attr('data-type');
           var start = $('#datepicker-from').val();
           var end = $('#datepicker-to').val();
-          var reportsTable = $('#reports-table');
-          var tbody = $(reportsTable).find('tbody');
-          var thead = $(reportsTable).find('thead');
-          var theadContent = '';
-          var tbodyContent = '';
+          var i = 1;
 
           var data = {
               table: table,
@@ -319,31 +385,103 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               success: function(rData){
                   console.log(rData)
                   console.log(rData.category)
+                  console.log(rData.reports)
+
                   if(rData.category == 'order_tbl'){
+                      $('#reports-purchase').show();
+
                       $(rData.reports).each(function(ind, obj){
-                          $(thead).append('<th>ID</th>'
-                          );
+                          $('#reports-purchase').dataTable() .fnAddData([
+                              i,
+                              'OPS-'+ (obj.Date).substring(0,4) + '-O-'+ obj.id,
+                              (obj.last_name).toUpperCase() +', '+ obj.first_name,
+                              obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
+                              obj.courier,
+                              obj.Date
+                          ]);
+                          
+                          i++;
                       });
+
+                      showDataTableElements();
                   }
 
-                  if(theadContent.length > 0) $(thead).append(theadContent);
-                  if(tbodyContent.length > 0) $(tbody).append(tbodyContent);
+                  if(rData.category == 'reservation_tbl'){
+                      $('#reports-purchase').show();
+
+                      $(rData.reports).each(function(ind, obj){
+                          $('#reports-purchase').dataTable() .fnAddData([
+                              i,
+                              'OPS-'+ (obj.Date).substring(0,4) + '-R-'+ obj.id,
+                              (obj.last_name).toUpperCase() +', '+ obj.first_name,
+                              obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
+                              obj.courier,
+                              obj.Date
+                          ]);
+                          
+                          i++;
+
+
+                      });
+                      showDataTableElements();
+
+                  }
+
+                  if(rData.category == 'inventory'){
+                      $('#reports-inventory').show();
+
+                      $(rData.reports).each(function(ind, obj){
+                          $('#reports-inventory').dataTable() .fnAddData([
+                              i,
+                              obj.name,
+                              obj.quantity,
+                              obj.stock_date
+                          ]);
+                          
+                          i++;
+
+                      });
+                      showDataTableElements();
+
+                  }
+
+
+                  if(rData.category == 'product'){
+                      $('#reports-products').show();
+
+                      $(rData.reports).each(function(ind, obj){
+                          $('#reports-products').dataTable() .fnAddData([
+                              i,
+                              obj.name,
+                              obj.description,
+                              obj.category,
+                              obj.price,
+                              obj.availability == 0 ? 'on-hand' : 'for reservation',
+                              obj.phase_out == 0 ? 'No': 'yes',
+                              obj.insert_date
+                          ]);
+                          
+                          i++;
+
+                      });
+                      showDataTableElements();
+
+                  }
+
+
               },
           });
       });
 
-      $('#reports-table').dataTable({
-          "paging": true,
-          "lengthChange": true,
-          "lengthMenu": [ 5, 10, 25, 50, 75, 100],
-          "searching": true,
-          "ordering": true,
-          "info": true,
-          "autoWidth": true
+      $('.clear-selection').click(function(e){
+          e.preventDefault();
+          location.reload();
+
       });
 
-
   });
+
+})(jQuery);
 </script>
 </body>
 </html>
