@@ -30,8 +30,7 @@ foreach ($allReservations as $rKey => $rValue){
 }
 $reservationCount = count($rDistinct);
 
-//echo '<pre>'; print_r($distinc
-//echo '<pre>'; print_r($distinct); exit;
+// echo '<pre>'; print_r($rDistinct); exit;
 ?>
 
 <!DOCTYPE html>

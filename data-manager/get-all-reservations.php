@@ -19,7 +19,7 @@ $query = "
             WHERE
                 r.id = rd.reservation_id
             AND
-                r.reservation_type = 1
+                r.type = 1
             ORDER BY
                 r.transaction_date DESC   
 ";

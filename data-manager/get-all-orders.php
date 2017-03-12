@@ -19,7 +19,7 @@ $query = "
             WHERE
                 o.id = od.order_id
             AND
-                o.order_type = 1
+                o.type = 1
             ORDER BY
                 o.transaction_date DESC   
 ";
