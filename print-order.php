@@ -10,7 +10,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
     }
 }
 
-include('authentication/functions.php');
+include('includes/functions.php');
 ?>
 
 <!DOCTYPE html>

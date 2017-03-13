@@ -14,7 +14,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('data-manager/get-inventory.php');
 include('data-manager/get-products.php');
-include('authentication/functions.php');
+include('includes/functions.php');
 include('data-manager/get-product-inventory.php');
 
 //echo '<pre>'; print_r($itemsLeft); exit;

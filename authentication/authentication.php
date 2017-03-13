@@ -2,7 +2,7 @@
 session_start(); //to record session
 //include database file for connection to the server
 include(dirname(__FILE__).'/../config/db_connection.php');// ex. http://localhost
-include('../authentication/functions.php'); //include functions.php to test sql injections
+include('../includes/functions.php'); //include functions.php to test sql injections
 
 $username = test_input($_POST['username']); //kunin yung username sa index
 $password = test_input(md5($_POST['password'])); //kunin yung password sa index

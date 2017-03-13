@@ -8,7 +8,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 $userID = $_SESSION['id'];
 
-include('authentication/functions.php');
+include('includes/functions.php');
 include('data-manager/get-profile.php');
 include('data-manager/get-orders-by-customer.php');
 include('data-manager/get-reservation-by-customer.php');

@@ -10,7 +10,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
     }
 }
 
-include('authentication/functions.php');
+include('includes/functions.php');
 include('data-manager/get-alert.php');
 include('data-manager/get-all-orders.php');
 include('data-manager/get-all-reservations.php');

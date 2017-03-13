@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include('authentication/functions.php');
+include('includes/functions.php');
 include('data-manager/get-available-products.php');
 include('data-manager/get-inventory.php');
 $serverURL = "http://$_SERVER[HTTP_HOST]";

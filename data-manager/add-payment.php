@@ -1,6 +1,6 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
-include('../authentication/functions.php');
+include('../includes/functions.php');
 
 $id = test_input($_POST['tid']);
 $pid = isset($_POST['pid']) ? test_input($_POST['pid']) : '';

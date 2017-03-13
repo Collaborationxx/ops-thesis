@@ -10,7 +10,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
     }
 }
 
-include('authentication/functions.php');
+include('includes/functions.php');
 include('data-manager/get-all-payment.php');
 $serverURL = "http://$_SERVER[HTTP_HOST]";
 $counter = 1;

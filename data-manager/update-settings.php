@@ -1,6 +1,6 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
-include('../authentication/functions.php');
+include('../includes/functions.php');
 
 $currentUsername = test_input($_POST['current_username']);
 $username = test_input($_POST['username']);

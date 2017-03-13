@@ -12,7 +12,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('data-manager/get-inventory-history.php');
-include('authentication/functions.php');
+include('includes/functions.php');
 //echo '<pre>'; print_r($history); exit;
 
 ?>
