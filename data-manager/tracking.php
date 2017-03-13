@@ -9,11 +9,7 @@ $oData = array();
 $oSelect = "SELECT
 				o.id,
 				o.customer_id,
-<<<<<<< HEAD
 				UNIX_TIMESTAMP(o.transaction_date) as oDate,
-=======
-				o.order_date as oDate,
->>>>>>> 0802e1e5745b66f180dc6f9dcab446a83359ae82
 				p.id as pid
 			FROM
 				order_tbl o,
@@ -129,7 +125,7 @@ $selectOrders = "SELECT
                 UNIX_TIMESTAMP(o.transaction_date) as tdate,
 			    t.tracking_number,
 			    t.courier,
-			    UNIX_TIMESTAMP(t.date_sent) as date_sent,
+			    t.date_sent as date_sent,
 			    c.last_name as lname,
 			    c.first_name as fname
 			FROM
@@ -158,7 +154,7 @@ $selectReservations = "SELECT
                 UNIX_TIMESTAMP(r.transaction_date) as tdate,
 			    t.tracking_number,
 			    t.courier,
-			    UNIX_TIMESTAMP(t.date_sent) as date_sent,
+			    t.date_sent as date_sent,
 			    c.last_name as lname,
 			    c.first_name as fname
 			FROM
