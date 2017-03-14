@@ -2,6 +2,15 @@
 require_once('../plugins/PHPEXcel/Classes/PHPEXcel.php');
 include(dirname(__FILE__).'/../config/db_connection.php');
 
+$headers = $_POST['headers'];
+$body = $_POST['body'];
+
+echo '<pre>'; print_r($headers);
+echo '<pre>'; print_r($body);
+
+exit;
+
+
 $query = "SELECT * FROM `inventory` ";
 $arr = array();
 if ($result = mysqli_query($con, $query)) {

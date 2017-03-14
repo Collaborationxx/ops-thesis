@@ -31,7 +31,7 @@ foreach ($reservationsByCustomer as $key => $value){
     $rDistinct[$value['id']]['payment_status'] = $value['payment_status'];
 }
 
-//echo '<pre>'; print_r($notifications); exit;
+// echo '<pre>'; print_r($notifications); exit;
 ?>
 <!DOCTYPE html>
 <html>

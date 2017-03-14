@@ -11,11 +11,8 @@ $select = " SELECT
 				courier,
 				customer_id,
 				payment_id,
-<<<<<<< HEAD
-				(insert_date) as insert_date
-=======
 				insert_date
->>>>>>> 2fdfbc611815308dad1820f7369b68d38ad855f9
+
 			FROM
 				 `notifications`
 			WHERE

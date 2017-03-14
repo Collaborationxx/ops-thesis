@@ -223,13 +223,13 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-file-excel-o"></i>   Preview</h3>
                 <div class="box-tools pull-right">
-                  <button class="btn btn-default print-report"><i class="fa fa-print"></i>   Print Report</button>
+                  <button class="btn btn-default download-report"><i class="fa fa-download"></i>   Download Report</button>
                   <!-- <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button> -->
                 </div>
 
               </div>
               <div class="box-body reports-table">
-                <table class="table table-striped table-bordered" id="reports-purchase" style="display: none">
+                <table class="table table-striped table-bordered table-purchase" id="reports-purchase" style="display: none">
                   <thead>
                     <th>#</th>
                     <th>ID</th>
@@ -240,7 +240,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   </thead>
                   <tbody></tbody>
                 </table>
-                 <table class="table table-striped table-bordered" id="reports-products" style="display: none">
+                 <table class="table table-striped table-bordered table-products" id="reports-products" style="display: none">
                   <thead>
                     <th>#</th>
                     <th>Product</th>
@@ -253,7 +253,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </thead>
                   <tbody></tbody>
                 </table>
-                <table class="table table-striped table-bordered" id="reports-inventory" style="display: none">
+                <table class="table table-striped table-bordered table-inventory" id="reports-inventory" style="display: none">
                   <thead>
                     <th>#</th>
                     <th>Product</th>
@@ -308,6 +308,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 <script>
 (function($){
     var serverURL = <?php echo json_encode($serverURL); ?>;
+    var headers = [];
+    var body = [];
+    var x = 0;
 
     //Date picker
     //from
@@ -352,6 +355,35 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         });
     }
 
+    function getHeaders(){
+      headers = [];
+      $('.toDownload thead tr th').each(function(){
+          var th = $(this).text();
+          headers.push(th);
+
+
+      });
+    }
+
+
+    function getBody(){
+      body = [];
+      var b = '';
+
+      $('.toDownload tbody tr').each(function(ind,tr){
+          var tb = $(this).text();
+               var b = $('td', tr).map(function(index, td) {
+              return $(td).text();
+          });
+      console.debug('b', b)
+      body.push(b);
+                
+      });
+
+
+    }
+
+
 
   $(document).ready(function(){
       $('.btn-generate').prop('disabled', true);
@@ -383,12 +415,15 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               data: data,
               dataType: 'json',
               success: function(rData){
+                  $('.btn-generate').prop('disabled', true);
                   console.log(rData)
                   console.log(rData.category)
                   console.log(rData.reports)
+                  $('.table').removeClass('toDownload');
 
                   if(rData.category == 'order_tbl'){
                       $('#reports-purchase').show();
+                      $('.table-purchase').addClass('toDownload');
 
                       $(rData.reports).each(function(ind, obj){
                           $('#reports-purchase').dataTable() .fnAddData([
@@ -408,6 +443,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
                   if(rData.category == 'reservation_tbl'){
                       $('#reports-purchase').show();
+                      $('.table-purchase').addClass('toDownload');
+
 
                       $(rData.reports).each(function(ind, obj){
                           $('#reports-purchase').dataTable() .fnAddData([
@@ -429,6 +466,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
                   if(rData.category == 'inventory'){
                       $('#reports-inventory').show();
+                      $('.table-inventory').addClass('toDownload');
+
 
                       $(rData.reports).each(function(ind, obj){
                           $('#reports-inventory').dataTable() .fnAddData([
@@ -448,6 +487,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
                   if(rData.category == 'product'){
                       $('#reports-products').show();
+                      $('.table-products').addClass('toDownload');
+
 
                       $(rData.reports).each(function(ind, obj){
                           $('#reports-products').dataTable() .fnAddData([
@@ -477,6 +518,23 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           e.preventDefault();
           location.reload();
 
+      });
+
+      $('.download-report').click(function(){
+          getHeaders();
+          getBody();
+          console.log(headers);
+          console.log(body);
+
+          $.ajax({
+              type: 'POST',
+              url: serverURL + '/ops/includes/generate-excel.php',
+              data: {headers: headers, body: body},
+              dataType: 'json',
+              success: function(){
+
+              },
+          });
       });
 
   });
