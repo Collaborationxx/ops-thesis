@@ -6,7 +6,7 @@ $userID = $_POST['userID'];
 $param = isset($_POST['param']) ? $_POST['param'] : '';
 $response = array();
 
-if($param == 0){ //click from checkout button
+if($param == 0){ //click from checkout button'
     $query = "INSERT INTO `order_tbl` (customer_id, type) VALUES ($userID, 1)";
     $table = 'order_details';
     $col = 'order_id';

@@ -230,6 +230,7 @@
       var table = $('.cart-table');
       var cart = JSON.parse(localStorage.getItem('myCart'));
       var item_count = cart == null ? 0 : cart.length;
+      var type = 0;
 
       console.log(cart);
       $('.item_count').text('[ '+ item_count + ' Item(s) ]');
@@ -342,6 +343,7 @@
           e.preventDefault();
           $('#login-signup-modal').find('.header-title').text('To reserve items:');
           if(username.length == 0){
+              type = 1;
               $('#login-signup-modal').find('.header-title').text('To checkout items:');
               $(modal).modal('show');
           } else {
@@ -395,6 +397,7 @@
                       var orders = {
                           userID: rData.userID,
                           items: cart,
+                          param: type
                       }
                       $.ajax({
                           type: 'POST',
