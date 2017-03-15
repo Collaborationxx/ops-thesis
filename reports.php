@@ -275,6 +275,12 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         </div>
     </section>
     <!-- /.content -->
+
+    <form id="report-data" method="POST" action="includes/generate-excel.php" class="hidden">
+        <input type="hidden" name="reportName">
+        <input type="hidden" name="headers">
+        <input type="hidden" name="body">
+    </form>
   </div>
   <!-- /.content-wrapper -->
 
@@ -334,7 +340,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         $('.dataTables_info').show();
         $('.dataTables_paginate').show();
         $('.dataTables_filter').show();
-        $('.dataTables_length').hide();
+        $('.dataTables_length').show();
     }
 
     function validateData(){
@@ -368,15 +374,15 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
     function getBody(){
       body = [];
-      var b = '';
 
       $('.toDownload tbody tr').each(function(ind,tr){
-          var tb = $(this).text();
-               var b = $('td', tr).map(function(index, td) {
+          var tb = $('td', tr).map(function(index, td) {
               return $(td).text();
-          });
-      console.debug('b', b)
-      body.push(b);
+              
+
+          }).toArray();
+
+          body.push(tb);
                 
       });
 
@@ -526,15 +532,14 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           console.log(headers);
           console.log(body);
 
-          $.ajax({
-              type: 'POST',
-              url: serverURL + '/ops/includes/generate-excel.php',
-              data: {headers: headers, body: body},
-              dataType: 'json',
-              success: function(){
+          var cat = $('option:selected', 'select#categorySelect').val();
 
-              },
-          });
+          $('input[name=headers]').val(JSON.stringify(headers));
+          $('input[name=body]').val(JSON.stringify(body));
+          $('input[name=reportName]').val(cat);
+
+          $('#report-data').submit();
+
       });
 
   });
