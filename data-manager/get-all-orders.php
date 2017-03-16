@@ -12,14 +12,19 @@ $query = "
                 od.product_id,
                 od.price,
                 od.quantity,
-                o.payment_status
+                o.payment_status,
+                u.first_name,
+                u.last_name
             FROM
                 order_tbl o,
-                order_details od
+                order_details od,
+                user_account u
             WHERE
                 o.id = od.order_id
             AND
                 o.type = 1
+            AND
+                o.customer_id = u.id    
             ORDER BY
                 o.transaction_date DESC   
 ";

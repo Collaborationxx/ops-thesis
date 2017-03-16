@@ -279,7 +279,8 @@ $counter = 1;
             {"name":"third", "orderable":true},
             {"name":"fourth", "orderable":true},
             {"name":"fifth", "orderable":true},
-            {"name":"sixth", "orderable":false}
+            {"name":"sixth", "orderable":true},
+            {"name": "seventh", "orderable": false}
             ]
         });
 

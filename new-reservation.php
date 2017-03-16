@@ -12,12 +12,15 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('includes/functions.php');
 include('data-manager/get-all-reservations.php');
+// echo '<pre>'; print_r($allReservations); exit;
 $distinct = array();
 foreach ($allReservations as $key => $value){
     $distinct[$value['id']]['transaction_date'] = $value['transaction_date'];
     $distinct[$value['id']]['payment_status'] = $value['payment_status'];
     $distinct[$value['id']]['customer_id'] = $value['customer_id'];
-    $distinct[$value['id']]['customer_name'] = $value['customer_name'];
+    $distinct[$value['id']]['customer_first_name'] = $value['first_name'];
+    $distinct[$value['id']]['customer_last_name'] = $value['last_name'];
+
 }
 $i = 1; //for table row counting
 ?>
@@ -200,7 +203,7 @@ $i = 1; //for table row counting
                               <tr>
                                   <td><?php echo $i++; ?></td> 
                                   <td><a href="reservation-information.php?rid=<?php echo $key;?>&cid=<?php echo $value['customer_id']; ?>"><?php echo "OPS-".date('Y').'-R-'.$key; ?></a></td>
-                                  <td><?php  echo $value['customer_name']; ?> </td>
+                                  <td><?php  echo strtoupper($value['customer_last_name']).', '.ucfirst($value['customer_first_name']); ?></td>
                                   <td><?php echo date('F/j/Y',$value['transaction_date']); ?></td>
                                   <td><?php  echo $value['payment_status'] == 0 ? 'Pending' : 'Paid'; ?> </td>
                               </tr>
