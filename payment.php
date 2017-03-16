@@ -182,6 +182,7 @@ $counter = 1;
                         <th>Payment</th>
                         <th>Deposit No.</th>
                         <th>Date Deposit</th>
+                        <th>Mode</th>
                         <th width=15%;>Action</th>
                       </tr>
                       </thead>
@@ -202,6 +203,7 @@ $counter = 1;
                                 <td><?php echo $value['deposit_amount']; ?></td>
                                 <td><?php echo $value['deposit_number']; ?></td>
                                 <td><?php echo date('F/j/Y',$value['pay_date']); ?></td>
+                                <td><?php echo $value['payment_mode'] == 1 ? 'Full Payment' : 'Partial Payment'; ?></td>
                                 <td>
                                    <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank" data-toggle="tooltip" title="Verify?"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
                                    <a href="#" class="confirm-payment" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
