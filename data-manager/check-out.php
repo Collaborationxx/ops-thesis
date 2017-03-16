@@ -1,9 +1,9 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
 
-$orders = $_POST['items'];
+$orders = $_POST['items']; //echo print_r($orders);
 $userID = $_POST['userID'];
-$param = isset($_POST['param']) ? $_POST['param'] : '';
+$param = isset($_POST['param']) ? $_POST['param'] : ''; //echo $param;
 $response = array();
 
 if($param == 0){ //click from checkout button'
@@ -25,17 +25,15 @@ if(mysqli_query($con, $query)){
         $price = $value['price'];
         $qty = $value['qty'];
         $subQuery = "INSERT INTO `$table` ($col, product_id, price, quantity) VALUES ($id, $product, $price, $qty)";
-        mysqli_query($con, $subQuery);
-    }
-    $response = array('status' => 'success');
-}
-
-if(mysqli_query($con, $subQuery)){
+        
+        if(mysqli_query($con, $subQuery)){
             $sql = "UPDATE `inventory` SET quantity = quantity - $qty WHERE product_id = $product";
             if(mysqli_query($con, $sql)){
                 $response = array('status' => 'success');
             }
         }
+    }
+}
         
 header('Content-Type: application/json');
 echo json_encode($response);
