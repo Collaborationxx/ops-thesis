@@ -7,6 +7,11 @@ $userID = $_POST['user_id'];
 $customerName = $_POST['customer'];
 $response = array();
 
+echo $orderType.'<br>';
+echo $userID.'<br>';
+echo $customerName.'<br>';
+echo '<pre>'; print_r($orders);
+exit;
 
 $query = "INSERT INTO `order_tbl` (customer_name, type) VALUES ('$customerName', $orderType)";
 if(mysqli_query($con, $query)){

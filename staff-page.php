@@ -110,6 +110,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <div class="form-group">
                       <p class="errMess err-req hidden">Make sure to fill in product Name and Quantity</p>
                       <p class="errMess no-result hidden">No product matches your search. Maybe the product is already phase out.</p>
+                      <p class="errMess in-order hidden">This item is in order table.</p>
+
                       <label>Product Name:</label>
                       <input type="text" class="form-control product-name" data-id="" data-image="" name="prod-name" placeholder="Type at least three characters">
                     </div>
@@ -154,23 +156,21 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               </div> -->
 
               <div class="box-body">
+                <div class="form-group">
+                   <input type="text" class="form-control customer-name" placeholder="Customer Name">
+                </div>
                 <table class="table table-striped table-bordered preview-table">
                   <thead>
-                    <tr>
-                      <td colspan="5">
-                        <input type="text" class="form-control customer-name" placeholder="Customer Name">
-                      </td>
-                    </tr>
-                  </thead>
-                  <tbody>
                     <tr>
                       <th>Product Photo</th>
                       <th>Product Name</th>
                       <th>Quantity</th>
                       <th>Price</th>
                       <th>Total Price</th>
+                      <th></th>
                     </tr>
-                  </tbody>
+                  </thead>
+                  <tbody></tbody>
                 </table>
               </div>
               <div class="box-footer">
@@ -274,15 +274,22 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               }
           },
           select: function (event, ui) {
-              console.log(ui.item);
+              if(ui.item.id)
               $('.price').val(ui.item.price);
               $(input).attr('data-id', ui.item.id);
               $(input).attr('data-image', ui.item.picture);
               $('input[name="stock-left"]').val(ui.item.stock);
+
+              $(myTrans).each(function(ind,obj){
+                  if(obj.prod_id == ui.item.id){
+                      console.log('in array')
+                      $('.in-order').removeClass('hidden');
+                      $('.place-order').prop('disabled', true);
+                  }
+              });
           },
           minLength: 3,
       });
-
 
       $('.place-order').click(function (e) {
           e.preventDefault();
@@ -336,6 +343,16 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   $(this).closest('div.box').find('input').val(''); //clear inputs
                   $(total_input).val(grand_total);
                   $(table).append(table_content); //place order in the table
+
+                  $.each(arr, function(index, obj){
+                      if (obj.prod_id == prod_id) {
+                          arr.splice(index,1);
+                          console.log(arr);
+                          // return false;
+                      }
+                  });
+                      
+
               }
 
           }
@@ -439,7 +456,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       td.val(result);
                       for (var i = 0; i < orders.length; i++) {
                           if(pid == orders[i].prod_id){  //look for match with nid
-                              orders[i].qty = result;  //update quantity
+                              orders[i].qty = result; //update quantity
+                              orders[i].sub_total = result *  orders[i].price;
                               break;  //exit loop since you found the product
                           }
                       }
