@@ -157,7 +157,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
               <div class="box-body">
                 <div class="form-group">
-                   <input type="text" class="form-control customer-name" placeholder="Customer Name">
+                    <p class="errMess name-required hidden">*This is a required field</p>
+                    <input type="text" class="form-control customer-name" placeholder="Customer Name">
                 </div>
                 <table class="table table-striped table-bordered preview-table">
                   <thead>
@@ -361,47 +362,54 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
 
       $('.btn-order').click(function () {
-        var orders = JSON.parse(localStorage.getItem('myTransaction'));
+          var customerName = $('.customer-name').val();
+          var orders = JSON.parse(localStorage.getItem('myTransaction'));
+          
           var data = {
               user_id: user_id,
               order_details: orders,
               order_type: 0,
-              customer : $('.customer-name').val()
+              customer : customerName
           };
 
           console.log(data)
 
-          $.ajax({
-              type: "POST",
-              url: serverURL + '/ops/data-manager/add-order.php',
-              data: data,
-              dataType: "json",
-              success: function (rData) {
-                  if(rData.status){
-                    localStorage.removeItem('myTransaction');
-                    bootbox.confirm({
-                      message: "Success! Another Transaction?",
-                      buttons: {
-                          confirm: {
-                              label: 'Yes',
-                              className: 'btn-success'
-                        },
-                      cancel: {
-                            label: 'No',
-                            className: 'btn-danger'
-                      }
-                      },
-                      callback: function (result) {
-                          if(result == true){
-                              location.reload();
-                          } else {
-                              window.location.href = serverURL + '/ops/index.php';
+          if(customerName.length == 0){
+              $('.name-required').closest('.form-group').addClass('has-error');
+              $('.name-required').removeClass('hidden');
+          } else {
+              $.ajax({
+                  type: "POST",
+                  url: serverURL + '/ops/data-manager/add-order.php',
+                  data: data,
+                  dataType: "json",
+                  success: function (rData) {
+                      if(rData.status){
+                        localStorage.removeItem('myTransaction');
+                        bootbox.confirm({
+                          message: "Success! Another Transaction?",
+                          buttons: {
+                              confirm: {
+                                  label: 'Yes',
+                                  className: 'btn-success'
+                            },
+                          cancel: {
+                                label: 'No',
+                                className: 'btn-danger'
                           }
+                          },
+                          callback: function (result) {
+                              if(result == true){
+                                  location.reload();
+                              } else {
+                                  window.location.href = serverURL + '/ops/index.php';
+                              }
+                          }
+                        });
                       }
-                    });
-                  }
-              },
-          });
+                  },
+              });
+          }
       });
 
       $(document).on('click', '.remove-order', function (e) {
