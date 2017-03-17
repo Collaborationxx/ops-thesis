@@ -11,5 +11,3 @@ if ($result = mysqli_query($con, $query)) {
     /* free result set */
     mysqli_free_result($result);
 }
-
-?>

@@ -19,13 +19,13 @@ include("header.php");
                     <div class="row">
                         <div class="col-md-9 col-md-push-3 col-sm-8 col-sm-push-4">
                             <div class="page-selector">
-                                <div class="pages-box hidden-xs">
+                                <!-- <div class="pages-box hidden-xs">
                                     <a href="#" class="square-button active">1</a>
                                     <a href="#" class="square-button">2</a>
                                     <a href="#" class="square-button">3</a>
                                     <div class="divider">...</div>
                                     <a href="#" class="square-button"><i class="fa fa-angle-right"></i></a>
-                                </div>
+                                </div> -->
 
                                 <div class="shop-grid-controls">
                                     <div class="entry">
@@ -57,12 +57,15 @@ include("header.php");
                                     </div>
                                 </div>
                                 <div class="clear"></div>
-                            </div>
 
+                            </div>
+                            <div class="pre-loader" style="display: none">
+                                <img src="assets/images/LoadingGreen.gif">
+                            </div>
                             <div id="shop-list" class="row shop-grid grid-view">
                                 <?php if(isset($availableProducts) AND count($availableProducts) > 0): ?>
                                     <?php foreach ($availableProducts as $key => $value): ?>
-                                        <div class="col-md-3 col-sm-4 shop-grid-item product-container">
+                                        <div class="col-md-3 col-sm-4 shop-grid-item product-container" style="display: none">
                                             <div class="product-slide-entry">
                                                 <div class="product-image">
                                                     <img class="prod-img" src="assets/images/products/<?php echo $value['picture']?>" alt="" />
@@ -106,6 +109,9 @@ include("header.php");
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </div>
+                            <div class="load-more">
+                                <button type="button" class="btn btn-success btn-lg load-more">Load More</button>
+                            </div>
                         </div>
                         <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8 blog-sidebar">
                             <div class="information-blocks categories-border-wrapper">
@@ -114,16 +120,16 @@ include("header.php");
                                     <div class="accordeon-title">Medical Supplies</div>
                                     <div class="accordeon-entry" style="display: block;">
                                         <div class="article-container style-1">
-                                            <ul>
-                                                <li><a href="#">Electronic</a></li>
-                                                <li><a href="#">Self-Care</a></li>
-                                                <li><a href="#">Diagnostic</a></li>
-                                                <li><a href="#">Surgical</a></li>
-                                                <li><a href="#">Durable Medical Equipment</a></li>
-                                                <li><a href="#">Acute Care</a></li>
-                                                <li><a href="#">Emergency and Trauma</a></li>
-                                                <li><a href="#">Long-Term Care</a></li>
-                                                <li><a href="#">Storage and Transport</a></li>
+                                            <ul class="category-list">
+                                                <li><a data-id="1" href="#">Electronic</a></li>
+                                                <li><a data-id="2" href="#">Self-Care</a></li>
+                                                <li><a data-id="3" href="#">Diagnostic</a></li>
+                                                <li><a data-id="4" href="#">Surgical</a></li>
+                                                <li><a data-id="5" href="#">Durable Medical Equipment</a></li>
+                                                <li><a data-id="6" href="#">Acute Care</a></li>
+                                                <li><a data-id="7" href="#">Emergency and Trauma</a></li>
+                                                <li><a data-id="8" href="#">Long-Term Care</a></li>
+                                                <li><a data-id="9" href="#">Storage and Transport</a></li>
                                             </ul>
                                         </div>
                                     </div>

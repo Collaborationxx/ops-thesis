@@ -529,10 +529,80 @@
 
             });
 
-            $('.shop-grid').easyPaginate({
-                paginateElement: '.shop-grid-item',
-                elementsPerPage: 1,
-                effect: 'slide'
+            // $('.shop-grid').easyPaginate({
+            //     paginateElement: '.shop-grid-item',
+            //     elementsPerPage: 8,
+            //     effect: 'slide'
+            // });
+
+
+            $('.category-list a').click(function(e){
+                e.preventDefault();
+
+                var category = $(this).attr('data-id');
+                console.log(category)
+                var list = $('#shop-list');
+                list.html('');
+
+                // $('.easyPaginateNav').hide();
+                $('.pre-loader').show();
+                setTimeout(function(){
+                    $.ajax({
+                        type: 'POST',
+                        url: serverURL + '/ops/data-manager/get-products-by-category.php?category='+category,
+                        complete: function(){
+                            $('.pre-loader').hide();
+                        },
+                        success: function(rData){
+                            if(rData.products){
+                                $(rData.products).each(function(ind, obj){
+                                     $(list).append('<div class="col-md-3 col-sm-4 shop-grid-item product-container">' +
+                                        '<div class="product-slide-entry">' +
+                                            '<div class="product-image">' +
+                                                '<img class="prod-img" src="assets/images/products/'+ obj.picture +'"  alt="" />' +
+                                                '<div class="bottom-line cart-btn">' +
+                                                    '<a href="#" class="bottom-line-a open-product"><i class="fa fa-shopping-cart"></i> Add to cart</a>' +
+                                                '</div>'+
+                                            '</div>' +
+                                            '<a class="tag prod-category" href="#">'+ obj.category +'</a>' +
+                                            ',<a class="title prod-name" href="#">' + obj.name +'</a>' +
+                                            '<input name="prod-id" class="hidden" value="'+ obj.id +'">' +
+                                            '<div class="article-container style-1 prod-desc">' +
+                                                '<p>'+ obj.description+'</p>' +
+                                            '</div>' +
+                                            '<div class="price">' +
+                                                '<div class="current prod-price">'+ obj.price +'</div>' +
+                                            '</div>' +
+                                            '</div>' +
+                                            '<div class="clear"></div>' + 
+                                        '</div></div>');
+                                });
+
+                                // $('.shop-grid').easyPaginate({
+                                //     paginateElement: '.shop-grid-item',
+                                //     elementsPerPage: 8,
+                                //     effect: 'slide'
+                                // });
+
+                                // $('.easyPaginateNav').show();
+                            }
+                        },
+
+                    });
+                },1500);
+
+            });
+
+            $(".product-container").slice(0, 4).show();
+            $(".load-more").on('click', function (e) {
+                e.preventDefault();
+                $(".product-container:hidden").slice(0, 4).slideDown();
+                if ($(".product-container:hidden").length == 0) {
+                    $("#load").fadeOut('slow');
+                }
+                $('html,body').animate({
+                    scrollTop: $(this).offset().top
+                }, 1500);
             });
 
         });
