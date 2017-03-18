@@ -1,6 +1,8 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
-$id = $_POST['id'];
+include('../includes/functions.php');
+
+$id = test_input($_POST['id']);
 
 $sql = "DELETE FROM `product` WHERE id = $id ";
 

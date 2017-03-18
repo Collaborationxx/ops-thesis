@@ -1,7 +1,8 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
 
-$orders = $_POST['items']; //echo print_r($orders);
+
+$orders =$_POST['items']; //echo print_r($orders);
 $userID = $_POST['userID'];
 $param = isset($_POST['param']) ? $_POST['param'] : ''; //echo $param;
 $response = array();

@@ -1,9 +1,10 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
+include('../includes/functions.php');
 
-$id = $_POST['id'];
-$qty = $_POST['qty'];
-$aQty = $_POST['aQty'];
+$id = test_input($_POST['id']);
+$qty = test_input($_POST['qty']);
+$aQty = test_input($_POST['aQty']);
 $response = array();
 $error = array('qtyEmpty' => '');
 

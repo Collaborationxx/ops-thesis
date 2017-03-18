@@ -330,11 +330,7 @@ include('data-manager/get-alert.php');
             ]
         });
 
-        $(document).on('click' '.update-btn',function(){
-          console.log('ok')
-        });
-
-    });
+       
 
     
 

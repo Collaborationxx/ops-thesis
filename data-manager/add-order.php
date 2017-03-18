@@ -1,10 +1,11 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
+include('../includes/functions.php');
 
-$orders = $_POST['order_details'];
-$orderType = $_POST['order_type'];
-$userID = $_POST['user_id'];
-$customerName = $_POST['customer'];
+$orders = test_input($_POST['order_details']);
+$orderType = test_input($_POST['order_type']);
+$userID = test_input($_POST['user_id']);
+$customerName = test_input($_POST['customer']);
 $response = array();
 
 $query = "INSERT INTO `order_tbl` (customer_name, type) VALUES ('$customerName', $orderType)";

@@ -1,7 +1,9 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
+include('../includes/functions.php');
 
-$order_id = $_POST['oid'];
+$order_id = test_input($_POST['oid']);
+
 $query = "SELECT * FROM `payment` WHERE order_id = $order_id";
 $payment = array();
 if ($result = mysqli_query($con, $query)) {

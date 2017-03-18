@@ -1,6 +1,9 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
-$id = $_POST['id'];
+include('../includes/functions.php');
+
+$id = test_input($_POST['id']);
+
 $sql = "DELETE FROM `inventory` WHERE id = $id ";
 
 if (mysqli_query($con, $sql)) {

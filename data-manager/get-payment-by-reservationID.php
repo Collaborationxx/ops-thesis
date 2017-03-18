@@ -1,7 +1,9 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
+include('../includes/functions.php');
 
-$rid = $_POST['rid'];
+$rid = test_input($_POST['rid')];
+
 $query = "SELECT * FROM `payment` WHERE reservation_id = $rid";
 $rPayment = array();
 if ($result = mysqli_query($con, $query)) {

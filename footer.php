@@ -37,13 +37,6 @@
 
         <div class="footer-bottom-navigation">
             <div class="cell-view">
-                <!-- <div class="footer-links">
-                    <a href="#">Search</a>
-                    <a href="#">My Account</a>
-                    <a href="#">My Cart</a>
-                    <a href="legal-pages/about-us.html" target="_blank">About Us</a>
-                    <a href="legal-pages/terms-and-conditions.html" target="_blank">Terms & Conditions</a>
-                </div> -->
                 <div class="copyright"><?php echo date('Y'); ?> Copyright &copy; MJ Jacobe Trading. All right reserved</div>
             </div>
 
@@ -71,59 +64,7 @@
 </div>
 <!-- end search box -->
 
-<!-- cart popup content -->
-<div class="cart-box popup">
-    <div class="popup-container">
-        <div class="cart-entry">
-            <a class="image"><img src="#" alt="" /></a>
-            <div class="content">
-                <a class="title" href="#">Wheel Chair</a>
-                <div class="quantity">Quantity: 4</div>
-                <div class="price">PHP 9,00</div>
-            </div>
-            <div class="button-x"><i class="fa fa-close"></i></div>
-        </div>
 
-        <div class="cart-buttons">
-            <div class="row">
-                <div class="col-md-12 col-xs-12">
-                <a class="button style- btn-success" href="shopping-cart.php">View Cart</a>
-                </div>
-                <div class="clear"></div>
-            </div>
-
-            <div class="clear"></div>
-        </div>
-    </div>
-</div>
-<!-- end cart popup -->
-
-<!-- wish list popup content -->
-<div class="wishlist-box popup">
-    <div class="popup-container">
-        <div class="wishlist-entry">
-            <a class="image"><img src="#" alt="" /></a>
-            <div class="content">
-                <a class="title" href="#">Wheel Chair</a>
-                <div class="quantity">Quantity: 4</div>
-                <div class="price">Php 990,00</div>
-            </div>
-            <div class="button-x"><i class="fa fa-close"></i></div>
-        </div>
-        <div class="summary">
-            <div class="subtotal">Subtotal: $990,00</div>
-            <div class="grandtotal">Grand Total <span>$1029,79</span></div>
-        </div>
-        <div class="cart-buttons">
-            <div class="column">
-                <a class="button style-3">view wish list</a>
-                <div class="clear"></div>
-            </div>
-            <div class="clear"></div>
-        </div>
-    </div>
-</div>
-<!-- wish list popup -->
 <!-- product popup -->
 <div id="product-popup" class="overlay-popup">
     <div class="overflow">

@@ -1,11 +1,12 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
+include('../includes/functions.php');
 
-$start = $_POST['start'];
-$end = $_POST['end'];
-$tbl = $_POST['table'];
-$col = $_POST['column'];
-$type = $_POST['type'];
+$start = test_input($_POST['start']);
+$end = test_input($_POST['end']);
+$tbl = test_input($_POST['table']);
+$col = test_input($_POST['column']);
+$type = test_input($_POST['type']);
 $reports = array();
 
 $start = date_format(date_create($start), 'Y-m-d').' 00:00:00';

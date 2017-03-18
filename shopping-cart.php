@@ -34,17 +34,28 @@
     <link rel="shortcut icon" href="assets/images/small-logo.png" />
 </head>
 <body>
-    <nav class="navbar navbar-default shop-nav">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-6 col-xs-5">
-                    <div class="navbar-header">
-                        <a class="navbar-brand" href="index.php"><img src="assets/images/opslogo.png" class="ops-nav-logo"></a>
-                    </div>
-                </div>
-            </div>
+    <nav class="navbar navbar-default" style="height: 70px; background-color: #e6ffe6;">
+  <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 col-xs-6">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.php"><img src="assets/images/opslogo.png" class="ops-nav-logo"></a>
         </div>
-    </nav>
+        </div>
+
+        <div class="col-md-6 col-xs-6">
+     
+          <ul class="nav navbar-nav navbar-right pull-right" style="margin-top: 10px;">
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>   Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="customer-page.php"><i class="fa fa-cogs"></i>My Account</a></li>
+                <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+</nav>
 
    
 

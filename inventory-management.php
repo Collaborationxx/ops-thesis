@@ -95,9 +95,9 @@ include('data-manager/get-product-inventory.php');
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <!--<div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                </div>-->
+                                <div class="pull-left">
+                                    <a href="admin-profile.php" class="btn btn-default btn-flat">Profile</a>
+                                </div>
                                 <div class="pull-right">
                                     <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                                 </div>

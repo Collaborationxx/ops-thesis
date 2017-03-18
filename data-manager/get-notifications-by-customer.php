@@ -1,7 +1,8 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
+include('../includes/functions.php');
 
-$cid = $_POST['id'];
+$cid = test_input($_POST['id']);
 $notifications = array();
 
 $select = " SELECT 
