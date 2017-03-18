@@ -109,9 +109,11 @@ include("header.php");
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             </div>
-                            <div class="load-more">
-                                <button type="button" class="btn btn-success btn-lg load-more">Load More</button>
-                            </div>
+                            <?php if($prodCount > 8): ?>
+                                <div class="load-more">
+                                    <button type="button" class="btn btn-success btn-lg load-more">Load More</button>
+                                </div>
+                            <?php endif; ?>    
                             <p id="pagination-here"></p>
                         </div>
                         <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8 blog-sidebar">

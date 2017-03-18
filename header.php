@@ -7,6 +7,8 @@ include('data-manager/get-available-products.php');
 include('data-manager/get-inventory.php');
 $serverURL = "http://$_SERVER[HTTP_HOST]";
 
+$prodCount = count($availableProducts); echo $prodCount;
+
 //echo '<pre>'; print_r($inventory); exit;
 
 ?>
