@@ -107,52 +107,62 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
             </div>
     </nav>
   </header>
-  <!-- Left side column. contains the logo and sidebar -->
-  <aside class="main-sidebar">
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
 
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-      <!-- Sidebar Menu -->
-      <ul class="sidebar-menu">
-        <li class="header">
-          <img src="assets/images/small-logo.png" class="ops-sidebar-logo">
-        </li>
-        <!-- Optionally, you can add icons to the links -->
-        <li class="active">
-          <a href="dashboard.php">
-          <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
-          <span>Admin Dashboard</span></a>
-        </li>
-        <li>
-          <a href="user-management.php">
-          <img src="assets/images/user-512.png" class="ops-sidebar-img">
-          <span>Account Manager</span></a>
-        </li>
-        <li>
-          <a href="product-management.php">
-          <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
-          <span>Product Catalog</span></a>
-        </li>
-        <li>
-          <a href="inventory-management.php">
-          <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
-          <span>Inventory</span></a>
-        </li>
-        <li>
-          <a href="#">
-          <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
-          <span>Order Tracking</span></a>
-        </li>
-        <li>
-          <a href="reports.php">
-          <img src="assets/images/analytics.png" class="ops-sidebar-img">
-          <span>Reports</span></a>
-        </li>
-      </ul>
-      <!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-  </aside>
+        <!-- sidebar: style can be found in sidebar.less -->
+        <section class="sidebar">
+            <!-- Sidebar Menu -->
+            <ul class="sidebar-menu">
+                <li class="header">
+                    <img src="assets/images/small-logo.png" class="ops-sidebar-logo">
+                </li>
+                <!-- Optionally, you can add icons to the links -->
+                <li>
+                    <a href="dashboard.php">
+                        <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
+                        <span>Admin Dashboard</span></a>
+                </li>
+                <li class="treeview">
+                  <a href="#">
+                    <img src="assets/images/user-512.png" class="ops-sidebar-img">
+                    <span>Account Manager</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu" style="display: none;">
+                    <li><a href="user-management.php"><i class="fa fa-circle-o"></i> Employee</a></li>
+                    <li><a href="customer-management.php"><i class="fa fa-circle-o"></i> Customer</a></li>
+                  </ul>
+                </li>
+                <li>
+                    <a href="product-management.php">
+                        <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
+                        <span>Product Catalog</span></a>
+                </li>
+                <li>
+                    <a href="inventory-management.php">
+                        <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
+                        <span>Inventory</span></a>
+                </li>
+                <li class="active">
+                    <a href="order-tracking.php">
+                        <img src="assets/images/order-tracking.png" class="ops-sidebar-img">
+                        <span>Order Tracking</span></a>
+                </li>
+                
+                <li>
+                    <a href="reports.php">
+                        <img src="assets/images/analytics.png" class="ops-sidebar-img">
+                        <span>Reports</span></a>
+                </li>
+            </ul>
+            <!-- /.sidebar-menu -->
+        </section>
+        <!-- /.sidebar -->
+    </aside>
+    <!--end of copy-->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">

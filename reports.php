@@ -116,15 +116,23 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <img src="assets/images/small-logo.png" class="ops-sidebar-logo">
                 </li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active">
+                <li>
                     <a href="dashboard.php">
                         <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
                         <span>Admin Dashboard</span></a>
                 </li>
-                <li>
-                    <a href="user-management.php">
-                        <img src="assets/images/user-512.png" class="ops-sidebar-img">
-                        <span>Account Manager</span></a>
+                <li class="treeview">
+                  <a href="#">
+                    <img src="assets/images/user-512.png" class="ops-sidebar-img">
+                    <span>Account Manager</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu" style="display: none;">
+                    <li><a href="user-management.php"><i class="fa fa-circle-o"></i> Employee</a></li>
+                    <li><a href="customer-management.php"><i class="fa fa-circle-o"></i> Customer</a></li>
+                  </ul>
                 </li>
                 <li>
                     <a href="product-management.php">
@@ -142,7 +150,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         <span>Order Tracking</span></a>
                 </li>
                 
-                <li>
+                <li class="active">
                     <a href="reports.php">
                         <img src="assets/images/analytics.png" class="ops-sidebar-img">
                         <span>Reports</span></a>
@@ -152,6 +160,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         </section>
         <!-- /.sidebar -->
     </aside>
+    <!--end of copy-->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
