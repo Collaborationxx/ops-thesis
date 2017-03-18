@@ -18,7 +18,7 @@ $query = "
             FROM
                 reservation_tbl r,
                 reservation_details rd,
-                user_account u,
+                user_account u
             WHERE
                 r.id = rd.reservation_id
             AND

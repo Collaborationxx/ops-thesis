@@ -12,7 +12,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('includes/functions.php');
 include('data-manager/get-all-reservations.php');
-// echo '<pre>'; print_r($allReservations); exit;
+ // echo '<pre>'; print_r($allReservations); exit;
 $distinct = array();
 foreach ($allReservations as $key => $value){
     $distinct[$value['id']]['transaction_date'] = $value['transaction_date'];

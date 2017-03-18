@@ -189,7 +189,7 @@ include('data-manager/get-alert.php');
                                   <td><?php echo $value['prod_name']; ?></td>
                                   <td><p class="text-danger"><?php echo $value['quantity']; ?></p></td>
                                   <td>
-                                      <a href="inventory-management.php"><i class="fa fa-plus"></i>  <b>Restock</b></a>
+                                      <a href="#" data-toggle="modal" data-target="#inventory-modal" class="update-btn"><i class="fa fa-plus"></i>  <b>Restock</b></a>
                                   </td>
                               </tr>
                           <?php endforeach; ?>
@@ -228,6 +228,76 @@ include('data-manager/get-alert.php');
   </footer>
 </div>
 <!-- ./wrapper -->
+<!-- Modal -->
+<div id="inventory-modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <div class="modal-body">
+      <div class="alert alert-success alert-dismissable alert-create-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Success!</strong> New Inventory Added.
+      </div>
+      <div class="alert alert-success alert-dismissable alert-update-success" style="display: none;">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <strong>Success!</strong> Record Updated.
+      </div>
+        <div class="row">
+          <div class="col-lg-12 col-xs-12">
+            <div class="box box-success">
+              <div class="box-header with-border">
+                <div class="box-header with-border">
+                  <h3 class="box-title">New Inventory</h3>
+                </div>
+                <div class="box-body">
+                  <form role="form">
+                    <input type="text" name="invID" style="display: none" value="">
+                    <div class="row">
+                      <div class="col-md-12 col-xs-12">
+                        <div class="form-group">
+                          <p class="errMess err-invnetory" style="display: none">All products is in inventory. Cannot do this action.</p>
+                          <p class="errMess err-product" style="display: none">No product selected.</p>
+                          <label>Product Name:</label>
+                            <input type="text" name="product-input" class="form-control" disabled="disabled">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row itemsLeft">
+                          <div class="col-md-12 col-xs-12">
+                              <div class="form-group">
+                                  <label>Quantity Left:</label>
+                                  <input type="number" min="0" class="form-control" name="quantity"disabled="disabled">
+                              </div>
+                          </div>
+                      </div>
+                      <div class="row">
+                          <div class="col-md-12 col-xs-12">
+                              <div class="form-group">
+                                  <p class="errMess err-qty" style="display: none">Numbers only!</p>
+                                  <p class="errMess err-qty-empty" style="display: none">Add quantity.</p>
+                                  <label name="qty">Quantity:</label>
+                                  <input type="number" min="0" class="form-control" name="additional-quantity" placeholder="Enter...">
+                              </div>
+                          </div>
+                      </div>
+                  </form>
+                </div>
+                <div class="box-footer">
+                  <button type="button" class="btn btn-info pull-right update-inventory">Update</button>
+                </div>
+            </div>
+          </div>
+        </div>
+        </div> 
+    </div>
+
+  </div>
+</div>
+<!--end pop up content-->
 
 <!-- REQUIRED JS SCRIPTS -->
 
@@ -259,7 +329,16 @@ include('data-manager/get-alert.php');
             {"name":"fourth", "orderable":true},
             ]
         });
+
+        $(document).on('click' '.update-btn',function(){
+          console.log('ok')
+        });
+
     });
+
+    
+
+
 
 </script>
 
