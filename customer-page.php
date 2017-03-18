@@ -209,7 +209,7 @@ foreach ($reservationsByCustomer as $key => $value){
                                             <tr>
                                                 <td><?php echo $i++; ?></td>
                                                 <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y', $oVal['transaction_date']).'-O-'.$okey; ?></a></td>
-                                                <td><?php echo date('F/j/Y h:i A',$oVal['transaction_date']); ?></td>
+                                                <td><?php echo date('F/j/Y',$oVal['transaction_date']); ?></td>
                                                 <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 0 ? 'Waiting for payment' : 'Paid' ?></td>
                                             </tr>
                                         <?php endforeach; ?>
@@ -297,7 +297,7 @@ foreach ($reservationsByCustomer as $key => $value){
                             <tr>
                                 <td><?php echo $i++; ?></td>
                                 <td><a href="#" class="reservation-id" data-id="<?php echo $rkey; ?>"><?php echo "OPS-".date('Y', $rVal['transaction_date']).'-R-'.$rkey; ?></a></td>
-                                <td><?php echo date('F/j/Y h:i A',$rVal['transaction_date']); ?></td>
+                                <td><?php echo date('F/j/Y',$rVal['transaction_date']); ?></td>
                                 <td name="r_pay_stat" data-id="<?php echo $rVal['payment_status']; ?>"><?php echo paymentStatus($rVal['payment_status']); ?> </td>
                             </tr>
                         <?php endforeach; ?>
@@ -403,45 +403,6 @@ foreach ($reservationsByCustomer as $key => $value){
               </div>
             </div>
           </div>
-
-<!--           <div class="col-lg-6 col-xs-12">
-            <div class="box box-success">
-              <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-expand"></i>   Full Conversation</h3>
-              </div>
-              <div class="box-body">
-                <form role="form">
-                  <div class="form-group">
-                    <p>
-                      Good day! Thank you for purchasing medical supplies at OPS!
-                    </p>
-                  </div>
-                  <div class="form-group">
-                    <p>We already shipped your purchased medical supplies with the following information:</p>
-                  </div>
-                  <div class="form-group">
-                    <div class="row">
-                      <div class="col-md-6 col-xs-12">
-                        <label>Order ID:</label>
-                      </div>
-                      <div class="col-md-6 col-xs-12">
-                        <input type="text" name="order-id">
-                      </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                      <div class="col-md-6 col-xs-12">
-                        <label>Tracking Number:</label>
-                      </div>
-                      <div class="col-md-6 col-xs-12">
-                        <input type="text" name="tracking-number">
-                      </div>
-                    </div>
-                </form>
-              </div>
-
-            </div>
-          </div> -->
         </div>
       </div>
     </div>

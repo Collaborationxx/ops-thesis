@@ -253,10 +253,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   <thead>
                     <th>#</th>
                     <th>Product</th>
-                    <th>Description</th>
-                    <th>Category</th>
                     <th>Price</th>
-                    <th>Availability</th>
                     <th>Phase Out</th>
                     <th>Added On</th>
                     </thead>
@@ -438,7 +435,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   console.log(rData)
                   var reportLen = rData.reports;
 
-                  if(reportLen.lenght > 0 ){
+                  if(reportLen.length > 0 ){
                       if(rData.category == 'order_tbl'){
                           $('#reports-purchase').show();
                           $('.table-purchase').addClass('toDownload');
@@ -508,10 +505,8 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                               $('#reports-products').dataTable() .fnAddData([
                                   i,
                                   obj.name,
-                                  obj.description,
-                                  obj.category,
+
                                   obj.price,
-                                  obj.availability == 0 ? 'on-hand' : 'for reservation',
                                   obj.phase_out == 0 ? 'No': 'yes',
                                   obj.insert_date
                               ]);

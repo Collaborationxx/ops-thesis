@@ -288,7 +288,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                 <div class="box-body">
                   <form role="form" method="post" action="data-manager/add-product.php" enctype="multipart/form-data">
                     <input name="prod-id" style="display: none" value="">
-                    <div class="row">
+                    <div class="row" style="display: none;">
                       <div class="col-md-12 col-xs-12">
                         <label>Available:</label>
                           <select class="form-control" id="prod-availability">
