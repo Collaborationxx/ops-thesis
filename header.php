@@ -1,5 +1,6 @@
 <?php
 session_start();
+$role = $_SESSION['user_role'];
 
 include('includes/functions.php');
 include('data-manager/get-available-products.php');
@@ -73,8 +74,13 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                                                 <li class="dropdown">
                                                     <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
                                                     <ul class="dropdown-menu">
-                                                        <li><a href="<?php echo landingPage($_SESSION['user_role']); ?>"><i class="fa fa-cogs"></i>My Account</a></li>
-                                                        <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
+                                                        <li><a href="<?php echo landingPage($role); ?>">
+                                                        <?php if($role == 1): ?>
+                                                            <i class="fa fa-dashboard"></i>DASHBOARD</a></li>
+                                                        <?php else: ?>    
+                                                            <i class="fa fa-cogs"></i>MY ACCOUNT</a></li>
+                                                        <?php endif; ?>    
+                                                        <li><a href="logout.php"><i class="fa fa-sign-out"></i>LOGOUT</a></li>
                                                     </ul>
                                                 </li>
                                             </ul>

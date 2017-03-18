@@ -367,6 +367,8 @@
     <script src="plugins/js/validator.js"></script>
     <script src="assets/js/jquery.easyPaginate.js"></script>
 
+    <scrip src="plugins/jquery-bootpag-master/lib/jquery.bootpag.min.js"></scrip>
+
      <script>
         $(document).ready(function(){
             $('.signup-group-content').css('display', 'none');
@@ -545,6 +547,7 @@
                 list.html('');
 
                 // $('.easyPaginateNav').hide();
+                $('.load-more').hide();
                 $('.pre-loader').show();
                 setTimeout(function(){
                     $.ajax({
@@ -554,8 +557,9 @@
                             $('.pre-loader').hide();
                         },
                         success: function(rData){
-                            if(rData.products){
+                            if((rData.products).length > 0){
                                 $(rData.products).each(function(ind, obj){
+                                    console.log(obj.category)
                                      $(list).append('<div class="col-md-3 col-sm-4 shop-grid-item product-container">' +
                                         '<div class="product-slide-entry">' +
                                             '<div class="product-image">' +
@@ -564,7 +568,7 @@
                                                     '<a href="#" class="bottom-line-a open-product"><i class="fa fa-shopping-cart"></i> Add to cart</a>' +
                                                 '</div>'+
                                             '</div>' +
-                                            '<a class="tag prod-category" href="#">'+ obj.category +'</a>' +
+                                            '<a class="tag prod-category" href="#">'+ getCategory(parseInt(obj.category)) +'</a>' +
                                             ',<a class="title prod-name" href="#">' + obj.name +'</a>' +
                                             '<input name="prod-id" class="hidden" value="'+ obj.id +'">' +
                                             '<div class="article-container style-1 prod-desc">' +
@@ -585,6 +589,10 @@
                                 // });
 
                                 // $('.easyPaginateNav').show();
+
+                                $('load-more').show()
+                            } else {
+                                list.append('<h1 style="text-align: center">No results found.</h1>');
                             }
                         },
 
@@ -593,18 +601,54 @@
 
             });
 
-            $(".product-container").slice(0, 4).show();
+
+            //load more
+            $(".product-container").slice(0, 8).show();
             $(".load-more").on('click', function (e) {
                 e.preventDefault();
-                $(".product-container:hidden").slice(0, 4).slideDown();
+                $(".product-container:hidden").slice(0, 5).slideDown("slow");
                 if ($(".product-container:hidden").length == 0) {
                     $("#load").fadeOut('slow');
+                    $('.load-more').hide();
                 }
-                $('html,body').animate({
-                    scrollTop: $(this).offset().top
-                }, 1500);
             });
 
+            function getCategory(id)
+            {
+                var name = '';
+                switch (id){
+                    case 1:
+                        name = 'Electronic';
+                        break;
+                    case 2:
+                        name = 'Self-Care';
+                        break;
+                    case 3:
+                        name = 'Diagnostic';
+                        break;
+                    case 4:
+                        name = 'Surgical';
+                        break;
+                    case 5:
+                        name = 'Durable Medical Equipment';
+                        break;
+                    case 6:
+                        name = 'Acute Care';
+                        break;
+                    case 7:
+                        name = 'Emergency and Trauma';
+                        break;
+                    case 8:
+                        name = 'Long-Term Care';
+                        break;
+                    case  9:
+                        name = 'Storage and Transport';
+                        break;
+                }
+
+                return name;
+
+            }
         });
     </script>
 </body>

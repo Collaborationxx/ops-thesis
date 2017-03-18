@@ -18,19 +18,21 @@ include('data-manager/get-all-payment.php');
 
 $alerts = count($alert);
 $paymentCount = count($payments);
+$orderCount = count($forCount);
+$reservationCount = count($pendingReservations);
+
+
 $oDistinct = array();
 foreach ($allOrders as $oKey => $oValue){
     $oDistinct[$oValue['id']] = $oValue;
 }
-$orderCount = count($oDistinct);
 
 $rDistinct = array();
 foreach ($allReservations as $rKey => $rValue){
     $rDistinct[$rValue['id']] = $rValue;
 }
-$reservationCount = count($rDistinct);
 
-// echo '<pre>'; print_r($rDistinct); exit;
+// echo '<pre>'; print_r($forCount); exit;
 ?>
 
 <!DOCTYPE html>

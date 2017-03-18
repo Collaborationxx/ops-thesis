@@ -37,3 +37,15 @@ if ($result = mysqli_query($con, $query)) {
     /* free result set */
     mysqli_free_result($result);
 }
+
+//for counting
+$select = "SELECT * FROM `order_tbl` WHERE payment_status = 0";
+$forCount = array();
+if ($cResult = mysqli_query($con, $select)) {
+    /* fetch associative array */
+    while ($cRow = mysqli_fetch_assoc($cResult)) {
+        $forCount[] = $cRow;
+    }
+    /* free result set */
+    mysqli_free_result($cResult);
+}

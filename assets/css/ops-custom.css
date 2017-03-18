@@ -54,3 +54,4 @@
 .easyPaginateNav a.current {font-weight:bold;text-decoration:none; background: #1C8F01; border-color: #1C8F01; color: #fff;}
 .pre-loader { padding: 20px; position:relative;} 
 .pre-loader img {vertical-align: middle; max-width: 100px; width: 100%; height: auto; margin-left: 40%;}
+.load-more {text-align: center;}

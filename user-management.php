@@ -116,15 +116,23 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <img src="assets/images/small-logo.png" class="ops-sidebar-logo">
                 </li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active">
+                <li>
                     <a href="dashboard.php">
                         <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
                         <span>Admin Dashboard</span></a>
                 </li>
-                <li>
-                    <a href="user-management.php">
-                        <img src="assets/images/user-512.png" class="ops-sidebar-img">
-                        <span>Account Manager</span></a>
+                <li class="treeview active">
+                  <a href="#">
+                    <img src="assets/images/user-512.png" class="ops-sidebar-img">
+                    <span>Account Manager</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu" style="display: none;">
+                    <li><a href="user-management.php"><i class="fa fa-circle-o"></i> Employee</a></li>
+                    <li><a href="customer-management.php"><i class="fa fa-circle-o"></i> Customer</a></li>
+                  </ul>
                 </li>
                 <li>
                     <a href="product-management.php">
@@ -169,7 +177,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
           <strong>Success!</strong> Record Deleted.
         </div>
-        <div class="row">
+        <div id="user-box" class="row">
           <div class="col-lg-12 col-xs-12">
             <div class="box box-success">
               <div class="box-header with-border">
@@ -177,7 +185,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                 <div class="box-tools pull-right">
                   <button type="button" class="btn btn-default btn-sm btn-new" data-toggle="modal" data-target="#add-user-modal"><i class="fa fa-plus" ></i>&nbsp;&nbsp;New Account</button>
                 </div>
-
               </div>
               <div class="box-body">
                 <div class="table-responsive">
@@ -200,11 +207,11 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                           <tr class="word-wrapper">
                             <td><?php echo $count++; ?></td>
                             <td data-id="<?php echo $value['id']; ?>" name="username"><?php echo $value['username']; ?></td>
-                            <td name="full-name" data-fname="<?php echo $value['first_name']; ?>" data-lname="<?php echo $value['last_name']; ?>"><?php echo strtoupper($value['last_name']).", ".$value['first_name']; ?></td>
+                            <td name="full-name" data-fname="<?php echo $value['first_name']; ?>" data-lname="<?php echo $value['last_name']; ?>"><?php echo strtoupper($value['last_name']).", ".ucfirst($value['first_name']); ?></td>
                             <td name="address"><?php echo $value['address']; ?></td>
                             <td name="contact"><?php echo $value['contact_number']; ?></td>
                             <td name="email"><?php echo $value['email']; ?></td>
-                            <td name="role"><?php echo userRoles($value['user_role']); ?></td>
+                            <td name="role" data-id="<?php echo $value['user_role']; ?>"><?php echo userRoles($value['user_role']); ?></td>
                             <td>
                               <a href="#" data-toggle="tooltip" title="Edit User?" class="edit-user"><i class="fa fa-pencil text-info"></i></a>&nbsp;&nbsp;|&nbsp;&nbsp;
                               <a href="#" data-toggle="tooltip" title="Delete User?" class="delete-user"><i class="fa fa-trash-o text-danger"></i></a>
@@ -215,7 +222,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     </tbody>
                   </table>
                 </div>
-
               </div>
               <div class="box-footer">
                 <div class="row">
@@ -227,6 +233,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
             </div>
           </div>
         </div>
+
     </section>
     <!-- /.content -->
   </div>
@@ -388,7 +395,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
             {"name":"second", "orderable":true},
             {"name":"third", "orderable":true},
             {"name":"fourth", "orderable":true},
-            {"name":"fifth", "orderable":true},
+            {"name":"fifth", "orderable":false},
             {"name":"sixth", "orderable":true},
             {"name":"seventh", "orderable":true},
             {"name":"eighth", "orderable":false},
@@ -536,17 +543,19 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           var address = $(this).closest('tr').find('td[name="address"]').text();
           var contact = $(this).closest('tr').find('td[name="contact"]').text();
           var email = $(this).closest('tr').find('td[name="email"]').text();
-          var user_role = $(this).closest('tr').find('td[name="role"]').text();
+          var user_role = $(this).closest('tr').find('td[name="role"]').attr('data-id');
           var username = $(this).closest('tr').find('td[name="username"]').text();
 
-          var role = '';
-          if(user_role = 'Admin'){
-            role = 1;
-          } else if(user_role = 'Staff'){
-            role = 0;
-          } else {
-            role =2
-          }
+          // var role = '';
+          // if(user_role = 'Admin'){
+          //   role = 1;
+          // } else if(user_role = 'Staff'){
+          //   role = 0;
+          // } else {
+          //   role =2
+          // }
+
+          console.log(user_role)
 
         $(modal).modal('show');
         $(modal).on('shown.bs.modal', function () {
@@ -555,7 +564,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
           $(modal).find('.modal-body textarea[name="address"]').val(address);
           $(modal).find('.modal-body input[name="contact"]').val(contact);
           $(modal).find('.modal-body input[name="email"]').val(email);
-          $(modal).find('.modal-body select#user-role').val(role);
+          $(modal).find('.modal-body select#user-role').val(user_role);
           $(modal).find('.modal-body input[name="username"]').val(username);
           $(modal).find('.modal-body input[name="user-id"]').val(id);
         });

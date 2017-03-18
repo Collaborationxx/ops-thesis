@@ -37,3 +37,15 @@ if ($result = mysqli_query($con, $query)) {
     /* free result set */
     mysqli_free_result($result);
 }
+
+
+$pendingReservations = array();
+$select = "SELECT * FROM  `reservation_tbl` WHERE payment_status = 0";
+if ($cResult = mysqli_query($con, $select)) {
+    /* fetch associative array */
+    while ($cRow = mysqli_fetch_assoc($cResult)) {
+        $pendingReservations[] = $cRow;
+    }
+    /* free result set */
+    mysqli_free_result($cResult);
+}

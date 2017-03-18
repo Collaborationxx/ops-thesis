@@ -42,7 +42,7 @@ include("header.php");
                                         <div class="view-button active grid"><i class="fa fa-th"></i></div>
                                         <div class="view-button list"><i class="fa fa-list"></i></div>
                                     </div>
-                                    <div class="entry">
+                                    <!-- <div class="entry">
                                         <div class="inline-text">Show</div>
                                         <div class="simple-drop-down" style="width: 75px;">
                                             <select>
@@ -54,7 +54,7 @@ include("header.php");
                                             </select>
                                         </div>
                                         <div class="inline-text">per page</div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="clear"></div>
 
@@ -65,7 +65,7 @@ include("header.php");
                             <div id="shop-list" class="row shop-grid grid-view">
                                 <?php if(isset($availableProducts) AND count($availableProducts) > 0): ?>
                                     <?php foreach ($availableProducts as $key => $value): ?>
-                                        <div class="col-md-3 col-sm-4 shop-grid-item product-container" style="display: none">
+                                        <div class="col-md-3 col-sm-4 shop-grid-item product-container" style="display: none;">
                                             <div class="product-slide-entry">
                                                 <div class="product-image">
                                                     <img class="prod-img" src="assets/images/products/<?php echo $value['picture']?>" alt="" />
@@ -112,6 +112,7 @@ include("header.php");
                             <div class="load-more">
                                 <button type="button" class="btn btn-success btn-lg load-more">Load More</button>
                             </div>
+                            <p id="pagination-here"></p>
                         </div>
                         <div class="col-md-3 col-md-pull-9 col-sm-4 col-sm-pull-8 blog-sidebar">
                             <div class="information-blocks categories-border-wrapper">
