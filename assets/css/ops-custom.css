@@ -55,3 +55,4 @@
 .pre-loader { padding: 20px; position:relative;} 
 .pre-loader img {vertical-align: middle; max-width: 100px; width: 100%; height: auto; margin-left: 40%;}
 .load-more {text-align: center;}
+.ops-alert {color: #3c763d; background-color: #dff0d8; border-color: #d6e9c6; padding: 15px; border-radius: 4px; margin-bottom: 15px;}

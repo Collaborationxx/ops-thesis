@@ -45,11 +45,20 @@
             </div>
         </div>
     </nav>
+
+   
+
     <!-- Main content -->
     <section class="container">
+         <?php if (isset($_GET['status'])): ?> 
+                <div class="ops-alert">
+                    <strong>Success!</strong> Registration Successful! You can now login to your account.
+                </div>
+     <?php endif; ?> 
         <div class="cont">
             <a href="index.php"><i class="fa fa-angle-left"></i> Continue Shopping</a>
         </div>
+
         <div class="alert alert-success remove-success" role="alert">
           <p>Item removed from cart</p>
         </div>
@@ -125,7 +134,7 @@
                         <!--sign up form-->
                         <div class="signup-group-content">
                             <div class="panel-body">
-                                <form action="authentication/signup.php?fromCart=1" method="post">
+                                <form action="authentication/signup-from-cart.php?fromCart=1" method="post">
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
@@ -232,6 +241,8 @@
       var item_count = cart == null ? 0 : cart.length;
       var type = 0;
 
+      $('.ops-alert').delay(2000).fadeOut('fast');
+      
       console.log(cart);
       $('.item_count').text('[ '+ item_count + ' Item(s) ]');
 
