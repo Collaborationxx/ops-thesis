@@ -34,6 +34,8 @@ if($tbl == 'ol_sales' ){
 		AND 
 			o.payment_status = 1
         AND
+           	o.type = 1
+        AND   	
         	o.transaction_date BETWEEN '$start' AND '$end'    
 		GROUP BY
 			id
@@ -64,6 +66,8 @@ if($tbl == 'ol_sales' ){
 		AND 
 			r.payment_status = 2
         AND
+            r.type = 1
+        AND 
         	r.transaction_date BETWEEN '$start' AND '$end'    
 		GROUP BY
 			id
@@ -78,7 +82,7 @@ if($tbl == 'ol_sales' ){
 	$sales[] = array_merge($oProduct, $rProduct);
 	header('Content-Type: application/json');
 	echo json_encode(array('reports' => $sales, 'category' => $tbl));
-	
+
 } else {
 
 	//default query 

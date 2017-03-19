@@ -537,16 +537,18 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                           $('.table-ol-sales').addClass('toDownload');
 
                           $(rData.reports).each(function(ind, obj){
-                              console.log(obj)
-                              $('#reports-ol-sales').dataTable() .fnAddData([
-                                  i,
-                                  obj[ind].name,
-                                  obj[ind].price,
-                                  obj[ind].sold,
-                                  parseFloat(obj[ind].price * obj[ind].sold).toFixed(2)
-                              ]);
+                              $(obj).each(function(x,y){
+                                  $('#reports-ol-sales').dataTable() .fnAddData([
+                                      i,
+                                      y.name,
+                                      y.price,
+                                      y.sold,
+                                      parseFloat(y.price * y.sold).toFixed(2)
+                                  ]);
                               
                               i++;
+                              });
+
 
                           });
                             showDataTableElements();
