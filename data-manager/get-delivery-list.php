@@ -87,7 +87,7 @@ $sql = "
         AND
             r.customer_id = u.id
         AND
-        	r.payment_status = 1 
+        	r.payment_status = 2
 ";
 $reservationDelivery = array();
 if ($rResult = mysqli_query($con, $sql)) {

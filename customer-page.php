@@ -214,7 +214,7 @@ foreach ($reservationsByCustomer as $key => $value){
                                                 <td><?php echo $i++; ?></td>
                                                 <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y', $oVal['transaction_date']).'-O-'.$okey; ?></a></td>
                                                 <td><?php echo date('F/j/Y',$oVal['transaction_date']); ?></td>
-                                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 0 ? 'Waiting for payment' : 'Paid' ?></td>
+                                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 0 ? 'Waiting for payment' : 'Payment Sent' ?></td>
                                             </tr>
                                         <?php endforeach; ?>
                                    <?php endif; ?>

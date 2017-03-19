@@ -183,7 +183,7 @@ $i = 1; //for table row counting
                 <h3 class="box-title"><i class="fa fa-archive"></i>   New Reservations</h3>
                 <div class="box-tools pull-right">
                  <a href="print-reservation.php" class="btn btn-default btn-sm"><i class="fa fa-truck"></i>&nbsp;&nbsp;Delivery List</a></i>&nbsp;&nbsp;
-                 <a href="print-reservation.php" class="btn btn-default btn-sm"><i class="fa fa-list-ol"></i>&nbsp;&nbsp;Purchase List</a>
+                 <!-- <a href="print-reservation.php" class="btn btn-default btn-sm"><i class="fa fa-list-ol"></i>&nbsp;&nbsp;Purchase List</a> -->
                 </div>
               </div>
               <div class="box-body">
@@ -206,7 +206,7 @@ $i = 1; //for table row counting
                                   <td><a href="reservation-information.php?rid=<?php echo $key;?>&cid=<?php echo $value['customer_id']; ?>"><?php echo "OPS-".date('Y').'-R-'.$key; ?></a></td>
                                   <td><?php  echo strtoupper($value['customer_last_name']).', '.ucfirst($value['customer_first_name']); ?></td>
                                   <td><?php echo date('F/j/Y',$value['transaction_date']); ?></td>
-                                  <td><?php  echo $value['payment_status'] == 0 ? 'Pending' : 'Paid'; ?> </td>
+                                  <td><?php  echo paymentStatus($value['payment_status']); ?> </td>
                               </tr>
                           <?php endforeach; ?>
                       <?php endif; ?>

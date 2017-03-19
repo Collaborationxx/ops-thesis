@@ -34,7 +34,7 @@ if($tbl == 'ol_sales' ){
 		AND 
 			o.payment_status = 1
         AND
-           	o.type = 1
+           	o.type = $type
         AND   	
         	o.transaction_date BETWEEN '$start' AND '$end'    
 		GROUP BY
@@ -66,7 +66,7 @@ if($tbl == 'ol_sales' ){
 		AND 
 			r.payment_status = 2
         AND
-            r.type = 1
+            r.type = $type
         AND 
         	r.transaction_date BETWEEN '$start' AND '$end'    
 		GROUP BY

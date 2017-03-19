@@ -211,9 +211,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         <label>Category</label>
                         <select id="categorySelect" class="form-control">
                           <option value="">-- select category --</option>
-                          <option data-table="ol_sales">Online Sales</option>
-                          <option data-table="order_tbl" data-col="transaction_date" data-type="0">OC Orders</option>
-                          <option data-table="order_tbl" data-col="transaction_date" data-type="1">OL Orders</option>
+                          <option data-table="ol_sales" data-type="1">Online Sales</option>
+                          <option data-table="ol_sales" data-type="0">Over the Counter Sales</option>
+                          <option data-table="order_tbl" data-col="transaction_date" data-type="0">Over the Counter Orders</option>
+                          <option data-table="order_tbl" data-col="transaction_date" data-type="1">Online Orders</option>
                           <option data-table="reservation_tbl" data-col="transaction_date" data-type="1">Reservations</option>
                           <option data-table="product" data-col="insert_date" data-type="">Product</option>
                           <option data-table="inventory" data-col="stock_date" data-type="">Inventory</option>

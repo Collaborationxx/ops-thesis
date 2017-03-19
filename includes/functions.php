@@ -97,10 +97,10 @@ function paymentStatus($param)
             $status = 'Waiting for payment';
             break;
         case 1:
-            $status = 'Partially Paid';
+            $status = 'Partial Payment Sent';
             break;
         case 2 : 
-            $status = 'Fully Paid';  
+            $status = 'Full Payment Sent';  
             break;
     }
 

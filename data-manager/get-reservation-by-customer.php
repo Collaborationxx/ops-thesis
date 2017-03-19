@@ -7,6 +7,7 @@ $query = "
             SELECT
                 r.id,
                 r.payment_status,
+                r.payment_confirmed,
                 UNIX_TIMESTAMP(r.transaction_date) as transaction_date,
                 rd.product_id,
                 rd.price,

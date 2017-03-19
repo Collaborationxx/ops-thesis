@@ -13,6 +13,8 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 
 include('includes/functions.php');
 include('data-manager/get-delivery-list.php');
+
+$forDelivery = count($reservationDelivery);
 ?>
 
 <!DOCTYPE html>
@@ -171,7 +173,9 @@ include('data-manager/get-delivery-list.php');
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-archive"></i>   New Reservations</h3>
                 <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-default btn-sm print-btn"><i class="fa fa-print"></i>&nbsp;&nbsp;Print Reservation</button>
+                  <?php if($forDelivery > 0): ?>
+                    <button type="button" class="btn btn-default btn-sm print-btn"><i class="fa fa-print"></i>&nbsp;&nbsp;Print Reservation</button>
+                  <?php endif; ?>  
                 </div>
 
               </div>
@@ -201,7 +205,7 @@ include('data-manager/get-delivery-list.php');
                             <td class="reservation-date"><?php echo date_format(date_create($value['transaction_date']), 'F-j-Y'); ?></td>
                             <td class="shipping-address"><?php echo isset($value['shipping_address']) ? $value['shipping_address'] : $value['address']; ?></td>
                           </tr>
-                        <?php endforeach; ?>  
+                        <?php endforeach; ?>   
                       <?php endif; ?>  
                     </tbody>
                   </table>
