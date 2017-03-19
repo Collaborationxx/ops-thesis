@@ -47,11 +47,18 @@
      
           <ul class="nav navbar-nav navbar-right pull-right" style="margin-top: 10px;">
             <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>   Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="customer-page.php"><i class="fa fa-cogs"></i>My Account</a></li>
-                <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
-              </ul>
+            <?php if (isset($_SESSION['username'])): ?>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>   Hello <?php echo $_SESSION['username']; ?></span><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="customer-page.php"><i class="fa fa-cogs"></i>My Account</a></li>
+                  <li><a href="logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
+                </ul>
+            <?php else: ?>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-user"></i><span>   Hello Guest</span><span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a data-toggle="modal" data-target="#login-signup-modal"><i class="fa fa-sign-in"></i>Sign In</a></li>
+                </ul>
+            <?php endif; ?>    
             </li>
           </ul>
         </div>
