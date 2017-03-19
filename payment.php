@@ -205,9 +205,15 @@ $counter = 1;
                                 <td><?php echo date('F/j/Y',$value['pay_date']); ?></td>
                                 <td><?php echo $value['payment_mode'] == 1 ? 'Full Payment' : 'Partial Payment'; ?></td>
                                 <td>
-                                   <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank" data-toggle="tooltip" title="Verify?"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                                   <a href="#" class="confirm-payment" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
-                                   <a href="#" class="reject-payment" data-toggle="tooltip" title="Reject?"><span class="text-danger"><i class="fa fa-thumbs-down"></i></span></a>
+                                  <?php if($value['status'] == 0): ?>
+                                     <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank" data-toggle="tooltip" title="Verify?"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
+                                     <a href="#" class="confirm-payment" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+                                     <a href="#" class="reject-payment" data-toggle="tooltip" title="Reject?"><span class="text-danger"><i class="fa fa-thumbs-down"></i></span></a>
+                                  <?php else: ?>
+                                    <span class="text-muted"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
+                                    <span class="text-muted"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+                                    <span class="text-muted"><i class="fa fa-thumbs-down"></i></span></a>
+                                  <?php endif; ?>       
                                 </td>
                               </tr>  
                           <?php endforeach; ?>

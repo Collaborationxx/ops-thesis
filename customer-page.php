@@ -26,6 +26,8 @@ $oDistinct = array();
 foreach ($orders as $key => $value){
     $oDistinct[$value['id']]['transaction_date'] = $value['transaction_date'];
     $oDistinct[$value['id']]['payment_status'] = $value['payment_status'];
+    $oDistinct[$value['id']]['payment_confirmed'] = $value['payment_confirmed'];
+
 }
 
 //reservations by customer
@@ -33,9 +35,10 @@ $rDistinct = array();
 foreach ($reservationsByCustomer as $key => $value){
     $rDistinct[$value['id']]['transaction_date'] = $value['transaction_date'];
     $rDistinct[$value['id']]['payment_status'] = $value['payment_status'];
+    $rDistinct[$value['id']]['payment_confirmed'] = $value['payment_confirmed'];
 }
 
-// echo '<pre>'; print_r($notifications); exit;
+// echo '<pre>'; print_r($oDistinct); exit;
 ?>
 <!DOCTYPE html>
 <html>
@@ -214,7 +217,15 @@ foreach ($reservationsByCustomer as $key => $value){
                                                 <td><?php echo $i++; ?></td>
                                                 <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y', $oVal['transaction_date']).'-O-'.$okey; ?></a></td>
                                                 <td><?php echo date('F/j/Y',$oVal['transaction_date']); ?></td>
-                                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>"><?php echo $oVal['payment_status'] == 0 ? 'Waiting for payment' : 'Payment Sent' ?></td>
+                                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>">
+                                                <?php
+                                                  if($oVal['payment_confirmed'] == 0){
+                                                      echo $oVal['payment_status'] == 0 ? 'Waiting for payment' : 'Payment Sent';
+                                                  } else {
+                                                    echo "Payment Confirmed";
+                                                  }
+                                                ?>
+                                                </td>
                                             </tr>
                                         <?php endforeach; ?>
                                    <?php endif; ?>
@@ -302,7 +313,15 @@ foreach ($reservationsByCustomer as $key => $value){
                                 <td><?php echo $i++; ?></td>
                                 <td><a href="#" class="reservation-id" data-id="<?php echo $rkey; ?>"><?php echo "OPS-".date('Y', $rVal['transaction_date']).'-R-'.$rkey; ?></a></td>
                                 <td><?php echo date('F/j/Y',$rVal['transaction_date']); ?></td>
-                                <td name="r_pay_stat" data-id="<?php echo $rVal['payment_status']; ?>"><?php echo paymentStatus($rVal['payment_status']); ?> </td>
+                                <td name="r_pay_stat" data-id="<?php echo $rVal['payment_status']; ?>">
+                                <?php
+                                  if($rVal['payment_confirmed'] == 0){
+                                      echo paymentStatus($rVal['payment_status']);
+                                  } else {
+                                    echo "Payment Confirmed";
+                                  }
+                                ?>
+                                </td>
                             </tr>
                         <?php endforeach; ?>
                     <?php endif; ?>

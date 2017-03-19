@@ -31,6 +31,10 @@ if(mysqli_query($con, $query)){
 		}
 	}
 
+	//updates payment_confirmation in order/reservation_tbl
+	$update = "UPDATE `$tbl` SET payment_confirmed = 1 WHERE id = $tid";
+	mysqli_query($con, $update);
+
 	$sql = "SELECT customer_id FROM `$tbl` WHERE id = $tid";
 	$customer_id = '';
 
