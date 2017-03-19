@@ -203,6 +203,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         <label>Category</label>
                         <select id="categorySelect" class="form-control">
                           <option value="">-- select category --</option>
+                          <option data-table="ol_sales">Online Sales</option>
                           <option data-table="order_tbl" data-col="transaction_date" data-type="0">OC Orders</option>
                           <option data-table="order_tbl" data-col="transaction_date" data-type="1">OL Orders</option>
                           <option data-table="reservation_tbl" data-col="transaction_date" data-type="1">Reservations</option>
@@ -262,6 +263,20 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   </thead>
                   <tbody></tbody>
                 </table>
+                <table class="table table-striped table-bordered table-ol-sales" id="reports-ol-sales" style="display: none">
+                  <thead>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Sold</th>
+                    <th>Total</th>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+                <div class="no-result" style="display: none">
+                  <p style="text-align: center; font-weight: bold;">No Reports can be generated for this selection. </p>
+                </div>
+
               </div>
               <div class="box-footer">
                 <div class="row">
@@ -427,95 +442,119 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   console.log(rData.reports)
                   $('.table').removeClass('toDownload');
 
-                  if(rData.category == 'order_tbl'){
-                      $('#reports-purchase').show();
-                      $('.table-purchase').addClass('toDownload');
+                  reports = rData.reports;
+                  if(reports.length > 0){
 
-                      $(rData.reports).each(function(ind, obj){
-                          $('#reports-purchase').dataTable() .fnAddData([
-                              i,
-                              'OPS-'+ (obj.Date).substring(0,4) + '-O-'+ obj.id,
-                              (obj.last_name).toUpperCase() +', '+ obj.first_name,
-                              obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
-                              obj.courier,
-                              obj.Date
-                          ]);
-                          
-                          i++;
-                      });
+                      if(rData.category == 'order_tbl'){
+                          $('#reports-purchase').show();
+                          $('.table-purchase').addClass('toDownload');
 
-                      showDataTableElements();
+                          $(rData.reports).each(function(ind, obj){
+                              $('#reports-purchase').dataTable() .fnAddData([
+                                  i,
+                                  'OPS-'+ (obj.Date).substring(0,4) + '-O-'+ obj.id,
+                                  (obj.last_name).toUpperCase() +', '+ obj.first_name,
+                                  obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
+                                  obj.courier,
+                                  obj.Date
+                              ]);
+                              
+                              i++;
+                          });
+
+                          showDataTableElements();
+                      }
+
+                      if(rData.category == 'reservation_tbl'){
+                          $('#reports-purchase').show();
+                          $('.table-purchase').addClass('toDownload');
+
+
+                          $(rData.reports).each(function(ind, obj){
+                              $('#reports-purchase').dataTable() .fnAddData([
+                                  i,
+                                  'OPS-'+ (obj.Date).substring(0,4) + '-R-'+ obj.id,
+                                  (obj.last_name).toUpperCase() +', '+ obj.first_name,
+                                  obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
+                                  obj.courier,
+                                  obj.Date
+                              ]);
+                              
+                              i++;
+
+
+                          });
+                          showDataTableElements();
+
+                      }
+
+                      if(rData.category == 'inventory'){
+                          $('#reports-inventory').show();
+                          $('.table-inventory').addClass('toDownload');
+
+
+                          $(rData.reports).each(function(ind, obj){
+                              $('#reports-inventory').dataTable() .fnAddData([
+                                  i,
+                                  obj.name,
+                                  obj.quantity,
+                                  obj.stock_date
+                              ]);
+                              
+                              i++;
+
+                          });
+                          showDataTableElements();
+
+                      }
+
+                      if(rData.category == 'product'){
+                          $('#reports-products').show();
+                          $('.table-products').addClass('toDownload');
+
+
+                          $(rData.reports).each(function(ind, obj){
+                              $('#reports-products').dataTable() .fnAddData([
+                                  i,
+                                  obj.name,
+                                  obj.description,
+                                  obj.category,
+                                  obj.price,
+                                  obj.availability == 0 ? 'on-hand' : 'for reservation',
+                                  obj.phase_out == 0 ? 'No': 'yes',
+                                  obj.insert_date
+                              ]);
+                              
+                              i++;
+
+                          });
+                          showDataTableElements();
+
+                      }
+
+                      if(rData.category == 'ol_sales'){
+                          $('#reports-ol-sales').show();
+                          $('.table-ol-sales').addClass('toDownload');
+
+                          $(rData.reports).each(function(ind, obj){
+                              console.log(obj)
+                              $('#reports-ol-sales').dataTable() .fnAddData([
+                                  i,
+                                  obj[ind].name,
+                                  obj[ind].price,
+                                  obj[ind].sold,
+                                  parseFloat(obj[ind].price * obj[ind].sold).toFixed(2)
+                              ]);
+                              
+                              i++;
+
+                          });
+                            showDataTableElements();
+                      }
+
+                  } else {
+                      $('no-result').show();
                   }
-
-                  if(rData.category == 'reservation_tbl'){
-                      $('#reports-purchase').show();
-                      $('.table-purchase').addClass('toDownload');
-
-
-                      $(rData.reports).each(function(ind, obj){
-                          $('#reports-purchase').dataTable() .fnAddData([
-                              i,
-                              'OPS-'+ (obj.Date).substring(0,4) + '-R-'+ obj.id,
-                              (obj.last_name).toUpperCase() +', '+ obj.first_name,
-                              obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
-                              obj.courier,
-                              obj.Date
-                          ]);
-                          
-                          i++;
-
-
-                      });
-                      showDataTableElements();
-
-                  }
-
-                  if(rData.category == 'inventory'){
-                      $('#reports-inventory').show();
-                      $('.table-inventory').addClass('toDownload');
-
-
-                      $(rData.reports).each(function(ind, obj){
-                          $('#reports-inventory').dataTable() .fnAddData([
-                              i,
-                              obj.name,
-                              obj.quantity,
-                              obj.stock_date
-                          ]);
-                          
-                          i++;
-
-                      });
-                      showDataTableElements();
-
-                  }
-
-
-                  if(rData.category == 'product'){
-                      $('#reports-products').show();
-                      $('.table-products').addClass('toDownload');
-
-
-                      $(rData.reports).each(function(ind, obj){
-                          $('#reports-products').dataTable() .fnAddData([
-                              i,
-                              obj.name,
-                              obj.description,
-                              obj.category,
-                              obj.price,
-                              obj.availability == 0 ? 'on-hand' : 'for reservation',
-                              obj.phase_out == 0 ? 'No': 'yes',
-                              obj.insert_date
-                          ]);
-                          
-                          i++;
-
-                      });
-                      showDataTableElements();
-
-                  }
-
-
               },
           });
       });
