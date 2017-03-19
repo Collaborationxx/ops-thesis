@@ -6,34 +6,83 @@ $headers = json_decode($_POST['headers'],true);
 $body = json_decode($_POST['body'], true);
 $category = $_POST['reportName'];
 
-// echo '<pre>'; print_r($headers);
-// echo '<pre>'; print_r($body);
-// echo $category;
-// exit;
+//set column range base on array count
+$alphabet = range('A', 'Z');
+$index = count($headers);
+$rangeTo = $alphabet[$index];
 
 //create new instance of PHPExcel
 $objPHPExcel = new PHPExcel();
 
 // Set properties
-$objPHPExcel->getProperties()->setCreator('Admin');
-$objPHPExcel->getProperties()->setLastModifiedBy('Admin');
-$objPHPExcel->getProperties()->setTitle('Test Excel');
-$objPHPExcel->getProperties()->setSubject('Testing');
+$objPHPExcel->getProperties()
+    ->setCreator('Admin')
+    ->setLastModifiedBy('Admin')
+    ->setTitle($category.' Report')
+    ->setSubject('Report');
 
-$i =1;
-$col = 'A';
+//array of style
+$styleArray = array(
+    'font' => array(
+        'bold' => false,
+    ),
+    'alignment' => array(
+        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+    ),
+    'borders' => array(
+        'top' => array(
+            'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+        ),
+        'bottom' => array(
+            'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+        ),
+         'left' => array(
+            'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+        ),
+        'right' => array(
+            'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+        ),
+    )
+);
+
+//merge cell
+$objPHPExcel->setActiveSheetIndex(0)
+    ->mergeCells('B2:'.$rangeTo.'2');
+
+//set value and fort size
+$objPHPExcel->getActiveSheet()
+    ->getCell('B2')
+    ->setValue($category.' Report')
+    ->getStyle('B2')->getFont()->setSize(18);
+
+
+$objPHPExcel->getActiveSheet()->getStyle('B2:'.$rangeTo.'2')->applyFromArray($styleArray);
+
+$i =3;
+$col = 'B';
 
 foreach($headers as $head) {
-	$objPHPExcel->getActiveSheet()->setCellValue($col.$i,$head);
-	$col++;
+    $objPHPExcel->getActiveSheet()->setCellValue($col.$i,$head);
+    $objPHPExcel->getActiveSheet()->setCellValue($col.$i,strtoupper($head));
+    $objPHPExcel->getActiveSheet()->getStyle($col.$i)->applyFromArray($styleArray);
+    $objPHPExcel->getActiveSheet()->getStyle($col.$i)->getFont()->setBold(true);
+
+    $col++;
 }
 
 foreach($body as $key => $value) {
     $i++;
-    $col = 'A';
+    $col = 'B';
 
     for($x = 0; $x < count($value); $x++) {
-        $objPHPExcel->getActiveSheet()->setCellValue($col.$i,$value[$x]); $col++;
+        $objPHPExcel->getActiveSheet()
+            ->setCellValue($col.$i,$value[$x])
+            ->getStyle($col.$i)->applyFromArray($styleArray);
+
+        $objPHPExcel->getActiveSheet()->getColumnDimension($col)->setAutoSize(true);
+
+        $col++;
+
     }
 }
 

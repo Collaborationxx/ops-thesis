@@ -24,7 +24,7 @@ $objPHPExcel->getProperties()
 //array of style
 $styleArray = array(
     'font' => array(
-        'bold' => true,
+        'bold' => false,
     ),
     'alignment' => array(
         'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
@@ -71,8 +71,9 @@ $objPHPExcel->getActiveSheet()->getColumnDimension('F')->setWidth(35);
 $i = 3;
 $col = 'B';
 foreach($headers as $head) {
-	$objPHPExcel->getActiveSheet()->setCellValue($col.$i,$head);
+	$objPHPExcel->getActiveSheet()->setCellValue($col.$i,strtoupper($head));
     $objPHPExcel->getActiveSheet()->getStyle($col.$i)->applyFromArray($styleArray);
+    $objPHPExcel->getActiveSheet()->getStyle($col.$i)->getFont()->setBold(true);
 
 	$col++;
 }

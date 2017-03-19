@@ -92,9 +92,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <div class="pull-left">
-                                    <a href="admin-profile.php" class="btn btn-default btn-flat">Profile</a>
-                                </div>
+                                <!--<div class="pull-left">
+                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                </div>-->
                                 <div class="pull-right">
                                     <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
@@ -116,23 +116,15 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                     <img src="assets/images/small-logo.png" class="ops-sidebar-logo">
                 </li>
                 <!-- Optionally, you can add icons to the links -->
-                <li>
+                <li class="active">
                     <a href="dashboard.php">
                         <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
                         <span>Admin Dashboard</span></a>
                 </li>
-                <li class="treeview">
-                  <a href="#">
-                    <img src="assets/images/user-512.png" class="ops-sidebar-img">
-                    <span>Account Manager</span>
-                    <span class="pull-right-container">
-                      <i class="fa fa-angle-left pull-right"></i>
-                    </span>
-                  </a>
-                  <ul class="treeview-menu" style="display: none;">
-                    <li style="margin-left: 35px;"><a href="user-management.php"><i class="fa fa-circle-o"></i> Employee</a></li>
-                    <li style="margin-left: 35px;"><a href="customer-management.php"><i class="fa fa-circle-o"></i> Customer</a></li>
-                  </ul>
+                <li>
+                    <a href="user-management.php">
+                        <img src="assets/images/user-512.png" class="ops-sidebar-img">
+                        <span>Account Manager</span></a>
                 </li>
                 <li>
                     <a href="product-management.php">
@@ -150,7 +142,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         <span>Order Tracking</span></a>
                 </li>
                 
-                <li class="active">
+                <li>
                     <a href="reports.php">
                         <img src="assets/images/analytics.png" class="ops-sidebar-img">
                         <span>Reports</span></a>
@@ -160,7 +152,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
         </section>
         <!-- /.sidebar -->
     </aside>
-    <!--end of copy-->
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -253,7 +244,10 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                   <thead>
                     <th>#</th>
                     <th>Product</th>
+                    <th>Description</th>
+                    <th>Category</th>
                     <th>Price</th>
+                    <th>Availability</th>
                     <th>Phase Out</th>
                     <th>Added On</th>
                     </thead>
@@ -402,8 +396,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
       validateData();
 
       $('.btn-generate').click(function(){
-          $('input').prop('disabled', true);
-          $('select').prop('disabled', true);
           $('table').hide();
           hideDataTableElements();
 
@@ -430,96 +422,100 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
               dataType: 'json',
               success: function(rData){
                   $('.btn-generate').prop('disabled', true);
+                  console.log(rData)
+                  console.log(rData.category)
+                  console.log(rData.reports)
                   $('.table').removeClass('toDownload');
 
-                  console.log(rData)
-                  var reportLen = rData.reports;
+                  if(rData.category == 'order_tbl'){
+                      $('#reports-purchase').show();
+                      $('.table-purchase').addClass('toDownload');
 
-                  if(reportLen.length > 0 ){
-                      if(rData.category == 'order_tbl'){
-                          $('#reports-purchase').show();
-                          $('.table-purchase').addClass('toDownload');
+                      $(rData.reports).each(function(ind, obj){
+                          $('#reports-purchase').dataTable() .fnAddData([
+                              i,
+                              'OPS-'+ (obj.Date).substring(0,4) + '-O-'+ obj.id,
+                              (obj.last_name).toUpperCase() +', '+ obj.first_name,
+                              obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
+                              obj.courier,
+                              obj.Date
+                          ]);
+                          
+                          i++;
+                      });
 
-                          $(rData.reports).each(function(ind, obj){
-                              $('#reports-purchase').dataTable() .fnAddData([
-                                  i,
-                                  'OPS-'+ (obj.Date).substring(0,4) + '-O-'+ obj.id,
-                                  (obj.last_name).toUpperCase() +', '+ obj.first_name,
-                                  obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
-                                  obj.courier,
-                                  obj.Date
-                              ]);
-                              
-                              i++;
-                          });
-
-                          showDataTableElements();
-                      }
-
-                      if(rData.category == 'reservation_tbl'){
-
-                          $('#reports-purchase').show();
-                          $('.table-purchase').addClass('toDownload');
-
-                          $(rData.reports).each(function(ind, obj){
-                              $('#reports-purchase').dataTable() .fnAddData([
-                                  i,
-                                  'OPS-'+ (obj.Date).substring(0,4) + '-R-'+ obj.id,
-                                  (obj.last_name).toUpperCase() +', '+ obj.first_name,
-                                  obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
-                                  obj.courier,
-                                  obj.Date
-                              ]);
-                              
-                              i++;
-
-                          });
-                          showDataTableElements();
-                      }
-
-                      if(rData.category == 'inventory'){
-                          $('#reports-inventory').show();
-                          $('.table-inventory').addClass('toDownload');
-
-                          $(rData.reports).each(function(ind, obj){
-                              $('#reports-inventory').dataTable() .fnAddData([
-                                  i,
-                                  obj.name,
-                                  obj.quantity,
-                                  obj.stock_date
-                              ]);
-                              
-                              i++;
-
-                          });
-                          showDataTableElements();
-
-                      }
-
-
-                      if(rData.category == 'product'){
-                          $('#reports-products').show();
-                          $('.table-products').addClass('toDownload');
-
-                          $(rData.reports).each(function(ind, obj){
-                              $('#reports-products').dataTable() .fnAddData([
-                                  i,
-                                  obj.name,
-
-                                  obj.price,
-                                  obj.phase_out == 0 ? 'No': 'yes',
-                                  obj.insert_date
-                              ]);
-                              
-                              i++;
-
-                          });
-                          showDataTableElements();
-                      }
-
-                  } else {
-                      $('.reports-table').append('<p style="text-align: center; font-weight: bold;">No report can be generated from this period.</p>');
+                      showDataTableElements();
                   }
+
+                  if(rData.category == 'reservation_tbl'){
+                      $('#reports-purchase').show();
+                      $('.table-purchase').addClass('toDownload');
+
+
+                      $(rData.reports).each(function(ind, obj){
+                          $('#reports-purchase').dataTable() .fnAddData([
+                              i,
+                              'OPS-'+ (obj.Date).substring(0,4) + '-R-'+ obj.id,
+                              (obj.last_name).toUpperCase() +', '+ obj.first_name,
+                              obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
+                              obj.courier,
+                              obj.Date
+                          ]);
+                          
+                          i++;
+
+
+                      });
+                      showDataTableElements();
+
+                  }
+
+                  if(rData.category == 'inventory'){
+                      $('#reports-inventory').show();
+                      $('.table-inventory').addClass('toDownload');
+
+
+                      $(rData.reports).each(function(ind, obj){
+                          $('#reports-inventory').dataTable() .fnAddData([
+                              i,
+                              obj.name,
+                              obj.quantity,
+                              obj.stock_date
+                          ]);
+                          
+                          i++;
+
+                      });
+                      showDataTableElements();
+
+                  }
+
+
+                  if(rData.category == 'product'){
+                      $('#reports-products').show();
+                      $('.table-products').addClass('toDownload');
+
+
+                      $(rData.reports).each(function(ind, obj){
+                          $('#reports-products').dataTable() .fnAddData([
+                              i,
+                              obj.name,
+                              obj.description,
+                              obj.category,
+                              obj.price,
+                              obj.availability == 0 ? 'on-hand' : 'for reservation',
+                              obj.phase_out == 0 ? 'No': 'yes',
+                              obj.insert_date
+                          ]);
+                          
+                          i++;
+
+                      });
+                      showDataTableElements();
+
+                  }
+
+
               },
           });
       });
