@@ -32,7 +32,7 @@ foreach ($allReservations as $rKey => $rValue){
     $rDistinct[$rValue['id']] = $rValue;
 }
 
-// echo '<pre>'; print_r($forCount); exit;
+// echo '<pre>'; print_r($reservationCount); exit;
 ?>
 
 <!DOCTYPE html>

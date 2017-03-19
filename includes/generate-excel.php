@@ -11,19 +11,6 @@ $category = $_POST['reportName'];
 // echo $category;
 // exit;
 
-$query = "SELECT * FROM `inventory` ";
-$arr = array();
-if ($result = mysqli_query($con, $query)) {
-    /* fetch associative array */
-    while ($row = mysqli_fetch_array($result)) {
-        $arr[] = $row;
-    }
-    /* free result set */
-    mysqli_free_result($result);
-}
-
-// echo '<pre>'; print_r($arr); exit;
-
 //create new instance of PHPExcel
 $objPHPExcel = new PHPExcel();
 

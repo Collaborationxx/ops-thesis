@@ -1,6 +1,6 @@
 <?php
 include(dirname(__FILE__).'/../config/db_connection.php');
-
+//employees
 $query = "SELECT * FROM `user_account` WHERE user_role !=2 ORDER BY user_role DESC";
 $arr = array();
 if ($result = mysqli_query($con, $query)) {
@@ -12,6 +12,7 @@ if ($result = mysqli_query($con, $query)) {
 	mysqli_free_result($result);
 }
 
+//customers
 $select = "SELECT * FROM `user_account` WHERE user_role =2 ORDER BY last_name ASC";
 $customers = array();
 if ($oResult = mysqli_query($con, $select)) {

@@ -1,6 +1,7 @@
 <?php
 session_start(); 
 $role = $_SESSION['user_role'];
+$count = 1;
 
 if($_SESSION["username"] == null) { //if not redirect to login page
   header('location: index.php');
@@ -11,6 +12,7 @@ if($_SESSION["username"] == null) { //if not redirect to login page
 }
 
 include('includes/functions.php');
+include('data-manager/get-delivery-list.php');
 ?>
 
 <!DOCTYPE html>
@@ -175,20 +177,32 @@ include('includes/functions.php');
               </div>
               <div class="box-body no-padding">
                 <div class="table-responsive">
-                  <table class="table table-striped">
-                    <tbody>
+                  <table class="table table-striped toDownload">
+                    <thead>  
                       <tr>
                         <th style="width: 10px">#</th>
                         <th>Customer</th>
                         <th>Reservation</th>
                         <th>Reservation Date</th>
+                        <th>Shipping Address</th>
                       </tr>
-                      <tr>
-                        <td>1.</td>
-                        <td>Louie Francisco</td>
-                        <td>1 Wheelchair</td>
-                        <td>01/10/17</td>
-                      </tr>
+                    </thead>
+                    <tbody>
+                      <?php if(isset($reservationDelivery) AND count($orderDelivery) > 0): ?>
+                        <?php foreach ($reservationDelivery as $key => $value): ?>
+                          <tr>
+                            <td class="count"><?php echo $count++; ?></td>
+                            <td class="full-name"><?php echo strtoupper($value['last_name']).', '.ucfirst($value['first_name'])?></td>
+                            <td class="reservation-details">
+                              <?php foreach ($value['order_details'] as $oKey => $oValue): ?>
+                                  <p><?php echo $oValue['quantity'].' '.$oValue['name']; ?></p> 
+                              <?php endforeach; ?>
+                            </td>
+                            <td class="reservation-date"><?php echo date_format(date_create($value['transaction_date']), 'F-j-Y'); ?></td>
+                            <td class="shipping-address"><?php echo isset($value['shipping_address']) ? $value['shipping_address'] : $value['address']; ?></td>
+                          </tr>
+                        <?php endforeach; ?>  
+                      <?php endif; ?>  
                     </tbody>
                   </table>
                 </div>  
@@ -210,6 +224,13 @@ include('includes/functions.php');
   </div>
   <!-- /.content-wrapper -->
 
+<!-- form for report printing -->
+<form id="report-data" method="POST" action="includes/delivery-excel.php" class="hidden">
+  <input type="hidden" name="reportName">
+  <input type="hidden" name="headers">
+  <input type="hidden" name="body">
+</form>
+
   <!-- Main Footer -->
   <footer class="main-footer">
     <!-- To the right -->
@@ -230,7 +251,62 @@ include('includes/functions.php');
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
+<script>
+(function($){
 
+    function getHeaders(){
+      headers = [];
+      $('.toDownload thead tr th').each(function(){
+          var th = $(this).text();
+          headers.push(th);
+
+      });
+    }
+
+
+    function getBody(){
+      body = [];
+      $('.toDownload tbody tr').each(function(ind,tr){
+          var count = $(this).find('.count').text();
+          var name = $(this).find('.full-name').text();
+          var resDate = $(this).find('.reservation-date').text();
+          var shipAdd = $(this).find('.shipping-address').text();
+          var datails = $('.reservation-details p', tr).map(function(i, p) {
+              return $(p).text();
+          }).toArray();
+
+          var tb = {
+              count: count,
+              customer_name: name,
+              date: resDate,
+              shipAdd: shipAdd,
+              details: datails
+          }
+
+          body.push(tb);
+                
+      });
+    }
+
+  $(document).ready(function(){
+      getHeaders();
+      getBody();
+
+      $('.print-btn').click(function(){
+          console.log('click!');
+          console.log(headers);
+          console.log(body);
+
+          $('input[name=headers]').val(JSON.stringify(headers));
+          $('input[name=body]').val(JSON.stringify(body));
+          $('input[name=reportName]').val('Reservations for Delivery');
+
+          $('#report-data').submit();
+      });
+
+  });
+})(jQuery);
+</script>
 
 </body>
 </html>

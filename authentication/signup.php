@@ -12,6 +12,7 @@ $address = '';
 $shippingAddress = '';
 $contact = '';
 $email = '';
+$fromCart = $_POST['fromCart'];
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

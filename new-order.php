@@ -182,7 +182,7 @@ $i = 1; //for table row counting
               <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-shopping-bag"></i>   New Orders</h3>
                 <div class="box-tools pull-right">
-                 <a href="print-order.php" class="btn btn-default btn-sm"><i class="fa fa-file-excel-o"></i>&nbsp;&nbsp;Print Preview</a>
+                 <a href="print-order.php" class="btn btn-default btn-sm"><i class="fa fa-truck"></i>&nbsp;&nbsp;Delivery List</a>
                 </div>
               </div>
               <div class="box-body">
