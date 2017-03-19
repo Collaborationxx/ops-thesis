@@ -472,12 +472,6 @@
 
             });
 
-            // $('.shop-grid').easyPaginate({
-            //     paginateElement: '.shop-grid-item',
-            //     elementsPerPage: 8,
-            //     effect: 'slide'
-            // });
-
 
             $('.category-list a').click(function(e){
                 e.preventDefault();
@@ -522,14 +516,6 @@
                                             '<div class="clear"></div>' + 
                                         '</div></div>');
                                 });
-
-                                // $('.shop-grid').easyPaginate({
-                                //     paginateElement: '.shop-grid-item',
-                                //     elementsPerPage: 8,
-                                //     effect: 'slide'
-                                // });
-
-                                // $('.easyPaginateNav').show();
 
                                 $('load-more').show()
                             } else {

@@ -128,8 +128,8 @@ include('includes/functions.php');
                     </span>
                   </a>
                   <ul class="treeview-menu" style="display: none;">
-                    <li><a href="user-management.php"><i class="fa fa-circle-o"></i> Employee</a></li>
-                    <li><a href="customer-management.php"><i class="fa fa-circle-o"></i> Customer</a></li>
+                    <li style="margin-left: 35px;"><a href="user-management.php"><i class="fa fa-circle-o"></i> Employee</a></li>
+                    <li style="margin-left: 35px;"><a href="customer-management.php"><i class="fa fa-circle-o"></i> Customer</a></li>
                   </ul>
                 </li>
                 <li>

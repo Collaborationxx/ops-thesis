@@ -138,26 +138,6 @@ include("header.php");
                                     </div>
                                 </div>
                             </div>
-
-                            <!--<div class="information-blocks">
-                                <div class="block-title size-2">Sort by sizes</div>
-                                <div class="range-wrapper">
-                                    <div id="prices-range"></div>
-                                    <div class="range-price">
-                                        Price: 
-                                        <div class="min-price"><b>&pound;<span>0</span></b></div>
-                                        <b>-</b>
-                                        <div class="max-price"><b>&pound;<span>200</span></b></div>
-                                    </div>
-                                    <a class="button style-14">filter</a>
-                                </div>
-                            </div>-->
-
-                          
-
-                         
-
-                             
                         </div>
                     </div>
                 </div>
