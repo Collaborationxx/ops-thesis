@@ -1,26 +1,32 @@
-<?php
-session_start(); 
+n<?php
+session_start();
 $role = $_SESSION['user_role'];
 $count = 1;
+$serverURL = "http://$_SERVER[HTTP_HOST]";
 
 if($_SESSION["username"] == null) { //if not redirect to login page
   header('location: index.php');
-} else { 
-    if($role != 1){ //prevent other people other than admin in accessing dashboard
-        header('location: index.php');
-    }
+} else {
+  if($role != 1){ //prevent other people other than admin in accessing dashboard
+    header('location: index.php');
+  }
 }
 
-include('includes/functions.php');
-include('data-manager/get-alert.php');
-?>
 
+
+include('includes/functions.php');
+
+include('data-manager/get-alert.php');
+
+//echo '<pre>'; print_r($itemsLeft); exit;
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OPS | Alert</title>
+  <title>OPS | Inventory</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.6 -->
@@ -29,7 +35,7 @@ include('data-manager/get-alert.php');
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
   <!-- Ionicons -->
   <link rel="stylesheet" href="plugins/ionicons/css/ionicons.min.css">
-   <!-- dataTables -->
+  <!-- dataTables -->
   <link rel="stylesheet" href="plugins/datatables/dataTables.bootstrap.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="plugins/dist/css/AdminLTE.min.css">
@@ -41,7 +47,7 @@ include('data-manager/get-alert.php');
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
-
+ 
   <link rel="stylesheet" type="text/css" href="assets/css/ops-custom.css">
   <link rel="shortcut icon" href="assets/images/small-logo.png" />
 </head>
@@ -90,9 +96,9 @@ include('data-manager/get-alert.php');
                             </li>
                             <!-- Menu Footer-->
                             <li class="user-footer">
-                                <!--<div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                                </div>-->
+                                <div class="pull-left">
+                                    <a href="admin-profile.php" class="btn btn-default btn-flat">Profile</a>
+                                </div>
                                 <div class="pull-right">
                                     <a href="logout.php" class="btn btn-default btn-flat">Sign out</a>
                                 </div>
@@ -114,22 +120,30 @@ include('data-manager/get-alert.php');
                     <img src="assets/images/small-logo.png" class="ops-sidebar-logo">
                 </li>
                 <!-- Optionally, you can add icons to the links -->
-                <li class="active">
+                <li>
                     <a href="dashboard.php">
                         <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
                         <span>Admin Dashboard</span></a>
                 </li>
-                <li>
-                    <a href="user-management.php">
-                        <img src="assets/images/user-512.png" class="ops-sidebar-img">
-                        <span>Account Manager</span></a>
+                <li class="treeview">
+                  <a href="#">
+                    <img src="assets/images/user-512.png" class="ops-sidebar-img">
+                    <span>Account Manager</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu" style="display: none;">
+                    <li style="margin-left: 35px;"><a href="user-management.php"><i class="fa fa-circle-o"></i> Employee</a></li>
+                    <li style="margin-left: 35px;"><a href="customer-management.php"><i class="fa fa-circle-o"></i> Customer</a></li>
+                  </ul>
                 </li>
                 <li>
                     <a href="product-management.php">
                         <img src="assets/images/catalogue-icon.png" class="ops-sidebar-img">
                         <span>Product Catalog</span></a>
                 </li>
-                <li>
+                <li class="active">
                     <a href="inventory-management.php">
                         <img src="assets/images/inventory-flat.png" class="ops-sidebar-img">
                         <span>Inventory</span></a>
@@ -150,10 +164,9 @@ include('data-manager/get-alert.php');
         </section>
         <!-- /.sidebar -->
     </aside>
+    <!--end of copy-->
 
-
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
@@ -173,42 +186,42 @@ include('data-manager/get-alert.php');
               <div class="box-body">
                 <div class="table-responsive">
                   <table class="table table-striped table-bordered" id="alert-table">
-                    <thead>
-                      <tr style="background-color: #e6ffe6;">
-                        <th style="width: 10px">#</th>
-                        <th>Product Name</th>
-                        <th>Quantity Left</th>
-                        <th width=25%;>Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
+                      <thead>
+                        <tr style="background-color: #e6ffe6;">
+                          <th style="width: 10px">#</th>
+                          <th>Product ID</th>
+                          <th>Product Name</th>
+                          <th>Quantity Left</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
                       <?php if(isset($alert) AND count($alert) > 0):?>
                           <?php foreach ($alert as $key => $value): ?>
-                              <tr>
-                                  <td><?php echo $count ?></td>
-                                  <td><?php echo $value['prod_name']; ?></td>
-                                  <td><p class="text-danger"><?php echo $value['quantity']; ?></p></td>
-                                  <td>
-                                      <a href="#" data-toggle="modal" data-target="#inventory-modal" class="update-btn"><i class="fa fa-plus"></i>  <b>Restock</b></a>
-                                  </td>
-                              </tr>
-                          <?php endforeach; ?>
+                          <tr>
+                            <td><?php echo $count++; ?></td>
+                            <td name="generated-id" data-id="<?php echo $value['id']; ?>">OPS-2017-0<?php echo $value['id']; ?></td>
+                            <td name="product" data-id="<?php echo $value['prod_id']; ?>"><?php echo $value['prod_name']; ?></td>
+                            <td name="quantity"><?php echo $value['quantity']; ?></td>
+                            <td>
+                              <a href="#" data-toggle="tooltip" title="Update Inventory" class="edit-inventory"><i class="fa fa-plus"></i>  <b>Restock</b></a>
+                            </td>
+                          </tr>
+
+                        <?php endforeach; ?>
                       
                       <?php endif; ?>
-
                     </tbody>
                   </table>
                 </div>  
               </div>
-              
               <div class="box-footer">
                 <div class="row">
                   <div class="col-md-12 col-xs-12">
-                    <span class="pull-right">This table contains the product needed to be restocked.</span>
+                    <span class="pull-right">This table contains the record of stocks.</span>
                   </div>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
@@ -228,8 +241,9 @@ include('data-manager/get-alert.php');
   </footer>
 </div>
 <!-- ./wrapper -->
+<!--pop up content-->
 <!-- Modal -->
-<div id="inventory-modal" class="modal fade" role="dialog">
+<div id="alert-modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
     <!-- Modal content-->
@@ -262,6 +276,16 @@ include('data-manager/get-alert.php');
                           <p class="errMess err-invnetory" style="display: none">All products is in inventory. Cannot do this action.</p>
                           <p class="errMess err-product" style="display: none">No product selected.</p>
                           <label>Product Name:</label>
+                          <select class="form-control" id="product-select">
+                                <option selected="selected" value="">--Choose Product--</option>
+                                <?php if(isset($itemsLeft) AND count($itemsLeft) > 0): ?>
+                                    <?php foreach ($itemsLeft as $key => $value): ?>
+                                        <option value="<?php echo $value['id']; ?>"><?php echo $value['name']; ?></option>
+                                    <?php endforeach; ?>
+                                <?php else: ?>
+                                    <option value="null">All products is in inventory</option>        
+                                <?php endif; ?>
+                            </select>
                             <input type="text" name="product-input" class="form-control" disabled="disabled">
                         </div>
                       </div>
@@ -269,7 +293,7 @@ include('data-manager/get-alert.php');
                     <div class="row itemsLeft">
                           <div class="col-md-12 col-xs-12">
                               <div class="form-group">
-                                  <label>Quantity Left:</label>
+                                  <label>Current Item Count:</label>
                                   <input type="number" min="0" class="form-control" name="quantity"disabled="disabled">
                               </div>
                           </div>
@@ -284,9 +308,18 @@ include('data-manager/get-alert.php');
                               </div>
                           </div>
                       </div>
+<!--                    <div class="row">
+<!--                      <div class="col-md-12 col-xs-12">
+<!--                        <div class="form-group">
+<!--                          <label>Re-stock Date:</label>
+<!--                          <input type="text" class="form-control" name="date-restock" placeholder="Enter...">-->
+<!--                        </div>-->
+<!--                      </div>-->
+<!--                    </div>-->
                   </form>
                 </div>
                 <div class="box-footer">
+                  <button type="button" class="btn btn-success pull-right new-inventory">Save</button>
                   <button type="button" class="btn btn-info pull-right update-inventory">Update</button>
                 </div>
             </div>
@@ -298,22 +331,25 @@ include('data-manager/get-alert.php');
   </div>
 </div>
 <!--end pop up content-->
-
 <!-- REQUIRED JS SCRIPTS -->
 
-<!-- jQuery 2.2.3 -->
+<!-- jQuery -->
 <script src="plugins/jQuery/jquery-3.1.1.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
 <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="plugins/dist/js/app.min.js"></script>
+<!-- bootbox.js -->
+<script src="assets/js/bootbox.min.js"></script>
 <!-- dataTables -->
 <script src="plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="plugins/datatables/dataTables.bootstrap.min.js"></script>
 
-
 <script>
-    $(document).ready(function() {
+  $(document).ready(function () {
+      var serverURL = <?php echo json_encode($serverURL); ?>;
+      var modal = $('div#alert-modal');
+
         $('#alert-table').dataTable({
             "paging": true,
             "lengthChange": true,
@@ -327,16 +363,71 @@ include('data-manager/get-alert.php');
             {"name":"second", "orderable":true},
             {"name":"third", "orderable":true},
             {"name":"fourth", "orderable":true},
-            ]
+            {"name":"fifth", "orderable":false}
+        ]
         });
 
-       
+      $(document).on('click', '.edit-inventory', function () {
+          $('div#alert-modal div.box-header').find('h3').html('Update Inventory');
+          $('button.update-inventory').css('display','block');
+          $('button.new-inventory').css('display','none');
+          $(modal).find('input[name="product-input"]').css('display','block');
+          $(modal).find('select#product-select.form-control').css('display','none');
+          $(modal).find('div.itemsLeft').css('display','block');
+          $(modal).find('.form-group label[name="qty"]').text('Additional Quantity');
 
-    
+          var id = $(this).closest('tr').find('td[name="generated-id"]').attr('data-id');
+          var product_id = $(this).closest('tr').find('td[name="product"]').attr('data-id');
+          var product_name = $(this).closest('tr').find('td[name="product"]').text();
+          var qty = $(this).closest('tr').find('td[name="quantity"]').text();
 
+          $(modal).modal('show');
+          $(modal).on('shown.bs.modal', function () {
+              $(modal).find('.modal-body input[name="invID"]').val(id);
+              $(modal).find('select#product-select.form-control').val(product_id);
+              $(modal).find('.modal-body input[name="quantity"]').val(qty);
+              $(modal).find('.modal-body input[name="product-input"]').val(product_name);
+          });
+      });
 
+      $(document).on('click', '.update-inventory', function () {
+          var id = $(modal).find('.modal-body input[name="invID"]').val();
+          var new_qty = $(modal).find('.modal-body input[name="additional-quantity"]').val();
+          var old_qty = $(modal).find('.modal-body input[name="quantity"]').val();
+          var qty = parseInt(old_qty) + parseInt(new_qty);
 
+          var data = {
+              id: id,
+              qty: qty,
+              aQty: new_qty
+          }
+          console.log(data);
+
+          $.ajax({
+              type: 'POST',
+              url: serverURL + '/ops/data-manager/edit-inventory.php',
+              data: data,
+              dataType: 'json',
+              success: function(rData){
+                  console.log(rData)
+                  if(rData.status){
+                      $('.alert-update-success').css('display', 'block'); //show success alert
+                      $('.alert').delay(3000).fadeOut('fast'); //remove alert after 3s
+                      setTimeout(function(){
+                          $('#add-user-modal').modal('hide');
+                          location.reload();
+                      }, 3200);
+                  }
+
+                  if(rData.qtyEmpty){
+                      $(modal).find('.err-qty-empty').closest('.form-group').addClass('has-error');
+                      $(modal).find('p.err-qty-empty').css('display', 'block');
+                  }
+              },
+          });
+      });
+
+  });
 </script>
-
 </body>
 </html>

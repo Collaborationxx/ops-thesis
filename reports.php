@@ -121,10 +121,18 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
                         <span>Admin Dashboard</span></a>
                 </li>
-                <li>
-                    <a href="user-management.php">
-                        <img src="assets/images/user-512.png" class="ops-sidebar-img">
-                        <span>Account Manager</span></a>
+                <li class="treeview">
+                  <a href="#">
+                    <img src="assets/images/user-512.png" class="ops-sidebar-img">
+                    <span>Account Manager</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu" style="display: none;">
+                    <li style="margin-left: 35px;"><a href="user-management.php"><i class="fa fa-circle-o"></i> Employee</a></li>
+                    <li style="margin-left: 35px;"><a href="customer-management.php"><i class="fa fa-circle-o"></i> Customer</a></li>
+                  </ul>
                 </li>
                 <li>
                     <a href="product-management.php">
