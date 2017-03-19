@@ -121,10 +121,18 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         <img src="assets/images/dashboard.ico" class="ops-sidebar-img">
                         <span>Admin Dashboard</span></a>
                 </li>
-                <li class="active">
-                    <a href="user-management.php">
-                        <img src="assets/images/user-512.png" class="ops-sidebar-img">
-                        <span>Account Manager</span></a>
+                <li class="treeview active">
+                  <a href="#">
+                    <img src="assets/images/user-512.png" class="ops-sidebar-img">
+                    <span>Account Manager</span>
+                    <span class="pull-right-container">
+                      <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                  </a>
+                  <ul class="treeview-menu" style="display: none;">
+                    <li><a href="user-management.php"><i class="fa fa-circle-o"></i> Employee</a></li>
+                    <li><a href="customer-management.php"><i class="fa fa-circle-o"></i> Customer</a></li>
+                  </ul>
                 </li>
                 <li>
                     <a href="product-management.php">
@@ -183,7 +191,6 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                         <th>Address</th>
                         <th>Contact No.</th>
                         <th>Email</th>
-                        <th>Role</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -196,7 +203,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                             <td name="address"><?php echo $value['address']; ?></td>
                             <td name="contact"><?php echo $value['contact_number']; ?></td>
                             <td name="email"><?php echo $value['email']; ?></td>
-                            <td name="role" data-id="<?php echo $value['user_role']; ?>"><?php echo userRoles($value['user_role']); ?></td>
+                            </td>
                           </tr>
                         <?php endforeach; ?>
                       <?php endif; ?>
@@ -264,8 +271,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
             {"name":"third", "orderable":true},
             {"name":"fourth", "orderable":true},
             {"name":"fifth", "orderable":false},
-            {"name":"sixth", "orderable":true},
-            {"name":"seventh", "orderable":false}
+            {"name":"sixth", "orderable":true}
         ]
       });
 
