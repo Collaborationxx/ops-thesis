@@ -421,6 +421,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
       $('.btn-generate').click(function(){
           $('table').hide();
+          $('input').prop('disabled', true);
+          $('select').prop('disabled', true);
+
           hideDataTableElements();
 
           var table = $('option:selected', 'select#categorySelect').attr('data-table');
@@ -564,7 +567,7 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       }
 
                   } else {
-                      $('no-result').show();
+                      $('.no-result').show();
                   }
               },
           });
