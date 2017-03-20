@@ -217,7 +217,7 @@ foreach ($reservationsByCustomer as $key => $value){
                                                 <td><?php echo $i++; ?></td>
                                                 <td><a href="#" class="order-id" data-id="<?php echo $okey; ?>"><?php echo "OPS-".date('Y', $oVal['transaction_date']).'-O-'.$okey; ?></a></td>
                                                 <td><?php echo date('F/j/Y',$oVal['transaction_date']); ?></td>
-                                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>">
+                                                <td name="pay_stat" data-id="<?php echo $oVal['payment_status']; ?>" data-confirmed="<?php echo $oVal['payment_confirmed']; ?>">
                                                 <?php
                                                   if($oVal['payment_confirmed'] == 0){
                                                       echo $oVal['payment_status'] == 0 ? 'Waiting for payment' : 'Payment Sent';
@@ -313,7 +313,7 @@ foreach ($reservationsByCustomer as $key => $value){
                                 <td><?php echo $i++; ?></td>
                                 <td><a href="#" class="reservation-id" data-id="<?php echo $rkey; ?>"><?php echo "OPS-".date('Y', $rVal['transaction_date']).'-R-'.$rkey; ?></a></td>
                                 <td><?php echo date('F/j/Y',$rVal['transaction_date']); ?></td>
-                                <td name="r_pay_stat" data-id="<?php echo $rVal['payment_status']; ?>">
+                                <td name="r_pay_stat" data-id="<?php echo $rVal['payment_status']; ?>" data-confirmed="<?php echo $rVal['payment_confirmed']; ?>">
                                 <?php
                                   if($rVal['payment_confirmed'] == 0){
                                       echo paymentStatus($rVal['payment_status']);
@@ -532,6 +532,7 @@ foreach ($reservationsByCustomer as $key => $value){
         $('.alert').css('display', 'none');
         $('p.errMess').css('display', 'none');
 
+
         /** Edit button Functionality **/
         $('.edit-profile-btn').click(function (e) {
           e.preventDefault();
@@ -703,8 +704,10 @@ foreach ($reservationsByCustomer as $key => $value){
             $('.btn-send').prop('disabled', false);
             var oid = $(this).attr('data-id');
             var status = $(this).closest('tr').find('td[name="pay_stat"]').attr('data-id');
+            var confirmed = $(this).closest('tr').find('td[name="pay_stat"]').attr('data-confirmed');
             console.debug('status'. status)
             console.debug('oid', oid);
+            console.debug('confirmed', confirmed);
 
             
             var data = {
@@ -738,27 +741,32 @@ foreach ($reservationsByCustomer as $key => $value){
                   },
               });
 
+
+
               if(status == 1){
 
-                  $.ajax({
-                      type: 'POST',
-                      url: serverURL + '/ops/data-manager/get-payment-by-orderID.php',
-                      data: {oid: oid},
-                      dataType: 'json',
-                      success: function (rData) {
-                          var res = rData.payment_details;
-                          $(res).each(function(i,e){
-                              console.log(e)
-                              $('input[name="deposit-number"]').val(e.deposit_number);
-                              $('input[name="deposit-amount"]').val(e.deposit_amount);
-                              $('input[name="deposit-number"]').prop('disabled', true);
-                              $('input[name="deposit-amount"]').prop('disabled', true);
-                              $('.paymentID').val(e.id);
-                              $('.btn-send').prop('disabled', true);
-                          });
-                      }, 
-                  });
+                $.ajax({
+                    type: 'POST',
+                    url: serverURL + '/ops/data-manager/get-payment-by-orderID.php',
+                    data: {oid: oid},
+                    dataType: 'json',
+                    success: function (rData) {
+                        var res = rData.payment_details;
+                        $(res).each(function(i,e){
+                            console.log(e)
+                            $('input[name="deposit-number"]').val(e.deposit_number);
+                            $('input[name="deposit-amount"]').val(e.deposit_amount);
+                            $('.paymentID').val(e.id);
+                        });
+                    }, 
+                });
+            }
+
+              if(confirmed == 1){
+                  $('.btn-send').prop('disabled', true);
               }
+              
+             
               
         });
 
@@ -774,11 +782,13 @@ foreach ($reservationsByCustomer as $key => $value){
             $('.btn-send-r').prop('disabled', false);
             var rid = $(this).attr('data-id');
             var status = $(this).closest('tr').find('td[name="r_pay_stat"]').attr('data-id');
+            var confirmed = $(this).closest('tr').find('td[name="r_pay_stat"]').attr('data-confirmed');
             var tot = 0;
 
             console.debug('status', status)
             console.debug('rid', rid);
-            
+            console.debug('confirmed', confirmed);
+
             var data = {
               fcp: 1
             }
@@ -809,6 +819,7 @@ foreach ($reservationsByCustomer as $key => $value){
                   },
               });
 
+
               if(status > 0){
                   $.ajax({
                       type: 'POST',
@@ -826,17 +837,16 @@ foreach ($reservationsByCustomer as $key => $value){
                               $('.paymentID').val(e.id);
                               partial = e.deposit_amount;
 
-                              if(tot == e.deposit_amount){
-                                  $('.btn-send-r').prop('disabled', true);
-                                  $('input[name="deposit-number"]').prop('disabled', true);
-                                  $('input[name="deposit-amount"]').prop('disabled', true);
-                              }
-
                           });
                       }, 
                   });
               }
-              
+
+              if(confirmed == 1){
+                  $('.btn-send-r').prop('disabled', true);
+              }
+
+
         });
 
         $(document).on('click','.btn-send-r', function(e){

@@ -2,7 +2,7 @@
 include(dirname(__FILE__).'/../config/db_connection.php');
 include('../includes/functions.php');
 
-$rid = test_input($_POST['rid')];
+$rid = test_input($_POST['rid']);
 
 $query = "SELECT * FROM `payment` WHERE reservation_id = $rid";
 $rPayment = array();
