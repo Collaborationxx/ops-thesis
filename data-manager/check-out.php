@@ -26,13 +26,6 @@ if(mysqli_query($con, $query)){
         $price = $value['price'];
         $qty = $value['qty'];
         $subQuery = "INSERT INTO `$table` ($col, product_id, price, quantity) VALUES ($id, $product, $price, $qty)";
-        
-        if(mysqli_query($con, $subQuery)){
-            $sql = "UPDATE `inventory` SET quantity = quantity - $qty WHERE product_id = $product";
-            if(mysqli_query($con, $sql)){
-                $response = array('status' => 'success');
-            }
-        }
     }
 }
         

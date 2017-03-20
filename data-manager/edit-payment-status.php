@@ -9,6 +9,7 @@ $response = array();
 $arr = array();
 $tbl = '';
 $col = '';
+$dataTable = '';
 
 $query = "UPDATE `payment` SET status = $status WHERE id = $id ";
 if(mysqli_query($con, $query)){
@@ -21,19 +22,41 @@ if(mysqli_query($con, $query)){
 	}
 
 
+
+
 	foreach ($arr as $key => $value) {
 		if(isset($value['order_id'])){
 			$tbl = 'order_tbl';
+			$dataTable = 'order_datails';
 			$tid = $value['order_id'];
+			$col = 'order_id';
+
 		} else {
 			$tbl = 'reservation_tbl';
+			$dataTable = 'reservation_details';
 			$tid = $value['reservation_id'];
+			$col = 'reservation_id';
 		}
+
 	}
 
-	//updates payment_confirmation in order/reservation_tbl
-	$update = "UPDATE `$tbl` SET payment_confirmed = 1 WHERE id = $tid";
-	mysqli_query($con, $update);
+	if($status == 1){
+		//updates payment_confirmation in order/reservation_tbl
+		$update = "UPDATE `$tbl` SET payment_confirmed = 1 WHERE id = $tid";
+		if(mysqli_query($con, $update)){
+
+			$selectProduct = "SELECT product_id, quantity FROM `$dataTable` WHERE $col = $tid";
+			if($list = mysqli_query($con, $selectProduct )){
+				while($items = mysqli_fetch_assoc($list)) {
+					$qty = $items['quantity'];
+					$product_id = $items['product_id'];
+					$updateInv = "UPDATE `inventory` SET quantity = quantity - $qty WHERE product_id = $product_id";
+		    		mysqli_query($con, $updateInv);
+				}
+			}
+
+		}
+	}
 
 	$sql = "SELECT customer_id FROM `$tbl` WHERE id = $tid";
 	$customer_id = '';
