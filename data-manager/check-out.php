@@ -27,12 +27,13 @@ if(mysqli_query($con, $query)){
         $qty = $value['qty'];
         $subQuery = "INSERT INTO `$table` ($col, product_id, price, quantity) VALUES ($id, $product, $price, $qty)";
     }
-     if(mysqli_query($con, $subQuery)){
-            $sql = "UPDATE `inventory` SET quantity = quantity - $qty WHERE product_id = $product";
-            if(mysqli_query($con, $sql)){
-                $response = array('status' => 'success');
-            }
-        }
+
+    if(mysqli_query($con, $subQuery)){
+        $response = array('status' => 'success');
+    }
+
+} else {
+    echo 'error: '.mysqli_error();
 }
         
 header('Content-Type: application/json');

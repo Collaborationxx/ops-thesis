@@ -45,20 +45,72 @@ $styleArray = array(
     )
 );
 
+//array of style
+$sideBorders = array(
+    'font' => array(
+        'bold' => false,
+    ),
+    'alignment' => array(
+        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+    ),
+    'borders' => array(
+         'left' => array(
+            'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+        ),
+        'right' => array(
+            'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+        ),
+    )
+);
+
+$topBorder = array(
+    'font' => array(
+        'bold' => false,
+    ),
+    'alignment' => array(
+        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER,
+    ),
+    'borders' => array(
+         'top' => array(
+            'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+        ),
+         'left' => array(
+            'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+        ),
+        'right' => array(
+            'style' => PHPExcel_Style_Border::BORDER_MEDIUM,
+        ),
+    )
+);
+
 //merge cell
 $objPHPExcel->setActiveSheetIndex(0)
-    ->mergeCells('B2:'.$rangeTo.'2');
+    ->mergeCells('B2:'.$rangeTo.'2')
+    ->mergeCells('B3:'.$rangeTo.'3')
+    ->mergeCells('B4:'.$rangeTo.'4');
 
 //set value and fort size
 $objPHPExcel->getActiveSheet()
     ->getCell('B2')
+    ->setValue('MJ JACOBE TRADING')
+    ->getStyle('B2')->getFont()->setSize(16);
+
+$objPHPExcel->getActiveSheet()
+    ->getCell('B3')
     ->setValue($category.' Report')
-    ->getStyle('B2')->getFont()->setSize(18);
+    ->getStyle('B3')->getFont()->setSize(18);
+
+$objPHPExcel->getActiveSheet()
+    ->getCell('B4')
+    ->setValue(date('F-d-Y'))
+    ->getStyle('B4')->getFont()->setSize(12);
+
+$objPHPExcel->getActiveSheet()->getStyle('B2:'.$rangeTo.'2')->applyFromArray($topBorder);
+$objPHPExcel->getActiveSheet()->getStyle('B3:'.$rangeTo.'3')->applyFromArray($sideBorders);
+$objPHPExcel->getActiveSheet()->getStyle('B4:'.$rangeTo.'4')->applyFromArray($sideBorders);
 
 
-$objPHPExcel->getActiveSheet()->getStyle('B2:'.$rangeTo.'2')->applyFromArray($styleArray);
-
-$i =3;
+$i = 5;
 $col = 'B';
 
 foreach($headers as $head) {

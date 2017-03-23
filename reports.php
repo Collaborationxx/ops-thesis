@@ -421,8 +421,9 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
 
       $('.btn-generate').click(function(){
           $('table').hide();
-          $('input').prop('disabled', true);
-          $('select').prop('disabled', true);
+          $('input').prop('readonly', true);
+          $('select').prop('readonly', true);
+          reportName = '';
 
           hideDataTableElements();
 
@@ -460,12 +461,18 @@ $serverURL = "http://$_SERVER[HTTP_HOST]";
                       if(rData.category == 'order_tbl'){
                           $('#reports-purchase').show();
                           $('.table-purchase').addClass('toDownload');
+                          var name = '';
 
                           $(rData.reports).each(function(ind, obj){
+                              if(typeof(obj.last_name) && typeof(obj.first_name) === 'undefined'){
+                                  name = obj.customer_name;
+                              } else {
+                                  name = (obj.last_name).toUpperCase() +', '+ obj.first_name;
+                              }
                               $('#reports-purchase').dataTable() .fnAddData([
                                   i,
                                   'OPS-'+ (obj.Date).substring(0,4) + '-O-'+ obj.id,
-                                  (obj.last_name).toUpperCase() +', '+ obj.first_name,
+                                  name,
                                   obj.delivery_status == 0 ? 'Not Delivered' : 'Delivered',
                                   obj.courier,
                                   obj.Date

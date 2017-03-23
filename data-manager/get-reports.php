@@ -88,7 +88,7 @@ if($tbl == 'ol_sales' ){
 	//default query 
 	$select = "SELECT * FROM `$tbl` WHERE $col BETWEEN '$start' AND '$end' ";
 
-	if($tbl == 'order_tbl'){
+	if($tbl == 'order_tbl' AND $type == 1){
 		$select = "SELECT
 						t.id,
 						t.customer_id,
@@ -105,7 +105,7 @@ if($tbl == 'ol_sales' ){
 						user_account as u,
 						track_logs as l
 					WHERE
-						type = $type
+						t.type = $type
 	              	AND
 						t.customer_id = u.id
 					AND
@@ -113,6 +113,28 @@ if($tbl == 'ol_sales' ){
 					AND 
 						transaction_date BETWEEN '$start' AND '$end'
 				";
+	}
+
+	if($tbl == 'order_tbl' AND $type == 0){
+		$select = " SELECT
+						DISTINCT(t.id),
+						t.customer_name,
+						t.delivery_status,
+						l.courier,
+						t.$col as Date,
+						t.payment_status,
+						t.type
+					FROM
+						order_tbl as t,
+						user_account as u,
+						track_logs as l
+					WHERE
+						t.type = $type
+					AND
+						l.order_id = t.id	
+                    AND 
+						transaction_date BETWEEN '$start' AND '$end'
+						";
 	}
 
 	if($tbl == 'reservation_tbl'){
