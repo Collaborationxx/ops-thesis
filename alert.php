@@ -1,4 +1,4 @@
-n<?php
+<?php
 session_start();
 $role = $_SESSION['user_role'];
 $count = 1;

@@ -211,7 +211,8 @@ $counter = 1;
                                     <span class="text-muted"><i class="fa fa-thumbs-down"></i></span></a>
                                   <?php else: ?>
                                      <a href="https://online.bdo.com.ph/sso/login?josso_back_to=https://online.bdo.com.ph/sso/josso_security_check" target="_blank" data-toggle="tooltip" title="Verify?"><span class="text-info"><i class="fa fa-check-square-o"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;  
-                                     <a href="#" class="confirm-payment" data-toggle="tooltip" title="Confirm?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
+                                     <a href="#" class="confirm-downpayment" data-toggle="tooltip" title="Confirm Downpayment?"><span class="text-success"><i class="fa fa-cart-arrow-down"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                     <a href="#" class="confirm-payment" data-toggle="tooltip" title="Confirm Payment?"><span class="text-success"><i class="fa fa-thumbs-up"></i></span></a>&nbsp;&nbsp;|&nbsp;&nbsp; 
                                      <a href="#" class="reject-payment" data-toggle="tooltip" title="Reject?"><span class="text-danger"><i class="fa fa-thumbs-down"></i></span></a>
                                   <?php endif; ?>       
                                 </td>
